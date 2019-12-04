@@ -1,0 +1,687 @@
+﻿<story>
+  <properties>
+    <name>Peter Barker</name>
+  </properties>
+  <entity>
+    <id>1</id>
+    <type>TimeSpan</type>
+    <begin>03/03/2016T10:00:00</begin>
+    <end>03/03/2016T10:30:00</end>
+  </entity>
+  <entity>
+    <id>2</id>
+    <type>TimeSpan</type>
+    <begin>03/03/2016T10:30:00</begin>
+    <end>03/03/2016T10:35:00</end>
+  </entity>
+  <entity>
+    <id>3</id>
+    <type>TimeSpan</type>
+    <begin>03/03/2016T10:35:00</begin>
+    <end>03/03/2016T11:00:00</end>
+  </entity>
+  <entity>
+    <id>4</id>
+    <type>TimeSpan</type>
+    <begin>03/03/2016T11:00:00</begin>
+    <end>03/03/2016T12:00:00</end>
+  </entity>
+  <entity>
+    <id>5</id>
+    <type>TimeSpan</type>
+    <begin>03/03/2016T12:00:00</begin>
+    <end>03/03/2016T19:00:00</end>
+  </entity>
+  <entity>
+    <id>6</id>
+    <type>TimeSpan</type>
+    <begin>03/03/2016T19:00:00</begin>
+    <end>04/03/2016T07:30:00</end>
+  </entity>
+  <entity>
+    <id>7</id>
+    <type>TimeSpan</type>
+    <begin>04/03/2016T07:30:00</begin>
+    <end>04/03/2016T14:00:00</end>
+  </entity>
+  <entity>
+    <id>8</id>
+    <type>TimeSpan</type>
+    <begin>04/03/2016T14:00:00</begin>
+    <end>04/03/2016T14:05:00</end>
+  </entity>
+  <entity>
+    <id>9</id>
+    <type>TimeSpan</type>
+    <begin>04/03/2016T14:05:00</begin>
+    <end>04/03/2016T23:00:00</end>
+  </entity>
+  <entity>
+    <id>10</id>
+    <type>TimeSpan</type>
+    <begin>04/03/2016T23:00:00</begin>
+    <end>05/03/2016T04:00:00</end>
+  </entity>
+  <entity>
+    <id>11</id>
+    <type>TimeSpan</type>
+    <begin>05/03/2016T04:00:00</begin>
+    <end>05/03/2016T04:30:00</end>
+  </entity>
+  <entity>
+    <id>12</id>
+    <type>TimeSpan</type>
+    <begin>05/03/2016T04:30:00</begin>
+    <end>05/03/2016T07:00:00</end>
+  </entity>
+  <entity>
+    <id>13</id>
+    <type>TimeSpan</type>
+    <begin>05/03/2016T07:00:00</begin>
+    <end>05/03/2016T21:00:00</end>
+  </entity>
+  <entity>
+    <id>14</id>
+    <type>TimeSpan</type>
+    <begin>05/03/2016T21:00:00</begin>
+    <end>05/03/2016T22:00:00</end>
+  </entity>
+  <entity>
+    <id>15</id>
+    <type>TimeSpan</type>
+    <begin>05/03/2016T22:00:00</begin>
+    <end>05/03/2016T22:05:00</end>
+  </entity>
+  <entity>
+    <id>16</id>
+    <type>TimeSpan</type>
+    <begin>05/03/2016T22:05:00</begin>
+    <end>05/03/2016T22:30:00</end>
+  </entity>
+  <entity>
+    <id>17</id>
+    <type>TimeSpan</type>
+    <begin>05/03/2016T22:30:00</begin>
+    <end>06/03/2016T07:00:00</end>
+  </entity>
+  <entity>
+    <id>18</id>
+    <type>TimeSpan</type>
+    <begin>06/03/2016T07:00:00</begin>
+    <end>06/03/2016T11:00:00</end>
+  </entity>
+  <entity>
+    <id>19</id>
+    <type>TimeSpan</type>
+    <begin>06/03/2016T11:00:00</begin>
+    <end>06/03/2016T12:00:00</end>
+  </entity>
+  <entity>
+    <id>20</id>
+    <type>TimeSpan</type>
+    <begin>06/03/2016T12:00:00</begin>
+    <end>06/03/2016T15:30:00</end>
+  </entity>
+  <entity>
+    <id>21</id>
+    <type>TimeSpan</type>
+    <begin>06/03/2016T15:30:00</begin>
+    <end>06/03/2016T20:00:00</end>
+  </entity>
+
+  <entity>
+    <id>22</id>
+    <type>Person</type>
+    <value>Peter Barker</value>
+    <speech>Peter Barker</speech>
+  </entity>
+  <entity>
+    <id>23</id>
+    <type>Person</type>
+    <value>Jaime Reyes</value>
+    <speech>Jaime Reyes</speech>
+  </entity>
+  <entity>
+    <id>24</id>
+    <type>Person</type>
+    <value>John Frey</value>
+    <speech>John Frey</speech>
+  </entity>
+  <entity>
+    <id>25</id>
+    <type>Shop</type>
+    <value>Mall's Coffee Shop</value>
+    <speech>at the mall's coffee shop</speech>
+  </entity>
+  <entity>
+    <id>26</id>
+    <type>Drink</type>
+    <value>Large Cup of Coffee</value>
+    <speech>a large cup of coffee</speech>
+  </entity>
+  <entity>
+    <id>27</id>
+    <type>Conversation</type>
+    <value>Jewelry Shop Owner's Conversation</value>
+    <speech>the jewelry shop owner's conversation</speech>
+  </entity>
+  <entity>
+    <id>28</id>
+    <type>House</type>
+    <value>Peter's House</value>
+    <speech>at my house</speech>
+  </entity>
+  <entity>
+    <id>29</id>
+    <type>Information</type>
+    <value>Jewelry Shop Inventory</value>
+    <speech>the jewelry shop's inventory</speech>
+  </entity>
+  <entity>
+    <id>30</id>
+    <type>Motive</type>
+    <value>gather information about the watch value</value>
+    <speech>gather information about the watch value</speech>
+  </entity>
+  <entity>
+    <id>31</id>
+    <type>Street</type>
+    <value>Alley near the Church</value>
+    <speech>the alley near the church</speech>
+  </entity>
+  <entity>
+    <id>32</id>
+    <type>Weapon</type>
+    <value>Revolver</value>
+    <speech>a gun</speech>
+  </entity>
+  <entity>
+    <id>33</id>
+    <type>Motive</type>
+    <value>rob the Jewelry Shop</value>
+    <speech>rob the jewelry shop</speech>
+  </entity>
+  <entity>
+    <id>35</id>
+    <type>Shop</type>
+    <value>Jewelry Shop</value>
+    <speech>on the jewelry shop</speech>
+  </entity>
+  <entity>
+    <id>36</id>
+    <type>Information</type>
+    <value>check if the delivery arrived</value>
+    <speech>check if the delivery arrived</speech>
+  </entity>
+  <entity>
+    <id>37</id>
+    <type>Person</type>
+    <value>Delivery Guy</value>
+    <speech>delivery guy</speech>
+  </entity>
+  <entity>
+    <id>38</id>
+    <type>Theft</type>
+    <value>Robbery</value>
+    <speech>Robbery</speech>
+  </entity>
+  <entity>
+    <id>41</id>
+    <type>Jewlery</type>
+    <value>Stolen Necklace</value>
+    <speech>the necklace</speech>
+  </entity>
+  <entity>
+    <id>42</id>
+    <type>Motive</type>
+    <value>discover its value</value>
+    <speech>discover its value</speech>
+  </entity>
+  <entity>
+    <id>43</id>
+    <type>Motive</type>
+    <value>find a buyer</value>
+    <speech>find a buyer</speech>
+  </entity>
+  <entity>
+    <id>44</id>
+    <type>Information</type>
+    <value>John Frey's Contact</value>
+    <speech>John Frey's contact</speech>
+  </entity>
+  <entity>
+    <id>45</id>
+    <type>Motive</type>
+    <value>Sell Necklace</value>
+    <speech>sell the necklace</speech>
+  </entity>
+  <entity>
+    <id>46</id>
+    <type>Station</type>
+    <value>Castle Town Train Station</value>
+    <speech>Castle Town train station</speech>
+  </entity>
+  <entity>
+    <id>47</id>
+    <type>Ticket</type>
+    <value>Ticket to SilverMoon City</value>
+    <speech>ticket to SilverMoon City</speech>
+  </entity>
+  <entity>
+    <id>49</id>
+    <type>City</type>
+    <value>SilverMoon City</value>
+    <speech>SilverMoon City</speech>
+  </entity>
+  <entity>
+    <id>50</id>
+    <type>Shop</type>
+    <value>Gary's Pub</value>
+    <speech>Gary's Pub</speech>
+  </entity>
+  <entity>
+    <id>52</id>
+    <type>City</type>
+    <value>CastleTown</value>
+    <speech>CastleTown</speech>
+  </entity>
+  <entity>
+    <id>54</id>
+    <type>Motive</type>
+    <value>Look for a Watch to buy</value>
+    <speech>look for a watch to buy</speech>
+  </entity>
+
+
+
+  <event>
+    <id>1</id>
+    <action>Drink</action>
+    <real>true</real>
+    <incriminatory>0</incriminatory>
+    <association relation="Time">
+      <entity id="1"/>
+    </association>
+    <association relation="Location">
+      <entity id="25"/>
+    </association>
+    <association relation="Agent">
+      <entity id="22"/>
+    </association>
+    <association relation="Theme">
+      <entity id="26"/>
+    </association>
+  </event>
+  <event>
+    <id>2</id>
+    <action>Eavesdrop</action>
+    <real>true</real>
+    <incriminatory>95</incriminatory>
+    <association relation="Time">
+      <entity id="2"/>
+    </association>
+    <association relation="Location">
+      <entity id="25"/>
+    </association>
+    <association relation="Agent">
+      <entity id="22"/>
+    </association>
+    <association relation="Theme">
+      <entity id="27"/>
+    </association>
+  </event>
+  <event>
+    <id>3</id>
+    <action>Research</action>
+    <real>true</real>
+    <incriminatory>15</incriminatory>
+    <association relation="Time">
+      <entity id="3"/>
+    </association>
+    <association relation="Location">
+      <entity id="28"/>
+    </association>
+    <association relation="Agent">
+      <entity id="22"/>
+    </association>
+    <association relation="Theme">
+      <entity id="29"/>
+    </association>
+    <association relation="Reason">
+      <entity id="30"/>
+    </association>
+  </event>
+  <event>
+    <id>4</id>
+    <action>Buy</action>
+    <real>true</real>
+    <incriminatory>95</incriminatory>
+    <association relation="Time">
+      <entity id="4"/>
+    </association>
+    <association relation="Location">
+      <entity id="31"/>
+    </association>
+    <association relation="Agent">
+      <entity id="22"/>
+    </association>
+    <association relation="Agent">
+      <entity id="23"/>
+    </association>
+    <association relation="Theme">
+      <entity id="32"/>
+    </association>
+    <association relation="Reason">
+      <entity id="33"/>
+    </association>
+  </event>
+  <event>
+    <id>5</id>
+    <action>Watch</action>
+    <real>true</real>
+    <incriminatory>50</incriminatory>
+    <association relation="Time">
+      <entity id="5"/>
+    </association>
+    <association relation="Location">
+      <entity id="35"/>
+    </association>
+    <association relation="Agent">
+      <entity id="22"/>
+    </association>
+    <association relation="Reason">
+      <entity id="36"/>
+    </association>
+  </event>
+  <event>
+    <id>6</id>
+    <action>Rest</action>
+    <real>true</real>
+    <incriminatory>0</incriminatory>
+    <association relation="Time">
+      <entity id="6"/>
+    </association>
+    <association relation="Location">
+      <entity id="28"/>
+    </association>
+    <association relation="Agent">
+      <entity id="22"/>
+    </association>
+  </event>
+  <event>
+    <id>7</id>
+    <action>Watch</action>
+    <real>true</real>
+    <incriminatory>50</incriminatory>
+    <association relation="Time">
+      <entity id="7"/>
+    </association>
+    <association relation="Location">
+      <entity id="35"/>
+    </association>
+    <association relation="Agent">
+      <entity id="22"/>
+    </association>
+    <association relation="Reason">
+      <entity id="36"/>
+    </association>
+  </event>
+  <event>
+    <id>8</id>
+    <action>Follow</action>
+    <real>true</real>
+    <incriminatory>80</incriminatory>
+    <association relation="Time">
+      <entity id="8"/>
+    </association>
+    <association relation="Location">
+      <entity id="35"/>
+    </association>
+    <association relation="Agent">
+      <entity id="22"/>
+    </association>
+    <association relation="Theme">
+      <entity id="37"/>
+    </association>
+  </event>
+  <event>
+    <id>9</id>
+    <action>Rest</action>
+    <real>true</real>
+    <incriminatory>0</incriminatory>
+    <association relation="Time">
+      <entity id="9"/>
+    </association>
+    <association relation="Location">
+      <entity id="28"/>
+    </association>
+    <association relation="Agent">
+      <entity id="22"/>
+    </association>
+  </event>
+  <event>
+    <id>10</id>
+    <action>Prepare</action>
+    <real>true</real>
+    <incriminatory>60</incriminatory>
+    <association relation="Time">
+      <entity id="10"/>
+    </association>
+    <association relation="Location">
+      <entity id="28"/>
+    </association>
+    <association relation="Agent">
+      <entity id="22"/>
+    </association>
+    <association relation="Theme">
+      <entity id="38"/>
+    </association>
+  </event>
+  <event>
+    <id>11</id>
+    <action>Steal</action>
+    <real>true</real>
+    <incriminatory>95</incriminatory>
+    <association relation="Time">
+      <entity id="11"/>
+    </association>
+    <association relation="Location">
+      <entity id="35"/>
+    </association>
+    <association relation="Agent">
+      <entity id="22"/>
+    </association>
+    <association relation="Theme">
+      <entity id="41"/>
+    </association>
+    <association relation="Reason">
+      <entity id="43"/>
+    </association>
+  </event>
+  <event>
+    <id>12</id>
+    <action>Research</action>
+    <real>true</real>
+    <incriminatory>10</incriminatory>
+    <association relation="Time">
+      <entity id="12"/>
+    </association>
+    <association relation="Location">
+      <entity id="28"/>
+    </association>
+    <association relation="Agent">
+      <entity id="22"/>
+    </association>
+    <association relation="Theme">
+      <entity id="41"/>
+    </association>
+    <association relation="Reason">
+      <entity id="42"/>
+    </association>
+    <association relation="Reason">
+      <entity id="43"/>
+    </association>
+  </event>
+  <event>
+    <id>13</id>
+    <action>Rest</action>
+    <real>true</real>
+    <incriminatory>0</incriminatory>
+    <association relation="Time">
+      <entity id="13"/>
+    </association>
+    <association relation="Location">
+      <entity id="28"/>
+    </association>
+    <association relation="Agent">
+      <entity id="22"/>
+    </association>
+  </event>
+  <event>
+    <id>14</id>
+    <action>Get</action>
+    <real>true</real>
+    <incriminatory>50</incriminatory>
+    <association relation="Time">
+      <entity id="14"/>
+    </association>
+    <association relation="Location">
+      <entity id="31"/>
+    </association>
+    <association relation="Agent">
+      <entity id="22"/>
+    </association>
+    <association relation="Agent">
+      <entity id="23"/>
+    </association>
+    <association relation="Theme">
+      <entity id="44"/>
+    </association>
+    <association relation="Reason">
+      <entity id="45"/>
+    </association>
+  </event>
+  <event>
+    <id>15</id>
+    <action>Call</action>
+    <real>true</real>
+    <incriminatory>50</incriminatory>
+    <association relation="Time">
+      <entity id="15"/>
+    </association>
+    <association relation="Location">
+      <entity id="28"/>
+    </association>
+    <association relation="Agent">
+      <entity id="22"/>
+    </association>
+    <association relation="Theme">
+      <entity id="44"/>
+    </association>
+  </event>
+  <event>
+    <id>16</id>
+    <action>Buy</action>
+    <real>true</real>
+    <incriminatory>60</incriminatory>
+    <association relation="Time">
+      <entity id="16"/>
+    </association>
+    <association relation="Location">
+      <entity id="46"/>
+    </association>
+    <association relation="Agent">
+      <entity id="22"/>
+    </association>
+    <association relation="Theme">
+      <entity id="47"/>
+    </association>
+  </event>
+  <event>
+    <id>17</id>
+    <action>Wait</action>
+    <real>true</real>
+    <incriminatory>60</incriminatory>
+    <association relation="Time">
+      <entity id="17"/>
+    </association>
+    <association relation="Location">
+      <entity id="46"/>
+    </association>
+    <association relation="Agent">
+      <entity id="22"/>
+    </association>
+    <association relation="Theme">
+      <entity id="47"/>
+    </association>
+  </event>
+  <event>
+    <id>18</id>
+    <action>Travel</action>
+    <real>true</real>
+    <incriminatory>95</incriminatory>
+    <association relation="Time">
+      <entity id="18"/>
+    </association>
+    <association relation="Location">
+      <entity id="49"/>
+    </association>
+    <association relation="Agent">
+      <entity id="22"/>
+    </association>
+    <association relation="Reason">
+      <entity id="43"/>
+    </association>
+  </event>
+  <event>
+    <id>19</id>
+    <action>Sell</action>
+    <real>true</real>
+    <incriminatory>95</incriminatory>
+    <association relation="Time">
+      <entity id="19"/>
+    </association>
+    <association relation="Location">
+      <entity id="50"/>
+    </association>
+    <association relation="Agent">
+      <entity id="22"/>
+    </association>
+    <association relation="Agent">
+      <entity id="24"/>
+    </association>
+    <association relation="Theme">
+      <entity id="41"/>
+    </association>
+  </event>
+  <event>
+    <id>20</id>
+    <action>Travel</action>
+    <real>true</real>
+    <incriminatory>50</incriminatory>
+    <association relation="Time">
+      <entity id="20"/>
+    </association>
+    <association relation="Location">
+      <entity id="52"/>
+    </association>
+    <association relation="Agent">
+      <entity id="22"/>
+    </association>
+  </event>
+  <event>
+    <id>21</id>
+    <action>Rest</action>
+    <real>true</real>
+    <incriminatory>0</incriminatory>
+    <association relation="Time">
+      <entity id="21"/>
+    </association>
+    <association relation="Location">
+      <entity id="28"/>
+    </association>
+    <association relation="Agent">
+      <entity id="22"/>
+    </association>
+  </event>
+</story>
