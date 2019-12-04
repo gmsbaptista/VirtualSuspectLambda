@@ -110,7 +110,7 @@ namespace VirtualSuspectLambda
                     case "AMAZON.FallbackIntent":
                         log.LogLine($"AMAZON.FallbackIntent: express confusion");
 
-                        speechText = "I have no idea what you are talking about.";
+                        speechText = "I do not know what you are talking about";
 
                         BuildAnswer(ref innerResponse, ref prompt, speechText, true);
                         break;
