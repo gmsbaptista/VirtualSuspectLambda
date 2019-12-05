@@ -1,0 +1,1018 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "virtual suspect",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": [
+                        "What can I do",
+                        "Help"
+                    ]
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "GetTimeFocusIntent",
+                    "slots": [
+                        {
+                            "name": "question_verb",
+                            "type": "question_verb_slot_type"
+                        },
+                        {
+                            "name": "subject",
+                            "type": "subject_slot_type"
+                        },
+                        {
+                            "name": "action",
+                            "type": "action_slot_type"
+                        },
+                        {
+                            "name": "theme",
+                            "type": "theme_slot_type"
+                        },
+                        {
+                            "name": "filler_verb",
+                            "type": "filler_verb_slot_type"
+                        },
+                        {
+                            "name": "preposition",
+                            "type": "preposition_slot_type"
+                        },
+                        {
+                            "name": "agent",
+                            "type": "agent_slot_type"
+                        },
+                        {
+                            "name": "location",
+                            "type": "location_slot_type"
+                        }
+                    ],
+                    "samples": [
+                        "When {question_verb} {subject} {action} {location}",
+                        "When {question_verb} {subject} {filler_verb} {agent} ",
+                        "When {question_verb} {subject} {preposition} {agent}",
+                        "When {question_verb} {subject} {filler_verb} {preposition} {agent}",
+                        "When {question_verb} {subject} {preposition} {location}",
+                        "When {question_verb} {agent} {action} {subject} {theme}",
+                        "When {question_verb} {subject} {action} {theme} {preposition} {agent}",
+                        "When {question_verb} {subject} {filler_verb} {agent} {preposition} {location}",
+                        "When {question_verb} {subject} {action} {theme}"
+                    ]
+                },
+                {
+                    "name": "GetLocationFocusIntent",
+                    "slots": [
+                        {
+                            "name": "subject",
+                            "type": "subject_slot_type"
+                        },
+                        {
+                            "name": "preposition",
+                            "type": "preposition_slot_type"
+                        },
+                        {
+                            "name": "question_verb",
+                            "type": "question_verb_slot_type"
+                        },
+                        {
+                            "name": "date_one",
+                            "type": "AMAZON.DATE"
+                        },
+                        {
+                            "name": "time_one",
+                            "type": "AMAZON.TIME"
+                        },
+                        {
+                            "name": "time_two",
+                            "type": "AMAZON.TIME"
+                        },
+                        {
+                            "name": "filler_verb",
+                            "type": "filler_verb_slot_type"
+                        },
+                        {
+                            "name": "agent",
+                            "type": "agent_slot_type"
+                        },
+                        {
+                            "name": "action",
+                            "type": "action_slot_type"
+                        },
+                        {
+                            "name": "theme",
+                            "type": "theme_slot_type"
+                        },
+                        {
+                            "name": "date_two",
+                            "type": "AMAZON.DATE"
+                        }
+                    ],
+                    "samples": [
+                        "Where {question_verb} {subject} {filler_verb} {agent} {preposition} {date_one} {preposition} {time_one} and {time_two}",
+                        "Where {question_verb} {subject} {filler_verb} {agent} {preposition} {date_one} {preposition} {time_one}",
+                        "Where {question_verb} {subject} {filler_verb} {agent} {preposition} {date_one} and {date_two}",
+                        "Where {question_verb} {subject} {filler_verb} {agent} {preposition} {date_one}",
+                        "Where {question_verb} {subject} {preposition} {date_one} {preposition} {time_one}",
+                        "Where {question_verb} {subject} {preposition} {date_one} and {date_two}",
+                        "Where {question_verb} {subject} {preposition} {date_one}",
+                        "Where {question_verb} {agent} {action} {subject} {theme}",
+                        "Where {question_verb} {subject} {action} {theme} {preposition} {agent}",
+                        "Where {question_verb} {subject} {action} {theme}",
+                        "Where {question_verb} {subject} {filler_verb} {agent}",
+                        "Where {question_verb} {subject} {preposition} {date_one} {preposition} {time_one} and {time_two}"
+                    ]
+                },
+                {
+                    "name": "GetAgentFocusIntent",
+                    "slots": [
+                        {
+                            "name": "action",
+                            "type": "action_slot_type"
+                        },
+                        {
+                            "name": "subject",
+                            "type": "subject_slot_type"
+                        },
+                        {
+                            "name": "theme",
+                            "type": "theme_slot_type"
+                        },
+                        {
+                            "name": "question_verb",
+                            "type": "question_verb_slot_type"
+                        },
+                        {
+                            "name": "filler_verb",
+                            "type": "filler_verb_slot_type"
+                        },
+                        {
+                            "name": "preposition",
+                            "type": "preposition_slot_type"
+                        },
+                        {
+                            "name": "location",
+                            "type": "location_slot_type"
+                        },
+                        {
+                            "name": "date_one",
+                            "type": "AMAZON.DATE"
+                        },
+                        {
+                            "name": "date_two",
+                            "type": "AMAZON.DATE"
+                        },
+                        {
+                            "name": "time_one",
+                            "type": "AMAZON.TIME"
+                        },
+                        {
+                            "name": "time_two",
+                            "type": "AMAZON.TIME"
+                        }
+                    ],
+                    "samples": [
+                        "Who {question_verb} {subject} {action} {theme} {preposition}",
+                        "Who {question_verb} {subject} {filler_verb} {preposition} {location} {preposition} {date_one} {preposition} {time_one}",
+                        "Who {question_verb} {subject} {filler_verb} {preposition} {location} {preposition} {date_one} {preposition} {time_one} and {time_two}",
+                        "Who {question_verb} {subject} {filler_verb} {preposition} {location} {preposition} {date_one} and {date_two}",
+                        "Who {question_verb} {subject} {filler_verb} {preposition} {location} {preposition} {date_one}",
+                        "Who {question_verb} {subject} {filler_verb} {preposition} {date_one} {preposition} {time_one}",
+                        "Who {question_verb} {subject} {filler_verb} {preposition} {date_one} {preposition} {time_one} and {time_two}",
+                        "Who {question_verb} {subject} {filler_verb} {preposition} {date_one} and {date_two}",
+                        "Who {question_verb} {subject} {filler_verb} {preposition} {date_one}",
+                        "Who {question_verb} {subject} {filler_verb} {preposition} {location}",
+                        "Who {action} {subject} {theme}"
+                    ]
+                },
+                {
+                    "name": "GetThemeFocusIntent",
+                    "slots": [
+                        {
+                            "name": "question_verb",
+                            "type": "question_verb_slot_type"
+                        },
+                        {
+                            "name": "subject",
+                            "type": "subject_slot_type"
+                        },
+                        {
+                            "name": "action",
+                            "type": "action_slot_type"
+                        },
+                        {
+                            "name": "preposition",
+                            "type": "preposition_slot_type"
+                        },
+                        {
+                            "name": "agent",
+                            "type": "agent_slot_type"
+                        },
+                        {
+                            "name": "location",
+                            "type": "location_slot_type"
+                        },
+                        {
+                            "name": "date_one",
+                            "type": "AMAZON.DATE"
+                        },
+                        {
+                            "name": "date_two",
+                            "type": "AMAZON.DATE"
+                        },
+                        {
+                            "name": "time_one",
+                            "type": "AMAZON.TIME"
+                        },
+                        {
+                            "name": "time_two",
+                            "type": "AMAZON.TIME"
+                        },
+                        {
+                            "name": "reason_prefix",
+                            "type": "reason_prefix_slot_type"
+                        },
+                        {
+                            "name": "reason",
+                            "type": "reason_slot_type"
+                        }
+                    ],
+                    "samples": [
+                        "What {question_verb} {subject} {action} {preposition} {agent} {preposition} {date_one} {preposition} {time_one} and {time_two}",
+                        "What {question_verb} {subject} {action} {preposition} {agent} {preposition} {date_one} {preposition} {time_one}",
+                        "What {question_verb} {subject} {action} {preposition} {agent} {preposition} {date_one} and {date_two}",
+                        "What {question_verb} {subject} {action} {preposition} {agent} {preposition} {date_one}",
+                        "What {question_verb} {subject} {action} {preposition} {agent} {preposition} {location}",
+                        "What {question_verb} {agent} {action} {subject} {preposition} {location} {preposition} {date_one} {preposition} {time_one}",
+                        "What {question_verb} {agent} {action} {subject} {preposition} {location} {preposition} {date_one} {preposition} {time_one} and {time_two}",
+                        "What {question_verb} {agent} {action} {subject} {preposition} {location} {preposition} {date_one} and {date_two}",
+                        "What {question_verb} {agent} {action} {subject} {preposition} {location} {preposition} {date_one}",
+                        "What {question_verb} {agent} {action} {subject} {preposition} {location} {reason_prefix} {reason}",
+                        "What {question_verb} {agent} {action} {subject}",
+                        "What {question_verb} {subject} {action} {preposition} {agent} "
+                    ]
+                },
+                {
+                    "name": "GetReasonFocusIntent",
+                    "slots": [
+                        {
+                            "name": "action",
+                            "type": "action_slot_type"
+                        },
+                        {
+                            "name": "location",
+                            "type": "location_slot_type"
+                        },
+                        {
+                            "name": "subject",
+                            "type": "subject_slot_type"
+                        },
+                        {
+                            "name": "preposition",
+                            "type": "preposition_slot_type"
+                        },
+                        {
+                            "name": "question_verb",
+                            "type": "question_verb_slot_type"
+                        },
+                        {
+                            "name": "date_one",
+                            "type": "AMAZON.DATE"
+                        },
+                        {
+                            "name": "date_two",
+                            "type": "AMAZON.DATE"
+                        },
+                        {
+                            "name": "time_one",
+                            "type": "AMAZON.TIME"
+                        },
+                        {
+                            "name": "time_two",
+                            "type": "AMAZON.TIME"
+                        },
+                        {
+                            "name": "theme",
+                            "type": "theme_slot_type"
+                        },
+                        {
+                            "name": "agent",
+                            "type": "agent_slot_type"
+                        },
+                        {
+                            "name": "filler_verb",
+                            "type": "filler_verb_slot_type"
+                        }
+                    ],
+                    "samples": [
+                        "Why {question_verb} {subject} {preposition} {location} {preposition} {preposition} {date_one} {preposition} {time_one} and {time_two}",
+                        "Why {question_verb} {subject} {preposition} {location} {preposition} {preposition} {date_one} {preposition} {time_one}",
+                        "Why {question_verb} {subject} {preposition} {location} {preposition} {preposition} {date_one} and {date_two}",
+                        "Why {question_verb} {subject} {preposition} {location} {preposition} {preposition} {date_one}",
+                        "Why {question_verb} {subject} {filler_verb} {agent} {preposition} {location} {preposition} {date_one} {preposition} {time_one}",
+                        "Why {question_verb} {subject} {filler_verb} {agent} {preposition} {location} {preposition} {date_one} {preposition} {time_one} and {time_two}",
+                        "Why {question_verb} {subject} {filler_verb} {agent} {preposition} {location} {preposition} {date_one} and {date_two}",
+                        "Why {question_verb} {subject} {filler_verb} {agent} {preposition} {location} {preposition} {date_one}",
+                        "Why {question_verb} {subject} {action} {theme} {preposition} {agent}",
+                        "Why {question_verb} {agent} {action} {subject} {theme}",
+                        "Why {question_verb} {subject} {action} {theme}",
+                        "Why {question_verb} {subject} {preposition} {location} {preposition} {date_one} {preposition} {time_one}",
+                        "Why {question_verb} {subject} {preposition} {location} {preposition} {date_one} {preposition} {time_one} and {time_two}",
+                        "Why {question_verb} {subject} {preposition} {location} {preposition} {date_one} and {date_two}",
+                        "Why {question_verb} {subject} {preposition} {location} {preposition} {date_one}",
+                        "Why {question_verb} {subject} {action} {preposition} {location}"
+                    ]
+                },
+                {
+                    "name": "ValidationIntent",
+                    "slots": [
+                        {
+                            "name": "agent",
+                            "type": "agent_slot_type"
+                        },
+                        {
+                            "name": "action",
+                            "type": "action_slot_type"
+                        },
+                        {
+                            "name": "location",
+                            "type": "location_slot_type"
+                        },
+                        {
+                            "name": "theme",
+                            "type": "theme_slot_type"
+                        },
+                        {
+                            "name": "subject",
+                            "type": "subject_slot_type"
+                        },
+                        {
+                            "name": "preposition",
+                            "type": "preposition_slot_type"
+                        },
+                        {
+                            "name": "question_verb",
+                            "type": "question_verb_slot_type"
+                        },
+                        {
+                            "name": "filler_verb",
+                            "type": "filler_verb_slot_type"
+                        },
+                        {
+                            "name": "date_one",
+                            "type": "AMAZON.DATE"
+                        },
+                        {
+                            "name": "date_two",
+                            "type": "AMAZON.DATE"
+                        },
+                        {
+                            "name": "time_one",
+                            "type": "AMAZON.TIME"
+                        },
+                        {
+                            "name": "time_two",
+                            "type": "AMAZON.TIME"
+                        },
+                        {
+                            "name": "reason",
+                            "type": "reason_slot_type"
+                        },
+                        {
+                            "name": "reason_prefix",
+                            "type": "reason_prefix_slot_type"
+                        }
+                    ],
+                    "samples": [
+                        "{question_verb} {subject} {action} {theme}",
+                        "{question_verb} {subject} {filler_verb} {agent} {preposition} {date_one} {preposition} {time_one} and {time_two}",
+                        "{question_verb} {subject} {filler_verb} {agent} {preposition} {date_one} {preposition} {time_one}",
+                        "{question_verb} {subject} {filler_verb} {agent} {preposition} {date_one} and {date_two}",
+                        "{question_verb} {subject} {filler_verb} {agent} {preposition} {date_one}",
+                        "{question_verb} {subject} {preposition} {location} {preposition} {date_one} {preposition} {time_one} and {time_two}",
+                        "{question_verb} {subject} {preposition} {location} {preposition} {date_one} {preposition} {time_one}",
+                        "{question_verb} {subject} {preposition} {location} {preposition} {date_one} and {date_two}",
+                        "{question_verb} {subject} {preposition} {location} {preposition} {date_one}",
+                        "{question_verb} {subject} {preposition} {location}",
+                        "{question_verb} {subject} {filler_verb} {agent} {preposition} {location}",
+                        "{question_verb} {subject} {action} {theme} {preposition} {agent} {preposition} {location} {preposition} {date_one} {preposition} {time_one} and {time_two} {reason_prefix} {reason}",
+                        "{question_verb} {subject} {action} {theme} {preposition} {agent} {preposition} {location} {preposition} {date_one} {preposition} {time_one} {reason_prefix} {reason}",
+                        "{question_verb} {subject} {action} {theme} {preposition} {agent} {preposition} {location} {preposition} {date_one} and {date_two} {reason_prefix} {reason}",
+                        "{question_verb} {subject} {action} {theme} {preposition} {agent} {preposition} {location} {preposition} {date_one} {reason_prefix} {reason}",
+                        "{question_verb} {subject} {action} {theme} {preposition} {agent} {preposition} {location} {preposition} {date_one} {preposition} {time_one} and {time_two}",
+                        "{question_verb} {subject} {action} {theme} {preposition} {agent} {preposition} {location} {preposition} {date_one} {preposition} {time_one}",
+                        "{question_verb} {subject} {action} {theme} {preposition} {agent} {preposition} {location} {preposition} {date_one} and {date_two}",
+                        "{question_verb} {subject} {action} {theme} {preposition} {agent} {preposition} {location} {preposition} {date_one}",
+                        "{question_verb} {agent} {action} {subject} {theme} {preposition} {location} {preposition} {date_one} {preposition} {time_one} and {time_two}",
+                        "{question_verb} {agent} {action} {subject} {theme} {preposition} {location} {preposition} {date_one} {preposition} {time_one}",
+                        "{question_verb} {agent} {action} {subject} {theme} {preposition} {location} {preposition} {date_one} and {date_two}",
+                        "{question_verb} {agent} {action} {subject} {theme} {preposition} {location} {preposition} {date_one}",
+                        "{question_verb} {subject} {action} {theme} {preposition} {location}",
+                        "{question_verb} {subject} {preposition} {agent} {preposition} {date_one} {preposition} {time_one} and {time_two}",
+                        "{question_verb} {subject} {preposition} {agent} {preposition} {date_one} {preposition} {time_one}",
+                        "{question_verb} {subject} {preposition} {agent} {preposition} {date_one} and {date_two}",
+                        "{question_verb} {subject} {preposition} {agent} {preposition} {date_one}",
+                        "{question_verb} {subject} {filler_verb} {preposition} {agent} {preposition} {date_one} {preposition} {time_one} and {time_two}",
+                        "{question_verb} {subject} {filler_verb} {preposition} {agent} {preposition} {date_one} {preposition} {time_one}",
+                        "{question_verb} {subject} {filler_verb} {preposition} {agent} {preposition} {date_one} and {date_two}",
+                        "{question_verb} {subject} {filler_verb} {preposition} {agent} {preposition} {date_one}",
+                        "{question_verb} {subject} {filler_verb} {preposition} {agent} {preposition} {location}",
+                        "{question_verb} {subject} {filler_verb} {preposition} {location} {preposition} {date_one} {preposition} {time_one}",
+                        "{question_verb} {subject} {filler_verb} {preposition} {location} {preposition} {date_one} {preposition} {time_one} and {time_two}",
+                        "{question_verb} {subject} {filler_verb} {preposition} {location} {preposition} {date_one}",
+                        "{question_verb} {subject} {filler_verb} {preposition} {location} {preposition} {date_one} and {date_two}",
+                        "{question_verb} {subject} {action}",
+                        "{question_verb} {subject} {action} {theme} {preposition} {agent}",
+                        "{question_verb} {agent} {action} {subject} {theme}",
+                        "{question_verb} {subject} {action} {theme} {agent}",
+                        "{question_verb} {subject} and {agent} {action}",
+                        "{question_verb} {subject} {action} {preposition} {agent}",
+                        "{question_verb} {subject} and {agent} {filler_verb}",
+                        "{question_verb} {subject} and {agent} {filler_verb} {preposition} {location}",
+                        "{question_verb} {subject} ever {filler_verb} {preposition} {location}",
+                        "{question_verb} {subject} {filler_verb} {preposition} {location}",
+                        "{question_verb} {subject} {filler_verb} {agent}",
+                        "{question_verb} {subject} {action} {preposition} {location}"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "agent_slot_type",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Peter Barker",
+                                "synonyms": [
+                                    "Peter"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Delivery Boy",
+                                "synonyms": [
+                                    "the delivery guy",
+                                    "delivery guy",
+                                    "the delivery boy",
+                                    "neighbour"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Jaime Reyes",
+                                "synonyms": [
+                                    "Jaime"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "John Frey",
+                                "synonyms": [
+                                    "John"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "location_slot_type",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "CastleTown",
+                                "synonyms": [
+                                    "castle town",
+                                    "castle town city"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Gary's Pub",
+                                "synonyms": [
+                                    "the pub"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "SilverMoon City",
+                                "synonyms": [
+                                    "silver moon city",
+                                    "silvermoon",
+                                    "silver moon"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Castle Town Train Station",
+                                "synonyms": [
+                                    "the train station",
+                                    "train station"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Jewelry Shop",
+                                "synonyms": [
+                                    "the jewelry shop",
+                                    "the jewelry store",
+                                    "jewelry store"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Alley near the Church",
+                                "synonyms": [
+                                    "the alley behind the church",
+                                    "the alley near the church",
+                                    "the alley",
+                                    "alley"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Peter's House",
+                                "synonyms": [
+                                    "home",
+                                    "your house"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Mall's Coffee Shop",
+                                "synonyms": [
+                                    "the coffee shop at the mall",
+                                    "the coffee shop",
+                                    "coffee shop at the mall",
+                                    "coffee shop"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "theme_slot_type",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Ticket to SilverMoon City",
+                                "synonyms": [
+                                    "the ticket to silver moon city",
+                                    "the ticket to silvermoon city",
+                                    "ticket to silver moon city",
+                                    "the ticket",
+                                    "ticket",
+                                    "tickets to silver moon city"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "John Frey's Contact",
+                                "synonyms": [
+                                    "the contact",
+                                    "john's contact"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Stolen Necklace",
+                                "synonyms": [
+                                    "the necklace",
+                                    "the stolen necklace",
+                                    "necklace"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Robbery",
+                                "synonyms": [
+                                    "the robbery"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Delivery Guy",
+                                "synonyms": [
+                                    "the delivery boy",
+                                    "the delivery guy",
+                                    "your neighbour",
+                                    "delivery boy"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Revolver",
+                                "synonyms": [
+                                    "the gun",
+                                    "the revolver",
+                                    "gun"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Jewelry Shop Inventory",
+                                "synonyms": [
+                                    "the jewelry shop's inventory",
+                                    "the jewelry store's inventory",
+                                    "the inventory",
+                                    "inventory",
+                                    "jewelry store inventory"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Jewelry Shop Owner's Conversation",
+                                "synonyms": [
+                                    "the jewelry shop's owner's conversation",
+                                    "the jewelry store's owner's conversation",
+                                    "the conversation",
+                                    "jewelry store owner's conversation",
+                                    "conversation"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Large Cup of Coffee",
+                                "synonyms": [
+                                    "a coffee",
+                                    "the cup of coffee",
+                                    "a cup of coffee",
+                                    "a large cup of coffee",
+                                    "the coffee",
+                                    "coffee",
+                                    "cup of coffee"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "reason_slot_type",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Look for a Watch to buy"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Sell Necklace",
+                                "synonyms": [
+                                    "sell the necklace"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "find a buyer"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "discover its value",
+                                "synonyms": [
+                                    "discover the value",
+                                    "discover the value of the necklace"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "check if the delivery arrived"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "rob the Jewelry Shop",
+                                "synonyms": [
+                                    "rob the store",
+                                    "rob the jewelry store"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "gather information about the watch values",
+                                "synonyms": [
+                                    "gather information about the watch",
+                                    "gather information"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "action_slot_type",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Sell",
+                                "synonyms": [
+                                    "sold"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Travel",
+                                "synonyms": [
+                                    "travelled",
+                                    "go"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Wait",
+                                "synonyms": [
+                                    "waited"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Call",
+                                "synonyms": [
+                                    "called"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Get",
+                                "synonyms": [
+                                    "gave",
+                                    "got",
+                                    "give",
+                                    "obtain"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Steal",
+                                "synonyms": [
+                                    "robbed",
+                                    "stole",
+                                    "rob"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Prepare",
+                                "synonyms": [
+                                    "prepared"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Follow",
+                                "synonyms": [
+                                    "followed"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Rest",
+                                "synonyms": [
+                                    "slept",
+                                    "rested",
+                                    "sleep"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Watch",
+                                "synonyms": [
+                                    "watched",
+                                    "observe"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Buy",
+                                "synonyms": [
+                                    "bought",
+                                    "purchase"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Research",
+                                "synonyms": [
+                                    "researched"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Eavesdrop",
+                                "synonyms": [
+                                    "overheard",
+                                    "easvesdropped",
+                                    "overhear",
+                                    "listen"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Drink",
+                                "synonyms": [
+                                    "drank"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "subject_slot_type",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Peter Barker"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Peter"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "you"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "preposition_slot_type",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "between"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "on"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "with"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "at"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "in"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "to"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "from"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "question_verb_slot_type",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "do"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "was"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "has"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "were"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "have"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "did"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "filler_verb_slot_type",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "gone"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "go"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "been"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "met"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "meet"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "know"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "reason_prefix_slot_type",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "so you can"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "so you could"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "in order to"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
