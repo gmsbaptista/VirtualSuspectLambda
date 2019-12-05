@@ -42,7 +42,7 @@ namespace VirtualSuspect.Query
 
                         DateTime valueEnd = DateTime.ParseExact(node.Time.Value.Split('>')[1], "dd/MM/yyyyTHH:mm:ss", CultureInfo.InvariantCulture);
 
-                        return valueBegin >= beginTime && valueEnd <= endTime;
+                        return valueBegin <= endTime && valueEnd >= beginTime;
                     }
 
                     return false;
