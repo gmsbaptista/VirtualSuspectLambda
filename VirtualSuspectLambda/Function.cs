@@ -114,6 +114,13 @@ namespace VirtualSuspectLambda
 
                         BuildAnswer(ref innerResponse, ref prompt, speechText, true);
                         break;
+                    case "GreetingIntent":
+                        log.LogLine($"GreetingIntent: say hello");
+
+                        speechText = "Hello";
+
+                        BuildAnswer(ref innerResponse, ref prompt, speechText, true);
+                        break;
                     case "GetTimeFocusIntent":
                         log.LogLine($"GetTimeFocusIntent: a GetInformation question with a GetTime focus");
 
