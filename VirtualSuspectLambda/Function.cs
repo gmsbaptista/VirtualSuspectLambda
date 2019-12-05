@@ -311,14 +311,14 @@ namespace VirtualSuspectLambda
                     string date2 = TrueSlotValue(intent_slots["date_two"]);
                     log.LogLine($"date_two slot: " + date2);
                     query.AddCondition(new TimeBetweenConditionPredicate(CreateTimeStamp(date1, "00:00:00"), 
-                        CreateTimeStamp(date2, "23:59:00")));
+                        CreateTimeStamp(date2, "23:59:59")));
                 }
                 else if (SlotExists(intent_slots, "date_one") && !SlotExists(intent_slots, "time_one")) //One date and no time
                 {
                     string date1 = TrueSlotValue(intent_slots["date_one"]);
                     log.LogLine($"date_one slot: " + date1);
                     query.AddCondition(new TimeBetweenConditionPredicate(CreateTimeStamp(date1, "00:00:00"),
-                        CreateTimeStamp(date1, "23:59:00")));
+                        CreateTimeStamp(date1, "23:59:59")));
                 }
                 else if (SlotExists(intent_slots, "date_one") && 
                     SlotExists(intent_slots, "time_one") && SlotExists(intent_slots,"time_two")) //One date and two times
@@ -339,7 +339,34 @@ namespace VirtualSuspectLambda
                     log.LogLine($"date_one slot: " + date1);
                     string time1 = TrueSlotValue(intent_slots["time_one"]);
                     log.LogLine($"time_one slot: " + time1);
-                    query.AddCondition(new TimeEqualConditionPredicate(CreateTimeStamp(date1, time1)));
+                    if (time1 == "MO" || time1 == "NI" || time1 == "AF" || time1 == "EV")
+                    {
+                        //TODO: Check if madrugada makes sense here
+                        if (time1 == "MO")
+                        {
+                            query.AddCondition(new TimeBetweenConditionPredicate(CreateTimeStamp(date1, "06:00:00"),
+                                CreateTimeStamp(date1, "11:59:59")));
+                        }
+                        else if (time1 == "AF")
+                        {
+                            query.AddCondition(new TimeBetweenConditionPredicate(CreateTimeStamp(date1, "12:00:00"),
+                                CreateTimeStamp(date1, "16:59:59")));
+                        }
+                        else if (time1 == "EV")
+                        {
+                            query.AddCondition(new TimeBetweenConditionPredicate(CreateTimeStamp(date1, "17:00:00"),
+                                CreateTimeStamp(date1, "19:59:59")));
+                        }
+                        else if (time1 == "NI")
+                        {
+                            query.AddCondition(new TimeBetweenConditionPredicate(CreateTimeStamp(date1, "20:00:00"),
+                                CreateTimeStamp(date1, "23:59:59")));
+                        }
+                    }
+                    else
+                    {
+                        query.AddCondition(new TimeEqualConditionPredicate(CreateTimeStamp(date1, time1)));
+                    }
                 }
                 else
                 {
