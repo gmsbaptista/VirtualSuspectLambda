@@ -248,8 +248,16 @@ namespace VirtualSuspectLambda
 
             if (SlotExists(intent_slots, "subject"))
             {
-                List<string> agents = new List<string>() { "Peter Barker" };
-                query.AddCondition(new AgentEqualConditionPredicate(agents));
+                if (TrueSlotValue(intent_slots["subject"]) == "Peter Barker")
+                {
+                    log.LogLine($"subject slot: Peter Barker");
+                    List<string> agents = new List<string>() { "Peter Barker" };
+                    query.AddCondition(new AgentEqualConditionPredicate(agents));
+                }
+                else
+                {
+                    log.LogLine($"subject slot: unexpected subject");
+                }
             }
             if (SlotExists(intent_slots, "agent"))
             {
@@ -446,7 +454,7 @@ namespace VirtualSuspectLambda
         {
             if (string.IsNullOrEmpty(speechText))
             {
-                speechText = "I don't know.";
+                speechText = "I don't know";
             }
             if (inCharacter)
             {
