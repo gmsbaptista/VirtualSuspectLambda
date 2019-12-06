@@ -448,6 +448,52 @@
                         "{question_verb} {subject} {filler_verb} {agent}",
                         "{question_verb} {subject} {action} {preposition} {location}"
                     ]
+                },
+                {
+                    "name": "GreetingIntent",
+                    "slots": [],
+                    "samples": [
+                        "Top of the morning to you",
+                        "Cheerio",
+                        "Oi",
+                        "What's up",
+                        "Sup",
+                        "Hi y'all",
+                        "Heyo",
+                        "Good afternoon",
+                        "Good morning",
+                        "Good evening",
+                        "Greetings",
+                        "Hey",
+                        "Hi",
+                        "Hello"
+                    ]
+                },
+                {
+                    "name": "IntrospectionIntent",
+                    "slots": [],
+                    "samples": [
+                        "How do you feel",
+                        "How have you been",
+                        "How is your day going",
+                        "How's life",
+                        "How you doing",
+                        "How are you doing",
+                        "How are you on this fine day",
+                        "How do you do",
+                        "How are you feeling",
+                        "How are you"
+                    ]
+                },
+                {
+                    "name": "ThanksIntent",
+                    "slots": [],
+                    "samples": [
+                        "Okay thank you",
+                        "Thank you for being so honest",
+                        "Thank you for your honesty",
+                        "Thank you"
+                    ]
                 }
             ],
             "types": [
@@ -534,6 +580,8 @@
                             "name": {
                                 "value": "Jewelry Shop",
                                 "synonyms": [
+                                    "the store",
+                                    "the shop",
                                     "the jewelry shop",
                                     "the jewelry store",
                                     "jewelry store"
@@ -602,6 +650,9 @@
                             "name": {
                                 "value": "Stolen Necklace",
                                 "synonyms": [
+                                    "the necklace that you stole from the jewelry store",
+                                    "the necklace you stole",
+                                    "what you stole",
                                     "the necklace",
                                     "the stolen necklace",
                                     "necklace"
@@ -783,6 +834,10 @@
                             "name": {
                                 "value": "Steal",
                                 "synonyms": [
+                                    "got",
+                                    "get",
+                                    "took",
+                                    "take",
                                     "robbed",
                                     "stole",
                                     "rob"
@@ -845,6 +900,8 @@
                             "name": {
                                 "value": "Eavesdrop",
                                 "synonyms": [
+                                    "heard",
+                                    "hear",
                                     "overheard",
                                     "easvesdropped",
                                     "overhear",
@@ -856,6 +913,10 @@
                             "name": {
                                 "value": "Drink",
                                 "synonyms": [
+                                    "having",
+                                    "have",
+                                    "taking",
+                                    "drinking",
                                     "drank"
                                 ]
                             }
