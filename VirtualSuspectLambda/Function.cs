@@ -79,7 +79,6 @@ namespace VirtualSuspectLambda
                 var intentRequest = (IntentRequest)input.Request;
 
                 QueryDto query;
-                QueryResult queryResult;
                 string speechText;
 
                 switch (intentRequest.Intent.Name)
@@ -141,12 +140,8 @@ namespace VirtualSuspectLambda
                         query = new QueryDto(QueryDto.QueryTypeEnum.GetInformation);
                         query.AddFocus(new GetTimeFocusPredicate());
 
-                        AddQueryConditions(query, intentRequest, log);
+                        QuestionAnswer(ref innerResponse, ref prompt, log, intentRequest, query);
 
-                        queryResult = virtual_suspect.Query(query);
-                        speechText = NaturalLanguageGenerator.GenerateAnswer(queryResult);
-
-                        BuildAnswer(ref innerResponse, ref prompt, speechText, true);
                         break;
                     case "GetLocationFocusIntent":
                         log.LogLine($"GetLocationFocusIntent: a GetInformation question with a GetLocation focus");
@@ -154,12 +149,8 @@ namespace VirtualSuspectLambda
                         query = new QueryDto(QueryDto.QueryTypeEnum.GetInformation);
                         query.AddFocus(new GetLocationFocusPredicate());
 
-                        AddQueryConditions(query, intentRequest, log);
+                        QuestionAnswer(ref innerResponse, ref prompt, log, intentRequest, query);
 
-                        queryResult = virtual_suspect.Query(query);
-                        speechText = NaturalLanguageGenerator.GenerateAnswer(queryResult);
-
-                        BuildAnswer(ref innerResponse, ref prompt, speechText, true);
                         break;
                     case "GetAgentFocusIntent":
                         log.LogLine($"GetAgentFocusIntent: a GetInformation question with a GetAgent focus");
@@ -167,12 +158,8 @@ namespace VirtualSuspectLambda
                         query = new QueryDto(QueryDto.QueryTypeEnum.GetInformation);
                         query.AddFocus(new GetAgentFocusPredicate());
 
-                        AddQueryConditions(query, intentRequest, log);
+                        QuestionAnswer(ref innerResponse, ref prompt, log, intentRequest, query);
 
-                        queryResult = virtual_suspect.Query(query);
-                        speechText = NaturalLanguageGenerator.GenerateAnswer(queryResult);
-
-                        BuildAnswer(ref innerResponse, ref prompt, speechText, true);
                         break;
                     case "GetThemeFocusIntent":
                         log.LogLine($"GetThemeFocusIntent: a GetInformation question with a GetTheme focus");
@@ -180,12 +167,8 @@ namespace VirtualSuspectLambda
                         query = new QueryDto(QueryDto.QueryTypeEnum.GetInformation);
                         query.AddFocus(new GetThemeFocusPredicate());
 
-                        AddQueryConditions(query, intentRequest, log);
+                        QuestionAnswer(ref innerResponse, ref prompt, log, intentRequest, query);
 
-                        queryResult = virtual_suspect.Query(query);
-                        speechText = NaturalLanguageGenerator.GenerateAnswer(queryResult);
-
-                        BuildAnswer(ref innerResponse, ref prompt, speechText, true);
                         break;
                     case "GetReasonFocusIntent":
                         log.LogLine($"GetReasonFocusIntent: a GetInformation question with a GetReason focus");
@@ -193,24 +176,16 @@ namespace VirtualSuspectLambda
                         query = new QueryDto(QueryDto.QueryTypeEnum.GetInformation);
                         query.AddFocus(new GetReasonFocusPredicate());
 
-                        AddQueryConditions(query, intentRequest, log);
+                        QuestionAnswer(ref innerResponse, ref prompt, log, intentRequest, query);
 
-                        queryResult = virtual_suspect.Query(query);
-                        speechText = NaturalLanguageGenerator.GenerateAnswer(queryResult);
-
-                        BuildAnswer(ref innerResponse, ref prompt, speechText, true);
                         break;
                     case "ValidationIntent":
                         log.LogLine($"ValidationIntent: a YesOrNo question");
 
                         query = new QueryDto(QueryDto.QueryTypeEnum.YesOrNo);
 
-                        AddQueryConditions(query, intentRequest, log);
+                        QuestionAnswer(ref innerResponse, ref prompt, log, intentRequest, query);
 
-                        queryResult = virtual_suspect.Query(query);
-                        speechText = NaturalLanguageGenerator.GenerateAnswer(queryResult);
-
-                        BuildAnswer(ref innerResponse, ref prompt, speechText, true);
                         break;
                     default:
                         log.LogLine($"Unknown intent: " + intentRequest.Intent.Name);
@@ -232,24 +207,32 @@ namespace VirtualSuspectLambda
         }
 
         /// <summary>
-        ///  Wraps the response with the <speak> tag, for SSML responses
+        ///  Handles the query conditions, the query to the Virtual Suspect and the answer
         /// </summary>
-        /// <param name="speech"></param>
+        /// <param name="innerResponse"></param>
+        /// <param name="prompt"></param>
+        /// <param name="log"></param>
+        /// <param name="intentRequest"></param>
+        /// <param name="query"></param>
         /// <returns>string</returns>
-        private string SsmlDecorate(string speech)
+        private void QuestionAnswer(ref IOutputSpeech innerResponse, ref IOutputSpeech prompt, ILambdaLogger log, 
+            IntentRequest intentRequest, QueryDto query)
         {
-            return "<speak>" + speech + "</speak>";
-        }
+            string speechText;
+            AddQueryConditions(query, intentRequest, log);
 
-        /// <summary>
-        ///  Wraps the response with the SSML voice of a character, corresponding to the name
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="speech"></param>
-        /// <returns>string</returns>
-        private string VoiceDecorate(string name, string speech)
-        {
-            return "<voice name='" + name + "'>" + speech + "</voice>";
+            if (query.QueryConditions.Count > 0)
+            {
+                QueryResult queryResult = virtual_suspect.Query(query);
+                speechText = NaturalLanguageGenerator.GenerateAnswer(queryResult);
+            }
+            else
+            {
+                speechText = "I'm not sure what you expect me to say";
+            }
+
+
+            BuildAnswer(ref innerResponse, ref prompt, speechText, true);
         }
 
         /// <summary>
@@ -476,6 +459,27 @@ namespace VirtualSuspectLambda
                 (innerResponse as PlainTextOutputSpeech).Text = speechText;
             }
             prompt = innerResponse;
+        }
+
+        /// <summary>
+        ///  Wraps the response with the <speak> tag, for SSML responses
+        /// </summary>
+        /// <param name="speech"></param>
+        /// <returns>string</returns>
+        private string SsmlDecorate(string speech)
+        {
+            return "<speak>" + speech + "</speak>";
+        }
+
+        /// <summary>
+        ///  Wraps the response with the SSML voice of a character, corresponding to the name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="speech"></param>
+        /// <returns>string</returns>
+        private string VoiceDecorate(string name, string speech)
+        {
+            return "<voice name='" + name + "'>" + speech + "</voice>";
         }
     }
 }
