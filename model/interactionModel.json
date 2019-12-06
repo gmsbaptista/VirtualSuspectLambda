@@ -502,14 +502,6 @@
                     "values": [
                         {
                             "name": {
-                                "value": "Peter Barker",
-                                "synonyms": [
-                                    "Peter"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
                                 "value": "Delivery Boy",
                                 "synonyms": [
                                     "the delivery guy",
@@ -928,17 +920,11 @@
                     "values": [
                         {
                             "name": {
-                                "value": "Peter Barker"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Peter"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "you"
+                                "value": "Peter Barker",
+                                "synonyms": [
+                                    "you",
+                                    "Peter"
+                                ]
                             }
                         }
                     ]
