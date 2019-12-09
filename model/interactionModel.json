@@ -974,32 +974,29 @@
                     "values": [
                         {
                             "name": {
-                                "value": "do"
+                                "value": "be",
+                                "synonyms": [
+                                    "were",
+                                    "was"
+                                ]
                             }
                         },
                         {
                             "name": {
-                                "value": "was"
+                                "value": "do",
+                                "synonyms": [
+                                    "done",
+                                    "did"
+                                ]
                             }
                         },
                         {
                             "name": {
-                                "value": "has"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "were"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "have"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "did"
+                                "value": "have",
+                                "synonyms": [
+                                    "had",
+                                    "has"
+                                ]
                             }
                         }
                     ]
@@ -1009,32 +1006,36 @@
                     "values": [
                         {
                             "name": {
-                                "value": "gone"
+                                "value": "know",
+                                "synonyms": [
+                                    "knew",
+                                    "known"
+                                ]
                             }
                         },
                         {
                             "name": {
-                                "value": "go"
+                                "value": "be",
+                                "synonyms": [
+                                    "been"
+                                ]
                             }
                         },
                         {
                             "name": {
-                                "value": "been"
+                                "value": "go",
+                                "synonyms": [
+                                    "gone",
+                                    "went"
+                                ]
                             }
                         },
                         {
                             "name": {
-                                "value": "met"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "meet"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "know"
+                                "value": "meet",
+                                "synonyms": [
+                                    "met"
+                                ]
                             }
                         }
                     ]
