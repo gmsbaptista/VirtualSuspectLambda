@@ -219,19 +219,23 @@ namespace VirtualSuspectLambda
             IntentRequest intentRequest, QueryDto query)
         {
             string speechText;
-            AddQueryConditions(query, intentRequest, log);
-
-            if (query.QueryConditions.Count > 0)
+            if (AddQueryConditions(query, intentRequest, log))
             {
-                QueryResult queryResult = virtual_suspect.Query(query);
-                speechText = NaturalLanguageGenerator.GenerateAnswer(queryResult);
+                if (query.QueryConditions.Count > 0)
+                {
+                    QueryResult queryResult = virtual_suspect.Query(query);
+                    speechText = NaturalLanguageGenerator.GenerateAnswer(queryResult);
+                }
+                else
+                {
+                    speechText = "I'm not sure what you expect me to say";
+                }
             }
             else
             {
-                speechText = "I'm not sure what you expect me to say";
+                speechText = "I don't quite understand what you said";
             }
-
-
+            log.LogLine($"speech text: " + speechText);
             BuildAnswer(ref innerResponse, ref prompt, speechText, true);
         }
 
@@ -242,61 +246,111 @@ namespace VirtualSuspectLambda
         /// <param name="intent"></param>
         /// <param name="log"></param>
         /// <returns>string</returns>
-        private void AddQueryConditions(QueryDto query, IntentRequest intent, ILambdaLogger log)
+        private bool AddQueryConditions(QueryDto query, IntentRequest intent, ILambdaLogger log)
         {
             Dictionary<string, Slot> intent_slots = intent.Intent.Slots;
 
             if (SlotExists(intent_slots, "subject"))
             {
-                if (TrueSlotValue(intent_slots["subject"]) == "Peter Barker")
+                if (KnownSlot(intent_slots["subject"]))
                 {
-                    log.LogLine($"subject slot: Peter Barker");
-                    List<string> agents = new List<string>() { "Peter Barker" };
-                    query.AddCondition(new AgentEqualConditionPredicate(agents));
+                    if (TrueSlotValue(intent_slots["subject"]) == "Peter Barker")
+                    {
+                        log.LogLine($"subject slot: Peter Barker");
+                        List<string> agents = new List<string>() { "Peter Barker" };
+                        query.AddCondition(new AgentEqualConditionPredicate(agents));
+                    }
+                    else
+                    {
+                        log.LogLine($"subject slot: unexpected subject");
+                    }
                 }
                 else
                 {
-                    log.LogLine($"subject slot: unexpected subject");
+                    log.LogLine($"unknown subject, exiting");
+                    return false;
                 }
             }
             if (SlotExists(intent_slots, "agent"))
             {
-                string agent = TrueSlotValue(intent_slots["agent"]);
-                log.LogLine($"agent slot: " + agent);
-                List<string> agents = new List<string>() { agent };
-                query.AddCondition(new AgentEqualConditionPredicate(agents));
+                if (KnownSlot(intent_slots["agent"]))
+                {
+                    string agent = TrueSlotValue(intent_slots["agent"]);
+                    log.LogLine($"agent slot: " + agent);
+                    List<string> agents = new List<string>() { agent };
+                    query.AddCondition(new AgentEqualConditionPredicate(agents));
+                }
+                else
+                {
+                    log.LogLine($"unknown agent, exiting");
+                    return false;
+                }
             }
             if (SlotExists(intent_slots, "action"))
             {
-                string action = TrueSlotValue(intent_slots["action"]);
-                log.LogLine($"action slot: " + action);
-                query.AddCondition(new ActionEqualConditionPredicate(action));
+                if (KnownSlot(intent_slots["action"]))
+                {
+                    string action = TrueSlotValue(intent_slots["action"]);
+                    log.LogLine($"action slot: " + action);
+                    query.AddCondition(new ActionEqualConditionPredicate(action));
+                }
+                else
+                {
+                    log.LogLine($"unknown action, exiting");
+                    return false;
+                }
             }
             if (SlotExists(intent_slots, "location"))
             {
-                string location = TrueSlotValue(intent_slots["location"]);
-                log.LogLine($"location slot: " + location);
-                query.AddCondition(new LocationEqualConditionPredicate(location));
+                if (KnownSlot(intent_slots["location"]))
+                {
+                    string location = TrueSlotValue(intent_slots["location"]);
+                    log.LogLine($"location slot: " + location);
+                    query.AddCondition(new LocationEqualConditionPredicate(location));
+                }
+                else
+                {
+                    log.LogLine($"unknown location, exiting");
+                    return false;
+                }
             }
             if (SlotExists(intent_slots, "reason"))
             {
-                string reason = TrueSlotValue(intent_slots["reason"]);
-                log.LogLine($"reason slot: " + reason);
-                List<string> reasons = new List<string>() { reason };
-                query.AddCondition(new ReasonEqualConditionPredicate(reasons));
+                if (KnownSlot(intent_slots["reason"]))
+                {
+                    string reason = TrueSlotValue(intent_slots["reason"]);
+                    log.LogLine($"reason slot: " + reason);
+                    List<string> reasons = new List<string>() { reason };
+                    query.AddCondition(new ReasonEqualConditionPredicate(reasons));
+                }
+                else
+                {
+                    log.LogLine($"unknown reason, exiting");
+                    return false;
+                }
             }
             if (SlotExists(intent_slots, "theme"))
             {
-                string theme = TrueSlotValue(intent_slots["theme"]);
-                log.LogLine($"theme slot: " + theme);
-                List<string> themes = new List<string>() { theme };
-                query.AddCondition(new ThemeEqualConditionPredicate(themes));
+                if (KnownSlot(intent_slots["theme"]))
+                {
+                    string theme = TrueSlotValue(intent_slots["theme"]);
+                    log.LogLine($"theme slot: " + theme);
+                    List<string> themes = new List<string>() { theme };
+                    query.AddCondition(new ThemeEqualConditionPredicate(themes));
+                }
+                else
+                {
+                    log.LogLine($"unknown theme, exiting");
+                    return false;
+                }
             }
             if (SlotExists(intent_slots, "date_one") || SlotExists(intent_slots, "date_two") 
                 || SlotExists(intent_slots, "time_one") || SlotExists(intent_slots, "time_two")) //Time slots
             {
+                log.LogLine($"time slots");
                 if (SlotExists(intent_slots, "date_one") && SlotExists(intent_slots, "date_two")) //Two dates
                 {
+                    log.LogLine($"time: two dates");
                     string date1 = TrueSlotValue(intent_slots["date_one"]);
                     log.LogLine($"date_one slot: " + date1);
                     string date2 = TrueSlotValue(intent_slots["date_two"]);
@@ -306,6 +360,7 @@ namespace VirtualSuspectLambda
                 }
                 else if (SlotExists(intent_slots, "date_one") && !SlotExists(intent_slots, "time_one")) //One date and no time
                 {
+                    log.LogLine($"time: one date and no time");
                     string date1 = TrueSlotValue(intent_slots["date_one"]);
                     log.LogLine($"date_one slot: " + date1);
                     query.AddCondition(new TimeBetweenConditionPredicate(CreateTimeStamp(date1, "00:00:00"),
@@ -314,6 +369,7 @@ namespace VirtualSuspectLambda
                 else if (SlotExists(intent_slots, "date_one") && 
                     SlotExists(intent_slots, "time_one") && SlotExists(intent_slots,"time_two")) //One date and two times
                 {
+                    log.LogLine($"time: one date and two times");
                     string date1 = TrueSlotValue(intent_slots["date_one"]);
                     log.LogLine($"date_one slot: " + date1);
                     string time1 = TrueSlotValue(intent_slots["time_one"]);
@@ -326,6 +382,7 @@ namespace VirtualSuspectLambda
                 else if (SlotExists(intent_slots, "date_one") &&
                     SlotExists(intent_slots, "time_one") && !SlotExists(intent_slots, "time_two")) //One date and one time
                 {
+                    log.LogLine($"time: one date and one time");
                     string date1 = TrueSlotValue(intent_slots["date_one"]);
                     log.LogLine($"date_one slot: " + date1);
                     string time1 = TrueSlotValue(intent_slots["time_one"]);
@@ -376,6 +433,7 @@ namespace VirtualSuspectLambda
                     log.LogLine($"value: " + value);
                 }
             }
+            return true;
         }
 
         /// <summary>
@@ -393,6 +451,23 @@ namespace VirtualSuspectLambda
             else
             {
                 return !string.IsNullOrEmpty(value.Value);
+            }
+        }
+
+        /// <summary>
+        ///  Checks if the slot value is recognized
+        /// </summary>
+        /// <param name="slot"></param>
+        /// <returns>string</returns>
+        private bool KnownSlot(Slot slot)
+        {
+            if (slot.Resolution != null)
+            {
+                return slot.Resolution.Authorities[0].Status.Code == "ER_SUCCESS_MATCH";
+            }
+            else
+            {
+                return false;
             }
         }
 
