@@ -29,7 +29,7 @@ namespace VirtualSuspectLambda
         const string voice = "Matthew";
         private KnowledgeBaseManager knowledge_base;
         private VirtualSuspectQuestionAnswer virtual_suspect;
-        private bool bitchMode = false;
+        private readonly bool bitchMode = false;
 
         /// <summary>
         /// Application entry point
