@@ -29,6 +29,7 @@ namespace VirtualSuspectLambda
         const string voice = "Matthew";
         private KnowledgeBaseManager knowledge_base;
         private VirtualSuspectQuestionAnswer virtual_suspect;
+        private bool bitchMode = false;
 
         /// <summary>
         /// Application entry point
@@ -234,6 +235,14 @@ namespace VirtualSuspectLambda
             else
             {
                 speechText = "I don't quite understand what you said";
+            }
+            if (bitchMode)
+            {
+                if (speechText == "Yes")
+                {
+                    speechText = "Yaaaaas";
+                }
+                speechText += " bish";
             }
             log.LogLine($"speech text: " + speechText);
             BuildAnswer(ref innerResponse, ref prompt, speechText, true);
