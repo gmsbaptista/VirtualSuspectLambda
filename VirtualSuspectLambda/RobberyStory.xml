@@ -259,13 +259,13 @@
     <id>46</id>
     <type>Station</type>
     <value>Castle Town Train Station</value>
-    <speech>Castle Town train station</speech>
+    <speech>on the Castle Town train station</speech>
   </entity>
   <entity>
     <id>47</id>
     <type>Ticket</type>
     <value>Ticket to SilverMoon City</value>
-    <speech>ticket to SilverMoon City</speech>
+    <speech>a ticket to SilverMoon City</speech>
   </entity>
   <entity>
     <id>49</id>
@@ -277,7 +277,7 @@
     <id>50</id>
     <type>Shop</type>
     <value>Gary's Pub</value>
-    <speech>Gary's Pub</speech>
+    <speech>at Gary's Pub</speech>
   </entity>
   <entity>
     <id>52</id>
