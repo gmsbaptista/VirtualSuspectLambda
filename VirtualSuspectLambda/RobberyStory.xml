@@ -187,7 +187,7 @@
     <id>31</id>
     <type>Street</type>
     <value>Alley near the Church</value>
-    <speech>the alley near the church</speech>
+    <speech>in the alley near the church</speech>
   </entity>
   <entity>
     <id>32</id>
@@ -259,7 +259,7 @@
     <id>46</id>
     <type>Station</type>
     <value>Castle Town Train Station</value>
-    <speech>on the Castle Town train station</speech>
+    <speech>at the Castle Town train station</speech>
   </entity>
   <entity>
     <id>47</id>
@@ -271,7 +271,7 @@
     <id>49</id>
     <type>City</type>
     <value>SilverMoon City</value>
-    <speech>SilverMoon City</speech>
+    <speech>in SilverMoon City</speech>
   </entity>
   <entity>
     <id>50</id>
@@ -282,8 +282,8 @@
   <entity>
     <id>52</id>
     <type>City</type>
-    <value>CastleTown</value>
-    <speech>CastleTown</speech>
+    <value>Castle Town</value>
+    <speech>in Castle Town</speech>
   </entity>
   <entity>
     <id>54</id>
