@@ -205,7 +205,7 @@
     <id>35</id>
     <type>Shop</type>
     <value>Jewelry Shop</value>
-    <speech>on the jewelry shop</speech>
+    <speech>at the jewelry shop</speech>
   </entity>
   <entity>
     <id>36</id>
@@ -217,13 +217,13 @@
     <id>37</id>
     <type>Person</type>
     <value>Delivery Guy</value>
-    <speech>delivery guy</speech>
+    <speech>the delivery guy</speech>
   </entity>
   <entity>
     <id>38</id>
     <type>Theft</type>
     <value>Robbery</value>
-    <speech>Robbery</speech>
+    <speech>the robbery</speech>
   </entity>
   <entity>
     <id>41</id>
