@@ -14,6 +14,17 @@ namespace VirtualSuspectNaturalLanguage.Component {
 
             string answer = "";
 
+            bool hasAction = result.Query.QueryConditions.Count(x => x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Action) > 0;
+
+            if (hasAction || GetNumberAgents(result.Query) > 1)
+            {
+                answer += "It was";
+            }
+            else
+            {
+                answer += "I was";
+            }
+
             //Merge all entities and sum cardinality
             Dictionary<EntityNode, int> mergedLocations = MergeAndSumLocationsCardinality(resultsByDimension[KnowledgeBaseManager.DimentionsEnum.Location]);
 
@@ -24,23 +35,24 @@ namespace VirtualSuspectNaturalLanguage.Component {
 
                 //TODO: test some types to use "the"
 
-                answer += mergedLocations.ElementAt(i).Key.Speech + " ";
+                answer += " " + mergedLocations.ElementAt(i).Key.Speech;
 
                 if(mergedLocations.Count > 1)
-                answer += NaturalLanguageGetFrequency(mergedLocations.ElementAt(i).Value);
-
+                {
+                    answer += " " + NaturalLanguageGetFrequency(mergedLocations.ElementAt(i).Value);
+                }
 
                 if (i != mergedLocations.Count - 1) {
-                    answer += ", ";
+                    answer += ",";
 
                     if (i == mergedLocations.Count - 2) {
-                        answer += "and ";
+                        answer += " and";
                     }
 
-                } else {
-
-                    answer += ".";
                 }
+                /*else {
+                    answer += ".";
+                }*/
 
             }
 

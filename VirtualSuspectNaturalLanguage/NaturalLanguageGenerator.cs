@@ -26,12 +26,14 @@ namespace VirtualSuspectNaturalLanguage
 
                 answer = (result.YesNoResult) ? "Yes" : "No";
             
-            } else { //Get Information Question (We assume that the answer only has 1 type of dimension of answer)
+            }
+
+            else { //Get Information Question (We assume that the answer only has 1 type of dimension of answer)
 
                 //=============================
                 //Get all the answers by dimension
                 Dictionary<KnowledgeBaseManager.DimentionsEnum, List<QueryResult.Result>> resultsByDimension = new Dictionary<KnowledgeBaseManager.DimentionsEnum, List<QueryResult.Result>>();
-                foreach(QueryResult.Result queryResult in result.Results) {
+                foreach (QueryResult.Result queryResult in result.Results) {
 
                     if (!resultsByDimension.ContainsKey(queryResult.dimension)) {
                         resultsByDimension[queryResult.dimension] = new List<QueryResult.Result>();
@@ -43,9 +45,8 @@ namespace VirtualSuspectNaturalLanguage
                 //Is there any entity with dimension Time
                 if (resultsByDimension.ContainsKey(KnowledgeBaseManager.DimentionsEnum.Time)) {
 
-                    bool hasAction;
 
-                    answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Time, out hasAction);
+                    answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Time, out bool hasAction);
 
                     //Ignore Cardinality(the same time period only appears once)
 
@@ -69,45 +70,47 @@ namespace VirtualSuspectNaturalLanguage
 
                     answer += TimeNaturalLanguageGenerator.Generate(dateTimeGroupByDay);
                     
-                }else if(resultsByDimension.ContainsKey(KnowledgeBaseManager.DimentionsEnum.Location)) {
+                }
 
-                    bool hasAction;
+                else if (resultsByDimension.ContainsKey(KnowledgeBaseManager.DimentionsEnum.Location)) {
 
-                    answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Location, out hasAction);
+
+                    //answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Location, out bool hasAction);
 
                     answer += LocationNaturalLanguageGenerator.Generate(result, resultsByDimension);
                                       
-                }else if (resultsByDimension.ContainsKey(KnowledgeBaseManager.DimentionsEnum.Agent)) {
+                }
 
-                    bool hasAction;
+                else if (resultsByDimension.ContainsKey(KnowledgeBaseManager.DimentionsEnum.Agent)) {
 
-                    answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Agent, out hasAction);
+
+                    answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Agent, out bool hasAction);
 
                     answer += AgentNaturalLanguageGenerator.Generate(result, resultsByDimension);
                 }
+
                 else if (resultsByDimension.ContainsKey(KnowledgeBaseManager.DimentionsEnum.Theme)) {
 
-                    bool hasAction;
 
-                    answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Theme, out hasAction);
+                    answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Theme, out bool hasAction);
 
                     answer += ThemeNaturalLanguageGenerator.Generate(result, resultsByDimension);
                 }
+
                 else if (resultsByDimension.ContainsKey(KnowledgeBaseManager.DimentionsEnum.Manner)) {
 
-                    bool hasAction;
 
-                    answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Manner, out hasAction);
+                    answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Manner, out bool hasAction);
 
                     answer += MannerNaturalLanguageGenerator.Generate(result, resultsByDimension);
                 }
+
                 else if (resultsByDimension.ContainsKey(KnowledgeBaseManager.DimentionsEnum.Reason)) {
 
-                    bool hasAction;
 
-                    answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Reason, out hasAction);
+                    answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Reason, out bool hasAction);
 
-                    if( !hasAction )
+                    if ( !hasAction )
                         answer += "to";
 
                     answer += ReasonNaturalLanguageGenerator.Generate(result, resultsByDimension);
@@ -154,17 +157,21 @@ namespace VirtualSuspectNaturalLanguage
 
             sequence.Sort((a, b) => a.Key.CompareTo(b.Value));
             
-            for(int i = 0; i < sequence.Count; i++) {
+            for (int i = 0; i < sequence.Count; i++) {
 
-                if(i == 0) {
+                if (i == 0) {
                     sequenceMerged.Add(sequence.ElementAt(0));
-                }else {
+                }
 
-                    if(sequenceMerged.Last().Value == sequence[i].Key) { //the end of the last is equal to the begin of current Date
+                else {
+
+                    if (sequenceMerged.Last().Value == sequence[i].Key) { //the end of the last is equal to the begin of current Date
                         DateTime beginInterval = sequenceMerged.Last().Key;
                         sequenceMerged.RemoveAt(sequenceMerged.Count - 1);
                         sequenceMerged.Add(new KeyValuePair<DateTime, DateTime>(beginInterval, sequence[i].Value));
-                    }else{
+                    }
+
+                    else {
                         sequenceMerged.Add(sequence.ElementAt(i));
                     }
 
@@ -195,7 +202,6 @@ namespace VirtualSuspectNaturalLanguage
         /// </summary>
         /// <returns>begin of the answer</returns>
         private static string GenerateAnswerBegin(QueryResult result, KnowledgeBaseManager.DimentionsEnum dimension, out bool hasAction) {
-
             string answerBegin = "";
 
             //Create the subject
@@ -210,7 +216,10 @@ namespace VirtualSuspectNaturalLanguage
                 //No action is asked about. Use verb to be
                 answerBegin += (numberAgents == 1) ? "was " : "were ";
 
-            } else {
+            }
+
+            else {
+
                 hasAction = true;
 
                 //Add verb from action resource
@@ -227,7 +236,6 @@ namespace VirtualSuspectNaturalLanguage
             //Add answer conjunction
 
             return answerBegin;
-            
         }    
         
     }   
