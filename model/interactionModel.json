@@ -534,8 +534,10 @@
                     "values": [
                         {
                             "name": {
-                                "value": "CastleTown",
+                                "value": "Castle Town",
                                 "synonyms": [
+                                    "castletown city",
+                                    "castletown",
                                     "castle town",
                                     "castle town city"
                                 ]
