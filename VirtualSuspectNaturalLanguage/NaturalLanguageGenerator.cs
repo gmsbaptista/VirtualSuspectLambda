@@ -73,7 +73,7 @@ namespace VirtualSuspectNaturalLanguage
                 }
 
                 else if (resultsByDimension.ContainsKey(KnowledgeBaseManager.DimentionsEnum.Location)) {
-
+                    //Improved
 
                     //answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Location, out bool hasAction);
 

@@ -225,6 +225,17 @@ namespace VirtualSuspectLambda
                 if (query.QueryConditions.Count > 0)
                 {
                     QueryResult queryResult = virtual_suspect.Query(query);
+                    log.LogLine($"query results:");
+                    foreach (QueryResult.Result result in queryResult.Results)
+                    {
+                        log.LogLine($"result dimension: " + result.dimension);
+                        log.LogLine($"result cardinality: " + result.cardinality);
+                        log.LogLine($"result values:");
+                        foreach (EntityNode entity in result.values)
+                        {
+                            log.LogLine($"value: " + entity.Value);
+                        }
+                    }
                     speechText = NaturalLanguageGenerator.GenerateAnswer(queryResult);
                 }
                 else

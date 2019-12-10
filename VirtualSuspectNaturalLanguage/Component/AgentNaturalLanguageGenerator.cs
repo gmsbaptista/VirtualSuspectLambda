@@ -14,7 +14,7 @@ namespace VirtualSuspectNaturalLanguage.Component {
 
             string answer = "";
 
-            answer += "Because ";
+            //answer += "Because ";
 
             Dictionary<EntityNode, int> mergedAgents = MergeAndSumAgentsCardinality(resultsByDimension[KnowledgeBaseManager.DimentionsEnum.Agent]);
 

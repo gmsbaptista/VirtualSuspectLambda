@@ -116,6 +116,14 @@ namespace VirtualSuspect {
                                     }
                                 }
                             }
+                            else
+                            {
+                                if (res.values.ElementAt(0).Value == "Peter Barker")
+                                {
+                                    result.Results.Remove(res);
+                                    break;
+                                }
+                            }
                         }
                     }
 
