@@ -40,7 +40,7 @@
     <timePreposition></timePreposition>
     <locationPreposition></locationPreposition>
     <themePreposition></themePreposition>
-    <agentPreposition>alongside</agentPreposition>
+    <agentPreposition>from</agentPreposition>
     <reasonPreposition>because</reasonPreposition>
     <mannerPreposition>using</mannerPreposition>
   </resource>
@@ -106,7 +106,7 @@
     <timePreposition></timePreposition>
     <locationPreposition></locationPreposition>
     <themePreposition></themePreposition>
-    <agentPreposition>with</agentPreposition>
+    <agentPreposition>from</agentPreposition>
     <reasonPreposition>because</reasonPreposition>
     <mannerPreposition>using</mannerPreposition>
   </resource>
@@ -150,7 +150,7 @@
     <timePreposition></timePreposition>
     <locationPreposition></locationPreposition>
     <themePreposition></themePreposition>
-    <agentPreposition>with</agentPreposition>
+    <agentPreposition>to</agentPreposition>
     <reasonPreposition>because</reasonPreposition>
     <mannerPreposition>using</mannerPreposition>
   </resource>

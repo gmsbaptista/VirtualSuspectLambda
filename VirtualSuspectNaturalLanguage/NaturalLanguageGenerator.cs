@@ -82,9 +82,9 @@ namespace VirtualSuspectNaturalLanguage
                 }
 
                 else if (resultsByDimension.ContainsKey(KnowledgeBaseManager.DimentionsEnum.Agent)) {
+                    //Improved
 
-
-                    answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Agent, out bool hasAction);
+                    //answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Agent, out bool hasAction);
 
                     answer += AgentNaturalLanguageGenerator.Generate(result, resultsByDimension);
                 }

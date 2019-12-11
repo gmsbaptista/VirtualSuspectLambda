@@ -14,7 +14,29 @@ namespace VirtualSuspectNaturalLanguage.Component {
 
             string answer = "";
 
-            //answer += "Because ";
+            bool hasAction = result.Query.QueryConditions.Count(x => x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Action) > 0;
+
+            if (hasAction)
+            {
+                answer += "I";
+                //Add verb from action resource
+                NaturalLanguageResourceManager manager = NaturalLanguageResourceManager.Instance;
+                ActionResource resource = manager.FindResource<ActionResource>(result.Query.QueryConditions.Find(x => x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Action).GetValues().ElementAt(0));
+
+                answer += " " + resource.Speech;
+
+                if (result.Query.QueryConditions.Count(x => x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Theme) > 0)
+                {
+                    answer += " it";
+                }
+
+                //Add preposition for the dimension
+                answer += " " + resource.ExtractPreposition(KnowledgeBaseManager.DimentionsEnum.Agent);
+            }
+            else
+            {
+                answer += "I met";
+            }
 
             Dictionary<EntityNode, int> mergedAgents = MergeAndSumAgentsCardinality(resultsByDimension[KnowledgeBaseManager.DimentionsEnum.Agent]);
 
@@ -31,13 +53,13 @@ namespace VirtualSuspectNaturalLanguage.Component {
 
             for (int i = 0; i < values.Count(); i++) {
 
-                combinedValues += values.ElementAt(i);
+                combinedValues += " " + values.ElementAt(i);
 
                 if (i == values.Count() - 2) {
-                    combinedValues += " " + term + " ";
+                    combinedValues += " " + term;
                 }
                 else if (i < values.Count() - 1) {
-                    combinedValues += ", ";
+                    combinedValues += ",";
                 }
             }
 
