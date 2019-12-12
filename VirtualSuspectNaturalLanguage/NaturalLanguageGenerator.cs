@@ -46,7 +46,7 @@ namespace VirtualSuspectNaturalLanguage
                 if (resultsByDimension.ContainsKey(KnowledgeBaseManager.DimentionsEnum.Time)) {
 
 
-                    answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Time, out bool hasAction);
+                    //answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Time, out bool hasAction);
 
                     //Ignore Cardinality(the same time period only appears once)
 

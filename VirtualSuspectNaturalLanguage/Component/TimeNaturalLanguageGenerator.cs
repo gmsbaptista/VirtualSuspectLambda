@@ -12,6 +12,8 @@ namespace VirtualSuspectNaturalLanguage.Component {
 
             string answer = "";
 
+            answer += "It was";
+
             //Iterate each day
             for (int i = 0; i < dateTimeGroupedByDay.Keys.Count; i++) {
 
@@ -19,35 +21,35 @@ namespace VirtualSuspectNaturalLanguage.Component {
                 List<KeyValuePair<DateTime, DateTime>> currentTimeSpans = dateTimeGroupedByDay.Values.ElementAt(i);
 
                 //Print the day
-                answer += "on " + ConvertDateToText(currentDate) + " from ";
+                answer += " on " + ConvertDateToText(currentDate) + " from";
 
                 //Iterate each time span
                 for (int j = 0; j < currentTimeSpans.Count; j++) {
 
-                    answer += ConvertTimeToText(currentTimeSpans.ElementAt(j).Key) + " to " + ConvertTimeToText(currentTimeSpans.ElementAt(j).Value);
+                    answer +=  " " + ConvertTimeToText(currentTimeSpans.ElementAt(j).Key) + " to " + ConvertTimeToText(currentTimeSpans.ElementAt(j).Value);
 
                     if (j != currentTimeSpans.Count - 1) {
-                        answer += ", ";
+                        answer += ",";
                     }
 
                     if (j == currentTimeSpans.Count - 2) {
-                        answer += "and ";
+                        answer += " and";
                     }
 
                 }
 
                 if (i != dateTimeGroupedByDay.Keys.Count - 1) {
 
-                    answer += ", ";
+                    answer += ",";
 
                     if (i == dateTimeGroupedByDay.Keys.Count - 2) {
-                        answer += "and ";
+                        answer += " and";
                     }
 
                 }
-                else {
+                /*else {
                     answer += ".";
-                }
+                }*/
             }
             return answer;
         }
@@ -75,7 +77,8 @@ namespace VirtualSuspectNaturalLanguage.Component {
 
         private static string ConvertDateToText(DateTime date) {
 
-            return "the " + ConvertDayToCardinal(date.Day) + " of " + date.ToString("MMMM", CultureInfo.InvariantCulture) + " " + date.Year;
+            //return "the " + ConvertDayToCardinal(date.Day) + " of " + date.ToString("MMMM", CultureInfo.InvariantCulture) + " " + date.Year;
+            return date.ToString("MMMM", CultureInfo.InvariantCulture) + " " + ConvertDayToCardinal(date.Day);
 
         }
 
