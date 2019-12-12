@@ -83,7 +83,7 @@
     <speech>prepared</speech>
     <timePreposition></timePreposition>
     <locationPreposition></locationPreposition>
-    <themePreposition></themePreposition>
+    <themePreposition>for</themePreposition>
     <agentPreposition>with</agentPreposition>
     <reasonPreposition>because</reasonPreposition>
     <mannerPreposition>using</mannerPreposition>
@@ -116,7 +116,7 @@
     <speech>called</speech>
     <timePreposition></timePreposition>
     <locationPreposition></locationPreposition>
-    <themePreposition>about</themePreposition>
+    <themePreposition></themePreposition>
     <agentPreposition></agentPreposition>
     <reasonPreposition>because</reasonPreposition>
     <mannerPreposition>using</mannerPreposition>
@@ -130,6 +130,17 @@
     <themePreposition></themePreposition>
     <agentPreposition>alongside</agentPreposition>
     <reasonPreposition>because</reasonPreposition>
+    <mannerPreposition></mannerPreposition>
+  </resource>
+  <resource>
+    <type>action</type>
+    <name>Wait</name>
+    <speech>waited</speech>
+    <timePreposition></timePreposition>
+    <locationPreposition></locationPreposition>
+    <themePreposition>for</themePreposition>
+    <agentPreposition></agentPreposition>
+    <reasonPreposition></reasonPreposition>
     <mannerPreposition></mannerPreposition>
   </resource>
   <resource>

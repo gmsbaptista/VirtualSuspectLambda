@@ -90,9 +90,9 @@ namespace VirtualSuspectNaturalLanguage
                 }
 
                 else if (resultsByDimension.ContainsKey(KnowledgeBaseManager.DimentionsEnum.Theme)) {
+                    //Improved
 
-
-                    answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Theme, out bool hasAction);
+                    //answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Theme, out bool hasAction);
 
                     answer += ThemeNaturalLanguageGenerator.Generate(result, resultsByDimension);
                 }
