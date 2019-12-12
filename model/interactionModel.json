@@ -252,6 +252,10 @@
                         }
                     ],
                     "samples": [
+                        "What {question_verb} {subject} {action} {preposition} {agent} {reason_prefix} {reason}",
+                        "What {question_verb} {agent} {action} {subject} {reason_prefix} {reason}",
+                        "What {question_verb} {subject} {action} {preposition} {location}",
+                        "What {question_verb} {subject} {action} {reason_prefix} {reason}",
                         "What {question_verb} {subject} {action} {preposition} {agent} {preposition} {date_one} {preposition} {time_one} and {time_two}",
                         "What {question_verb} {subject} {action} {preposition} {agent} {preposition} {date_one} {preposition} {time_one}",
                         "What {question_verb} {subject} {action} {preposition} {agent} {preposition} {date_one} and {date_two}",
@@ -768,7 +772,7 @@
                         },
                         {
                             "name": {
-                                "value": "gather information about the watch values",
+                                "value": "gather information about the watch value",
                                 "synonyms": [
                                     "gather information about the watch",
                                     "gather information"
