@@ -222,7 +222,7 @@ namespace VirtualSuspectLambda
             string speechText;
             if (AddQueryConditions(query, intentRequest, log))
             {
-                if (query.QueryConditions.Count > 0)
+                if (query.QueryConditions.Count > 1)
                 {
                     QueryResult queryResult = virtual_suspect.Query(query);
                     log.LogLine($"query results:");
@@ -247,20 +247,12 @@ namespace VirtualSuspectLambda
             {
                 speechText = "I don't quite understand what you said";
             }
-            if (bitchMode)
-            {
-                if (speechText == "Yes")
-                {
-                    speechText = "Yaaaaas";
-                }
-                speechText += " bish";
-            }
             log.LogLine($"speech text: " + speechText);
             BuildAnswer(ref innerResponse, ref prompt, speechText, true);
         }
 
         /// <summary>
-        ///  Adds the relevant conditions to the query
+        ///  Adds the relevant conditions to the query, returns false if a slot is not recognized
         /// </summary>
         /// <param name="query"></param>
         /// <param name="intent"></param>
@@ -439,6 +431,7 @@ namespace VirtualSuspectLambda
                 else
                 {
                     log.LogLine($"WARNING: unexpected date condition!!");
+                    return false;
                 }
             }
 
@@ -553,6 +546,14 @@ namespace VirtualSuspectLambda
             }
             if (inCharacter)
             {
+                if (bitchMode)
+                {
+                    if (speechText == "Yes")
+                    {
+                        speechText = "Yaaaaas";
+                    }
+                    speechText += " bish";
+                }
                 innerResponse = new SsmlOutputSpeech();
                 (innerResponse as SsmlOutputSpeech).Ssml = SsmlDecorate(VoiceDecorate(voice, speechText));
             }
