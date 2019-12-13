@@ -27,6 +27,14 @@ namespace VirtualSuspectNaturalLanguage.Component {
                 for (int j = 0; j < currentTimeSpans.Count; j++) {
 
                     answer +=  " " + ConvertTimeToText(currentTimeSpans.ElementAt(j).Key) + " to " + ConvertTimeToText(currentTimeSpans.ElementAt(j).Value);
+                    if (currentTimeSpans.ElementAt(j).Key.Date.AddDays(1) == currentTimeSpans.ElementAt(j).Value.Date)
+                    {
+                        answer += " of the next day";
+                    }
+                    else if (currentTimeSpans.ElementAt(j).Key.Date != currentTimeSpans.ElementAt(j).Value.Date)
+                    {
+                        answer += " of " + ConvertDateToText(currentTimeSpans.ElementAt(j).Value);
+                    }
 
                     if (j != currentTimeSpans.Count - 1) {
                         answer += ",";
