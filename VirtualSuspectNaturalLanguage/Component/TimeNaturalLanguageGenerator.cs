@@ -91,9 +91,23 @@ namespace VirtualSuspectNaturalLanguage.Component {
         }
 
         private static string ConvertTimeToText(DateTime time) {
-
-            return time.Hour + ":" + time.ToString("mm", CultureInfo.InvariantCulture);
-
+            int hour = time.Hour;
+            if (hour == 0)
+            {
+                return (time.Hour + 12) + ":" + time.ToString("mm", CultureInfo.InvariantCulture) + " am";
+            }
+            else if (0 < hour && hour < 12)
+            {
+                return time.Hour + ":" + time.ToString("mm", CultureInfo.InvariantCulture) + " am";
+            }
+            else if (hour == 12)
+            {
+                return time.Hour + ":" + time.ToString("mm", CultureInfo.InvariantCulture) + " pm";
+            }
+            else
+            {
+                return (time.Hour - 12) + ":" + time.ToString("mm", CultureInfo.InvariantCulture) + " pm";
+            }
         }
 
         private static string ConvertDateTimeToText(KeyValuePair<DateTime, DateTime> timeSpan) {
