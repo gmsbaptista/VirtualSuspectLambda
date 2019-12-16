@@ -29,7 +29,13 @@ namespace VirtualSuspectLambda
         const string voice = "Matthew";
         private KnowledgeBaseManager knowledge_base;
         private VirtualSuspectQuestionAnswer virtual_suspect;
-        private readonly bool bitchMode = false;
+        //private bool bitchMode = false;
+        private Dictionary<string, bool> options = new Dictionary<string, bool>()
+        {
+            {"bish mode", false },
+            {"slot filtering", true },
+            {"answer filtering", true }
+        };
 
         /// <summary>
         /// Application entry point
@@ -113,6 +119,13 @@ namespace VirtualSuspectLambda
                         speechText = "I do not know what you are talking about";
 
                         BuildAnswer(ref innerResponse, ref prompt, speechText, true);
+                        break;
+                    case "ToggleOptionIntent":
+                        log.LogLine($"ToggleOptionIntent: switch an option");
+
+                        speechText = ToggleOption(intentRequest, log);
+
+                        BuildAnswer(ref innerResponse, ref prompt, speechText, false);
                         break;
                     case "GreetingIntent":
                         log.LogLine($"GreetingIntent: say hello");
@@ -546,7 +559,7 @@ namespace VirtualSuspectLambda
             }
             if (inCharacter)
             {
-                if (bitchMode)
+                if (options["bish mode"])
                 {
                     if (speechText == "Yes")
                     {
@@ -584,6 +597,53 @@ namespace VirtualSuspectLambda
         private string VoiceDecorate(string name, string speech)
         {
             return "<voice name='" + name + "'>" + speech + "</voice>";
+        }
+
+        /// <summary>
+        ///  Toggles an option on or off
+        /// </summary>
+        /// <param name="intent"></param>
+        /// <param name="log"></param>
+        /// <returns>string</returns>
+        private string ToggleOption (IntentRequest intent, ILambdaLogger log)
+        {
+            Dictionary<string, Slot> intent_slots = intent.Intent.Slots;
+            string answer = "";
+
+            if (SlotExists(intent_slots, "option"))
+            {
+                string option = TrueSlotValue(intent_slots["option"]);
+                answer += "You are toggling the " + option + " option.";
+                switch (option)
+                {
+                    case "bish mode":
+                        log.LogLine($"toggled the bish mode option");
+                        if (options[option])
+                        {
+                            answer += " It was turned on, it is now off.";
+                        }
+                        else
+                        {
+                            answer += " It was turned off, it is now on.";
+                        }
+                        options[option] = !options[option];
+                        break;
+                    case "slot filtering":
+                        log.LogLine($"toggled the slot filtering option");
+                        answer += " Nothing happens yet.";
+                        break;
+                    default:
+                        log.LogLine($"unknown option, doing nothing");
+                        answer += " Nothing happens yet.";
+                        break;
+                }
+            }
+            else
+            {
+                answer += "You have to give an option you want to toggle.";
+                answer += " Nothing happens yet.";
+            }
+            return answer;
         }
     }
 }
