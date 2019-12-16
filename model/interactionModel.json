@@ -600,6 +600,19 @@
                         "Thank you for your honesty",
                         "Thank you"
                     ]
+                },
+                {
+                    "name": "ToggleOptionIntent",
+                    "slots": [
+                        {
+                            "name": "option",
+                            "type": "option_slot_type"
+                        }
+                    ],
+                    "samples": [
+                        "Switch {option}",
+                        "Toggle {option}"
+                    ]
                 }
             ],
             "types": [
@@ -1169,6 +1182,29 @@
                         {
                             "name": {
                                 "value": "in order to"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "option_slot_type",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "slot filtering",
+                                "synonyms": [
+                                    "slot check",
+                                    "slot filters"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "bish mode",
+                                "synonyms": [
+                                    "bitch mode",
+                                    "rude mode"
+                                ]
                             }
                         }
                     ]
