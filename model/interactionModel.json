@@ -613,6 +613,49 @@
                         "Switch {option}",
                         "Toggle {option}"
                     ]
+                },
+                {
+                    "name": "TurnOnOptionIntent",
+                    "slots": [
+                        {
+                            "name": "option",
+                            "type": "option_slot_type"
+                        }
+                    ],
+                    "samples": [
+                        "Switch {option} on",
+                        "Turn {option} option on",
+                        "Turn {option} on",
+                        "Turn on {option} option",
+                        "Turn on {option}"
+                    ]
+                },
+                {
+                    "name": "TurnOffOptionIntent",
+                    "slots": [
+                        {
+                            "name": "option",
+                            "type": "option_slot_type"
+                        }
+                    ],
+                    "samples": [
+                        "Switch {option} off",
+                        "Turn {option} option off",
+                        "Turn {option} off",
+                        "Turn off {option} option",
+                        "Turn off {option}"
+                    ]
+                },
+                {
+                    "name": "CheckOptionsIntent",
+                    "slots": [],
+                    "samples": [
+                        "State options",
+                        "Tell me how the options are",
+                        "Tell me the options",
+                        "Tell me what the options are",
+                        "Check options"
+                    ]
                 }
             ],
             "types": [
@@ -1191,8 +1234,19 @@
                     "values": [
                         {
                             "name": {
-                                "value": "slot filtering",
+                                "value": "Answer filtering",
                                 "synonyms": [
+                                    "too many answers filter",
+                                    "answer filters",
+                                    "answer filter"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Slot filtering",
+                                "synonyms": [
+                                    "slot filter",
                                     "slot check",
                                     "slot filters"
                                 ]
@@ -1200,7 +1254,7 @@
                         },
                         {
                             "name": {
-                                "value": "bish mode",
+                                "value": "Bish mode",
                                 "synonyms": [
                                     "bitch mode",
                                     "rude mode"
