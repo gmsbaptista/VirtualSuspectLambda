@@ -32,9 +32,9 @@ namespace VirtualSuspectLambda
         //private bool bitchMode = false;
         private Dictionary<string, bool> options = new Dictionary<string, bool>()
         {
-            {"bish mode", false },
-            {"slot filtering", true },
-            {"answer filtering", true }
+            {"Bish mode", false },
+            {"Slot filtering", true },
+            {"Answer filtering", true }
         };
 
         /// <summary>
@@ -124,6 +124,32 @@ namespace VirtualSuspectLambda
                         log.LogLine($"ToggleOptionIntent: switch an option");
 
                         speechText = ToggleOption(intentRequest, log);
+
+                        BuildAnswer(ref innerResponse, ref prompt, speechText, false);
+                        break;
+                    case "TurnOnOptionIntent":
+                        log.LogLine($"TurnOnOptionIntent: turn option on");
+
+                        speechText = TurnOption(intentRequest, log, true);
+
+                        BuildAnswer(ref innerResponse, ref prompt, speechText, false);
+                        break;
+                    case "TurnOffOptionIntent":
+                        log.LogLine($"TurnOffOptionIntent: turn option off");
+
+                        speechText = TurnOption(intentRequest, log, false);
+
+                        BuildAnswer(ref innerResponse, ref prompt, speechText, false);
+                        break;
+                    case "CheckOptionsIntent":
+                        log.LogLine($"CheckOptionsIntent: say all the options");
+
+                        speechText = "";
+
+                        foreach (string option in options.Keys)
+                        {
+                            speechText += option + " is " + (options[option] ? "on." : "off.") + "\n";
+                        }
 
                         BuildAnswer(ref innerResponse, ref prompt, speechText, false);
                         break;
@@ -487,13 +513,20 @@ namespace VirtualSuspectLambda
         /// <returns>string</returns>
         private bool KnownSlot(Slot slot)
         {
-            if (slot.Resolution != null)
+            if (options["Slot filtering"])
             {
-                return slot.Resolution.Authorities[0].Status.Code == "ER_SUCCESS_MATCH";
+                if (slot.Resolution != null)
+                {
+                    return slot.Resolution.Authorities[0].Status.Code == "ER_SUCCESS_MATCH";
+                }
+                else
+                {
+                    return false;
+                }
             }
             else
             {
-                return false;
+                return true;
             }
         }
 
@@ -559,7 +592,7 @@ namespace VirtualSuspectLambda
             }
             if (inCharacter)
             {
-                if (options["bish mode"])
+                if (options["Bish mode"])
                 {
                     if (speechText == "Yes")
                     {
@@ -610,39 +643,55 @@ namespace VirtualSuspectLambda
             Dictionary<string, Slot> intent_slots = intent.Intent.Slots;
             string answer = "";
 
-            if (SlotExists(intent_slots, "option"))
+            if (SlotExists(intent_slots, "option") && KnownSlot(intent_slots["option"]))
             {
                 string option = TrueSlotValue(intent_slots["option"]);
-                answer += "You are toggling the " + option + " option.";
-                switch (option)
-                {
-                    case "bish mode":
-                        log.LogLine($"toggled the bish mode option");
-                        if (options[option])
-                        {
-                            answer += " It was turned on, it is now off.";
-                        }
-                        else
-                        {
-                            answer += " It was turned off, it is now on.";
-                        }
-                        options[option] = !options[option];
-                        break;
-                    case "slot filtering":
-                        log.LogLine($"toggled the slot filtering option");
-                        answer += " Nothing happens yet.";
-                        break;
-                    default:
-                        log.LogLine($"unknown option, doing nothing");
-                        answer += " Nothing happens yet.";
-                        break;
-                }
+                answer += option + " was " + (options[option] ? "on." : "off.");
+                options[option] = !options[option];
+                answer += " It is now " + (options[option] ? "on." : "off.");
+                log.LogLine($"toggled " + option + " option");
             }
             else
             {
-                answer += "You have to give an option you want to toggle.";
-                answer += " Nothing happens yet.";
+                answer += "That's not a valid option.";
+                log.LogLine($"invalid option");
             }
+
+            return answer;
+        }
+
+        /// <summary>
+        ///  Turns an option on or off
+        /// </summary>
+        /// <param name="intent"></param>
+        /// <param name="log"></param>
+        /// <param name="mode"></param>
+        /// <returns>string</returns>
+        private string TurnOption(IntentRequest intent, ILambdaLogger log, bool mode)
+        {
+            Dictionary<string, Slot> intent_slots = intent.Intent.Slots;
+            string answer = "";
+
+            if (SlotExists(intent_slots, "option") && KnownSlot(intent_slots["option"]))
+            {
+                string option = TrueSlotValue(intent_slots["option"]);
+                if (options[option] == mode)
+                {
+                    answer += option + " was already " + (mode ? "on." : "off.");
+                }
+                else
+                {
+                    options[option] = mode;
+                    answer += option + " is now " + (mode ? "on." : "off.");
+                }
+                log.LogLine($"toggled " + option + (mode? " on" : " off"));
+            }
+            else
+            {
+                answer += "That's not a valid option.";
+                log.LogLine($"invalid option");
+            }
+
             return answer;
         }
     }
