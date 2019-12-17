@@ -48,6 +48,7 @@
     <Compile Include="KnowledgeBase\ActionNode.cs" />
     <Compile Include="Exception\DimensionParseException.cs" />
     <Compile Include="IQuestionAnswerSystem.cs" />
+    <Compile Include="Query\AgentExistsConditionPredicate.cs" />
     <Compile Include="Query\GetTimeFocusPredicate.cs" />
     <Compile Include="Query\GetReasonFocusPredicate.cs" />
     <Compile Include="Query\GetMannerFocusPredicate.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="Query\ReasonEqualConditionPredicate.cs" />
     <Compile Include="Query\MannerEqualConditionPredicate.cs" />
     <Compile Include="Query\AgentEqualConditionPredicate.cs" />
+    <Compile Include="Query\ThemeExistsConditionPredicate.cs" />
     <Compile Include="Query\TimeBetweenConditionPredicate.cs" />
     <Compile Include="Query\TimeEqualConditionPredicate.cs" />
     <Compile Include="Query\IConditionPredicate.cs" />
