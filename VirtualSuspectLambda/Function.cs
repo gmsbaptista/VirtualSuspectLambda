@@ -717,7 +717,6 @@ namespace VirtualSuspectLambda
             return answer;
         }
 
-
         /// <summary>
         ///  Checks whether a word is a direct pronoun
         /// </summary>
@@ -746,6 +745,78 @@ namespace VirtualSuspectLambda
             };
 
             return indirectPronouns.Contains(pronoun);
+        }
+        
+        private class Context
+        {
+            private string action;
+            private List<string> agents;
+            private string location;
+            //private List<string> manners;
+            private List<string> reasons;
+            private List<string> themes;
+            private string time;
+
+            public Context (QueryResult result)
+            {
+                QueryDto question = result.Query;
+                foreach (IConditionPredicate condition in question.QueryConditions)
+                {
+                    if (condition.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Action)
+                    {
+                        action = condition.GetValues().ElementAt(0);
+                    }
+                    else if (condition.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Agent)
+                    {
+                        agents = condition.GetValues();
+                    }
+                    else if (condition.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Location)
+                    {
+                        location = condition.GetValues().ElementAt(0);
+                    }
+                    else if (condition.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Reason)
+                    {
+                        reasons = condition.GetValues();
+                    }
+                    else if (condition.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Theme)
+                    {
+                        themes = condition.GetValues();
+                    }
+                    else if (condition.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Time)
+                    {
+                        time = condition.GetValues().ElementAt(0);
+                    }
+                }
+                if (result.Results.Count == 1)
+                {
+                    QueryResult.Result answer = result.Results.ElementAt(0);
+                    List<string> values = new List<string>();
+                    foreach (EntityNode entity in answer.values)
+                    {
+                        values.Add(entity.Value);
+                    }
+                    if (answer.dimension == KnowledgeBaseManager.DimentionsEnum.Agent)
+                    {
+                        agents = values;
+                    }
+                    else if (answer.dimension == KnowledgeBaseManager.DimentionsEnum.Location)
+                    {
+                        location = values.ElementAt(0);
+                    }
+                    else if (answer.dimension == KnowledgeBaseManager.DimentionsEnum.Reason)
+                    {
+                        reasons = values;
+                    }
+                    else if (answer.dimension == KnowledgeBaseManager.DimentionsEnum.Theme)
+                    {
+                        themes = values;
+                    }
+                    else if (answer.dimension == KnowledgeBaseManager.DimentionsEnum.Time)
+                    {
+                        time = values.ElementAt(0);
+                    }
+                }
+            }
         }
     }
 }
