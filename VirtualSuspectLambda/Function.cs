@@ -667,7 +667,7 @@ namespace VirtualSuspectLambda
         /// <param name="log"></param>
         /// <param name="mode"></param>
         /// <returns>string</returns>
-        private string TurnOption(IntentRequest intent, ILambdaLogger log, bool mode)
+        private string TurnOption (IntentRequest intent, ILambdaLogger log, bool mode)
         {
             Dictionary<string, Slot> intent_slots = intent.Intent.Slots;
             string answer = "";
@@ -693,6 +693,37 @@ namespace VirtualSuspectLambda
             }
 
             return answer;
+        }
+
+
+        /// <summary>
+        ///  Checks whether a word is a direct pronoun
+        /// </summary>
+        /// <param name="pronoun"></param>
+        /// <returns>bool</returns>
+        private bool CheckDirectPronoun (string pronoun)
+        {
+            List<string> directPronouns = new List<string>()
+            {
+                "there", "him", "it"
+            };
+
+            return directPronouns.Contains(pronoun);
+        }
+
+        /// <summary>
+        ///  Checks whether a word is a indirect pronoun
+        /// </summary>
+        /// <param name="pronoun"></param>
+        /// <returns>bool</returns>
+        private bool CheckIndirectPronoun(string pronoun)
+        {
+            List<string> indirectPronouns = new List<string>()
+            {
+                "something", "someone", "anything", "anyone"
+            };
+
+            return indirectPronouns.Contains(pronoun);
         }
     }
 }
