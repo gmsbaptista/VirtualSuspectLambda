@@ -664,6 +664,21 @@
                     "values": [
                         {
                             "name": {
+                                "value": "anyone"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "someone"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "him"
+                            }
+                        },
+                        {
+                            "name": {
                                 "value": "Delivery Boy",
                                 "synonyms": [
                                     "the delivery guy",
@@ -694,6 +709,11 @@
                 {
                     "name": "location_slot_type",
                     "values": [
+                        {
+                            "name": {
+                                "value": "there"
+                            }
+                        },
                         {
                             "name": {
                                 "value": "Castle Town",
@@ -780,6 +800,21 @@
                 {
                     "name": "theme_slot_type",
                     "values": [
+                        {
+                            "name": {
+                                "value": "it"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "anything"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "something"
+                            }
+                        },
                         {
                             "name": {
                                 "value": "Ticket to SilverMoon City",
