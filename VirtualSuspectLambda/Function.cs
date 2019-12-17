@@ -328,8 +328,19 @@ namespace VirtualSuspectLambda
                 {
                     string agent = TrueSlotValue(intent_slots["agent"]);
                     log.LogLine($"agent slot: " + agent);
-                    List<string> agents = new List<string>() { agent };
-                    query.AddCondition(new AgentEqualConditionPredicate(agents));
+                    if (CheckDirectPronoun(agent))
+                    {
+                        //do nothing for now
+                    }
+                    else if (CheckIndirectPronoun(agent))
+                    {
+                        query.AddCondition(new AgentExistsConditionPredicate());
+                    }
+                    else
+                    {
+                        List<string> agents = new List<string>() { agent };
+                        query.AddCondition(new AgentEqualConditionPredicate(agents));
+                    }
                 }
                 else
                 {
@@ -386,8 +397,19 @@ namespace VirtualSuspectLambda
                 {
                     string theme = TrueSlotValue(intent_slots["theme"]);
                     log.LogLine($"theme slot: " + theme);
-                    List<string> themes = new List<string>() { theme };
-                    query.AddCondition(new ThemeEqualConditionPredicate(themes));
+                    if (CheckDirectPronoun(theme))
+                    {
+                        //do nothing for now
+                    }
+                    else if (CheckIndirectPronoun(theme))
+                    {
+                        query.AddCondition(new ThemeExistsConditionPredicate());
+                    }
+                    else
+                    {
+                        List<string> themes = new List<string>() { theme };
+                        query.AddCondition(new ThemeEqualConditionPredicate(themes));
+                    }
                 }
                 else
                 {
