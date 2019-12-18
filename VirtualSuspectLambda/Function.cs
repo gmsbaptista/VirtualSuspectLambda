@@ -29,6 +29,7 @@ namespace VirtualSuspectLambda
         const string voice = "Matthew";
         private KnowledgeBaseManager knowledge_base;
         private VirtualSuspectQuestionAnswer virtual_suspect;
+        private Context lastInteraction;
         //private bool bitchMode = false;
         private Dictionary<string, bool> options = new Dictionary<string, bool>()
         {
@@ -66,6 +67,7 @@ namespace VirtualSuspectLambda
 
                 knowledge_base = KnowledgeBaseParser.parseFromFile("RobberyStory.xml");
                 virtual_suspect = new VirtualSuspectQuestionAnswer(knowledge_base);
+                lastInteraction = new Context();
 
                 log.LogLine($"first entity in kb: " + knowledge_base.Entities[0].Value);
                 log.LogLine($"first action in kb: " + knowledge_base.Actions[0].Action);
@@ -264,6 +266,7 @@ namespace VirtualSuspectLambda
                 if (query.QueryConditions.Count > 1)
                 {
                     QueryResult queryResult = virtual_suspect.Query(query);
+                    lastInteraction.UpdateResult(queryResult);
                     log.LogLine($"query results:");
                     foreach (QueryResult.Result result in queryResult.Results)
                     {
@@ -330,7 +333,18 @@ namespace VirtualSuspectLambda
                     log.LogLine($"agent slot: " + agent);
                     if (CheckDirectPronoun(agent))
                     {
-                        //do nothing for now
+                        string prevAgent = lastInteraction.GetAgent(out bool success);
+                        if (success)
+                        {
+                            List<string> agents = new List<string>() { prevAgent };
+                            query.AddCondition(new AgentEqualConditionPredicate(agents));
+                        }
+                        else
+                        {
+                            log.LogLine($"missing reference");
+                            return false;
+                        }
+
                     }
                     else if (CheckIndirectPronoun(agent))
                     {
@@ -754,6 +768,34 @@ namespace VirtualSuspectLambda
             public void UpdateResult (QueryResult res)
             {
                 this.result = res;
+            }
+
+            public string GetAgent (out bool success)
+            {
+                string agent = "";
+                success = false;
+
+                if (this.result.Results.Count == 1 &&
+                    this.result.Results.ElementAt(0).dimension == KnowledgeBaseManager.DimentionsEnum.Agent)
+                {
+                    agent = this.result.Results.ElementAt(0).values.ElementAt(0).Value;
+                    success = true;
+                }
+                else
+                {
+                    foreach (IConditionPredicate condition in this.result.Query.QueryConditions)
+                    {
+                        if (condition.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Agent && 
+                            !condition.GetValues().Contains("Peter Barker"))
+                        {
+                            agent = condition.GetValues().ElementAt(0);
+                            success = true;
+                            break;
+                        }
+                    }
+                }
+
+                return agent;
             }
         }
     }
