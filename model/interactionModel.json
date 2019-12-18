@@ -678,6 +678,54 @@
                         "Tell me what the options are",
                         "Check options"
                     ]
+                },
+                {
+                    "name": "GetTimeContextualIntent",
+                    "slots": [],
+                    "samples": [
+                        "When did you do that",
+                        "When did you do it",
+                        "When was that",
+                        "When did that happen",
+                        "When"
+                    ]
+                },
+                {
+                    "name": "GetLocationContextualIntent",
+                    "slots": [],
+                    "samples": [
+                        "Where was that",
+                        "Where did that happen",
+                        "Where"
+                    ]
+                },
+                {
+                    "name": "GetAgentContextualIntent",
+                    "slots": [],
+                    "samples": [
+                        "Who did you meet",
+                        "Who were you with",
+                        "Who was there",
+                        "Who was it",
+                        "Who"
+                    ]
+                },
+                {
+                    "name": "GetThemeContextualIntent",
+                    "slots": [],
+                    "samples": [
+                        "What was it",
+                        "What"
+                    ]
+                },
+                {
+                    "name": "GetReasonContextualIntent",
+                    "slots": [],
+                    "samples": [
+                        "Why did that happen",
+                        "Why was that",
+                        "Why"
+                    ]
                 }
             ],
             "types": [
