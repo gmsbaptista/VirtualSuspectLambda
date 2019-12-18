@@ -382,7 +382,28 @@ namespace VirtualSuspectLambda
                 {
                     string location = TrueSlotValue(intent_slots["location"]);
                     log.LogLine($"location slot: " + location);
-                    query.AddCondition(new LocationEqualConditionPredicate(location));
+                    if (CheckDirectPronoun(location))
+                    {
+                        string prevLocation = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Location, out bool success);
+                        if (success)
+                        {
+                            query.AddCondition(new LocationEqualConditionPredicate(prevLocation));
+                        }
+                        else
+                        {
+                            log.LogLine($"missing reference");
+                            return false;
+                        }
+
+                    }
+                    else if (CheckIndirectPronoun(location))
+                    {
+                        //do nothing for now
+                    }
+                    else
+                    {
+                        query.AddCondition(new LocationEqualConditionPredicate(location));
+                    }
                 }
                 else
                 {
@@ -413,7 +434,17 @@ namespace VirtualSuspectLambda
                     log.LogLine($"theme slot: " + theme);
                     if (CheckDirectPronoun(theme))
                     {
-                        //do nothing for now
+                        string prevTheme = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Theme, out bool success);
+                        if (success)
+                        {
+                            List<string> themes = new List<string>() { prevTheme };
+                            query.AddCondition(new ThemeEqualConditionPredicate(themes));
+                        }
+                        else
+                        {
+                            log.LogLine($"missing reference");
+                            return false;
+                        }
                     }
                     else if (CheckIndirectPronoun(theme))
                     {
@@ -796,6 +827,33 @@ namespace VirtualSuspectLambda
                 }
 
                 return agent;
+            }
+
+            public string GetEntity (KnowledgeBaseManager.DimentionsEnum dimension, out bool success)
+            {
+                string entity = "";
+                success = false;
+
+                if (this.result.Results.Count == 1 &&
+                    this.result.Results.ElementAt(0).dimension == dimension)
+                {
+                    entity = this.result.Results.ElementAt(0).values.ElementAt(0).Value;
+                    success = true;
+                }
+                else
+                {
+                    foreach (IConditionPredicate condition in this.result.Query.QueryConditions)
+                    {
+                        if (condition.GetSemanticRole() == dimension &&
+                            !condition.GetValues().Contains("Peter Barker"))
+                        {
+                            entity = condition.GetValues().ElementAt(0);
+                            success = true;
+                            break;
+                        }
+                    }
+                }
+                return entity;
             }
         }
     }
