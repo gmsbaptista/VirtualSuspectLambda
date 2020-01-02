@@ -272,7 +272,7 @@ namespace VirtualSuspectLambda
                 {
                     QueryResult queryResult = virtual_suspect.Query(query);
                     lastInteraction.UpdateResult(queryResult);
-                    log.LogLine($"query results:");
+                    log.LogLine($"query results(" + queryResult.Results.Count + "):");
                     foreach (QueryResult.Result result in queryResult.Results)
                     {
                         log.LogLine($"result dimension: " + result.dimension);
@@ -283,7 +283,22 @@ namespace VirtualSuspectLambda
                             log.LogLine($"value: " + entity.Value);
                         }
                     }
-                    speechText = NaturalLanguageGenerator.GenerateAnswer(queryResult);
+                    if (queryResult.Results.Count == 0)
+                    {
+                        if (queryResult.Query.QueryFocus.Count == 1)
+                        {
+                            speechText = EmptyAnswerGeneration(queryResult.Query.QueryFocus.ElementAt(0).GetSemanticRole());
+                        }
+                        else
+                        {
+                            log.LogLine($"unexpected number of focuses");
+                            speechText = "I'm not sure what to answer";
+                        }
+                    }
+                    else
+                    {
+                        speechText = NaturalLanguageGenerator.GenerateAnswer(queryResult);
+                    }
                 }
                 else
                 {
@@ -666,6 +681,40 @@ namespace VirtualSuspectLambda
             }
 
             return date_elements[2] + "/" + date_elements[1] + "/" + "2016" + "T" + time; 
+        }
+
+        /// <summary>
+        ///  Generates a question appropriate answer for empty responses
+        /// </summary>
+        /// <param name="dimension"></param>
+        /// <returns>string</returns>
+        private string EmptyAnswerGeneration (KnowledgeBaseManager.DimentionsEnum dimension)
+        {
+            string answer;
+
+            switch (dimension)
+            {
+                case KnowledgeBaseManager.DimentionsEnum.Agent:
+                    answer = "No one";
+                    break;
+                case KnowledgeBaseManager.DimentionsEnum.Location:
+                    answer = "Nowhere";
+                    break;
+                case KnowledgeBaseManager.DimentionsEnum.Reason:
+                    answer = "No reason";
+                    break;
+                case KnowledgeBaseManager.DimentionsEnum.Theme:
+                    answer = "Nothing";
+                    break;
+                case KnowledgeBaseManager.DimentionsEnum.Time:
+                    answer = "Never";
+                    break;
+                default:
+                    answer = "No idea";
+                    break;
+            }
+
+            return answer;
         }
 
         /// <summary>
