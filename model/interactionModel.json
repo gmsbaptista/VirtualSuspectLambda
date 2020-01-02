@@ -1339,6 +1339,16 @@
                     "values": [
                         {
                             "name": {
+                                "value": "Detailed feedback",
+                                "synonyms": [
+                                    "more detailed feedback",
+                                    "more details",
+                                    "details"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
                                 "value": "Empty answer generation",
                                 "synonyms": [
                                     "empty answer filter",
