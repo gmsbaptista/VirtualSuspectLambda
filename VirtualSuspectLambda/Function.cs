@@ -121,6 +121,10 @@ namespace VirtualSuspectLambda
                         log.LogLine($"AMAZON.FallbackIntent: express confusion");
 
                         speechText = "I do not know what you are talking about";
+                        if (options["Detailed feedback"])
+                        {
+                            speechText += ". Fallback intent";
+                        }
 
                         BuildAnswer(ref innerResponse, ref prompt, speechText, true);
                         break;
@@ -240,6 +244,10 @@ namespace VirtualSuspectLambda
                         log.LogLine($"Unknown intent: " + intentRequest.Intent.Name);
 
                         speechText = "What you said wasn't recognized by the Virtual Suspect model. Try saying something else.";
+                        if (options["Detailed feedback"])
+                        {
+                            speechText += " Unknown intent";
+                        }
 
                         BuildAnswer(ref innerResponse, ref prompt, speechText, false);
                         break;
@@ -295,11 +303,19 @@ namespace VirtualSuspectLambda
                         {
                             log.LogLine($"unexpected number of focuses");
                             speechText = "I'm not sure what to answer";
+                            if (options["Detailed feedback"])
+                            {
+                                speechText += ". No results and too many focuses";
+                            }
                         }
                     }
                     else if (queryResult.Results.Count > 1 && options["Answer filtering"])
                     {
                         speechText = "You'll have to be more specific";
+                        if (options["Detailed feedback"])
+                        {
+                            speechText += ". Too many answers";
+                        }
                     }
                     else
                     {
@@ -309,11 +325,19 @@ namespace VirtualSuspectLambda
                 else
                 {
                     speechText = "I'm not sure what you expect me to say";
+                    if (options["Detailed feedback"])
+                    {
+                        speechText += ". No conditions in the query";
+                    }
                 }
             }
             else
             {
                 speechText = "I don't quite understand what you said";
+                if (options["Detailed feedback"])
+                {
+                    speechText += ". Unknown slot values";
+                }
             }
             log.LogLine($"speech text: " + speechText);
             BuildAnswer(ref innerResponse, ref prompt, speechText, true);
@@ -736,6 +760,10 @@ namespace VirtualSuspectLambda
             if (string.IsNullOrEmpty(speechText))
             {
                 speechText = "I don't know";
+                if (options["Detailed feedback"])
+                {
+                    speechText += ". Empty answer";
+                }
             }
             if (inCharacter)
             {
