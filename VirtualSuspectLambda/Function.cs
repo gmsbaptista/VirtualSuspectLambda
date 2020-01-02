@@ -284,7 +284,7 @@ namespace VirtualSuspectLambda
                             log.LogLine($"value: " + entity.Value);
                         }
                     }
-                    if (queryResult.Results.Count == 0)
+                    if (queryResult.Results.Count == 0 && options["Empty answer generation"])
                     {
                         if (queryResult.Query.QueryFocus.Count == 1)
                         {
@@ -295,6 +295,10 @@ namespace VirtualSuspectLambda
                             log.LogLine($"unexpected number of focuses");
                             speechText = "I'm not sure what to answer";
                         }
+                    }
+                    else if (queryResult.Results.Count > 1 && options["Answer filtering"])
+                    {
+                        speechText = "You'll have to be more specific";
                     }
                     else
                     {
