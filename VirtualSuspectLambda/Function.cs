@@ -293,7 +293,8 @@ namespace VirtualSuspectLambda
                             log.LogLine($"value: " + entity.Value);
                         }
                     }
-                    if (queryResult.Results.Count == 0 && options["Empty answer generation"])
+                    if (queryResult.Query.QueryType != QueryDto.QueryTypeEnum.YesOrNo && queryResult.Results.Count == 0 && 
+                        options["Empty answer generation"])
                     {
                         if (queryResult.Query.QueryFocus.Count == 1)
                         {
@@ -309,7 +310,8 @@ namespace VirtualSuspectLambda
                             }
                         }
                     }
-                    else if (queryResult.Results.Count > 1 && options["Answer filtering"])
+                    else if (queryResult.Query.QueryType != QueryDto.QueryTypeEnum.YesOrNo && queryResult.Results.Count > 1 && 
+                        options["Answer filtering"])
                     {
                         speechText = "You'll have to be more specific";
                         if (options["Detailed feedback"])
