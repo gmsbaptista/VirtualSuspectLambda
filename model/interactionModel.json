@@ -1339,6 +1339,16 @@
                     "values": [
                         {
                             "name": {
+                                "value": "Empty answer generation",
+                                "synonyms": [
+                                    "empty answer filter",
+                                    "empty answer filtering",
+                                    "empty answers"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
                                 "value": "Answer filtering",
                                 "synonyms": [
                                     "too many answers filter",

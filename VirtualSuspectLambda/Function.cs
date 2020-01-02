@@ -35,7 +35,8 @@ namespace VirtualSuspectLambda
         {
             {"Bish mode", false },
             {"Slot filtering", true },
-            {"Answer filtering", true }
+            {"Answer filtering", true },
+            {"Empty answer generation", true }
         };
 
         /// <summary>
