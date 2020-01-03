@@ -533,7 +533,8 @@ namespace VirtualSuspectLambda
                     }
                 }
                 if (SlotExists(intent_slots, "date_one") || SlotExists(intent_slots, "date_two")
-                    || SlotExists(intent_slots, "time_one") || SlotExists(intent_slots, "time_two")) //Time slots
+                    || SlotExists(intent_slots, "time_one") || SlotExists(intent_slots, "time_two")
+                    || SlotExists(intent_slots, "time_pronoun")) //Time slots
                 {
                     log.LogLine($"time slots");
                     if (SlotExists(intent_slots, "date_one") && SlotExists(intent_slots, "date_two")) //Two dates
@@ -602,6 +603,67 @@ namespace VirtualSuspectLambda
                         else
                         {
                             query.AddCondition(new TimeEqualConditionPredicate(CreateTimeStamp(date1, time1)));
+                        }
+                    }
+                    else if (SlotExists(intent_slots, "time_pronoun"))
+                    {
+                        log.LogLine($"time pronoun");
+                        if (KnownSlot(intent_slots["time_pronoun"]))
+                        {
+                            string time_pronoun = TrueSlotValue(intent_slots["time_pronoun"]);
+                            log.LogLine($"time_pronoun slot: " + time_pronoun);
+                            if (CheckDirectPronoun(time_pronoun))
+                            {
+                                string prevTime = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Time, out bool success);
+                                if (success)
+                                {
+                                    if (time_pronoun == "that day")
+                                    {
+                                        string date;
+                                        string[] split = prevTime.Split('>');
+                                        if (split.Length == 1)
+                                        {
+                                            date = prevTime.Split('T')[0];
+                                            query.AddCondition(new TimeBetweenConditionPredicate(date + "T" + "00:00:00", date + "T" + "23:59:59"));
+                                        }
+                                        else if (split[0].Split('T')[0] == split[1].Split('T')[0])
+                                        {
+                                            date = split[0].Split('T')[0];
+                                            query.AddCondition(new TimeBetweenConditionPredicate(date + "T" + "00:00:00", date + "T" + "23:59:59"));
+                                        }
+                                        else
+                                        {
+                                            log.LogLine($"no single date to fill 'that day' pronoun, exiting");
+                                            return false;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        log.LogLine($"unknown time pronoun, exiting");
+                                        return false;
+                                    }
+                                }
+                                else
+                                {
+                                    log.LogLine($"missing reference");
+                                    return false;
+                                }
+
+                            }
+                            else if (CheckIndirectPronoun(time_pronoun))
+                            {
+                                //do nothing for now
+                            }
+                            else
+                            {
+                                log.LogLine($"there is no time pronoun, exiting");
+                                return false;
+                            }
+                        }
+                        else
+                        {
+                            log.LogLine($"unknown time pronoun, exiting");
+                            return false;
                         }
                     }
                     else
