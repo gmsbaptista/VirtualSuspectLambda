@@ -881,7 +881,7 @@ namespace VirtualSuspectLambda
         {
             List<string> directPronouns = new List<string>()
             {
-                "there", "him", "it"
+                "there", "him", "it", "that day"
             };
 
             return directPronouns.Contains(pronoun);
