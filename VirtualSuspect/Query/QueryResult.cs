@@ -102,6 +102,17 @@ namespace VirtualSuspect.Query
             }
 
             results = newUniqueResults;
+
+            //hammered by palhas
+            List<Result> newNewUniqueResults = new List<Result>();
+            foreach (Result result1 in newUniqueResults)
+            {
+                if (result1.values.Count > 0)
+                {
+                    newNewUniqueResults.Add(result1);
+                }
+            }
+            results = newNewUniqueResults;
         }
 
         private class GroupByComparer : IEqualityComparer<Result>
