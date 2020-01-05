@@ -99,34 +99,7 @@ namespace VirtualSuspect {
                 foreach (IFocusPredicate focus in query.QueryFocus) {
 
                     result.AddResults(queryEvents.Select(focus.CreateFunction()));
-                    /*
-                    //MARTELADO BY PALHAS
-                    if (focus is GetAgentFocusPredicate)
-                    {
-                        foreach(QueryResult.Result res in result.Results)
-                        {
-                            if (res.values.Count > 1)
-                            {
-                                foreach (EntityNode entity in res.values)
-                                {
-                                    if (entity.Value == "Peter Barker")
-                                    {
-                                        res.values.Remove(entity);
-                                        break;
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                if (res.values.ElementAt(0).Value == "Peter Barker")
-                                {
-                                    result.Results.Remove(res);
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                    */
+
                 }
                 
                 //Count Cardinality
