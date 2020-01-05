@@ -51,6 +51,16 @@ namespace VirtualSuspect.KnowledgeBase {
             }
         }
 
+        private EntityNode subject;
+
+        public EntityNode Subject
+        {
+            get
+            {
+                return subject;
+            }
+        }
+
         private List<EntityNode> agent;
 
         public List<EntityNode> Agent
@@ -91,12 +101,13 @@ namespace VirtualSuspect.KnowledgeBase {
             }
         }
 
-        public EventDto(int incriminatory, ActionNode action, EntityNode time, EntityNode location, bool real) {
+        public EventDto(int incriminatory, ActionNode action, EntityNode time, EntityNode location, EntityNode subject, bool real) {
             
             this.incriminatory = incriminatory;
             this.action = action;
             this.time = time;
             this.location = location;
+            this.subject = subject;
             this.real = real;
 
             agent = new List<EntityNode>();

@@ -99,7 +99,7 @@ namespace VirtualSuspect {
                 foreach (IFocusPredicate focus in query.QueryFocus) {
 
                     result.AddResults(queryEvents.Select(focus.CreateFunction()));
-
+                    /*
                     //MARTELADO BY PALHAS
                     if (focus is GetAgentFocusPredicate)
                     {
@@ -126,7 +126,7 @@ namespace VirtualSuspect {
                             }
                         }
                     }
-
+                    */
                 }
                 
                 //Count Cardinality

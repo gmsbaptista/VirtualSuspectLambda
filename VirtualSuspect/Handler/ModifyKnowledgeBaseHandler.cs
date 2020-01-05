@@ -48,6 +48,14 @@ namespace VirtualSuspect.Handler {
                             duplicateNode.ToMTable.Add(duplicateNode.Time, false);
                         }
 
+                        //TODO by Palhas: Unsure if this method is best for Subject, but gonna use this for now
+                        //Keep the same subject is mandatory
+                        if (NonAddedEntities[KnowledgeBaseManager.DimentionsEnum.Subject].Count > 0)
+                        {
+                            duplicateNode.Subject = eventNode.Subject;
+                            duplicateNode.ToMTable.Add(duplicateNode.Subject, false);
+                        }
+
                         //Add a random Location if needed
                         if (NonAddedEntities[KnowledgeBaseManager.DimentionsEnum.Location].Count > 0) {
 
@@ -65,7 +73,7 @@ namespace VirtualSuspect.Handler {
 
                             }
                         }
-
+                        /*
                         //Get Virtual Agent EntityNode
                         EntityNode SelfAgentNode = virtualSuspect.KnowledgeBase.Entities.Find(x => x.Value == virtualSuspect.KnowledgeBase.Properties["Name"]);
                         bool ContainsSelfAgentNode = eventNode.Agent.Contains(SelfAgentNode);
@@ -78,7 +86,7 @@ namespace VirtualSuspect.Handler {
                             NonAddedEntities[KnowledgeBaseManager.DimentionsEnum.Agent].Remove(SelfAgentNode);
 
                         }
-                        
+                        */
                         //Fill the rest of agents
                         foreach(EntityNode OldAgentNode in NonAddedEntities[KnowledgeBaseManager.DimentionsEnum.Agent]) {
 
@@ -168,6 +176,7 @@ namespace VirtualSuspect.Handler {
             ToAdd.Add(KnowledgeBaseManager.DimentionsEnum.Manner, new List<EntityNode>());
             ToAdd.Add(KnowledgeBaseManager.DimentionsEnum.Reason, new List<EntityNode>());
             ToAdd.Add(KnowledgeBaseManager.DimentionsEnum.Time, new List<EntityNode>());
+            ToAdd.Add(KnowledgeBaseManager.DimentionsEnum.Subject, new List<EntityNode>());
 
             //Copy each dimension if they are known
             if (keepKnown && old.IsKnown(old.Time)) {
@@ -182,6 +191,16 @@ namespace VirtualSuspect.Handler {
                 eventCopy.ToMTable.Add(old.Location, true);
             } else {
                 ToAdd[KnowledgeBaseManager.DimentionsEnum.Location].Add(old.Location);
+            }
+
+            if (keepKnown && old.IsKnown(old.Subject))
+            {
+                eventCopy.Subject = old.Subject;
+                eventCopy.ToMTable.Add(old.Subject, true);
+            }
+            else
+            {
+                ToAdd[KnowledgeBaseManager.DimentionsEnum.Subject].Add(old.Subject);
             }
 
             foreach (EntityNode AgentNode in old.Agent) {

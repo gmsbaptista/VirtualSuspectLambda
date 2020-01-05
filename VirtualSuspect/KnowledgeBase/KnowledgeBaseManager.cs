@@ -12,7 +12,7 @@ namespace VirtualSuspect.KnowledgeBase {
 
         #region Enumerates
     
-        public enum DimentionsEnum { Action, Agent, Theme, Manner, Location, Time, Reason };
+        public enum DimentionsEnum { Action, Agent, Location, Manner, Reason, Subject, Theme, Time };
         
         public static DimentionsEnum convertToDimentions(string dimension) {
 
@@ -21,16 +21,18 @@ namespace VirtualSuspect.KnowledgeBase {
             switch (dimension) {
                 case "action":
                     return KnowledgeBaseManager.DimentionsEnum.Action;
-                case "location":
-                    return KnowledgeBaseManager.DimentionsEnum.Location;
                 case "agent":
                     return KnowledgeBaseManager.DimentionsEnum.Agent;
-                case "theme":
-                    return KnowledgeBaseManager.DimentionsEnum.Theme;
+                case "location":
+                    return KnowledgeBaseManager.DimentionsEnum.Location;
                 case "manner":
                     return KnowledgeBaseManager.DimentionsEnum.Manner;
                 case "reason":
                     return KnowledgeBaseManager.DimentionsEnum.Reason;
+                case "subject":
+                    return KnowledgeBaseManager.DimentionsEnum.Subject;
+                case "theme":
+                    return KnowledgeBaseManager.DimentionsEnum.Theme;
                 case "time":
                     return KnowledgeBaseManager.DimentionsEnum.Time;
                 default:
@@ -51,6 +53,8 @@ namespace VirtualSuspect.KnowledgeBase {
                     return "manner";
                 case DimentionsEnum.Reason:
                     return "reason";
+                case DimentionsEnum.Subject:
+                    return "subject";
                 case DimentionsEnum.Theme:
                     return "theme";
                 case DimentionsEnum.Time:
@@ -220,11 +224,14 @@ namespace VirtualSuspect.KnowledgeBase {
             if (ev.Location == null) //Test if has Location
                 throw new DtoFieldException("EventDto should have the field 'Location'");
 
+            if (ev.Subject == null) //Test if has Subject
+                throw new DtoFieldException("EventDto should have the field 'Subject'");
+
             //Get new id for the Event Node
             uint newEventNodeId = getNextNodeId("event");
 
             //Create a new node with the default fields
-            EventNode newEventNode = new EventNode(newEventNodeId, ev.Incriminatory, ev.Real, ev.Action, ev.Time, ev.Location);
+            EventNode newEventNode = new EventNode(newEventNodeId, ev.Incriminatory, ev.Real, ev.Action, ev.Time, ev.Location, ev.Subject);
 
             //Add other fields
             newEventNode.AddAgent(ev.Agent);
@@ -303,7 +310,7 @@ namespace VirtualSuspect.KnowledgeBase {
 
         #region Incriminatory Related Methods
 
-        internal void PropagateIncriminaotryValues() {
+        internal void PropagateIncriminatoryValues() {
 
             Dictionary<EntityNode, List<EventNode>> entityToEvent = new Dictionary<EntityNode, List<EventNode>>();
 
@@ -320,6 +327,9 @@ namespace VirtualSuspect.KnowledgeBase {
 
                 //Location
                 entityToEvent[eventNode.Location].Add(eventNode);
+
+                //Subject
+                entityToEvent[eventNode.Subject].Add(eventNode);
 
                 //Agent
                 foreach (EntityNode agent in eventNode.Agent) {
@@ -393,6 +403,11 @@ namespace VirtualSuspect.KnowledgeBase {
 
                     if (eventNode.Location == node) {
                         semanticRoles.Add(KnowledgeBaseManager.DimentionsEnum.Location);
+                    }
+
+                    if (eventNode.Subject == node)
+                    {
+                        semanticRoles.Add(KnowledgeBaseManager.DimentionsEnum.Subject);
                     }
                 }
             }

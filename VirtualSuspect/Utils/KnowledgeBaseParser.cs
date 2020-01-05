@@ -85,6 +85,10 @@ namespace VirtualSuspect.Utils
                 XmlNode locationXmlNode = eventXmlNode.SelectSingleNode("association[@relation='Location']");
                 EntityNode locationNode = entities[UInt32.Parse(locationXmlNode.SelectSingleNode("entity").Attributes["id"].Value)];
 
+                //Get Subject
+                XmlNode subjectXmlNode = eventXmlNode.SelectSingleNode("association[@relation='Subject']");
+                EntityNode subjectNode = entities[UInt32.Parse(subjectXmlNode.SelectSingleNode("entity").Attributes["id"].Value)];
+
                 //Get accusatory factor
                 int incriminatoryValue = Int32.Parse(eventXmlNode.SelectSingleNode("incriminatory").InnerText);
 
@@ -92,7 +96,7 @@ namespace VirtualSuspect.Utils
                 bool realFlag = eventXmlNode.SelectSingleNode("real").InnerText == "true";
 
                 //Make new EventNode
-                EventDto eventDto = new EventDto(incriminatoryValue, newActionNode, timeNode, locationNode, realFlag);
+                EventDto eventDto = new EventDto(incriminatoryValue, newActionNode, timeNode, locationNode, subjectNode, realFlag);
 
                 //Make associations
                 XmlNodeList associationNodesList = eventXmlNode.SelectNodes("association");
@@ -140,7 +144,7 @@ namespace VirtualSuspect.Utils
 
             }
 
-            kb.PropagateIncriminaotryValues();
+            kb.PropagateIncriminatoryValues();
 
             return kb;
 

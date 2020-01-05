@@ -378,15 +378,15 @@ namespace VirtualSuspectLambda
                 {
                     if (KnownSlot(intent_slots["subject"]))
                     {
-                        if (TrueSlotValue(intent_slots["subject"]) == "Peter Barker")
+                        string subject = TrueSlotValue(intent_slots["subject"]);
+                        if (subject == "Peter Barker")
                         {
                             log.LogLine($"subject slot: Peter Barker");
-                            List<string> agents = new List<string>() { "Peter Barker" };
-                            query.AddCondition(new AgentEqualConditionPredicate(agents));
+                            query.AddCondition(new SubjectEqualConditionPredicate(subject));
                         }
                         else
                         {
-                            log.LogLine($"subject slot: unexpected subject");
+                            log.LogLine($"subject slot: unexpected subject - " + subject);
                         }
                     }
                     else
@@ -403,7 +403,7 @@ namespace VirtualSuspectLambda
                         log.LogLine($"agent slot: " + agent);
                         if (CheckDirectPronoun(agent))
                         {
-                            string prevAgent = lastInteraction.GetAgent(out bool success);
+                            string prevAgent = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Agent, out bool success);
                             if (success)
                             {
                                 List<string> agents = new List<string>() { prevAgent };
@@ -988,34 +988,6 @@ namespace VirtualSuspectLambda
                 this.result = res;
             }
 
-            public string GetAgent (out bool success)
-            {
-                string agent = "";
-                success = false;
-
-                if (this.result.Results.Count == 1 &&
-                    this.result.Results.ElementAt(0).dimension == KnowledgeBaseManager.DimentionsEnum.Agent)
-                {
-                    agent = this.result.Results.ElementAt(0).values.ElementAt(0).Value;
-                    success = true;
-                }
-                else
-                {
-                    foreach (IConditionPredicate condition in this.result.Query.QueryConditions)
-                    {
-                        if (condition.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Agent && 
-                            !condition.GetValues().Contains("Peter Barker"))
-                        {
-                            agent = condition.GetValues().ElementAt(0);
-                            success = true;
-                            break;
-                        }
-                    }
-                }
-
-                return agent;
-            }
-
             public string GetEntity (KnowledgeBaseManager.DimentionsEnum dimension, out bool success)
             {
                 string entity = "";
@@ -1031,8 +1003,7 @@ namespace VirtualSuspectLambda
                 {
                     foreach (IConditionPredicate condition in this.result.Query.QueryConditions)
                     {
-                        if (condition.GetSemanticRole() == dimension &&
-                            !condition.GetValues().Contains("Peter Barker"))
+                        if (condition.GetSemanticRole() == dimension)
                         {
                             entity = condition.GetValues().ElementAt(0);
                             success = true;

@@ -54,6 +54,7 @@
     <Compile Include="Query\GetMannerFocusPredicate.cs" />
     <Compile Include="Query\GetThemeFocusPredicate.cs" />
     <Compile Include="Query\GetAgentFocusPredicate.cs" />
+    <Compile Include="Query\SubjectEqualConditionPredicate.cs" />
     <Compile Include="Query\ThemeEqualConditionPredicate.cs" />
     <Compile Include="Query\ReasonEqualConditionPredicate.cs" />
     <Compile Include="Query\MannerEqualConditionPredicate.cs" />

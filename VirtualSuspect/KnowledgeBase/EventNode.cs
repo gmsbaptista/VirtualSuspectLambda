@@ -82,6 +82,21 @@ namespace VirtualSuspect.KnowledgeBase {
             }
         }
 
+        private EntityNode subject;
+
+        public EntityNode Subject
+        {
+            get
+            {
+                return subject;
+            }
+
+            set
+            {
+                subject = value;
+            }
+        }
+
         private List<EntityNode> agent;
 
         public List<EntityNode> Agent
@@ -151,13 +166,14 @@ namespace VirtualSuspect.KnowledgeBase {
 
         }
 
-        public EventNode(uint id, int incriminatory, bool originalStory, ActionNode action, EntityNode time, EntityNode location) {
+        public EventNode(uint id, int incriminatory, bool originalStory, ActionNode action, EntityNode time, EntityNode location, EntityNode subject) {
 
             this.id = id;
             this.incriminatory = incriminatory;
             this.action = action;
             this.time = time;
             this.location = location;
+            this.subject = subject;
             this.originalStory = originalStory;
 
             agent = new List<EntityNode>();
@@ -169,6 +185,7 @@ namespace VirtualSuspect.KnowledgeBase {
 
             ToMTable.Add(time, false);
             ToMTable.Add(location, false);
+            ToMTable.Add(subject, false);
 
         }
 
@@ -291,6 +308,10 @@ namespace VirtualSuspect.KnowledgeBase {
                     if (Location.Value == value)
                         return location;
                     break;
+                case KnowledgeBaseManager.DimentionsEnum.Subject:
+                    if (Subject.Value == value)
+                        return subject;
+                    break;
                 case KnowledgeBaseManager.DimentionsEnum.Agent:
                     return Agent.Find(x => x.Value == value);
                 case KnowledgeBaseManager.DimentionsEnum.Theme:
@@ -317,6 +338,9 @@ namespace VirtualSuspect.KnowledgeBase {
                     break;
                 case KnowledgeBaseManager.DimentionsEnum.Location:
                     nodes.Add(Location); 
+                    break;
+                case KnowledgeBaseManager.DimentionsEnum.Subject:
+                    nodes.Add(Subject);
                     break;
                 case KnowledgeBaseManager.DimentionsEnum.Agent:
                     nodes.AddRange(Agent);
@@ -354,6 +378,7 @@ namespace VirtualSuspect.KnowledgeBase {
 
             return Time == node ||
                     Location == node ||
+                    Subject == node ||
                     Theme.Contains(node) ||
                     Agent.Contains(node) ||
                     Reason.Contains(node) ||
