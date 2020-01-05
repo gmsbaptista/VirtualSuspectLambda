@@ -13,7 +13,7 @@ namespace VirtualSuspect.Query
         {
             return
                 delegate (EventNode node) {
-                    return node.Agent.Count > 1;
+                    return node.Agent.Count > 0;
                 };
         }
 

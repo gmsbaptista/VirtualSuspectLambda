@@ -16,7 +16,7 @@ namespace VirtualSuspectNaturalLanguage.Component {
 
             bool hasAction = result.Query.QueryConditions.Count(x => x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Action) > 0;
 
-            if (hasAction || GetNumberAgents(result.Query) > 1)
+            if (hasAction || GetNumberAgents(result.Query) > 0)
             {
                 answer += "It was";
             }
