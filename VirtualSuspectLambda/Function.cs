@@ -798,6 +798,13 @@ namespace VirtualSuspectLambda
 
             switch (dimension)
             {
+                case KnowledgeBaseManager.DimentionsEnum.Action:
+                    answer = "Nothing";
+                    if (options["Detailed feedback"])
+                    {
+                        answer = "That didn't happen";
+                    }
+                    break;
                 case KnowledgeBaseManager.DimentionsEnum.Agent:
                     answer = "No one";
                     break;
@@ -983,7 +990,7 @@ namespace VirtualSuspectLambda
         {
             List<string> contextualIntents = new List<string>()
             {
-                "GetTimeContextualIntent", "GetLocationContextualIntent", "GetAgentContextualIntent", "GetThemeContextualIntent", "GetReasonContextualIntent"
+                "GetTimeContextualIntent", "GetLocationContextualIntent", "GetAgentContextualIntent", "GetThemeContextualIntent", "GetReasonContextualIntent", "GetActionContextualIntent"
             };
 
             return contextualIntents.Contains(intentName);
@@ -1041,7 +1048,11 @@ namespace VirtualSuspectLambda
                     {
                         values.Add(entity.Value);
                     }
-                    if (this.result.Results.ElementAt(0).dimension == KnowledgeBaseManager.DimentionsEnum.Agent)
+                    if (this.result.Results.ElementAt(0).dimension == KnowledgeBaseManager.DimentionsEnum.Action)
+                    {
+                        conditions.Add(new ActionEqualConditionPredicate(values.ElementAt(0)));
+                    }
+                    else if (this.result.Results.ElementAt(0).dimension == KnowledgeBaseManager.DimentionsEnum.Agent)
                     {
                         conditions.Add(new AgentEqualConditionPredicate(values));
                     }
