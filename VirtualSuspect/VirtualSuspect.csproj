@@ -50,6 +50,7 @@
     <Compile Include="IQuestionAnswerSystem.cs" />
     <Compile Include="KnowledgeBase\IStoryNode.cs" />
     <Compile Include="Query\AgentExistsConditionPredicate.cs" />
+    <Compile Include="Query\GetActionFocusPredicate.cs" />
     <Compile Include="Query\GetTimeFocusPredicate.cs" />
     <Compile Include="Query\GetReasonFocusPredicate.cs" />
     <Compile Include="Query\GetMannerFocusPredicate.cs" />
