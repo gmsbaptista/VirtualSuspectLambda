@@ -100,16 +100,16 @@ namespace VirtualSuspectNaturalLanguage.Component {
 
             foreach (QueryResult.Result locationResult in locations) {
 
-                foreach (EntityNode locationNode in locationResult.values) {
+                foreach (IStoryNode locationNode in locationResult.values) {
 
-                    if (!locationsWithCardinality.ContainsKey(locationNode)) {
+                    if (!locationsWithCardinality.ContainsKey((EntityNode)locationNode)) {
 
-                        locationsWithCardinality.Add(locationNode, locationResult.cardinality);
+                        locationsWithCardinality.Add((EntityNode)locationNode, locationResult.cardinality);
 
                     }
                     else {
 
-                        locationsWithCardinality[locationNode] += locationResult.cardinality;
+                        locationsWithCardinality[(EntityNode)locationNode] += locationResult.cardinality;
                     }
                 }
             }

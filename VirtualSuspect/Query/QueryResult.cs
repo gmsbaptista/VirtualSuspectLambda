@@ -65,21 +65,21 @@ namespace VirtualSuspect.Query
 
         public class Result {
 
-            public List<EntityNode> values;
+            public List<IStoryNode> values;
 
             public int cardinality;
 
             public KnowledgeBaseManager.DimentionsEnum dimension;
 
-            public Result(IEnumerable<EntityNode> entityValues, int cardinality, KnowledgeBaseManager.DimentionsEnum dimension) {
+            public Result(IEnumerable<IStoryNode> entityValues, int cardinality, KnowledgeBaseManager.DimentionsEnum dimension) {
                 values = entityValues.ToList();
                 this.cardinality = cardinality;
                 this.dimension = dimension;
             }
 
-            public Result(EntityNode entityValue, int cardinality, KnowledgeBaseManager.DimentionsEnum dimension) {
+            public Result(IStoryNode entityValue, int cardinality, KnowledgeBaseManager.DimentionsEnum dimension) {
                 
-                List<EntityNode> values = new List<EntityNode>();
+                List<IStoryNode> values = new List<IStoryNode>();
                 values.Add(entityValue); 
 
                 this.values = values;

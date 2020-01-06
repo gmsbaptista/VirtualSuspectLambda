@@ -73,16 +73,16 @@ namespace VirtualSuspectNaturalLanguage.Component {
 
             foreach (QueryResult.Result agentResult in agents) {
 
-                foreach (EntityNode agentNode in agentResult.values) {
+                foreach (IStoryNode agentNode in agentResult.values) {
 
-                    if (!agentsWithCardinality.ContainsKey(agentNode)) {
+                    if (!agentsWithCardinality.ContainsKey((EntityNode)agentNode)) {
 
-                        agentsWithCardinality.Add(agentNode, agentResult.cardinality);
+                        agentsWithCardinality.Add((EntityNode)agentNode, agentResult.cardinality);
 
                     }
                     else {
 
-                        agentsWithCardinality[agentNode] += agentResult.cardinality;
+                        agentsWithCardinality[(EntityNode)agentNode] += agentResult.cardinality;
                     }
                 }
             }

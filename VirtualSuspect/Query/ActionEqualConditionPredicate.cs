@@ -20,7 +20,7 @@ namespace VirtualSuspect.Query
         public Predicate<EventNode> CreatePredicate() {
             return  
                 delegate (EventNode node) {
-                    return node.Action.Action == action;
+                    return node.Action.Value == action;
                 };
         }
 

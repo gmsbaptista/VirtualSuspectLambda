@@ -72,8 +72,8 @@ namespace VirtualSuspectLambda
                 lastInteraction = new Context();
 
                 log.LogLine($"first entity in kb: " + knowledge_base.Entities[0].Value);
-                log.LogLine($"first action in kb: " + knowledge_base.Actions[0].Action);
-                log.LogLine($"first event in kb: " + knowledge_base.Events[0].Action.Action);
+                log.LogLine($"first action in kb: " + knowledge_base.Actions[0].Value);
+                log.LogLine($"first event in kb: " + knowledge_base.Events[0].Action.Value);
 
                 string firstText = "Welcome to the Virtual Suspect demo. ";
                 string suspectInformation = "Your suspect's name is Peter. ";
@@ -288,9 +288,9 @@ namespace VirtualSuspectLambda
                         log.LogLine($"result dimension: " + result.dimension);
                         log.LogLine($"result cardinality: " + result.cardinality);
                         log.LogLine($"result values:");
-                        foreach (EntityNode entity in result.values)
+                        foreach (IStoryNode storyNode in result.values)
                         {
-                            log.LogLine($"value: " + entity.Value);
+                            log.LogLine($"value: " + storyNode.Value);
                         }
                     }
                     if (queryResult.Query.QueryType != QueryDto.QueryTypeEnum.YesOrNo && queryResult.Results.Count == 0 && 
@@ -1027,7 +1027,7 @@ namespace VirtualSuspectLambda
                 if (this.result.Results.Count == 1)
                 {
                     List<string> values = new List<string>();
-                    foreach (EntityNode entity in this.result.Results.ElementAt(0).values)
+                    foreach (IStoryNode entity in this.result.Results.ElementAt(0).values)
                     {
                         values.Add(entity.Value);
                     }

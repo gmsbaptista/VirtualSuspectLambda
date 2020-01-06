@@ -1,6 +1,6 @@
 ﻿namespace VirtualSuspect.KnowledgeBase
 {
-    public class ActionNode{
+    public class ActionNode : IStoryNode{
 
         private uint id;
 
@@ -12,14 +12,14 @@
             }
         }
 
-        private string action;
+        private string value;
 
-        public string Action
+        public string Value
         {
 
             get
             {
-                return action;
+                return value;
             }
 
         }
@@ -27,7 +27,7 @@
         public ActionNode(uint _id,  string _action) {
 
             id = _id;
-            action = _action;
+            value = _action;
 
         }
 

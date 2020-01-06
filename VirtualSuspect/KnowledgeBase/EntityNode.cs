@@ -1,5 +1,5 @@
 namespace VirtualSuspect.KnowledgeBase {
-    public class EntityNode{
+    public class EntityNode : IStoryNode{
 
         private uint id;
 

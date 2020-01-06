@@ -248,7 +248,7 @@ namespace VirtualSuspect.KnowledgeBase {
 
         public ActionNode GetOrCreateAction(string actionName) {
 
-            ActionNode nodeResult = actions.Find(action => action.Action == actionName);
+            ActionNode nodeResult = actions.Find(action => action.Value == actionName);
 
             if(nodeResult == null) { // If it does not exists
 

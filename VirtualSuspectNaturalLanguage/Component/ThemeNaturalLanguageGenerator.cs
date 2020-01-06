@@ -68,16 +68,16 @@ namespace VirtualSuspectNaturalLanguage.Component {
 
             foreach (QueryResult.Result themeResult in themes) {
 
-                foreach (EntityNode themeNode in themeResult.values) {
+                foreach (IStoryNode themeNode in themeResult.values) {
 
-                    if (!themesWithCardinality.ContainsKey(themeNode)) {
+                    if (!themesWithCardinality.ContainsKey((EntityNode)themeNode)) {
 
-                        themesWithCardinality.Add(themeNode, themeResult.cardinality);
+                        themesWithCardinality.Add((EntityNode)themeNode, themeResult.cardinality);
 
                     }
                     else {
 
-                        themesWithCardinality[themeNode] += themeResult.cardinality;
+                        themesWithCardinality[(EntityNode)themeNode] += themeResult.cardinality;
                     }
                 }
             }

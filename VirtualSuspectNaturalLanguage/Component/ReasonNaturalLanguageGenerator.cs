@@ -49,16 +49,16 @@ namespace VirtualSuspectNaturalLanguage.Component {
 
             foreach (QueryResult.Result reasonResult in reasons) {
 
-                foreach (EntityNode locationNode in reasonResult.values) {
+                foreach (IStoryNode locationNode in reasonResult.values) {
 
-                    if (!reasonsWithCardinality.ContainsKey(locationNode)) {
+                    if (!reasonsWithCardinality.ContainsKey((EntityNode)locationNode)) {
 
-                        reasonsWithCardinality.Add(locationNode, reasonResult.cardinality);
+                        reasonsWithCardinality.Add((EntityNode)locationNode, reasonResult.cardinality);
 
                     }
                     else {
 
-                        reasonsWithCardinality[locationNode] += reasonResult.cardinality;
+                        reasonsWithCardinality[(EntityNode)locationNode] += reasonResult.cardinality;
                     }
                 }
             }

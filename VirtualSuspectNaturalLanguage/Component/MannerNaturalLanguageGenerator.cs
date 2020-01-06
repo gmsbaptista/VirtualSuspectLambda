@@ -51,16 +51,16 @@ namespace VirtualSuspectNaturalLanguage.Component {
 
             foreach (QueryResult.Result mannerResult in manners) {
 
-                foreach (EntityNode mannerNode in mannerResult.values) {
+                foreach (IStoryNode mannerNode in mannerResult.values) {
 
-                    if (!mannersWithCardinality.ContainsKey(mannerNode)) {
+                    if (!mannersWithCardinality.ContainsKey((EntityNode)mannerNode)) {
 
-                        mannersWithCardinality.Add(mannerNode, mannerResult.cardinality);
+                        mannersWithCardinality.Add((EntityNode)mannerNode, mannerResult.cardinality);
 
                     }
                     else {
 
-                        mannersWithCardinality[mannerNode] += mannerResult.cardinality;
+                        mannersWithCardinality[(EntityNode)mannerNode] += mannerResult.cardinality;
                     }
                 }
             }
