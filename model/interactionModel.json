@@ -4,6 +4,10 @@
             "invocationName": "virtual suspect",
             "intents": [
                 {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
                     "name": "AMAZON.CancelIntent",
                     "samples": []
                 },
@@ -15,7 +19,7 @@
                     ]
                 },
                 {
-                    "name": "AMAZON.StopIntent",
+                    "name": "AMAZON.FallbackIntent",
                     "samples": []
                 },
                 {
@@ -23,8 +27,106 @@
                     "samples": []
                 },
                 {
-                    "name": "AMAZON.FallbackIntent",
-                    "samples": []
+                    "name": "ToggleOptionIntent",
+                    "slots": [
+                        {
+                            "name": "option",
+                            "type": "option_slot_type"
+                        }
+                    ],
+                    "samples": [
+                        "Switch {option}",
+                        "Toggle {option}"
+                    ]
+                },
+                {
+                    "name": "TurnOnOptionIntent",
+                    "slots": [
+                        {
+                            "name": "option",
+                            "type": "option_slot_type"
+                        }
+                    ],
+                    "samples": [
+                        "Switch {option} on",
+                        "Turn {option} option on",
+                        "Turn {option} on",
+                        "Turn on {option} option",
+                        "Turn on {option}"
+                    ]
+                },
+                {
+                    "name": "TurnOffOptionIntent",
+                    "slots": [
+                        {
+                            "name": "option",
+                            "type": "option_slot_type"
+                        }
+                    ],
+                    "samples": [
+                        "Switch {option} off",
+                        "Turn {option} option off",
+                        "Turn {option} off",
+                        "Turn off {option} option",
+                        "Turn off {option}"
+                    ]
+                },
+                {
+                    "name": "CheckOptionsIntent",
+                    "slots": [],
+                    "samples": [
+                        "State options",
+                        "Tell me how the options are",
+                        "Tell me the options",
+                        "Tell me what the options are",
+                        "Check options"
+                    ]
+                },
+                {
+                    "name": "GreetingIntent",
+                    "slots": [],
+                    "samples": [
+                        "Top of the morning to you",
+                        "Cheerio",
+                        "Oi",
+                        "What's up",
+                        "Sup",
+                        "Hi y'all",
+                        "Heyo",
+                        "Good afternoon",
+                        "Good morning",
+                        "Good evening",
+                        "Greetings",
+                        "Hey",
+                        "Hi",
+                        "Hello"
+                    ]
+                },
+                {
+                    "name": "IntrospectionIntent",
+                    "slots": [],
+                    "samples": [
+                        "How do you feel",
+                        "How have you been",
+                        "How is your day going",
+                        "How's life",
+                        "How you doing",
+                        "How are you doing",
+                        "How are you on this fine day",
+                        "How do you do",
+                        "How are you feeling",
+                        "How are you"
+                    ]
+                },
+                {
+                    "name": "ThanksIntent",
+                    "slots": [],
+                    "samples": [
+                        "Okay thank you",
+                        "Thank you for being so honest",
+                        "Thank you for your honesty",
+                        "Thank you"
+                    ]
                 },
                 {
                     "name": "GetTimeFocusIntent",
@@ -75,6 +177,17 @@
                         "When {question_verb} {subject} {filler_verb} {agent} {preposition} {location}",
                         "When {question_verb} {subject} {filler_verb} {agent} {location}",
                         "When {question_verb} {subject} {action} {theme}"
+                    ]
+                },
+                {
+                    "name": "GetTimeContextualIntent",
+                    "slots": [],
+                    "samples": [
+                        "When did you do that",
+                        "When did you do it",
+                        "When was that",
+                        "When did that happen",
+                        "When"
                     ]
                 },
                 {
@@ -162,6 +275,15 @@
                     ]
                 },
                 {
+                    "name": "GetLocationContextualIntent",
+                    "slots": [],
+                    "samples": [
+                        "Where was that",
+                        "Where did that happen",
+                        "Where"
+                    ]
+                },
+                {
                     "name": "GetAgentFocusIntent",
                     "slots": [
                         {
@@ -242,6 +364,17 @@
                         "Who {question_verb} {subject} {filler_verb} {preposition} {location}",
                         "Who {question_verb} {subject} {filler_verb} {location}",
                         "Who {action} {subject} {theme}"
+                    ]
+                },
+                {
+                    "name": "GetAgentContextualIntent",
+                    "slots": [],
+                    "samples": [
+                        "Who did you meet",
+                        "Who were you with",
+                        "Who was there",
+                        "Who was it",
+                        "Who"
                     ]
                 },
                 {
@@ -341,6 +474,14 @@
                     ]
                 },
                 {
+                    "name": "GetThemeContextualIntent",
+                    "slots": [],
+                    "samples": [
+                        "What was it",
+                        "What"
+                    ]
+                },
+                {
                     "name": "GetReasonFocusIntent",
                     "slots": [
                         {
@@ -427,6 +568,15 @@
                         "Why {question_verb} {subject} {action} {theme}",
                         "Why {question_verb} {subject} {action} {preposition} {location}",
                         "Why {question_verb} {subject} {action} {location}"
+                    ]
+                },
+                {
+                    "name": "GetReasonContextualIntent",
+                    "slots": [],
+                    "samples": [
+                        "Why did that happen",
+                        "Why was that",
+                        "Why"
                     ]
                 },
                 {
@@ -609,156 +759,6 @@
                         "{question_verb} {subject} {filler_verb} {agent}",
                         "{question_verb} {subject} {action} {preposition} {location}",
                         "{question_verb} {subject} {action} {location}"
-                    ]
-                },
-                {
-                    "name": "GreetingIntent",
-                    "slots": [],
-                    "samples": [
-                        "Top of the morning to you",
-                        "Cheerio",
-                        "Oi",
-                        "What's up",
-                        "Sup",
-                        "Hi y'all",
-                        "Heyo",
-                        "Good afternoon",
-                        "Good morning",
-                        "Good evening",
-                        "Greetings",
-                        "Hey",
-                        "Hi",
-                        "Hello"
-                    ]
-                },
-                {
-                    "name": "IntrospectionIntent",
-                    "slots": [],
-                    "samples": [
-                        "How do you feel",
-                        "How have you been",
-                        "How is your day going",
-                        "How's life",
-                        "How you doing",
-                        "How are you doing",
-                        "How are you on this fine day",
-                        "How do you do",
-                        "How are you feeling",
-                        "How are you"
-                    ]
-                },
-                {
-                    "name": "ThanksIntent",
-                    "slots": [],
-                    "samples": [
-                        "Okay thank you",
-                        "Thank you for being so honest",
-                        "Thank you for your honesty",
-                        "Thank you"
-                    ]
-                },
-                {
-                    "name": "ToggleOptionIntent",
-                    "slots": [
-                        {
-                            "name": "option",
-                            "type": "option_slot_type"
-                        }
-                    ],
-                    "samples": [
-                        "Switch {option}",
-                        "Toggle {option}"
-                    ]
-                },
-                {
-                    "name": "TurnOnOptionIntent",
-                    "slots": [
-                        {
-                            "name": "option",
-                            "type": "option_slot_type"
-                        }
-                    ],
-                    "samples": [
-                        "Switch {option} on",
-                        "Turn {option} option on",
-                        "Turn {option} on",
-                        "Turn on {option} option",
-                        "Turn on {option}"
-                    ]
-                },
-                {
-                    "name": "TurnOffOptionIntent",
-                    "slots": [
-                        {
-                            "name": "option",
-                            "type": "option_slot_type"
-                        }
-                    ],
-                    "samples": [
-                        "Switch {option} off",
-                        "Turn {option} option off",
-                        "Turn {option} off",
-                        "Turn off {option} option",
-                        "Turn off {option}"
-                    ]
-                },
-                {
-                    "name": "CheckOptionsIntent",
-                    "slots": [],
-                    "samples": [
-                        "State options",
-                        "Tell me how the options are",
-                        "Tell me the options",
-                        "Tell me what the options are",
-                        "Check options"
-                    ]
-                },
-                {
-                    "name": "GetTimeContextualIntent",
-                    "slots": [],
-                    "samples": [
-                        "When did you do that",
-                        "When did you do it",
-                        "When was that",
-                        "When did that happen",
-                        "When"
-                    ]
-                },
-                {
-                    "name": "GetLocationContextualIntent",
-                    "slots": [],
-                    "samples": [
-                        "Where was that",
-                        "Where did that happen",
-                        "Where"
-                    ]
-                },
-                {
-                    "name": "GetAgentContextualIntent",
-                    "slots": [],
-                    "samples": [
-                        "Who did you meet",
-                        "Who were you with",
-                        "Who was there",
-                        "Who was it",
-                        "Who"
-                    ]
-                },
-                {
-                    "name": "GetThemeContextualIntent",
-                    "slots": [],
-                    "samples": [
-                        "What was it",
-                        "What"
-                    ]
-                },
-                {
-                    "name": "GetReasonContextualIntent",
-                    "slots": [],
-                    "samples": [
-                        "Why did that happen",
-                        "Why was that",
-                        "Why"
                     ]
                 }
             ],
