@@ -580,6 +580,171 @@
                     ]
                 },
                 {
+                    "name": "GetActionFocusIntent",
+                    "slots": [
+                        {
+                            "name": "question_verb",
+                            "type": "question_verb_slot_type"
+                        },
+                        {
+                            "name": "subject",
+                            "type": "subject_slot_type"
+                        },
+                        {
+                            "name": "filler_verb",
+                            "type": "filler_verb_slot_type"
+                        },
+                        {
+                            "name": "preposition",
+                            "type": "preposition_slot_type"
+                        },
+                        {
+                            "name": "location",
+                            "type": "location_slot_type"
+                        },
+                        {
+                            "name": "theme",
+                            "type": "theme_slot_type"
+                        },
+                        {
+                            "name": "agent",
+                            "type": "agent_slot_type"
+                        },
+                        {
+                            "name": "reason_prefix",
+                            "type": "reason_prefix_slot_type"
+                        },
+                        {
+                            "name": "reason",
+                            "type": "reason_slot_type"
+                        },
+                        {
+                            "name": "time_pronoun",
+                            "type": "time_pronoun_slot_type"
+                        },
+                        {
+                            "name": "date_one",
+                            "type": "AMAZON.DATE"
+                        },
+                        {
+                            "name": "date_two",
+                            "type": "AMAZON.DATE"
+                        },
+                        {
+                            "name": "time_one",
+                            "type": "AMAZON.TIME"
+                        },
+                        {
+                            "name": "time_two",
+                            "type": "AMAZON.TIME"
+                        }
+                    ],
+                    "samples": [
+                        "What {question_verb} {subject} {filler_verb} {theme} {reason_prefix} {reason}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {theme} {reason_prefix} {reason}",
+                        "What {question_verb} {subject} {filler_verb} {theme} and {agent} {reason_prefix} {reason} {location} {date_one} {preposition} {time_one} and {time_two}",
+                        "What {question_verb} {subject} {filler_verb} {theme} and {agent} {reason_prefix} {reason} {location} {date_one} {preposition} {time_one}",
+                        "What {question_verb} {subject} {filler_verb} {theme} and {agent} {reason_prefix} {reason} {location} {time_one} {preposition} {date_one}",
+                        "What {question_verb} {subject} {filler_verb} {theme} and {agent} {reason_prefix} {reason} {location} {date_one} and {date_two}",
+                        "What {question_verb} {subject} {filler_verb} {theme} and {agent} {reason_prefix} {reason} {location} {date_one}",
+                        "What {question_verb} {subject} {filler_verb} {theme} and {agent} {reason_prefix} {reason} {location} {time_pronoun}",
+                        "What {question_verb} {subject} {filler_verb} {theme} and {agent} {reason_prefix} {reason} {location}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {theme} and {preposition} {agent} {reason_prefix} {reason} {preposition} {location} {preposition} {date_one} {preposition} {time_one} and {time_two}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {theme} and {preposition} {agent} {reason_prefix} {reason} {preposition} {location} {preposition} {date_one} {preposition} {time_one}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {theme} and {preposition} {agent} {reason_prefix} {reason} {preposition} {location} {preposition} {time_one} {preposition} {date_one}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {theme} and {preposition} {agent} {reason_prefix} {reason} {preposition} {location} {preposition} {date_one} and {date_two}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {theme} and {preposition} {agent} {reason_prefix} {reason} {preposition} {location} {preposition} {date_one}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {theme} and {preposition} {agent} {reason_prefix} {reason} {preposition} {location} {preposition} {time_pronoun}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {theme} and {preposition} {agent} {reason_prefix} {reason} {preposition} {location}",
+                        "What {question_verb} {subject} {filler_verb} {agent} and {theme} {reason_prefix} {reason} {location} {date_one} {preposition} {time_one} and {time_two}",
+                        "What {question_verb} {subject} {filler_verb} {agent} and {theme} {reason_prefix} {reason} {location} {date_one} {preposition} {time_one}",
+                        "What {question_verb} {subject} {filler_verb} {agent} and {theme} {reason_prefix} {reason} {location} {time_one} {preposition} {date_one}",
+                        "What {question_verb} {subject} {filler_verb} {agent} and {theme} {reason_prefix} {reason} {location} {date_one} and {date_two}",
+                        "What {question_verb} {subject} {filler_verb} {agent} and {theme} {reason_prefix} {reason} {location} {date_one}",
+                        "What {question_verb} {subject} {filler_verb} {agent} and {theme} {reason_prefix} {reason} {location} {time_pronoun}",
+                        "What {question_verb} {subject} {filler_verb} {agent} and {theme} {reason_prefix} {reason} {location}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {agent} and {preposition} {theme} {reason_prefix} {reason} {preposition} {location} {preposition} {date_one} {preposition} {time_one} and {time_two}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {agent} and {preposition} {theme} {reason_prefix} {reason} {preposition} {location} {preposition} {date_one} {preposition} {time_one}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {agent} and {preposition} {theme} {reason_prefix} {reason} {preposition} {location} {preposition} {time_one} {preposition} {date_one}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {agent} and {preposition} {theme} {reason_prefix} {reason} {preposition} {location} {preposition} {date_one} and {date_two}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {agent} and {preposition} {theme} {reason_prefix} {reason} {preposition} {location} {preposition} {date_one}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {agent} and {preposition} {theme} {reason_prefix} {reason} {preposition} {location} {preposition} {time_pronoun}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {agent} and {preposition} {theme} {reason_prefix} {reason} {preposition} {location}",
+                        "What {question_verb} {subject} {filler_verb} {agent} {location} {date_one} {preposition} {time_one} and {time_two}",
+                        "What {question_verb} {subject} {filler_verb} {agent} {location} {date_one} {preposition} {time_one}",
+                        "What {question_verb} {subject} {filler_verb} {agent} {location} {time_one} {preposition} {date_one}",
+                        "What {question_verb} {subject} {filler_verb} {agent} {location} {date_one} and {date_two}",
+                        "What {question_verb} {subject} {filler_verb} {agent} {location} {date_one}",
+                        "What {question_verb} {subject} {filler_verb} {agent} {location} {time_pronoun}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {agent} {preposition} {location} {preposition} {date_one} {preposition} {time_one} and {time_two}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {agent} {preposition} {location} {preposition} {date_one} {preposition} {time_one}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {agent} {preposition} {location} {preposition} {time_one} {preposition} {date_one}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {agent} {preposition} {location} {preposition} {date_one} and {date_two}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {agent} {preposition} {location} {preposition} {date_one}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {agent} {preposition} {location} {preposition} {time_pronoun}",
+                        "What {question_verb} {subject} {filler_verb} {date_one} {preposition} {time_one} and {time_two} {location} {theme}",
+                        "What {question_verb} {subject} {filler_verb} {date_one} {preposition} {time_one} {location} {theme}",
+                        "What {question_verb} {subject} {filler_verb} {time_one} {preposition} {date_one} {location} {theme}",
+                        "What {question_verb} {subject} {filler_verb} {date_one} and {date_two} {location} {theme}",
+                        "What {question_verb} {subject} {filler_verb} {date_one} {location} {theme}",
+                        "What {question_verb} {subject} {filler_verb} {time_pronoun} {location} {theme}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {date_one} {preposition} {time_one} and {time_two} {preposition} {location} {preposition} {theme}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {date_one} {preposition} {time_one} {preposition} {location} {preposition} {theme}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {time_one} {preposition} {date_one} {preposition} {location} {preposition} {theme}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {date_one} and {date_two} {preposition} {location} {preposition} {theme}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {date_one} {preposition} {location} {preposition} {theme}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {time_pronoun} {preposition} {location} {preposition} {theme}",
+                        "What {question_verb} {subject} {filler_verb} {location} {reason_prefix} {reason}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {location} {reason_prefix} {reason}",
+                        "What {question_verb} {subject} {filler_verb} {agent} {location}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {agent} {preposition} {location}",
+                        "What {question_verb} {subject} {filler_verb} {theme} {location}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {theme} {preposition} {location}",
+                        "What {question_verb} {subject} {filler_verb} {location} {theme}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {location} {preposition} {theme}",
+                        "What {question_verb} {subject} {filler_verb} {location} {date_one} {preposition} {time_one} and {time_two}",
+                        "What {question_verb} {subject} {filler_verb} {location} {date_one} {preposition} {time_one}",
+                        "What {question_verb} {subject} {filler_verb} {location} {time_one} {preposition} {date_one}",
+                        "What {question_verb} {subject} {filler_verb} {location} {date_one} and {date_two}",
+                        "What {question_verb} {subject} {filler_verb} {location} {date_one}",
+                        "What {question_verb} {subject} {filler_verb} {location} {time_pronoun}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {location} {preposition} {date_one} {preposition} {time_one} and {time_two}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {location} {preposition} {date_one} {preposition} {time_one}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {location} {preposition} {time_one} {preposition} {date_one}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {location} {preposition} {date_one} and {date_two}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {location} {preposition} {date_one}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {location} {preposition} {time_pronoun}",
+                        "What {question_verb} {subject} {filler_verb} {reason_prefix} {reason}",
+                        "What {question_verb} {subject} {filler_verb} {date_one} {preposition} {time_one} and {time_two}",
+                        "What {question_verb} {subject} {filler_verb} {date_one} {preposition} {time_one}",
+                        "What {question_verb} {subject} {filler_verb} {time_one} {preposition} {date_one}",
+                        "What {question_verb} {subject} {filler_verb} {date_one} and {date_two}",
+                        "What {question_verb} {subject} {filler_verb} {date_one}",
+                        "What {question_verb} {subject} {filler_verb} {time_pronoun}",
+                        "What {question_verb} {subject} {filler_verb} {agent}",
+                        "What {question_verb} {subject} {filler_verb} {theme}",
+                        "What {question_verb} {subject} {filler_verb} {location}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {date_one} {preposition} {time_one} and {time_two}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {date_one} {preposition} {time_one}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {time_one} {preposition} {date_one}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {date_one} and {date_two}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {date_one}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {time_pronoun}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {agent}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {theme}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {location}"
+                    ]
+                },
+                {
+                    "name": "GetActionContextualIntent",
+                    "slots": [],
+                    "samples": [
+                        "What happened",
+                        "What were you doing",
+                        "What did you do"
+                    ]
+                },
+                {
                     "name": "ValidationIntent",
                     "slots": [
                         {
@@ -1312,6 +1477,14 @@
                 {
                     "name": "filler_verb_slot_type",
                     "values": [
+                        {
+                            "name": {
+                                "value": "do",
+                                "synonyms": [
+                                    "doing"
+                                ]
+                            }
+                        },
                         {
                             "name": {
                                 "value": "know",
