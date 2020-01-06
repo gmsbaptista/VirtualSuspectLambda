@@ -26,7 +26,10 @@ namespace VirtualSuspectNaturalLanguage.Component
                 ActionNode actionNode = mergedActions.Keys.ElementAt(i);
                 ActionResource resource = manager.FindResource<ActionResource>(actionNode.Value);
                 answer += " " + resource.Speech;
-                answer += " " + resource.ExtractPreposition(KnowledgeBaseManager.DimentionsEnum.Theme);
+                if (resource.ExtractPreposition(KnowledgeBaseManager.DimentionsEnum.Theme) != "")
+                {
+                    answer += " " + resource.ExtractPreposition(KnowledgeBaseManager.DimentionsEnum.Theme);
+                }
                 answer += CombineValues("and", actionsWithThemes[actionNode].Select(x => x.Speech));
                 if (i == mergedActions.Keys.Count - 2)
                 {

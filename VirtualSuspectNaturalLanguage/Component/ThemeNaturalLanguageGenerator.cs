@@ -26,7 +26,10 @@ namespace VirtualSuspectNaturalLanguage.Component {
                 answer += " " + resource.Speech;
 
                 //Add preposition for the dimension
-                answer += " " + resource.ExtractPreposition(KnowledgeBaseManager.DimentionsEnum.Theme);
+                if (resource.ExtractPreposition(KnowledgeBaseManager.DimentionsEnum.Theme) != "")
+                {
+                    answer += " " + resource.ExtractPreposition(KnowledgeBaseManager.DimentionsEnum.Theme);
+                }
             }
             else
             {
