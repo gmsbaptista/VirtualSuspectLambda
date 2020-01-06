@@ -97,6 +97,11 @@ namespace VirtualSuspectNaturalLanguage
                     answer += ThemeNaturalLanguageGenerator.Generate(result, resultsByDimension);
                 }
 
+                else if (resultsByDimension.ContainsKey(KnowledgeBaseManager.DimentionsEnum.Action))
+                {
+                    answer += ActionNaturalLanguageGenerator.Generate(result, resultsByDimension);
+                }
+
                 else if (resultsByDimension.ContainsKey(KnowledgeBaseManager.DimentionsEnum.Manner)) {
 
 

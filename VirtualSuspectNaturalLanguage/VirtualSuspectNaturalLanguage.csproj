@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Component\ActionNaturalLanguageGenerator.cs" />
     <Compile Include="Component\INaturalLanguageGenerationComponent.cs" />
     <Compile Include="Component\LocationNaturalLanguageGenerator.cs" />
     <Compile Include="Component\MannerNaturalLanguageGenerator.cs" />
