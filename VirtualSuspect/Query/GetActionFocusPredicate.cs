@@ -13,8 +13,17 @@ namespace VirtualSuspect.Query
         {
             return delegate (EventNode node) {
 
-                return new QueryResult.Result(node.Action, 1, KnowledgeBaseManager.DimentionsEnum.Action);
-
+                if (node.Theme.Count > 0)
+                {
+                    List<IStoryNode> values = new List<IStoryNode>();
+                    values.Add(node.Action);
+                    values.AddRange(node.Theme);
+                    return new QueryResult.Result(values, 1, KnowledgeBaseManager.DimentionsEnum.Action);
+                }
+                else
+                {
+                    return new QueryResult.Result(node.Action, 1, KnowledgeBaseManager.DimentionsEnum.Action);
+                }
             };
         }
 
