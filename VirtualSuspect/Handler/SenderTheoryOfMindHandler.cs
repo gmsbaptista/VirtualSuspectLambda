@@ -54,6 +54,14 @@ namespace VirtualSuspect.Handler {
                         }
                             
                     }
+                    else
+                    {
+                        List<EntityNode> nodes = node.FindEntitiesByType(KnowledgeBaseManager.DimentionsEnum.Theme);
+                        foreach (EntityNode entity in nodes)
+                        {
+                            node.TagAsKnown(entity);
+                        }
+                    }
                 }
             }
 
