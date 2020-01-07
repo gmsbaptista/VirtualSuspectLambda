@@ -364,7 +364,7 @@ namespace VirtualSuspect.KnowledgeBase {
         /// Marks an entitiy Node as known by the user
         /// </summary>
         /// <param name="node"></param>
-        public void TagAsKnwon(EntityNode node) {
+        public void TagAsKnown(EntityNode node) {
 
             ToMTable[node] = true;
         }

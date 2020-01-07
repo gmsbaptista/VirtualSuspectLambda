@@ -51,7 +51,7 @@ namespace VirtualSuspect.Handler {
                             EntityNode entity = node.FindEntity(condition.GetSemanticRole(), value);
 
                             if (entity != null)
-                                node.TagAsKnwon(entity);
+                                node.TagAsKnown(entity);
                         }
                     }
                 }

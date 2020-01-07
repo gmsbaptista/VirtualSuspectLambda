@@ -49,7 +49,7 @@ namespace VirtualSuspect.Handler {
 
                         foreach(EntityNode entity in nodes) {
 
-                            node.TagAsKnwon(entity);
+                            node.TagAsKnown(entity);
                             
                         }
                             

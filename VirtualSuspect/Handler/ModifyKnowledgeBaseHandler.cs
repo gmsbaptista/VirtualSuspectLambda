@@ -206,7 +206,7 @@ namespace VirtualSuspect.Handler {
             foreach (EntityNode AgentNode in old.Agent) {
                 if (keepKnown && old.IsKnown(AgentNode)) {
                     eventCopy.AddAgent(AgentNode);
-                    eventCopy.TagAsKnwon(AgentNode);
+                    eventCopy.TagAsKnown(AgentNode);
                 }else {
                     ToAdd[KnowledgeBaseManager.DimentionsEnum.Agent].Add(AgentNode);
                 }
@@ -215,7 +215,7 @@ namespace VirtualSuspect.Handler {
             foreach (EntityNode ThemeNode in old.Theme) {
                 if (keepKnown && old.IsKnown(ThemeNode)) {
                     eventCopy.AddTheme(ThemeNode);
-                    eventCopy.TagAsKnwon(ThemeNode);
+                    eventCopy.TagAsKnown(ThemeNode);
                 } else {
                     ToAdd[KnowledgeBaseManager.DimentionsEnum.Theme].Add(ThemeNode);
                 }
@@ -224,7 +224,7 @@ namespace VirtualSuspect.Handler {
             foreach (EntityNode ReasonNode in old.Reason) {
                 if (keepKnown && old.IsKnown(ReasonNode)) {
                     eventCopy.AddReason(ReasonNode);
-                    eventCopy.TagAsKnwon(ReasonNode);
+                    eventCopy.TagAsKnown(ReasonNode);
                 } else {
                     ToAdd[KnowledgeBaseManager.DimentionsEnum.Reason].Add(ReasonNode);
                 }
@@ -233,7 +233,7 @@ namespace VirtualSuspect.Handler {
             foreach (EntityNode MannerNode in old.Manner) {
                 if (keepKnown && old.IsKnown(MannerNode)) {
                     eventCopy.AddManner(MannerNode);
-                    eventCopy.TagAsKnwon(MannerNode);
+                    eventCopy.TagAsKnown(MannerNode);
                 } else {
                     ToAdd[KnowledgeBaseManager.DimentionsEnum.Manner].Add(MannerNode);
                 }
