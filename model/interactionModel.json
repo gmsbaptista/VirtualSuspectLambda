@@ -1600,6 +1600,16 @@
                     "values": [
                         {
                             "name": {
+                                "value": "then"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "that time"
+                            }
+                        },
+                        {
+                            "name": {
                                 "value": "that day"
                             }
                         }

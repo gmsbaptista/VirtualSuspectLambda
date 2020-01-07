@@ -647,6 +647,18 @@ namespace VirtualSuspectLambda
                                             return false;
                                         }
                                     }
+                                    else if (time_pronoun == "that time" || time_pronoun == "then")
+                                    {
+                                        string[] split = prevTime.Split('>');
+                                        if (split.Length == 1)
+                                        {
+                                            query.AddCondition(new TimeEqualConditionPredicate(prevTime));
+                                        }
+                                        else
+                                        {
+                                            query.AddCondition(new TimeBetweenConditionPredicate(split[0], split[1]));
+                                        }
+                                    }
                                     else
                                     {
                                         log.LogLine($"unknown time pronoun, exiting");
@@ -960,7 +972,7 @@ namespace VirtualSuspectLambda
         {
             List<string> directPronouns = new List<string>()
             {
-                "there", "him", "it", "that day"
+                "there", "him", "it", "that day", "that time", "then"
             };
 
             return directPronouns.Contains(pronoun);
