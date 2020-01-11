@@ -320,7 +320,7 @@ namespace VirtualSuspectLambda
                             }
                         }
                     }
-                    else if (queryResult.Query.QueryType != QueryDto.QueryTypeEnum.YesOrNo && queryResult.Results.Count > 1 && 
+                    else if (queryResult.Query.QueryType != QueryDto.QueryTypeEnum.YesOrNo && queryResult.Results.Count > 2 && 
                         options["Answer filtering"])
                     {
                         speechText = "You'll have to be more specific";
