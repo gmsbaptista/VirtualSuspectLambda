@@ -21,19 +21,36 @@ namespace VirtualSuspectNaturalLanguage.Component {
                 List<KeyValuePair<DateTime, DateTime>> currentTimeSpans = dateTimeGroupedByDay.Values.ElementAt(i);
 
                 //Print the day
-                answer += " on " + ConvertDateToText(currentDate) + " from";
+                answer += " on " + ConvertDateToText(currentDate)/* + " from"*/;
+
+                bool inTimeSpans = false;
 
                 //Iterate each time span
                 for (int j = 0; j < currentTimeSpans.Count; j++) {
 
-                    answer +=  " " + ConvertTimeToText(currentTimeSpans.ElementAt(j).Key) + " to " + ConvertTimeToText(currentTimeSpans.ElementAt(j).Value);
-                    if (currentTimeSpans.ElementAt(j).Key.Date.AddDays(1) == currentTimeSpans.ElementAt(j).Value.Date)
+                    if (currentTimeSpans.ElementAt(j).Key == currentTimeSpans.ElementAt(j).Value)
                     {
-                        answer += " of the next day";
+                        answer += " at " + ConvertTimeToText(currentTimeSpans.ElementAt(j).Key);
+                        inTimeSpans = false;
                     }
-                    else if (currentTimeSpans.ElementAt(j).Key.Date != currentTimeSpans.ElementAt(j).Value.Date)
+                    else
                     {
-                        answer += " of " + ConvertDateToText(currentTimeSpans.ElementAt(j).Value);
+                        if (!inTimeSpans)
+                        {
+                            answer += " from";
+                            inTimeSpans = true;
+                        }
+
+                        answer += " " + ConvertTimeToText(currentTimeSpans.ElementAt(j).Key) + " to " + ConvertTimeToText(currentTimeSpans.ElementAt(j).Value);
+                        if (currentTimeSpans.ElementAt(j).Key.Date.AddDays(1) == currentTimeSpans.ElementAt(j).Value.Date)
+                        {
+                            answer += " of the next day";
+                        }
+                        else if (currentTimeSpans.ElementAt(j).Key.Date != currentTimeSpans.ElementAt(j).Value.Date)
+                        {
+                            answer += " of " + ConvertDateToText(currentTimeSpans.ElementAt(j).Value);
+                        }
+
                     }
 
                     if (j != currentTimeSpans.Count - 1) {

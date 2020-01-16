@@ -55,10 +55,20 @@ namespace VirtualSuspectNaturalLanguage
 
                     foreach (QueryResult.Result value in resultsByDimension[KnowledgeBaseManager.DimentionsEnum.Time]) {
 
-                        DateTime firstDate = DateTime.ParseExact(value.values.ElementAt(0).Value.Split('>')[0], "dd/MM/yyyyTHH:mm:ss", CultureInfo.InvariantCulture);
-                        DateTime secondDate = DateTime.ParseExact(value.values.ElementAt(0).Value.Split('>')[1], "dd/MM/yyyyTHH:mm:ss", CultureInfo.InvariantCulture);
+                        if (value.values.ElementAt(0).Value.Split('>').Length > 1)
+                        {
+                            DateTime firstDate = DateTime.ParseExact(value.values.ElementAt(0).Value.Split('>')[0], "dd/MM/yyyyTHH:mm:ss", CultureInfo.InvariantCulture);
+                            DateTime secondDate = DateTime.ParseExact(value.values.ElementAt(0).Value.Split('>')[1], "dd/MM/yyyyTHH:mm:ss", CultureInfo.InvariantCulture);
 
-                        dateTimeList.Add(new KeyValuePair<DateTime, DateTime>(firstDate, secondDate));
+                            dateTimeList.Add(new KeyValuePair<DateTime, DateTime>(firstDate, secondDate));
+                        }
+                        else
+                        {
+                            DateTime date = DateTime.ParseExact(value.values.ElementAt(0).Value, "dd/MM/yyyyTHH:mm:ss", CultureInfo.InvariantCulture);
+
+                            dateTimeList.Add(new KeyValuePair<DateTime, DateTime>(date, date));
+                        }
+
 
                     }
 
