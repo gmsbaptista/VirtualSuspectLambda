@@ -2,36 +2,14 @@
 <resources>
   <resource>
     <type>action</type>
-    <name>Drink</name>
-    <speech>drank</speech>
-    <timePreposition></timePreposition>
-    <locationPreposition></locationPreposition>
-    <themePreposition></themePreposition>
-    <agentPreposition>with</agentPreposition>
-    <reasonPreposition>because</reasonPreposition>
-    <mannerPreposition></mannerPreposition>
-  </resource>
-  <resource>
-    <type>action</type>
-    <name>Eavesdrop</name>
-    <speech>eavesdroped</speech>
+    <name>Arrive</name>
+    <speech>arrived</speech>
     <timePreposition></timePreposition>
     <locationPreposition></locationPreposition>
     <themePreposition></themePreposition>
     <agentPreposition></agentPreposition>
-    <reasonPreposition>because</reasonPreposition>
-    <mannerPreposition>using</mannerPreposition>
-  </resource>
-  <resource>
-    <type>action</type>
-    <name>Research</name>
-    <speech>researched</speech>
-    <timePreposition></timePreposition>
-    <locationPreposition></locationPreposition>
-    <themePreposition>about</themePreposition>
-    <agentPreposition>with</agentPreposition>
-    <reasonPreposition>because</reasonPreposition>
-    <mannerPreposition>using</mannerPreposition>
+    <reasonPreposition></reasonPreposition>
+    <mannerPreposition></mannerPreposition>
   </resource>
   <resource>
     <type>action</type>
@@ -41,74 +19,8 @@
     <locationPreposition></locationPreposition>
     <themePreposition></themePreposition>
     <agentPreposition>from</agentPreposition>
-    <reasonPreposition>because</reasonPreposition>
-    <mannerPreposition>using</mannerPreposition>
-  </resource>
-  <resource>
-    <type>action</type>
-    <name>Watch</name>
-    <speech>watched</speech>
-    <timePreposition></timePreposition>
-    <locationPreposition></locationPreposition>
-    <themePreposition></themePreposition>
-    <agentPreposition>with</agentPreposition>
-    <reasonPreposition>because</reasonPreposition>
-    <mannerPreposition>using</mannerPreposition>
-  </resource>
-  <resource>
-    <type>action</type>
-    <name>Rest</name>
-    <speech>rested</speech>
-    <timePreposition></timePreposition>
-    <locationPreposition></locationPreposition>
-    <themePreposition></themePreposition>
-    <agentPreposition>with</agentPreposition>
-    <reasonPreposition>because</reasonPreposition>
-    <mannerPreposition>using</mannerPreposition>
-  </resource>
-  <resource>
-    <type>action</type>
-    <name>Follow</name>
-    <speech>followed</speech>
-    <timePreposition></timePreposition>
-    <locationPreposition></locationPreposition>
-    <themePreposition></themePreposition>
-    <agentPreposition>with</agentPreposition>
-    <reasonPreposition>because</reasonPreposition>
-    <mannerPreposition>using</mannerPreposition>
-  </resource>
-  <resource>
-    <type>action</type>
-    <name>Prepare</name>
-    <speech>prepared</speech>
-    <timePreposition></timePreposition>
-    <locationPreposition></locationPreposition>
-    <themePreposition>for</themePreposition>
-    <agentPreposition>with</agentPreposition>
-    <reasonPreposition>because</reasonPreposition>
-    <mannerPreposition>using</mannerPreposition>
-  </resource>
-  <resource>
-    <type>action</type>
-    <name>Steal</name>
-    <speech>stole</speech>
-    <timePreposition></timePreposition>
-    <locationPreposition></locationPreposition>
-    <themePreposition></themePreposition>
-    <agentPreposition>with</agentPreposition>
-    <reasonPreposition>because</reasonPreposition>
-    <mannerPreposition>using</mannerPreposition>
-  </resource>
-  <resource>
-    <type>action</type>
-    <name>Get</name>
-    <speech>got</speech>
-    <timePreposition></timePreposition>
-    <locationPreposition></locationPreposition>
-    <themePreposition></themePreposition>
-    <agentPreposition>from</agentPreposition>
-    <reasonPreposition>because</reasonPreposition>
-    <mannerPreposition>using</mannerPreposition>
+    <reasonPreposition></reasonPreposition>
+    <mannerPreposition></mannerPreposition>
   </resource>
   <resource>
     <type>action</type>
@@ -118,19 +30,151 @@
     <locationPreposition></locationPreposition>
     <themePreposition></themePreposition>
     <agentPreposition></agentPreposition>
-    <reasonPreposition>because</reasonPreposition>
+    <reasonPreposition></reasonPreposition>
     <mannerPreposition>using</mannerPreposition>
   </resource>
   <resource>
     <type>action</type>
-    <name>Walk</name>
-    <speech>walked</speech>
+    <name>Drink</name>
+    <speech>drank</speech>
     <timePreposition></timePreposition>
     <locationPreposition></locationPreposition>
     <themePreposition></themePreposition>
-    <agentPreposition>alongside</agentPreposition>
-    <reasonPreposition>because</reasonPreposition>
+    <agentPreposition></agentPreposition>
+    <reasonPreposition></reasonPreposition>
     <mannerPreposition></mannerPreposition>
+  </resource>
+  <resource>
+    <type>action</type>
+    <name>Eavesdrop</name>
+    <speech>eavesdropped</speech>
+    <timePreposition></timePreposition>
+    <locationPreposition></locationPreposition>
+    <themePreposition></themePreposition>
+    <agentPreposition></agentPreposition>
+    <reasonPreposition></reasonPreposition>
+    <mannerPreposition></mannerPreposition>
+  </resource>
+  <resource>
+    <type>action</type>
+    <name>Follow</name>
+    <speech>followed</speech>
+    <timePreposition></timePreposition>
+    <locationPreposition></locationPreposition>
+    <themePreposition></themePreposition>
+    <agentPreposition></agentPreposition>
+    <reasonPreposition></reasonPreposition>
+    <mannerPreposition></mannerPreposition>
+  </resource>
+  <resource>
+    <type>action</type>
+    <name>Get</name>
+    <speech>got</speech>
+    <timePreposition></timePreposition>
+    <locationPreposition></locationPreposition>
+    <themePreposition></themePreposition>
+    <agentPreposition>from</agentPreposition>
+    <reasonPreposition></reasonPreposition>
+    <mannerPreposition></mannerPreposition>
+  </resource>
+  <resource>
+    <type>action</type>
+    <name>Interrogate</name>
+    <speech>interrogated</speech>
+    <timePreposition></timePreposition>
+    <locationPreposition></locationPreposition>
+    <themePreposition></themePreposition>
+    <agentPreposition></agentPreposition>
+    <reasonPreposition></reasonPreposition>
+    <mannerPreposition></mannerPreposition>
+  </resource>
+  <resource>
+    <type>action</type>
+    <name>Prepare</name>
+    <speech>prepared</speech>
+    <timePreposition></timePreposition>
+    <locationPreposition></locationPreposition>
+    <themePreposition>for</themePreposition>
+    <agentPreposition></agentPreposition>
+    <reasonPreposition></reasonPreposition>
+    <mannerPreposition></mannerPreposition>
+  </resource>
+  <resource>
+    <type>action</type>
+    <name>Research</name>
+    <speech>researched</speech>
+    <timePreposition></timePreposition>
+    <locationPreposition></locationPreposition>
+    <themePreposition></themePreposition>
+    <agentPreposition></agentPreposition>
+    <reasonPreposition></reasonPreposition>
+    <mannerPreposition></mannerPreposition>
+  </resource>
+  <resource>
+    <type>action</type>
+    <name>Rest</name>
+    <speech>rested</speech>
+    <timePreposition></timePreposition>
+    <locationPreposition></locationPreposition>
+    <themePreposition></themePreposition>
+    <agentPreposition></agentPreposition>
+    <reasonPreposition></reasonPreposition>
+    <mannerPreposition></mannerPreposition>
+  </resource>
+  <resource>
+    <type>action</type>
+    <name>Rob</name>
+    <speech>robbed</speech>
+    <timePreposition></timePreposition>
+    <locationPreposition></locationPreposition>
+    <themePreposition></themePreposition>
+    <agentPreposition></agentPreposition>
+    <reasonPreposition></reasonPreposition>
+    <mannerPreposition>using</mannerPreposition>
+  </resource>
+  <resource>
+    <type>action</type>
+    <name>Sell</name>
+    <speech>sold</speech>
+    <timePreposition></timePreposition>
+    <locationPreposition></locationPreposition>
+    <themePreposition></themePreposition>
+    <agentPreposition>to</agentPreposition>
+    <reasonPreposition></reasonPreposition>
+    <mannerPreposition></mannerPreposition>
+  </resource>
+  <resource>
+    <type>action</type>
+    <name>Steal</name>
+    <speech>stole</speech>
+    <timePreposition></timePreposition>
+    <locationPreposition></locationPreposition>
+    <themePreposition></themePreposition>
+    <agentPreposition></agentPreposition>
+    <reasonPreposition></reasonPreposition>
+    <mannerPreposition></mannerPreposition>
+  </resource>
+  <resource>
+    <type>action</type>
+    <name>Talk</name>
+    <speech>talked</speech>
+    <timePreposition></timePreposition>
+    <locationPreposition></locationPreposition>
+    <themePreposition>about</themePreposition>
+    <agentPreposition>with</agentPreposition>
+    <reasonPreposition></reasonPreposition>
+    <mannerPreposition></mannerPreposition>
+  </resource>
+  <resource>
+    <type>action</type>
+    <name>Travel</name>
+    <speech>travelled</speech>
+    <timePreposition></timePreposition>
+    <locationPreposition>from</locationPreposition>
+    <themePreposition>to</themePreposition>
+    <agentPreposition></agentPreposition>
+    <reasonPreposition></reasonPreposition>
+    <mannerPreposition>by</mannerPreposition>
   </resource>
   <resource>
     <type>action</type>
@@ -145,24 +189,13 @@
   </resource>
   <resource>
     <type>action</type>
-    <name>Travel</name>
-    <speech>travelled</speech>
-    <timePreposition></timePreposition>
-    <locationPreposition>from</locationPreposition>
-    <themePreposition>to</themePreposition>
-    <agentPreposition>alongside</agentPreposition>
-    <reasonPreposition>to</reasonPreposition>
-    <mannerPreposition>using</mannerPreposition>
-  </resource>
-  <resource>
-    <type>action</type>
-    <name>Sell</name>
-    <speech>sold</speech>
+    <name>Watch</name>
+    <speech>watched</speech>
     <timePreposition></timePreposition>
     <locationPreposition></locationPreposition>
     <themePreposition></themePreposition>
-    <agentPreposition>to</agentPreposition>
-    <reasonPreposition>because</reasonPreposition>
-    <mannerPreposition>using</mannerPreposition>
+    <agentPreposition></agentPreposition>
+    <reasonPreposition></reasonPreposition>
+    <mannerPreposition></mannerPreposition>
   </resource>
 </resources>
