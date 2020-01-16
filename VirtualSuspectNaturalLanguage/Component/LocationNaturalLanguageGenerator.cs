@@ -34,8 +34,9 @@ namespace VirtualSuspectNaturalLanguage.Component {
             for (int i = 0; i < mergedLocations.Count; i++){
 
                 //TODO: test some types to use "the"
+                EntityNode node = mergedLocations.ElementAt(i).Key;
 
-                answer += " " + mergedLocations.ElementAt(i).Key.Speech;
+                answer += " " + GetPreposition(node) + " " + node.Speech;
 
                 if(mergedLocations.Count > 1)
                 {
@@ -115,6 +116,22 @@ namespace VirtualSuspectNaturalLanguage.Component {
             }
 
             return locationsWithCardinality;
+        }
+
+        public static string GetPreposition(EntityNode entity)
+        {
+            string preposition = "";
+
+            if (entity.Type == "Street" || entity.Type == "City")
+            {
+                preposition = "in";
+            }
+            else
+            {
+                preposition = "at";
+            }
+
+            return preposition;
         }
         #endregion
     }
