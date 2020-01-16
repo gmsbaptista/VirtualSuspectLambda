@@ -991,9 +991,8 @@
                         },
                         {
                             "name": {
-                                "value": "Delivery Guy",
+                                "value": "Delivery Boy",
                                 "synonyms": [
-                                    "delivery boy",
                                     "the delivery guy",
                                     "delivery guy",
                                     "the delivery boy",
@@ -1024,49 +1023,6 @@
                     "values": [
                         {
                             "name": {
-                                "value": "Silvermoon City Train Station",
-                                "synonyms": [
-                                    "silvermoon station",
-                                    "silver moon station",
-                                    "the silver moon station",
-                                    "the silver moon city station",
-                                    "the silver moon train station",
-                                    "the silver moon city train station",
-                                    "silver moon train station",
-                                    "silver moon city station",
-                                    "silver moon city train station",
-                                    "the silvermoon city station",
-                                    "the silvermoon train station",
-                                    "the silvermoon city train station"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Silvermoon City Park",
-                                "synonyms": [
-                                    "the city park",
-                                    "the silver moon city park",
-                                    "the silvermoon city park",
-                                    "the park",
-                                    "city park",
-                                    "silver moon park",
-                                    "silver moon city park",
-                                    "silvermoon park"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Castle Town Mall",
-                                "synonyms": [
-                                    "the castle town mall",
-                                    "the mall"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
                                 "value": "there"
                             }
                         },
@@ -1083,17 +1039,15 @@
                         },
                         {
                             "name": {
-                                "value": "Hog's Head Pub",
+                                "value": "Gary's Pub",
                                 "synonyms": [
-                                    "hog's head",
-                                    "the hog's head",
                                     "the pub"
                                 ]
                             }
                         },
                         {
                             "name": {
-                                "value": "Silvermoon City",
+                                "value": "SilverMoon City",
                                 "synonyms": [
                                     "silver moon city",
                                     "silvermoon",
@@ -1105,9 +1059,8 @@
                             "name": {
                                 "value": "Castle Town Train Station",
                                 "synonyms": [
-                                    "castle town station",
-                                    "the castle town station",
-                                    "the castle town train station"
+                                    "the train station",
+                                    "train station"
                                 ]
                             }
                         },
@@ -1125,11 +1078,10 @@
                         },
                         {
                             "name": {
-                                "value": "Alley behind the Mall",
+                                "value": "Alley near the Church",
                                 "synonyms": [
-                                    "alley near the mall",
-                                    "the alley behind the mall",
-                                    "the alley near the mall",
+                                    "the alley behind the church",
+                                    "the alley near the church",
                                     "the alley",
                                     "alley"
                                 ]
@@ -1162,77 +1114,6 @@
                     "values": [
                         {
                             "name": {
-                                "value": "Castle Town",
-                                "synonyms": [
-                                    "castletown city",
-                                    "castletown",
-                                    "castle town",
-                                    "castle town city"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Train to Castle Town",
-                                "synonyms": [
-                                    "the train to castle town",
-                                    "train to castle town city"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Ticket to Castle Town",
-                                "synonyms": [
-                                    "the train ticket to castle town",
-                                    "the ticket to castle town",
-                                    "train ticket to castle town"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Silvermoon City",
-                                "synonyms": [
-                                    "silver moon city",
-                                    "silvermoon",
-                                    "silver moon"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Train to Silvermoon City",
-                                "synonyms": [
-                                    "the train to silver moon",
-                                    "the train to silvermoon",
-                                    "the train to silver moon city",
-                                    "the train to silvermoon city"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": " Selling the necklace",
-                                "synonyms": [
-                                    "about selling the necklace"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Jewelry Shop",
-                                "synonyms": [
-                                    "the store",
-                                    "the shop",
-                                    "the jewelry shop",
-                                    "the jewelry store",
-                                    "jewelry store"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
                                 "value": "it"
                             }
                         },
@@ -1248,14 +1129,13 @@
                         },
                         {
                             "name": {
-                                "value": "Ticket to Silvermoon City",
+                                "value": "Ticket to SilverMoon City",
                                 "synonyms": [
-                                    "the train ticket to silvermoon city",
-                                    "train ticket to silver moon city",
-                                    "train ticket to silvermoon city",
                                     "the ticket to silver moon city",
                                     "the ticket to silvermoon city",
                                     "ticket to silver moon city",
+                                    "the ticket",
+                                    "ticket",
                                     "tickets to silver moon city"
                                 ]
                             }
@@ -1264,10 +1144,6 @@
                             "name": {
                                 "value": "John Frey's Contact",
                                 "synonyms": [
-                                    "the phone number",
-                                    "the contact",
-                                    "john's phone number",
-                                    "john frey's phone number",
                                     "the contact",
                                     "john's contact"
                                 ]
@@ -1290,18 +1166,25 @@
                             "name": {
                                 "value": "Robbery",
                                 "synonyms": [
-                                    "the fellony",
-                                    "the crime",
-                                    "the assault",
                                     "the robbery"
                                 ]
                             }
                         },
                         {
                             "name": {
-                                "value": "Gun",
+                                "value": "Delivery Guy",
                                 "synonyms": [
-                                    "a gun",
+                                    "the delivery boy",
+                                    "the delivery guy",
+                                    "your neighbour",
+                                    "delivery boy"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Revolver",
+                                "synonyms": [
                                     "the gun",
                                     "the revolver",
                                     "gun"
@@ -1324,12 +1207,6 @@
                             "name": {
                                 "value": "Jewelry Shop Owner's Conversation",
                                 "synonyms": [
-                                    "the conversation about the necklace delivery",
-                                    "the conversation about the delivery",
-                                    "the conversation about the necklace",
-                                    "the jewelry shop owner's conversation about the delivery",
-                                    "the jewelry shop owner's conversation about the necklace",
-                                    "the jewelry shop owner's conversation about the necklace delivery",
                                     "the jewelry shop's owner's conversation",
                                     "the jewelry store's owner's conversation",
                                     "the conversation",
@@ -1359,35 +1236,7 @@
                     "values": [
                         {
                             "name": {
-                                "value": "Return Home",
-                                "synonyms": [
-                                    "be done with this shit"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Get Money",
-                                "synonyms": [
-                                    "get the money"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Find Buyer",
-                                "synonyms": [
-                                    "find a buyer"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Discover Value",
-                                "synonyms": [
-                                    "discover its value",
-                                    "discover the necklace's value"
-                                ]
+                                "value": "Look for a Watch to buy"
                             }
                         },
                         {
@@ -1400,42 +1249,38 @@
                         },
                         {
                             "name": {
-                                "value": "Steal Necklace",
+                                "value": "find a buyer"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "discover its value",
                                 "synonyms": [
-                                    "steal the necklace"
+                                    "discover the value",
+                                    "discover the value of the necklace"
                                 ]
                             }
                         },
                         {
                             "name": {
-                                "value": "Confirm Delivery",
+                                "value": "check if the delivery arrived"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "rob the Jewelry Shop",
                                 "synonyms": [
-                                    "find out if the necklace was delivered",
-                                    "confirm if the necklace was delivered"
+                                    "rob the store",
+                                    "rob the jewelry store"
                                 ]
                             }
                         },
                         {
                             "name": {
-                                "value": "Check Delivery",
+                                "value": "gather information about the watch value",
                                 "synonyms": [
-                                    "check if the delivery had arrived"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Rob Jewelry Shop",
-                                "synonyms": [
-                                    "rob the jewelry shop"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Gather Information",
-                                "synonyms": [
-                                    "gather information about the necklace"
+                                    "gather information about the watch",
+                                    "gather information"
                                 ]
                             }
                         }
@@ -1456,9 +1301,8 @@
                             "name": {
                                 "value": "Travel",
                                 "synonyms": [
-                                    "gone",
-                                    "go",
-                                    "travelled"
+                                    "travelled",
+                                    "go"
                                 ]
                             }
                         },
@@ -1474,8 +1318,6 @@
                             "name": {
                                 "value": "Call",
                                 "synonyms": [
-                                    "phoned",
-                                    "phone",
                                     "called"
                                 ]
                             }
@@ -1485,20 +1327,9 @@
                                 "value": "Get",
                                 "synonyms": [
                                     "gave",
+                                    "got",
                                     "give",
-                                    "got"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Talk",
-                                "synonyms": [
-                                    "chatted",
-                                    "chat",
-                                    "conversed",
-                                    "converse",
-                                    "talked"
+                                    "obtain"
                                 ]
                             }
                         },
@@ -1506,17 +1337,13 @@
                             "name": {
                                 "value": "Steal",
                                 "synonyms": [
+                                    "got",
+                                    "get",
                                     "took",
                                     "take",
-                                    "stole"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Rob",
-                                "synonyms": [
-                                    "robbed"
+                                    "robbed",
+                                    "stole",
+                                    "rob"
                                 ]
                             }
                         },
@@ -1530,29 +1357,19 @@
                         },
                         {
                             "name": {
-                                "value": "Interrogate",
-                                "synonyms": [
-                                    "questioned",
-                                    "question",
-                                    "interrogated"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
                                 "value": "Follow",
                                 "synonyms": [
-                                    "stalked",
-                                    "stalk",
                                     "followed"
                                 ]
                             }
                         },
                         {
                             "name": {
-                                "value": "Arrive",
+                                "value": "Rest",
                                 "synonyms": [
-                                    "arrived"
+                                    "slept",
+                                    "rested",
+                                    "sleep"
                                 ]
                             }
                         },
@@ -1560,9 +1377,8 @@
                             "name": {
                                 "value": "Watch",
                                 "synonyms": [
-                                    "observed",
-                                    "observe",
-                                    "watched"
+                                    "watched",
+                                    "observe"
                                 ]
                             }
                         },
@@ -1570,11 +1386,8 @@
                             "name": {
                                 "value": "Buy",
                                 "synonyms": [
-                                    "obtained",
-                                    "obtain",
-                                    "purchased",
-                                    "purchase",
-                                    "bought"
+                                    "bought",
+                                    "purchase"
                                 ]
                             }
                         },
@@ -1582,8 +1395,6 @@
                             "name": {
                                 "value": "Research",
                                 "synonyms": [
-                                    "investigated",
-                                    "investigate",
                                     "researched"
                                 ]
                             }
@@ -1592,13 +1403,12 @@
                             "name": {
                                 "value": "Eavesdrop",
                                 "synonyms": [
-                                    "listened",
-                                    "listen",
                                     "heard",
                                     "hear",
                                     "overheard",
+                                    "easvesdropped",
                                     "overhear",
-                                    "eavesdropped"
+                                    "listen"
                                 ]
                             }
                         },
@@ -1608,18 +1418,9 @@
                                 "synonyms": [
                                     "having",
                                     "have",
-                                    "drunk",
+                                    "taking",
+                                    "drinking",
                                     "drank"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Rest",
-                                "synonyms": [
-                                    "slept",
-                                    "sleep",
-                                    "rested"
                                 ]
                             }
                         }
@@ -1628,14 +1429,6 @@
                 {
                     "name": "subject_slot_type",
                     "values": [
-                        {
-                            "name": {
-                                "value": "Delivery",
-                                "synonyms": [
-                                    "parcel"
-                                ]
-                            }
-                        },
                         {
                             "name": {
                                 "value": "Peter Barker",
