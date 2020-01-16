@@ -14,6 +14,9 @@
     <ProjectReference Include="..\VirtualSuspect\VirtualSuspect.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <None Update="NewRobberyStory.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="RobberyStory.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -67,7 +67,7 @@ namespace VirtualSuspectLambda
             {
                 log.LogLine($"LaunchRequest: open Virtual Suspect");
 
-                knowledge_base = KnowledgeBaseParser.parseFromFile("RobberyStory.xml");
+                knowledge_base = KnowledgeBaseParser.parseFromFile("NewRobberyStory.xml");
                 virtual_suspect = new VirtualSuspectQuestionAnswer(knowledge_base);
                 lastInteraction = new Context();
 
