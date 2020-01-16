@@ -389,7 +389,7 @@ namespace VirtualSuspectLambda
                     if (KnownSlot(intent_slots["subject"]))
                     {
                         string subject = TrueSlotValue(intent_slots["subject"]);
-                        if (subject == "Peter Barker")
+                        /*if (subject == "Peter Barker")
                         {
                             log.LogLine($"subject slot: Peter Barker");
                             query.AddCondition(new SubjectEqualConditionPredicate(subject));
@@ -397,7 +397,9 @@ namespace VirtualSuspectLambda
                         else
                         {
                             log.LogLine($"subject slot: unexpected subject - " + subject);
-                        }
+                        }*/
+                        log.LogLine($"subject slot: " + subject);
+                        query.AddCondition(new SubjectEqualConditionPredicate(subject));
                     }
                     else
                     {
