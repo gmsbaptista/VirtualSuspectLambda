@@ -222,6 +222,16 @@ namespace VirtualSuspectLambda
                         QuestionAnswer(ref innerResponse, ref prompt, log, intentRequest, query);
 
                         break;
+                    case "GetMannerFocusIntent":
+                    case "GetMannerContextualIntent":
+                        log.LogLine($"GetMannerFocusIntent: a GetInformation question with a GetManner focus");
+
+                        query = new QueryDto(QueryDto.QueryTypeEnum.GetInformation);
+                        query.AddFocus(new GetMannerFocusPredicate());
+
+                        QuestionAnswer(ref innerResponse, ref prompt, log, intentRequest, query);
+
+                        break;
                     case "GetReasonFocusIntent":
                     case "GetReasonContextualIntent":
                         log.LogLine($"GetReasonFocusIntent: a GetInformation question with a GetReason focus");
