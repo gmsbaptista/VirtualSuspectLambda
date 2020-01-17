@@ -518,6 +518,21 @@ namespace VirtualSuspectLambda
                         return false;
                     }
                 }
+                if (SlotExists(intent_slots, "manner"))
+                {
+                    if (KnownSlot(intent_slots["manner"]))
+                    {
+                        string manner = TrueSlotValue(intent_slots["manner"]);
+                        log.LogLine($"manner slot: " + manner);
+                        List<string> manners = new List<string>() { manner };
+                        query.AddCondition(new MannerEqualConditionPredicate(manners));
+                    }
+                    else
+                    {
+                        log.LogLine($"unknown manner, exiting");
+                        return false;
+                    }
+                }
                 if (SlotExists(intent_slots, "theme"))
                 {
                     if (KnownSlot(intent_slots["theme"]))
