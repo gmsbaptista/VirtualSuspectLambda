@@ -162,9 +162,17 @@
                         {
                             "name": "location",
                             "type": "location_slot_type"
+                        },
+                        {
+                            "name": "manner",
+                            "type": "manner_slot_type"
                         }
                     ],
                     "samples": [
+                        "When {question_verb} {subject} {action} {manner}",
+                        "When {question_verb} {subject} {action} {theme} {filler_verb} {manner}",
+                        "When {question_verb} {subject} {action} {theme} {preposition} {manner}",
+                        "When {question_verb} {subject} {filler_verb} {manner}",
                         "When {question_verb} {subject} {action} {location}",
                         "When {question_verb} {subject} {filler_verb} {agent} ",
                         "When {question_verb} {subject} {preposition} {agent}",
@@ -240,9 +248,14 @@
                         {
                             "name": "time_pronoun",
                             "type": "time_pronoun_slot_type"
+                        },
+                        {
+                            "name": "manner",
+                            "type": "manner_slot_type"
                         }
                     ],
                     "samples": [
+                        "Where {question_verb} {subject} {filler_verb} {manner}",
                         "Where {question_verb} {subject} {filler_verb} {agent} {preposition} {date_one} {preposition} {time_one} and {time_two}",
                         "Where {question_verb} {subject} {filler_verb} {agent} {preposition} {date_one} {preposition} the {time_one}",
                         "Where {question_verb} {subject} {filler_verb} {agent} {preposition} {date_one} {preposition} {time_one}",
@@ -439,9 +452,19 @@
                         {
                             "name": "time_pronoun",
                             "type": "time_pronoun_slot_type"
+                        },
+                        {
+                            "name": "filler_verb",
+                            "type": "filler_verb_slot_type"
+                        },
+                        {
+                            "name": "manner",
+                            "type": "manner_slot_type"
                         }
                     ],
                     "samples": [
+                        "What {question_verb} {subject} {action} {preposition} {manner}",
+                        "What {question_verb} {subject} {action} {filler_verb} {manner}",
                         "What {question_verb} {subject} {action} {preposition} {agent} {reason_prefix} {reason}",
                         "What {question_verb} {subject} {action} {agent} {reason_prefix} {reason}",
                         "What {question_verb} {agent} {action} {subject} {reason_prefix} {reason}",
@@ -491,6 +514,56 @@
                     "samples": [
                         "What was it",
                         "What"
+                    ]
+                },
+                {
+                    "name": "GetMannerFocusIntent",
+                    "slots": [
+                        {
+                            "name": "question_verb",
+                            "type": "question_verb_slot_type"
+                        },
+                        {
+                            "name": "subject",
+                            "type": "subject_slot_type"
+                        },
+                        {
+                            "name": "action",
+                            "type": "action_slot_type"
+                        },
+                        {
+                            "name": "theme",
+                            "type": "theme_slot_type"
+                        },
+                        {
+                            "name": "filler_verb",
+                            "type": "filler_verb_slot_type"
+                        },
+                        {
+                            "name": "preposition",
+                            "type": "preposition_slot_type"
+                        },
+                        {
+                            "name": "location",
+                            "type": "location_slot_type"
+                        }
+                    ],
+                    "samples": [
+                        "How {question_verb} {subject} {filler_verb} {preposition} {theme}",
+                        "How {question_verb} {subject} {filler_verb} {preposition} {location} {preposition} {theme}",
+                        "How {question_verb} {subject} {action} {preposition} {theme}",
+                        "How {question_verb} {subject} {action} {preposition} {location} {preposition} {theme}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {action} {theme}",
+                        "How {question_verb} {subject} {action} {theme}"
+                    ]
+                },
+                {
+                    "name": "GetMannerContextualIntent",
+                    "slots": [],
+                    "samples": [
+                        "How did that happen",
+                        "How did you do it",
+                        "How"
                     ]
                 },
                 {
@@ -547,9 +620,14 @@
                         {
                             "name": "time_pronoun",
                             "type": "time_pronoun_slot_type"
+                        },
+                        {
+                            "name": "manner",
+                            "type": "manner_slot_type"
                         }
                     ],
                     "samples": [
+                        "Why {question_verb} {subject} {action} {theme} {preposition} {manner}",
                         "Why {question_verb} {subject} {preposition} {location} {preposition} {date_one} {preposition} {time_one} and {time_two}",
                         "Why {question_verb} {subject} {preposition} {location} {preposition} {date_one} {preposition} the {time_one}",
                         "Why {question_verb} {subject} {preposition} {location} {preposition} {date_one} {preposition} {time_one}",
@@ -653,9 +731,15 @@
                         {
                             "name": "time_two",
                             "type": "AMAZON.TIME"
+                        },
+                        {
+                            "name": "manner",
+                            "type": "manner_slot_type"
                         }
                     ],
                     "samples": [
+                        "What {question_verb} {subject} {filler_verb} {manner} {preposition}",
+                        "What {question_verb} {subject} {filler_verb} {preposition} {manner}",
                         "What {question_verb} {subject} {filler_verb} {theme} {reason_prefix} {reason}",
                         "What {question_verb} {subject} {filler_verb} {preposition} {theme} {reason_prefix} {reason}",
                         "What {question_verb} {subject} {filler_verb} {theme} and {agent} {reason_prefix} {reason} {location} {date_one} {preposition} {time_one} and {time_two}",
@@ -1729,6 +1813,15 @@
                     "values": [
                         {
                             "name": {
+                                "value": "use",
+                                "synonyms": [
+                                    "using",
+                                    "used"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
                                 "value": "do",
                                 "synonyms": [
                                     "doing"
@@ -1861,6 +1954,42 @@
                         {
                             "name": {
                                 "value": "that day"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "manner_slot_type",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Train",
+                                "synonyms": [
+                                    "by train",
+                                    "a train",
+                                    "the train"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Phone",
+                                "synonyms": [
+                                    "a phone",
+                                    "the phone",
+                                    "your phone"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Gun",
+                                "synonyms": [
+                                    "a gun",
+                                    "the gun",
+                                    "the revolver",
+                                    "gun"
+                                ]
                             }
                         }
                     ]
