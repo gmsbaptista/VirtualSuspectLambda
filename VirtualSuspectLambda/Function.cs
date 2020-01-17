@@ -850,6 +850,9 @@ namespace VirtualSuspectLambda
                 case KnowledgeBaseManager.DimentionsEnum.Location:
                     answer = "Nowhere";
                     break;
+                case KnowledgeBaseManager.DimentionsEnum.Manner:
+                    answer = "In no particular way";
+                    break;
                 case KnowledgeBaseManager.DimentionsEnum.Reason:
                     answer = "No reason";
                     break;
@@ -1029,7 +1032,7 @@ namespace VirtualSuspectLambda
         {
             List<string> contextualIntents = new List<string>()
             {
-                "GetTimeContextualIntent", "GetLocationContextualIntent", "GetAgentContextualIntent", "GetThemeContextualIntent", "GetReasonContextualIntent", "GetActionContextualIntent"
+                "GetTimeContextualIntent", "GetLocationContextualIntent", "GetAgentContextualIntent", "GetThemeContextualIntent", "GetMannerContextualIntent", "GetReasonContextualIntent", "GetActionContextualIntent"
             };
 
             return contextualIntents.Contains(intentName);
@@ -1098,6 +1101,10 @@ namespace VirtualSuspectLambda
                     else if (this.result.Results.ElementAt(0).dimension == KnowledgeBaseManager.DimentionsEnum.Location)
                     {
                         conditions.Add(new LocationEqualConditionPredicate(values.ElementAt(0)));
+                    }
+                    else if (this.result.Results.ElementAt(0).dimension == KnowledgeBaseManager.DimentionsEnum.Manner)
+                    {
+                        conditions.Add(new MannerEqualConditionPredicate(values));
                     }
                     else if (this.result.Results.ElementAt(0).dimension == KnowledgeBaseManager.DimentionsEnum.Reason)
                     {
