@@ -14,6 +14,8 @@ namespace VirtualSuspectNaturalLanguage.Component {
 
             string answer = " ";
 
+            answer += "It was to";
+
             Dictionary<EntityNode, int> mergedLocations = MergeAndSumReasonsCardinality(resultsByDimension[KnowledgeBaseManager.DimentionsEnum.Reason]);
 
             answer += CombineValues("and", mergedLocations.Select(x=>x.Key.Speech));
@@ -23,24 +25,22 @@ namespace VirtualSuspectNaturalLanguage.Component {
 
         #region Utility Methods
 
-        private static string CombineValues(string term, IEnumerable<string> values) {
-
+        private static string CombineValues(string term, IEnumerable<string> values)
+        {
             string combinedValues = "";
-
-            for (int i = 0; i < values.Count(); i++) {
-
-                combinedValues += values.ElementAt(i);
-
-                if (i == values.Count() - 2) {
-                    combinedValues += " " + term + " ";
+            for (int i = 0; i < values.Count(); i++)
+            {
+                combinedValues += " " + values.ElementAt(i);
+                if (i == values.Count() - 2)
+                {
+                    combinedValues += " " + term;
                 }
-                else if (i < values.Count() - 1) {
-                    combinedValues += ", ";
+                else if (i < values.Count() - 1)
+                {
+                    combinedValues += ",";
                 }
             }
-
             return combinedValues;
-
         }
 
         private static Dictionary<EntityNode, int> MergeAndSumReasonsCardinality(List<QueryResult.Result> reasons) {

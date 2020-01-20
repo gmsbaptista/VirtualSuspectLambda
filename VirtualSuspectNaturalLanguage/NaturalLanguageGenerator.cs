@@ -115,7 +115,7 @@ namespace VirtualSuspectNaturalLanguage
                 else if (resultsByDimension.ContainsKey(KnowledgeBaseManager.DimentionsEnum.Manner)) {
 
 
-                    answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Manner, out bool hasAction);
+                    //answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Manner, out bool hasAction);
 
                     answer += MannerNaturalLanguageGenerator.Generate(result, resultsByDimension);
                 }
@@ -123,10 +123,10 @@ namespace VirtualSuspectNaturalLanguage
                 else if (resultsByDimension.ContainsKey(KnowledgeBaseManager.DimentionsEnum.Reason)) {
 
 
-                    answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Reason, out bool hasAction);
+                    /*answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Reason, out bool hasAction);
 
                     if ( !hasAction )
-                        answer += "to";
+                        answer += "to";*/
 
                     answer += ReasonNaturalLanguageGenerator.Generate(result, resultsByDimension);
 

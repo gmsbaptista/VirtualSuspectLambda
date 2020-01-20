@@ -14,7 +14,21 @@ namespace VirtualSuspectNaturalLanguage.Component {
 
             string answer = "";
 
-            answer += " ";
+            answer += "It was";
+
+            bool hasAction = result.Query.QueryConditions.Count(x => x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Action) > 0;
+
+            if (hasAction)
+            {
+                NaturalLanguageResourceManager manager = NaturalLanguageResourceManager.Instance;
+                ActionResource resource = manager.FindResource<ActionResource>(result.Query.QueryConditions.Find(x => x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Action).GetValues().ElementAt(0));
+
+                answer += " " + resource.ExtractPreposition(KnowledgeBaseManager.DimentionsEnum.Manner);
+            }
+            else
+            {
+                answer += " with";
+            }
 
             Dictionary<EntityNode, int> mergedManners = MergeAndSumMannersCardinality(resultsByDimension[KnowledgeBaseManager.DimentionsEnum.Manner]);
 
@@ -25,24 +39,22 @@ namespace VirtualSuspectNaturalLanguage.Component {
 
         #region Utility Methods
 
-        private static string CombineValues(string term, IEnumerable<string> values) {
-
+        private static string CombineValues(string term, IEnumerable<string> values)
+        {
             string combinedValues = "";
-
-            for (int i = 0; i < values.Count(); i++) {
-
-                combinedValues += values.ElementAt(i);
-
-                if (i == values.Count() - 2) {
-                    combinedValues += " " + term + " ";
+            for (int i = 0; i < values.Count(); i++)
+            {
+                combinedValues += " " + values.ElementAt(i);
+                if (i == values.Count() - 2)
+                {
+                    combinedValues += " " + term;
                 }
-                else if (i < values.Count() - 1) {
-                    combinedValues += ", ";
+                else if (i < values.Count() - 1)
+                {
+                    combinedValues += ",";
                 }
             }
-
             return combinedValues;
-
         }
 
         private static Dictionary<EntityNode, int> MergeAndSumMannersCardinality(List<QueryResult.Result> manners) {
