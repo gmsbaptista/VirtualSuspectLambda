@@ -94,7 +94,7 @@
   <entity>
     <id>16</id>
     <type>TimeSpan</type>
-    <begin>05/03/2016T04:30:00</begin>
+    <begin>05/03/2016T04:30:01</begin>
     <end>05/03/2016T07:00:00</end>
   </entity>
   <entity>
@@ -117,7 +117,7 @@
   <entity>
     <id>20</id>
     <type>TimeSpan</type>
-    <begin>05/03/2016T22:00:00</begin>
+    <begin>05/03/2016T22:00:01</begin>
     <end>05/03/2016T22:30:00</end>
   </entity>
   <entity>

@@ -32,7 +32,7 @@ namespace VirtualSuspect.Query
 
                         DateTime value = DateTime.ParseExact(node.Time.Value, "dd/MM/yyyyTHH:mm:ss", CultureInfo.InvariantCulture);
 
-                        return value > beginTime && value < endTime;
+                        return value >= beginTime && value <= endTime;
 
                     }else if (node.Time.Type == "TimeSpan") {//Example: dd/MM/yyyyTHH:mm:ss>dd/MM/yyyyTHH:mm:ss
 
@@ -42,7 +42,7 @@ namespace VirtualSuspect.Query
 
                         DateTime valueEnd = DateTime.ParseExact(node.Time.Value.Split('>')[1], "dd/MM/yyyyTHH:mm:ss", CultureInfo.InvariantCulture);
 
-                        return valueBegin <= endTime && valueEnd >= beginTime;
+                        return valueBegin <= endTime && valueEnd > beginTime;
                     }
 
                     return false;

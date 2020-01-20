@@ -38,7 +38,7 @@ namespace VirtualSuspect.Query
 
                         DateTime valueEnd = DateTime.ParseExact(node.Time.Value.Split('>')[1], "dd/MM/yyyyTHH:mm:ss", CultureInfo.InvariantCulture);
 
-                        return datetime >= valueBegin && datetime <= valueEnd;
+                        return datetime >= valueBegin && datetime < valueEnd;
                         //throw new MessageFieldException("Cannot test equality between a Time Instant and a Time Span");
 
                     }
