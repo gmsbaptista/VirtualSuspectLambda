@@ -627,6 +627,8 @@
                         }
                     ],
                     "samples": [
+                        "Why {question_verb} {subject} {action} from {location} to {theme}",
+                        "Why {question_verb} {subject} {action} to {theme}",
                         "Why {question_verb} {subject} {action} {theme} {preposition} {manner}",
                         "Why {question_verb} {subject} {preposition} {location} {preposition} {date_one} {preposition} {time_one} and {time_two}",
                         "Why {question_verb} {subject} {preposition} {location} {preposition} {date_one} {preposition} the {time_one}",
@@ -660,8 +662,7 @@
                         "Why {question_verb} {subject} {action} {theme} {agent}",
                         "Why {question_verb} {agent} {action} {subject} {theme}",
                         "Why {question_verb} {subject} {action} {theme}",
-                        "Why {question_verb} {subject} {action} {preposition} {location}",
-                        "Why {question_verb} {subject} {action} {location}"
+                        "Why {question_verb} {subject} {action} from {location}"
                     ]
                 },
                 {
@@ -1734,6 +1735,11 @@
                 {
                     "name": "preposition_slot_type",
                     "values": [
+                        {
+                            "name": {
+                                "value": "for"
+                            }
+                        },
                         {
                             "name": {
                                 "value": "of"
