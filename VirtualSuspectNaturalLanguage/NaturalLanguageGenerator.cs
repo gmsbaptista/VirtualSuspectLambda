@@ -166,7 +166,7 @@ namespace VirtualSuspectNaturalLanguage
 
         }
      
-        private static List<KeyValuePair<DateTime, DateTime>> SortAndMergeSequenceDateTime(List<KeyValuePair<DateTime, DateTime>> sequence) {
+        public static List<KeyValuePair<DateTime, DateTime>> SortAndMergeSequenceDateTime(List<KeyValuePair<DateTime, DateTime>> sequence) {
 
             List<KeyValuePair<DateTime,DateTime>> sequenceMerged = new List<KeyValuePair<DateTime, DateTime>>();
 

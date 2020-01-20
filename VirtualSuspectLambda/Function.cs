@@ -18,6 +18,7 @@ using VirtualSuspect.Utils;
 using VirtualSuspectNaturalLanguage;
 
 using Newtonsoft.Json;
+using System.Globalization;
 
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.Json.JsonSerializer))]
@@ -313,7 +314,8 @@ namespace VirtualSuspectLambda
                             log.LogLine($"value: " + storyNode.Value);
                         }
                     }
-                    if (queryResult.Query.QueryType != QueryDto.QueryTypeEnum.YesOrNo && queryResult.Results.Count == 0 && 
+                    int resultsCount = CountResults(queryResult);
+                    if (queryResult.Query.QueryType != QueryDto.QueryTypeEnum.YesOrNo && resultsCount == 0 && 
                         options["Empty answer generation"])
                     {
                         if (queryResult.Query.QueryFocus.Count == 1)
@@ -330,7 +332,7 @@ namespace VirtualSuspectLambda
                             }
                         }
                     }
-                    else if (queryResult.Query.QueryType != QueryDto.QueryTypeEnum.YesOrNo && queryResult.Results.Count > 2 && 
+                    else if (queryResult.Query.QueryType != QueryDto.QueryTypeEnum.YesOrNo && resultsCount > 1 && 
                         options["Answer filtering"])
                     {
                         speechText = "You'll have to be more specific";
@@ -824,6 +826,48 @@ namespace VirtualSuspectLambda
             }
 
             return date_elements[2] + "/" + date_elements[1] + "/" + "2016" + "T" + time; 
+        }
+
+
+        private int CountResults(QueryResult result)
+        {
+            //very martelado
+            //TODO: revisit and do this properly
+            Dictionary<KnowledgeBaseManager.DimentionsEnum, List<QueryResult.Result>> resultsByDimension = new Dictionary<KnowledgeBaseManager.DimentionsEnum, List<QueryResult.Result>>();
+            foreach (QueryResult.Result queryResult in result.Results)
+            {
+                if (!resultsByDimension.ContainsKey(queryResult.dimension))
+                {
+                    resultsByDimension[queryResult.dimension] = new List<QueryResult.Result>();
+                }
+                resultsByDimension[queryResult.dimension].Add(queryResult);
+            }
+            if (resultsByDimension.ContainsKey(KnowledgeBaseManager.DimentionsEnum.Time))
+            {
+                List<KeyValuePair<DateTime, DateTime>> dateTimeList = new List<KeyValuePair<DateTime, DateTime>>();
+                foreach (QueryResult.Result value in resultsByDimension[KnowledgeBaseManager.DimentionsEnum.Time])
+                {
+                    if (value.values.ElementAt(0).Value.Split('>').Length > 1)
+                    {
+                        DateTime firstDate = DateTime.ParseExact(value.values.ElementAt(0).Value.Split('>')[0], "dd/MM/yyyyTHH:mm:ss", CultureInfo.InvariantCulture);
+                        DateTime secondDate = DateTime.ParseExact(value.values.ElementAt(0).Value.Split('>')[1], "dd/MM/yyyyTHH:mm:ss", CultureInfo.InvariantCulture);
+
+                        dateTimeList.Add(new KeyValuePair<DateTime, DateTime>(firstDate, secondDate));
+                    }
+                    else
+                    {
+                        DateTime date = DateTime.ParseExact(value.values.ElementAt(0).Value, "dd/MM/yyyyTHH:mm:ss", CultureInfo.InvariantCulture);
+
+                        dateTimeList.Add(new KeyValuePair<DateTime, DateTime>(date, date));
+                    }
+                }
+                dateTimeList = NaturalLanguageGenerator.SortAndMergeSequenceDateTime(dateTimeList);
+                return dateTimeList.Count;
+            }
+            else
+            {
+                return result.Results.Count;
+            }
         }
 
         /// <summary>
