@@ -255,6 +255,7 @@
                         }
                     ],
                     "samples": [
+                        "Where {question_verb} {subject} {action} from",
                         "Where {question_verb} {subject} {filler_verb} {manner}",
                         "Where {question_verb} {subject} {filler_verb} {agent} {preposition} {date_one} {preposition} {time_one} and {time_two}",
                         "Where {question_verb} {subject} {filler_verb} {agent} {preposition} {date_one} {preposition} the {time_one}",
@@ -463,6 +464,7 @@
                         }
                     ],
                     "samples": [
+                        "Where {question_verb} {subject} {action} to",
                         "What {question_verb} {subject} {action} {preposition} {manner}",
                         "What {question_verb} {subject} {action} {filler_verb} {manner}",
                         "What {question_verb} {subject} {action} {preposition} {agent} {reason_prefix} {reason}",
