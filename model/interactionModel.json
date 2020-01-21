@@ -169,6 +169,9 @@
                         }
                     ],
                     "samples": [
+                        "When {question_verb} {subject} {action} from {location} to {theme}",
+                        "When {question_verb} {subject} {action} to {theme}",
+                        "When {question_verb} {subject} {action} from {location}",
                         "When {question_verb} {subject} {action} {manner}",
                         "When {question_verb} {subject} {action} {theme} {filler_verb} {manner}",
                         "When {question_verb} {subject} {action} {theme} {preposition} {manner}",
@@ -296,6 +299,7 @@
                     "name": "GetLocationContextualIntent",
                     "slots": [],
                     "samples": [
+                        "Where from",
                         "Where was that",
                         "Where did that happen",
                         "Where"
