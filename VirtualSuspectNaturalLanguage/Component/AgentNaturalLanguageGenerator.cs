@@ -35,7 +35,7 @@ namespace VirtualSuspectNaturalLanguage.Component {
             }
             else
             {
-                answer += "I met";
+                answer += "It was";
             }
 
             Dictionary<EntityNode, int> mergedAgents = MergeAndSumAgentsCardinality(resultsByDimension[KnowledgeBaseManager.DimentionsEnum.Agent]);
