@@ -614,6 +614,9 @@
     <association relation="Agent">
       <entity id="33"/>
     </association>
+    <association relation="Theme">
+      <entity id="33"/>
+    </association>
     <association relation="Reason">
       <entity id="61"/>
     </association>
@@ -633,6 +636,9 @@
       <entity id="30"/>
     </association>
     <association relation="Agent">
+      <entity id="33"/>
+    </association>
+    <association relation="Theme">
       <entity id="33"/>
     </association>
     <association relation="Reason">
