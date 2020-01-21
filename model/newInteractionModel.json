@@ -358,6 +358,22 @@
                         }
                     ],
                     "samples": [
+                        "Who {question_verb} {subject} {preposition} {preposition} {location}",
+                        "Who {question_verb} {subject} {preposition} {date_one} {preposition} {time_one} and {time_two}",
+                        "Who {question_verb} {subject} {preposition} {date_one} {preposition} the {time_one}",
+                        "Who {question_verb} {subject} {preposition} {date_one} {preposition} {time_one}",
+                        "Who {question_verb} {subject} {preposition} {time_one} {preposition} {date_one}",
+                        "Who {question_verb} {subject} {preposition} {date_one} and {date_two}",
+                        "Who {question_verb} {subject} {preposition} {date_one}",
+                        "Who {question_verb} {subject} {preposition} {time_pronoun}",
+                        "Who {question_verb} {subject} {preposition} {preposition} {date_one} {preposition} {time_one} and {time_two}",
+                        "Who {question_verb} {subject} {preposition} {preposition} {date_one} {preposition} the {time_one}",
+                        "Who {question_verb} {subject} {preposition} {preposition} {date_one} {preposition} {time_one}",
+                        "Who {question_verb} {subject} {preposition} {preposition} {time_one} {preposition} {date_one}",
+                        "Who {question_verb} {subject} {preposition} {preposition} {date_one} and {date_two}",
+                        "Who {question_verb} {subject} {preposition} {preposition} {date_one}",
+                        "Who {question_verb} {subject} {preposition} {preposition} {time_pronoun}",
+                        "Who {question_verb} {subject} {action} {preposition}",
                         "Who {question_verb} {subject} {action} {theme} {preposition}",
                         "Who {question_verb} {subject} {filler_verb} {preposition} {location} {preposition} {date_one} {preposition} {time_one} and {time_two}",
                         "Who {question_verb} {subject} {filler_verb} {preposition} {location} {preposition} {date_one} {preposition} the {time_one}",
@@ -468,6 +484,7 @@
                         }
                     ],
                     "samples": [
+                        "Who {question_verb} {subject} {action}",
                         "Where {question_verb} {subject} {action} to",
                         "What {question_verb} {subject} {action} {preposition} {manner}",
                         "What {question_verb} {subject} {action} {filler_verb} {manner}",
@@ -925,9 +942,17 @@
                         {
                             "name": "time_pronoun",
                             "type": "time_pronoun_slot_type"
+                        },
+                        {
+                            "name": "manner",
+                            "type": "manner_slot_type"
                         }
                     ],
                     "samples": [
+                        "{question_verb} {subject} {action} {theme} {filler_verb} {manner}",
+                        "{question_verb} {subject} {action} {theme} {preposition} {manner}",
+                        "{question_verb} {subject} {filler_verb} {manner} {preposition} {action} {theme}",
+                        "{question_verb} {subject} {filler_verb} {manner}",
                         "{question_verb} {subject} {action} {theme}",
                         "{question_verb} {subject} {filler_verb} {agent} {preposition} {date_one} {preposition} {time_one} and {time_two}",
                         "{question_verb} {subject} {filler_verb} {agent} {preposition} {date_one} {preposition} the {time_one}",
@@ -1264,6 +1289,18 @@
                         {
                             "name": {
                                 "value": "something"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Delivery Guy",
+                                "synonyms": [
+                                    "delivery boy",
+                                    "the delivery guy",
+                                    "delivery guy",
+                                    "the delivery boy",
+                                    "neighbour"
+                                ]
                             }
                         },
                         {
