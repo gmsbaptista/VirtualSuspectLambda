@@ -11,8 +11,16 @@ namespace VirtualSuspect.Query
         public Func<EventNode, QueryResult.Result> CreateFunction() {
             return delegate (EventNode node) {    
 
-                return new QueryResult.Result(node.Location, 1 , KnowledgeBaseManager.DimentionsEnum.Location);
-
+                if (node.Action.Value == "Travel")
+                {
+                    List<IStoryNode> values = new List<IStoryNode>() { node.Location };
+                    values.AddRange(node.Manner);
+                    return new QueryResult.Result(values, 1, KnowledgeBaseManager.DimentionsEnum.Location);
+                }
+                else
+                {
+                    return new QueryResult.Result(node.Location, 1, KnowledgeBaseManager.DimentionsEnum.Location);
+                }
             };
         }
 

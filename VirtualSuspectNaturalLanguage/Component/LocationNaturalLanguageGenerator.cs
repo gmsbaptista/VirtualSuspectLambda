@@ -15,8 +15,14 @@ namespace VirtualSuspectNaturalLanguage.Component {
             string answer = "";
 
             bool hasAction = result.Query.QueryConditions.Count(x => x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Action) > 0;
+            bool inTrain = true;
 
-            if (hasAction || GetNumberAgents(result.Query) > 0)
+            if (hasAction && result.Query.QueryConditions.Find(x => x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Action).GetValues().ElementAt(0) == "Travel")
+            {
+                answer += "I travelled from";
+                inTrain = false;
+            }
+            else if (hasAction || GetNumberAgents(result.Query) > 0)
             {
                 answer += "It was";
             }
@@ -26,7 +32,7 @@ namespace VirtualSuspectNaturalLanguage.Component {
             }
 
             //Merge all entities and sum cardinality
-            Dictionary<EntityNode, int> mergedLocations = MergeAndSumLocationsCardinality(resultsByDimension[KnowledgeBaseManager.DimentionsEnum.Location]);
+            Dictionary<EntityNode, int> mergedLocations = MergeAndSumLocationsCardinality(resultsByDimension[KnowledgeBaseManager.DimentionsEnum.Location], inTrain);
 
             //Group by Type
             //Dictionary<string, List<EntityNode>> locationGroupByType = GroupLocationByType(mergedLocations);
@@ -38,23 +44,18 @@ namespace VirtualSuspectNaturalLanguage.Component {
 
                 answer += " " + GetPreposition(node) + " " + node.Speech;
 
-                if(mergedLocations.Count > 1)
+                if(mergedLocations.Count > 1 && inTrain)
                 {
                     answer += " " + NaturalLanguageGetFrequency(mergedLocations.ElementAt(i).Value);
+                }   
+                if (i == mergedLocations.Count - 2)
+                {
+                    answer += " and";
                 }
-
-                if (i != mergedLocations.Count - 1) {
+                else if (i < mergedLocations.Count - 1)
+                {
                     answer += ",";
-
-                    if (i == mergedLocations.Count - 2) {
-                        answer += " and";
-                    }
-
                 }
-                /*else {
-                    answer += ".";
-                }*/
-
             }
 
             return answer;
@@ -95,13 +96,22 @@ namespace VirtualSuspectNaturalLanguage.Component {
             return query.QueryConditions.Count(x => x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Agent);
         }
 
-        private static Dictionary<EntityNode, int> MergeAndSumLocationsCardinality(List<QueryResult.Result> locations) {
+        private static Dictionary<EntityNode, int> MergeAndSumLocationsCardinality(List<QueryResult.Result> locations, bool inTrain) {
 
             Dictionary<EntityNode, int> locationsWithCardinality = new Dictionary<EntityNode, int>();
 
             foreach (QueryResult.Result locationResult in locations) {
 
                 foreach (IStoryNode locationNode in locationResult.values) {
+
+                    if (inTrain && locationResult.values.Count > 1 && locationNode.Value != "Train")
+                    {
+                        continue;
+                    }
+                    else if (!inTrain && locationResult.values.Count > 1 && locationNode.Value == "Train")
+                    {
+                        continue;
+                    }
 
                     if (!locationsWithCardinality.ContainsKey((EntityNode)locationNode)) {
 
@@ -122,9 +132,13 @@ namespace VirtualSuspectNaturalLanguage.Component {
         {
             string preposition = "";
 
-            if (entity.Type == "Street" || entity.Type == "City")
+            if (entity.Type == "Street" || entity.Type == "Train")
             {
                 preposition = "in";
+            }
+            else if (entity.Type == "City")
+            {
+                preposition = "";
             }
             else
             {
