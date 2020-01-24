@@ -542,7 +542,7 @@ namespace VirtualSuspectLambda
                         }
                         else if (CheckIndirectPronoun(manner))
                         {
-                            //do nothing for now
+                            query.AddCondition(new MannerExistsConditionPredicate());
                         }
                         else
                         {

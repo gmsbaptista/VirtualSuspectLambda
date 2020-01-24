@@ -61,6 +61,7 @@
     <Compile Include="Query\ReasonEqualConditionPredicate.cs" />
     <Compile Include="Query\MannerEqualConditionPredicate.cs" />
     <Compile Include="Query\AgentEqualConditionPredicate.cs" />
+    <Compile Include="Query\MannerExistsConditionPredicate.cs" />
     <Compile Include="Query\ThemeExistsConditionPredicate.cs" />
     <Compile Include="Query\TimeBetweenConditionPredicate.cs" />
     <Compile Include="Query\TimeEqualConditionPredicate.cs" />
