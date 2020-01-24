@@ -1467,6 +1467,21 @@
                     "values": [
                         {
                             "name": {
+                                "value": "it"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "something"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "anything"
+                            }
+                        },
+                        {
+                            "name": {
                                 "value": "Train",
                                 "synonyms": [
                                     "by train",
@@ -1611,6 +1626,26 @@
                 {
                     "name": "theme_slot_type",
                     "values": [
+                        {
+                            "name": {
+                                "value": "that"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "that place"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "there"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "him"
+                            }
+                        },
                         {
                             "name": {
                                 "value": "it"
