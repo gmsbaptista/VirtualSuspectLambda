@@ -1088,6 +1088,190 @@
             ],
             "types": [
                 {
+                    "name": "action_slot_type",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Sell",
+                                "synonyms": [
+                                    "sold"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Travel",
+                                "synonyms": [
+                                    "gone",
+                                    "go",
+                                    "travelled"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Wait",
+                                "synonyms": [
+                                    "waited"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Call",
+                                "synonyms": [
+                                    "phoned",
+                                    "phone",
+                                    "called"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Get",
+                                "synonyms": [
+                                    "gave",
+                                    "give",
+                                    "got"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Talk",
+                                "synonyms": [
+                                    "chatted",
+                                    "chat",
+                                    "conversed",
+                                    "converse",
+                                    "talked"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Steal",
+                                "synonyms": [
+                                    "took",
+                                    "take",
+                                    "stole"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Rob",
+                                "synonyms": [
+                                    "robbed"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Prepare",
+                                "synonyms": [
+                                    "prepared"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Interrogate",
+                                "synonyms": [
+                                    "questioned",
+                                    "question",
+                                    "interrogated"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Follow",
+                                "synonyms": [
+                                    "stalked",
+                                    "stalk",
+                                    "followed"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Arrive",
+                                "synonyms": [
+                                    "arrived"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Watch",
+                                "synonyms": [
+                                    "observed",
+                                    "observe",
+                                    "watched"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Buy",
+                                "synonyms": [
+                                    "obtained",
+                                    "obtain",
+                                    "purchased",
+                                    "purchase",
+                                    "bought"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Research",
+                                "synonyms": [
+                                    "investigated",
+                                    "investigate",
+                                    "researched"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Eavesdrop",
+                                "synonyms": [
+                                    "listened",
+                                    "listen",
+                                    "heard",
+                                    "hear",
+                                    "overheard",
+                                    "overhear",
+                                    "eavesdropped"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Drink",
+                                "synonyms": [
+                                    "having",
+                                    "have",
+                                    "drunk",
+                                    "drank"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Rest",
+                                "synonyms": [
+                                    "slept",
+                                    "sleep",
+                                    "rested"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "agent_slot_type",
                     "values": [
                         {
@@ -1268,6 +1452,152 @@
                                     "the coffee shop",
                                     "coffee shop at the mall",
                                     "coffee shop"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "manner_slot_type",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Train",
+                                "synonyms": [
+                                    "by train",
+                                    "a train",
+                                    "the train"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Phone",
+                                "synonyms": [
+                                    "a phone",
+                                    "the phone",
+                                    "your phone"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Gun",
+                                "synonyms": [
+                                    "a gun",
+                                    "the gun",
+                                    "the revolver",
+                                    "gun"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "reason_slot_type",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Return Home",
+                                "synonyms": [
+                                    "be done with this shit"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Get Money",
+                                "synonyms": [
+                                    "get the money"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Find Buyer",
+                                "synonyms": [
+                                    "find a buyer"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Discover Value",
+                                "synonyms": [
+                                    "discover its value",
+                                    "discover the necklace's value"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Sell Necklace",
+                                "synonyms": [
+                                    "sell the necklace"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Steal Necklace",
+                                "synonyms": [
+                                    "steal the necklace"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Confirm Delivery",
+                                "synonyms": [
+                                    "find out if the necklace was delivered",
+                                    "confirm if the necklace was delivered"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Check Delivery",
+                                "synonyms": [
+                                    "check if the delivery had arrived"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Rob Jewelry Shop",
+                                "synonyms": [
+                                    "rob the jewelry shop"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Gather Information",
+                                "synonyms": [
+                                    "gather information about the necklace"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "subject_slot_type",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Delivery",
+                                "synonyms": [
+                                    "it",
+                                    "parcel"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Peter Barker",
+                                "synonyms": [
+                                    "you",
+                                    "Peter"
                                 ]
                             }
                         }
@@ -1483,345 +1813,21 @@
                     ]
                 },
                 {
-                    "name": "reason_slot_type",
+                    "name": "time_pronoun_slot_type",
                     "values": [
                         {
                             "name": {
-                                "value": "Return Home",
-                                "synonyms": [
-                                    "be done with this shit"
-                                ]
+                                "value": "then"
                             }
                         },
                         {
                             "name": {
-                                "value": "Get Money",
-                                "synonyms": [
-                                    "get the money"
-                                ]
+                                "value": "that time"
                             }
                         },
                         {
                             "name": {
-                                "value": "Find Buyer",
-                                "synonyms": [
-                                    "find a buyer"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Discover Value",
-                                "synonyms": [
-                                    "discover its value",
-                                    "discover the necklace's value"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Sell Necklace",
-                                "synonyms": [
-                                    "sell the necklace"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Steal Necklace",
-                                "synonyms": [
-                                    "steal the necklace"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Confirm Delivery",
-                                "synonyms": [
-                                    "find out if the necklace was delivered",
-                                    "confirm if the necklace was delivered"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Check Delivery",
-                                "synonyms": [
-                                    "check if the delivery had arrived"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Rob Jewelry Shop",
-                                "synonyms": [
-                                    "rob the jewelry shop"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Gather Information",
-                                "synonyms": [
-                                    "gather information about the necklace"
-                                ]
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "action_slot_type",
-                    "values": [
-                        {
-                            "name": {
-                                "value": "Sell",
-                                "synonyms": [
-                                    "sold"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Travel",
-                                "synonyms": [
-                                    "gone",
-                                    "go",
-                                    "travelled"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Wait",
-                                "synonyms": [
-                                    "waited"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Call",
-                                "synonyms": [
-                                    "phoned",
-                                    "phone",
-                                    "called"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Get",
-                                "synonyms": [
-                                    "gave",
-                                    "give",
-                                    "got"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Talk",
-                                "synonyms": [
-                                    "chatted",
-                                    "chat",
-                                    "conversed",
-                                    "converse",
-                                    "talked"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Steal",
-                                "synonyms": [
-                                    "took",
-                                    "take",
-                                    "stole"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Rob",
-                                "synonyms": [
-                                    "robbed"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Prepare",
-                                "synonyms": [
-                                    "prepared"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Interrogate",
-                                "synonyms": [
-                                    "questioned",
-                                    "question",
-                                    "interrogated"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Follow",
-                                "synonyms": [
-                                    "stalked",
-                                    "stalk",
-                                    "followed"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Arrive",
-                                "synonyms": [
-                                    "arrived"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Watch",
-                                "synonyms": [
-                                    "observed",
-                                    "observe",
-                                    "watched"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Buy",
-                                "synonyms": [
-                                    "obtained",
-                                    "obtain",
-                                    "purchased",
-                                    "purchase",
-                                    "bought"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Research",
-                                "synonyms": [
-                                    "investigated",
-                                    "investigate",
-                                    "researched"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Eavesdrop",
-                                "synonyms": [
-                                    "listened",
-                                    "listen",
-                                    "heard",
-                                    "hear",
-                                    "overheard",
-                                    "overhear",
-                                    "eavesdropped"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Drink",
-                                "synonyms": [
-                                    "having",
-                                    "have",
-                                    "drunk",
-                                    "drank"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Rest",
-                                "synonyms": [
-                                    "slept",
-                                    "sleep",
-                                    "rested"
-                                ]
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "subject_slot_type",
-                    "values": [
-                        {
-                            "name": {
-                                "value": "Delivery",
-                                "synonyms": [
-                                    "it",
-                                    "parcel"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Peter Barker",
-                                "synonyms": [
-                                    "you",
-                                    "Peter"
-                                ]
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "preposition_slot_type",
-                    "values": [
-                        {
-                            "name": {
-                                "value": "for"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "of"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "between"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "on"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "with"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "at"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "in"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "to"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "from"
+                                "value": "that day"
                             }
                         }
                     ]
@@ -1915,6 +1921,56 @@
                     ]
                 },
                 {
+                    "name": "preposition_slot_type",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "for"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "of"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "between"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "on"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "with"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "at"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "in"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "to"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "from"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "reason_prefix_slot_type",
                     "values": [
                         {
@@ -1983,62 +2039,6 @@
                                 "synonyms": [
                                     "bitch mode",
                                     "rude mode"
-                                ]
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "time_pronoun_slot_type",
-                    "values": [
-                        {
-                            "name": {
-                                "value": "then"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "that time"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "that day"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "manner_slot_type",
-                    "values": [
-                        {
-                            "name": {
-                                "value": "Train",
-                                "synonyms": [
-                                    "by train",
-                                    "a train",
-                                    "the train"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Phone",
-                                "synonyms": [
-                                    "a phone",
-                                    "the phone",
-                                    "your phone"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Gun",
-                                "synonyms": [
-                                    "a gun",
-                                    "the gun",
-                                    "the revolver",
-                                    "gun"
                                 ]
                             }
                         }
