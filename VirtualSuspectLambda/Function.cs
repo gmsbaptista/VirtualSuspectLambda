@@ -435,8 +435,18 @@ namespace VirtualSuspectLambda
                             }
                             else
                             {
-                                log.LogLine($"missing reference");
-                                return false;
+                                string prevTheme = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Theme, out bool themeSuccess);
+                                if (themeSuccess && prevTheme == "Delivery Guy")
+                                {
+                                    log.LogLine($"use Delivery Guy as agent");
+                                    List<string> agents = new List<string>() { prevTheme };
+                                    query.AddCondition(new AgentEqualConditionPredicate(agents));
+                                }
+                                else
+                                {
+                                    log.LogLine($"missing reference");
+                                    return false;
+                                }
                             }
 
                         }
@@ -485,8 +495,17 @@ namespace VirtualSuspectLambda
                             }
                             else
                             {
-                                log.LogLine($"missing reference");
-                                return false;
+                                string prevTheme = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Theme, out bool themeSuccess);
+                                if (themeSuccess && (prevTheme == "Castle Town" || prevTheme == "Silvermoon City"))
+                                {
+                                    log.LogLine($"use " + prevTheme + " as location");
+                                    query.AddCondition(new LocationEqualConditionPredicate(prevTheme));
+                                }
+                                else
+                                {
+                                    log.LogLine($"missing reference");
+                                    return false;
+                                }
                             }
 
                         }
@@ -536,8 +555,18 @@ namespace VirtualSuspectLambda
                             }
                             else
                             {
-                                log.LogLine($"missing reference");
-                                return false;
+                                string prevTheme = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Theme, out bool themeSuccess);
+                                if (themeSuccess && prevTheme == "Gun")
+                                {
+                                    log.LogLine($"use Gun as manner");
+                                    List<string> manners = new List<string>() { prevTheme };
+                                    query.AddCondition(new MannerEqualConditionPredicate(manners));
+                                }
+                                else
+                                {
+                                    log.LogLine($"missing reference");
+                                    return false;
+                                }
                             }
                         }
                         else if (CheckIndirectPronoun(manner))
@@ -572,8 +601,32 @@ namespace VirtualSuspectLambda
                             }
                             else
                             {
-                                log.LogLine($"missing reference");
-                                return false;
+                                string prevAgent = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Agent, out bool agentSuccess);
+                                string prevLocation = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Location, out bool locationSuccess);
+                                string prevManner = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Manner, out bool mannerSuccess);
+                                if (agentSuccess || locationSuccess || mannerSuccess)
+                                {
+                                    if (agentSuccess && prevAgent == "Delivery Guy")
+                                    {
+                                        List<string> themes = new List<string>() { prevAgent };
+                                        query.AddCondition(new ThemeEqualConditionPredicate(themes));
+                                    }
+                                    if (locationSuccess && (prevLocation == "Castle Town" || prevLocation == "Silvermoon City"))
+                                    {
+                                        List<string> themes = new List<string>() { prevLocation };
+                                        query.AddCondition(new ThemeEqualConditionPredicate(themes));
+                                    }
+                                    if (mannerSuccess && prevManner == "Gun")
+                                    {
+                                        List<string> themes = new List<string>() { prevManner };
+                                        query.AddCondition(new ThemeEqualConditionPredicate(themes));
+                                    }
+                                }
+                                else
+                                {
+                                    log.LogLine($"missing reference");
+                                    return false;
+                                }
                             }
                         }
                         else if (CheckIndirectPronoun(theme))
