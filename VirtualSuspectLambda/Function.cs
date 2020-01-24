@@ -526,8 +526,29 @@ namespace VirtualSuspectLambda
                     {
                         string manner = TrueSlotValue(intent_slots["manner"]);
                         log.LogLine($"manner slot: " + manner);
-                        List<string> manners = new List<string>() { manner };
-                        query.AddCondition(new MannerEqualConditionPredicate(manners));
+                        if (CheckDirectPronoun(manner))
+                        {
+                            string prevManner = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Manner, out bool success);
+                            if (success)
+                            {
+                                List<string> manners = new List<string>() { prevManner };
+                                query.AddCondition(new MannerEqualConditionPredicate(manners));
+                            }
+                            else
+                            {
+                                log.LogLine($"missing reference");
+                                return false;
+                            }
+                        }
+                        else if (CheckIndirectPronoun(manner))
+                        {
+                            //do nothing for now
+                        }
+                        else
+                        {
+                            List<string> manners = new List<string>() { manner };
+                            query.AddCondition(new MannerEqualConditionPredicate(manners));
+                        }
                     }
                     else
                     {
