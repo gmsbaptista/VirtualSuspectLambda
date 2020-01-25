@@ -180,7 +180,7 @@ namespace VirtualSuspectNaturalLanguage
 
                 else {
 
-                    if (sequenceMerged.Last().Value == sequence[i].Key) { //the end of the last is equal to the begin of current Date
+                    if (sequenceMerged.Last().Value == sequence[i].Key || sequenceMerged.Last().Value == sequence[i].Key.AddSeconds(-1)) { //the end of the last is equal to the begin of current Date
                         DateTime beginInterval = sequenceMerged.Last().Key;
                         sequenceMerged.RemoveAt(sequenceMerged.Count - 1);
                         sequenceMerged.Add(new KeyValuePair<DateTime, DateTime>(beginInterval, sequence[i].Value));
