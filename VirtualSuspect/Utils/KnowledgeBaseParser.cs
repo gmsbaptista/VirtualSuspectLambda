@@ -69,8 +69,23 @@ namespace VirtualSuspect.Utils
 
             }
 
-            //Extract all actions from each episode
-            XmlNodeList eventsNodesList = xmlRoot.SelectNodes("event");
+            foreach (XmlNode entityNode in entityNodesList)
+            {
+                uint id = UInt32.Parse(entityNode.SelectSingleNode("id").InnerText);
+                XmlNodeList associationNodesList = entityNode.SelectNodes("association");
+                foreach (XmlNode associationNode in associationNodesList)
+                {
+                    string associationRelation = associationNode.Attributes["relation"].Value;
+                    uint enID = UInt32.Parse(associationNode.SelectSingleNode("entity").Attributes["id"].Value);
+                    if (associationRelation == "Parent")
+                    {
+                        entities[id].Parent = entities[enID];
+                    }
+                }
+            }
+
+                //Extract all actions from each episode
+                XmlNodeList eventsNodesList = xmlRoot.SelectNodes("event");
 
             foreach (XmlNode eventXmlNode in eventsNodesList) {
 

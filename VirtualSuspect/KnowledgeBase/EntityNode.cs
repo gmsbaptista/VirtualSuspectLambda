@@ -53,6 +53,20 @@ namespace VirtualSuspect.KnowledgeBase {
             }
         }
 
+        private EntityNode parent;
+
+        public EntityNode Parent
+        {
+            set
+            {
+                parent = value;
+            }
+            get
+            {
+                return parent;
+            }
+        }
+
         public EntityNode(uint _id, string _value, string _speech, string _type){
 
             id = _id;
@@ -60,6 +74,15 @@ namespace VirtualSuspect.KnowledgeBase {
             speech = _speech;
             type = _type;
 
+        }
+
+        public bool CheckParent (string value)
+        {
+            if (parent == null)
+            {
+                return false;
+            }
+            return parent.Value == value || parent.CheckParent(value);
         }
         
         public float EvaluateKnowledge(KnowledgeBaseManager kb) {
