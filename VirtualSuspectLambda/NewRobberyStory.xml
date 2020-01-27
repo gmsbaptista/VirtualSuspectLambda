@@ -746,6 +746,9 @@
     <association relation="Theme">
       <entity id="51"/>
     </association>
+    <association relation="Manner">
+      <entity id="49"/>
+    </association>
     <association relation="Reason">
       <entity id="63"/>
     </association>

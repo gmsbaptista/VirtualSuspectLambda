@@ -152,7 +152,7 @@
     <themePreposition></themePreposition>
     <agentPreposition></agentPreposition>
     <reasonPreposition></reasonPreposition>
-    <mannerPreposition></mannerPreposition>
+    <mannerPreposition>using</mannerPreposition>
   </resource>
   <resource>
     <type>action</type>
