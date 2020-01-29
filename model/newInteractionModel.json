@@ -110,8 +110,6 @@
                         "How have you been",
                         "How is your day going",
                         "How's life",
-                        "How you doing",
-                        "How are you doing",
                         "How are you on this fine day",
                         "How do you do",
                         "How are you feeling",
@@ -414,7 +412,6 @@
                         "Who did you meet",
                         "Who were you with",
                         "Who was there",
-                        "Who was it",
                         "Who"
                     ]
                 },
@@ -584,7 +581,6 @@
                     "slots": [],
                     "samples": [
                         "How did that happen",
-                        "How did you do it",
                         "How"
                     ]
                 },
@@ -761,6 +757,7 @@
                         }
                     ],
                     "samples": [
+                        "How {question_verb} {subject} {filler_verb} {manner}",
                         "What {question_verb} {subject} {filler_verb} {manner} {preposition}",
                         "What {question_verb} {subject} {filler_verb} {preposition} {manner}",
                         "What {question_verb} {subject} {filler_verb} {theme} {reason_prefix} {reason}",
