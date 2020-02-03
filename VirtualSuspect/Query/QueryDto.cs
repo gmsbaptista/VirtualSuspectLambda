@@ -10,7 +10,7 @@ namespace VirtualSuspect.Query
 
         #region enumerates
 
-        public enum QueryTypeEnum { YesOrNo, GetInformation };
+        public enum QueryTypeEnum { YesOrNo, GetInformation, GetKnowledge };
 
         public enum OperatorEnum { Equal, Between};
         #endregion
@@ -55,6 +55,21 @@ namespace VirtualSuspect.Query
 
         }
 
+        /// <summary>
+        /// List with the focus to be selected
+        /// </summary>
+        private List<IKnowledgePredicate> knowledgeFocus;
+
+        public List<IKnowledgePredicate> KnowledgeFocus
+        {
+
+            get
+            {
+                return knowledgeFocus;
+            }
+
+        }
+
         public QueryDto(QueryTypeEnum type) {
 
             this.queryType = type;
@@ -62,6 +77,8 @@ namespace VirtualSuspect.Query
             queryConditions = new List<IConditionPredicate>();
 
             queryFocus = new List<IFocusPredicate>();
+
+            knowledgeFocus = new List<IKnowledgePredicate>();
         }
 
         public void AddCondition(IConditionPredicate cond) {
@@ -73,6 +90,12 @@ namespace VirtualSuspect.Query
         public void AddFocus(IFocusPredicate focus) {
 
             queryFocus.Add(focus);
+        }
+
+        public void AddKnowledgeFocus(IKnowledgePredicate focus)
+        {
+
+            knowledgeFocus.Add(focus);
         }
     }
 }

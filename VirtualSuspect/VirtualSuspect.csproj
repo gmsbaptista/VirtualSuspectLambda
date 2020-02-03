@@ -51,11 +51,14 @@
     <Compile Include="KnowledgeBase\IStoryNode.cs" />
     <Compile Include="Query\AgentExistsConditionPredicate.cs" />
     <Compile Include="Query\GetActionFocusPredicate.cs" />
+    <Compile Include="Query\GetDetailsKnowledgePredicate.cs" />
+    <Compile Include="Query\GetRelationshipKnowledgePredicate.cs" />
     <Compile Include="Query\GetTimeFocusPredicate.cs" />
     <Compile Include="Query\GetReasonFocusPredicate.cs" />
     <Compile Include="Query\GetMannerFocusPredicate.cs" />
     <Compile Include="Query\GetThemeFocusPredicate.cs" />
     <Compile Include="Query\GetAgentFocusPredicate.cs" />
+    <Compile Include="Query\IKnowledgePredicate.cs" />
     <Compile Include="Query\SubjectEqualConditionPredicate.cs" />
     <Compile Include="Query\ThemeEqualConditionPredicate.cs" />
     <Compile Include="Query\ReasonEqualConditionPredicate.cs" />

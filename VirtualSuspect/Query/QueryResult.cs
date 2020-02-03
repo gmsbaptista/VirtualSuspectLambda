@@ -35,6 +35,16 @@ namespace VirtualSuspect.Query
             }
         }
 
+        private List<string> knowledgeResults;
+
+        public List<string> KnowledgeResults
+        {
+            get
+            {
+                return knowledgeResults;
+            }
+        }
+
         private List<Result> results;
 
         public List<Result> Results {
@@ -49,6 +59,7 @@ namespace VirtualSuspect.Query
 
             this.query = query;
             results = new List<Result>();
+            knowledgeResults = new List<string>();
         }
 
         internal void AddResults(IEnumerable<Result> results) {
@@ -61,6 +72,16 @@ namespace VirtualSuspect.Query
 
             yesNoResult = result;
 
+        }
+
+        internal void AddKnowledgeResult (string knowledge)
+        {
+            this.knowledgeResults.Add(knowledge);
+        }
+
+        internal void AddKnowledgeResult(IEnumerable<string> knowledge)
+        {
+            this.knowledgeResults.AddRange(knowledge);
         }
 
         public class Result {

@@ -106,6 +106,21 @@ namespace VirtualSuspect {
                 result.CountResult();
 
             }
+            else if (query.QueryType == QueryDto.QueryTypeEnum.GetKnowledge)
+            {
+                List<EntityNode> relevantEntities = new List<EntityNode>();
+                foreach (IConditionPredicate condition in query.QueryConditions)
+                {
+                    foreach (string value in condition.GetValues())
+                    {
+                        relevantEntities.Add(knowledgeBase.Entities.Find(x => x.Value == value));
+                    }
+                }
+                foreach (IKnowledgePredicate focus in query.KnowledgeFocus)
+                {
+                    result.AddKnowledgeResult(relevantEntities.Select(focus.CreateFunction()));
+                }
+            }
 
             //Run Pos Handler
             foreach (IPosHandler handler in posHandlers.Values) {
