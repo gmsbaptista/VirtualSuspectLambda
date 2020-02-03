@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace VirtualSuspect.KnowledgeBase {
     public class EntityNode : IStoryNode{
 
@@ -67,12 +69,24 @@ namespace VirtualSuspect.KnowledgeBase {
             }
         }
 
+        private Dictionary<string, string> associations;
+
+        public Dictionary<string,string> Associations
+        {
+            get
+            {
+                return associations;
+            }
+        }
+
         public EntityNode(uint _id, string _value, string _speech, string _type){
 
             id = _id;
             value = _value;
             speech = _speech;
             type = _type;
+
+            associations = new Dictionary<string, string>();
 
         }
 
@@ -83,6 +97,11 @@ namespace VirtualSuspect.KnowledgeBase {
                 return false;
             }
             return parent.Value == value || parent.CheckParent(value);
+        }
+
+        public void AddAssociation (string relation, string speech)
+        {
+            associations.Add(relation, speech);
         }
         
         public float EvaluateKnowledge(KnowledgeBaseManager kb) {

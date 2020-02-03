@@ -195,18 +195,36 @@
     <type>Person</type>
     <value>Jaime Reyes</value>
     <speech>Jaime Reyes</speech>
+    <association relation="Details">
+      <speech>He's a seller of information and goods</speech>
+    </association>
+    <association relation="Relationship">
+      <speech>We were introduced through mutual friends</speech>
+    </association>
   </entity>
   <entity>
     <id>33</id>
     <type>Person</type>
     <value>Delivery Guy</value>
     <speech>the delivery guy</speech>
+    <association relation="Details">
+      <speech>He's the delivery boy for the Jewelry Shop</speech>
+    </association>
+    <association relation="Relationship">
+      <speech>He's my neighbour</speech>
+    </association>
   </entity>
   <entity>
     <id>34</id>
     <type>Person</type>
     <value>John Frey</value>
     <speech>John Frey</speech>
+    <association relation="Details">
+      <speech>He's an art collector</speech>
+    </association>
+    <association relation="Relationship">
+      <speech>I got his contact from Jaime Reyes</speech>
+    </association>
   </entity>
 
   <!--Locations-->
