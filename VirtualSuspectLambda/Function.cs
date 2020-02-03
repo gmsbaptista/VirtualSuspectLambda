@@ -315,7 +315,7 @@ namespace VirtualSuspectLambda
                         }
                     }
                     int resultsCount = CountResults(queryResult);
-                    if (queryResult.Query.QueryType != QueryDto.QueryTypeEnum.YesOrNo && resultsCount == 0 && 
+                    if (queryResult.Query.QueryType == QueryDto.QueryTypeEnum.GetInformation && resultsCount == 0 && 
                         options["Empty answer generation"])
                     {
                         if (queryResult.Query.QueryFocus.Count == 1)
@@ -332,7 +332,7 @@ namespace VirtualSuspectLambda
                             }
                         }
                     }
-                    else if (queryResult.Query.QueryType != QueryDto.QueryTypeEnum.YesOrNo && resultsCount > 1 && 
+                    else if (queryResult.Query.QueryType == QueryDto.QueryTypeEnum.GetInformation && resultsCount > 1 && 
                         options["Answer filtering"])
                     {
                         speechText = "You'll have to be more specific";

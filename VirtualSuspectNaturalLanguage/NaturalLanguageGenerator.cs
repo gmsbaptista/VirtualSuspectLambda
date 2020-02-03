@@ -27,8 +27,7 @@ namespace VirtualSuspectNaturalLanguage
                 answer = (result.YesNoResult) ? "Yes" : "No";
             
             }
-
-            else { //Get Information Question (We assume that the answer only has 1 type of dimension of answer)
+            else if (result.Query.QueryType == QueryDto.QueryTypeEnum.GetInformation) { //Get Information Question (We assume that the answer only has 1 type of dimension of answer)
 
                 //=============================
                 //Get all the answers by dimension
@@ -132,6 +131,10 @@ namespace VirtualSuspectNaturalLanguage
 
                 }
 
+            }
+            else if (result.Query.QueryType == QueryDto.QueryTypeEnum.GetKnowledge)
+            {
+                answer = result.KnowledgeResults.ElementAt(0);
             }
 
             //Capitalize the answer if needed
