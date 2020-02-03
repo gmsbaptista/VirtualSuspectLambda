@@ -317,7 +317,7 @@ namespace VirtualSuspectLambda
             string speechText;
             if (AddQueryConditions(query, intentRequest, log))
             {
-                if (query.QueryConditions.Count > 1)
+                if ((query.QueryType == QueryDto.QueryTypeEnum.GetKnowledge && query.QueryConditions.Count > 0) || query.QueryConditions.Count > 1)
                 {
                     QueryResult queryResult = virtual_suspect.Query(query);
                     lastInteraction.UpdateResult(queryResult);
