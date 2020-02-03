@@ -1080,6 +1080,30 @@
                         "{question_verb} {subject} {action} {preposition} {location}",
                         "{question_verb} {subject} {action} {location}"
                     ]
+                },
+                {
+                    "name": "GetDetailsKnowledgeIntent",
+                    "slots": [
+                        {
+                            "name": "agent",
+                            "type": "agent_slot_type"
+                        }
+                    ],
+                    "samples": [
+                        "Who is {agent}"
+                    ]
+                },
+                {
+                    "name": "GetRelationshipKnowledgeIntent",
+                    "slots": [
+                        {
+                            "name": "agent",
+                            "type": "agent_slot_type"
+                        }
+                    ],
+                    "samples": [
+                        "How do you know {agent}"
+                    ]
                 }
             ],
             "types": [
