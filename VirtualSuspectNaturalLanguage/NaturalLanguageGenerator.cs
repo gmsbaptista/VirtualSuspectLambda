@@ -134,7 +134,29 @@ namespace VirtualSuspectNaturalLanguage
             }
             else if (result.Query.QueryType == QueryDto.QueryTypeEnum.GetKnowledge)
             {
-                answer = result.KnowledgeResults.ElementAt(0);
+                if (result.Query.KnowledgeFocus.ElementAt(0) is GetParentKnowledgePredicate)
+                {
+                    if (result.KnowledgeResults.ElementAt(0) != "")
+                    {
+                        answer = "It's in " + result.KnowledgeResults.ElementAt(0);
+                    }
+                    else if (result.Query.QueryConditions.ElementAt(0).GetValues().ElementAt(0) == "Castle Town")
+                    {
+                        answer = "It's west of Silvermoon City";
+                    }
+                    else if (result.Query.QueryConditions.ElementAt(0).GetValues().ElementAt(0) == "Silvermoon City")
+                    {
+                        answer = "It's east of Castle Town";
+                    }
+                    else
+                    {
+                        answer = "It's outside of time and space, man";
+                    }
+                }
+                else
+                {
+                    answer = result.KnowledgeResults.ElementAt(0);
+                }
             }
 
             //Capitalize the answer if needed

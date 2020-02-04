@@ -279,6 +279,15 @@ namespace VirtualSuspectLambda
                         QuestionAnswer(ref innerResponse, ref prompt, log, intentRequest, query);
 
                         break;
+                    case "GetParentKnowledgeIntent":
+                        log.LogLine($"GetParentKnowledgeIntent: get Parent about an Entity");
+
+                        query = new QueryDto(QueryDto.QueryTypeEnum.GetKnowledge);
+                        query.AddKnowledgeFocus(new GetParentKnowledgePredicate());
+
+                        QuestionAnswer(ref innerResponse, ref prompt, log, intentRequest, query);
+
+                        break;
                     default:
                         log.LogLine($"Unknown intent: " + intentRequest.Intent.Name);
 

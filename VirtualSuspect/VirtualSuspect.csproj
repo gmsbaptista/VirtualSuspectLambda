@@ -53,6 +53,7 @@
     <Compile Include="Query\AgentExistsConditionPredicate.cs" />
     <Compile Include="Query\GetActionFocusPredicate.cs" />
     <Compile Include="Query\GetDetailsKnowledgePredicate.cs" />
+    <Compile Include="Query\GetParentKnowledgePredicate.cs" />
     <Compile Include="Query\GetRelationshipKnowledgePredicate.cs" />
     <Compile Include="Query\GetTimeFocusPredicate.cs" />
     <Compile Include="Query\GetReasonFocusPredicate.cs" />
