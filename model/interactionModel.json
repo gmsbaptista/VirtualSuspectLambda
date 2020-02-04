@@ -1115,6 +1115,19 @@
                         "What's your relationship {preposition} {agent}",
                         "How do you know {agent}"
                     ]
+                },
+                {
+                    "name": "GetParentKnowledgeIntent",
+                    "slots": [
+                        {
+                            "name": "location",
+                            "type": "location_slot_type"
+                        }
+                    ],
+                    "samples": [
+                        "Where is {location}",
+                        "Where's {location}"
+                    ]
                 }
             ],
             "types": [
