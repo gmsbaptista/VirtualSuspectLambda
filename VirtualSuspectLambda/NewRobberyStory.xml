@@ -358,6 +358,9 @@
     <type>Jewelry</type>
     <value>Stolen Necklace</value>
     <speech>the necklace</speech>
+    <association relation="Value">
+      <speech>It was worth three thousand euros</speech>
+    </association>
   </entity>
   <entity>
     <id>52</id>

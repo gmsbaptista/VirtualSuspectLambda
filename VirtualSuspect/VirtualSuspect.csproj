@@ -60,6 +60,7 @@
     <Compile Include="Query\GetMannerFocusPredicate.cs" />
     <Compile Include="Query\GetThemeFocusPredicate.cs" />
     <Compile Include="Query\GetAgentFocusPredicate.cs" />
+    <Compile Include="Query\GetValueKnowledgePredicate.cs" />
     <Compile Include="Query\IKnowledgePredicate.cs" />
     <Compile Include="Query\SubjectEqualConditionPredicate.cs" />
     <Compile Include="Query\ThemeEqualConditionPredicate.cs" />

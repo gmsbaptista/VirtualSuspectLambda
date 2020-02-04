@@ -81,12 +81,7 @@ namespace VirtualSuspect.Utils
                         uint enID = UInt32.Parse(associationNode.SelectSingleNode("entity").Attributes["id"].Value);
                         entities[id].Parent = entities[enID];
                     }
-                    else if (associationRelation == "Details")
-                    {
-                        string speech = associationNode.SelectSingleNode("speech").InnerText;
-                        entities[id].AddAssociation(associationRelation, speech);
-                    }
-                    else if (associationRelation == "Relationship")
+                    else
                     {
                         string speech = associationNode.SelectSingleNode("speech").InnerText;
                         entities[id].AddAssociation(associationRelation, speech);

@@ -1128,6 +1128,24 @@
                         "Where is {location}",
                         "Where's {location}"
                     ]
+                },
+                {
+                    "name": "GetValueKnowledgeIntent",
+                    "slots": [
+                        {
+                            "name": "theme",
+                            "type": "theme_slot_type"
+                        }
+                    ],
+                    "samples": [
+                        "How much did {theme} cost",
+                        "What was {theme} value",
+                        "What was the value of {theme}",
+                        "What was {theme} worth",
+                        "How much was {theme} worth",
+                        "Was {theme} expensive",
+                        "How much did you sell {theme} for"
+                    ]
                 }
             ],
             "types": [
@@ -1675,6 +1693,11 @@
                 {
                     "name": "theme_slot_type",
                     "values": [
+                        {
+                            "name": {
+                                "value": "its"
+                            }
+                        },
                         {
                             "name": {
                                 "value": "that"

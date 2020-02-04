@@ -155,7 +155,14 @@ namespace VirtualSuspectNaturalLanguage
                 }
                 else
                 {
-                    answer = result.KnowledgeResults.ElementAt(0);
+                    if (result.KnowledgeResults.ElementAt(0) != "")
+                    {
+                        answer = result.KnowledgeResults.ElementAt(0);
+                    }
+                    else
+                    {
+                        answer = "I don't know";
+                    }
                 }
             }
 

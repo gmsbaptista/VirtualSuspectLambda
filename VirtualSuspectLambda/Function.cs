@@ -288,6 +288,15 @@ namespace VirtualSuspectLambda
                         QuestionAnswer(ref innerResponse, ref prompt, log, intentRequest, query);
 
                         break;
+                    case "GetValueKnowledgeIntent":
+                        log.LogLine($"GetParentKnowledgeIntent: get Value about an Entity");
+
+                        query = new QueryDto(QueryDto.QueryTypeEnum.GetKnowledge);
+                        query.AddKnowledgeFocus(new GetValueKnowledgePredicate());
+
+                        QuestionAnswer(ref innerResponse, ref prompt, log, intentRequest, query);
+
+                        break;
                     default:
                         log.LogLine($"Unknown intent: " + intentRequest.Intent.Name);
 
@@ -1055,7 +1064,7 @@ namespace VirtualSuspectLambda
         {
             if (string.IsNullOrEmpty(speechText))
             {
-                speechText = "I don't know";
+                speechText = "I have no answer";
                 if (options["Detailed feedback"])
                 {
                     speechText += ". Empty answer";
@@ -1175,7 +1184,7 @@ namespace VirtualSuspectLambda
         {
             List<string> directPronouns = new List<string>()
             {
-                "there", "him", "it", "that day", "that time", "then", "that place", "that"
+                "there", "him", "it", "that day", "that time", "then", "that place", "that", "its"
             };
 
             return directPronouns.Contains(pronoun);
