@@ -945,6 +945,8 @@
                         }
                     ],
                     "samples": [
+                        "{question_verb} {preposition} {agent} {preposition} {subject} {location}",
+                        "{question_verb} {preposition} {agent} {preposition} {subject} {preposition} {location}",
                         "{question_verb} {agent} {preposition} {subject} {preposition} {location}",
                         "{question_verb} {agent} {preposition} {subject} {location}",
                         "{question_verb} {preposition} {agent} {preposition} {subject}",
