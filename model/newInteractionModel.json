@@ -1099,9 +1099,14 @@
                         {
                             "name": "agent",
                             "type": "agent_slot_type"
+                        },
+                        {
+                            "name": "preposition",
+                            "type": "preposition_slot_type"
                         }
                     ],
                     "samples": [
+                        "What's your relationship {preposition} {agent}",
                         "How do you know {agent}"
                     ]
                 }
