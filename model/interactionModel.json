@@ -945,6 +945,10 @@
                         }
                     ],
                     "samples": [
+                        "{question_verb} {agent} {preposition} {subject} {preposition} {location}",
+                        "{question_verb} {agent} {preposition} {subject} {location}",
+                        "{question_verb} {preposition} {agent} {preposition} {subject}",
+                        "{question_verb} {subject} {agent}",
                         "{question_verb} {subject} {action} {theme} {filler_verb} {manner}",
                         "{question_verb} {subject} {action} {theme} {preposition} {manner}",
                         "{question_verb} {subject} {filler_verb} {manner} {preposition} {action} {theme}",
@@ -1299,6 +1303,11 @@
                 {
                     "name": "agent_slot_type",
                     "values": [
+                        {
+                            "name": {
+                                "value": "alone"
+                            }
+                        },
                         {
                             "name": {
                                 "value": "anyone"
