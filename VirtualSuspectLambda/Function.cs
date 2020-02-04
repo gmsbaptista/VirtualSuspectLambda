@@ -395,6 +395,7 @@ namespace VirtualSuspectLambda
         private bool AddQueryConditions(QueryDto query, IntentRequest intent, ILambdaLogger log)
         {
             Dictionary<string, Slot> intent_slots = intent.Intent.Slots;
+            bool indirectAgent = false;
 
             if (CheckContextualIntent(intent.Intent.Name))
             {
@@ -470,7 +471,15 @@ namespace VirtualSuspectLambda
                         }
                         else if (CheckIndirectPronoun(agent))
                         {
-                            query.AddCondition(new AgentExistsConditionPredicate());
+                            indirectAgent = true;
+                            if (agent == "alone")
+                            {
+                                query.AddCondition(new AgentAloneConditionPredicate());
+                            }
+                            else
+                            {
+                                query.AddCondition(new AgentExistsConditionPredicate());
+                            }
                         }
                         else
                         {
@@ -817,6 +826,25 @@ namespace VirtualSuspectLambda
                 }
             }
 
+            //martelado in case the person asks "Were you alone" which is a validation question, but acts like a contextual question
+            if (indirectAgent && query.QueryConditions.Count < 2)
+            {
+                log.LogLine($"someone asked a question with an indirect agent pronoun (alone, anyone) and less than 2 conditions, so I'm gonna include the conditions from the context, k thx bye");
+                List<IConditionPredicate> prevConditions = lastInteraction.GetConditions(out bool success);
+                if (success)
+                {
+                    foreach (IConditionPredicate condition in prevConditions)
+                    {
+                        query.AddCondition(condition);
+                    }
+                }
+                else
+                {
+                    log.LogLine($"something went wrong in a contextual question, exiting");
+                    return false;
+                }
+            }
+
 
             //Debug
             log.LogLine($"QueryDto type: " + query.QueryType);
@@ -1153,7 +1181,7 @@ namespace VirtualSuspectLambda
         {
             List<string> indirectPronouns = new List<string>()
             {
-                "something", "someone", "anything", "anyone"
+                "something", "someone", "anything", "anyone", "alone"
             };
 
             return indirectPronouns.Contains(pronoun);

@@ -49,6 +49,7 @@
     <Compile Include="Exception\DimensionParseException.cs" />
     <Compile Include="IQuestionAnswerSystem.cs" />
     <Compile Include="KnowledgeBase\IStoryNode.cs" />
+    <Compile Include="Query\AgentAloneConditionPredicate.cs" />
     <Compile Include="Query\AgentExistsConditionPredicate.cs" />
     <Compile Include="Query\GetActionFocusPredicate.cs" />
     <Compile Include="Query\GetDetailsKnowledgePredicate.cs" />
