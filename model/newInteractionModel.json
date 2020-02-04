@@ -1093,9 +1093,17 @@
                         {
                             "name": "agent",
                             "type": "agent_slot_type"
+                        },
+                        {
+                            "name": "theme",
+                            "type": "theme_slot_type"
                         }
                     ],
                     "samples": [
+                        "What {theme} did you steal",
+                        "Can you tell me more about {theme}",
+                        "Can you tell me more about {agent}",
+                        "What {theme}",
                         "Who is {agent}"
                     ]
                 },

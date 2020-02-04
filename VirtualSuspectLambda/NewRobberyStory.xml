@@ -358,6 +358,9 @@
     <type>Jewelry</type>
     <value>Stolen Necklace</value>
     <speech>the necklace</speech>
+    <association relation="Details">
+      <speech>It was a three carat Tiffany's diamond necklace</speech>
+    </association>
     <association relation="Value">
       <speech>It was worth three thousand euros</speech>
     </association>
