@@ -945,6 +945,7 @@
                         }
                     ],
                     "samples": [
+                        "{question_verb} {subject} {action} {theme} {time_pronoun}",
                         "{question_verb} {preposition} {agent} {preposition} {subject} {location}",
                         "{question_verb} {preposition} {agent} {preposition} {subject} {preposition} {location}",
                         "{question_verb} {agent} {preposition} {subject} {preposition} {location}",
@@ -1465,6 +1466,7 @@
                             "name": {
                                 "value": "Hog's Head Pub",
                                 "synonyms": [
+                                    "the hog's head pub",
                                     "hog's head",
                                     "the hog's head",
                                     "the pub"
@@ -1495,8 +1497,6 @@
                             "name": {
                                 "value": "Jewelry Shop",
                                 "synonyms": [
-                                    "the store",
-                                    "the shop",
                                     "the jewelry shop",
                                     "the jewelry store",
                                     "jewelry store"
@@ -1528,6 +1528,7 @@
                             "name": {
                                 "value": "Mall's Coffee Shop",
                                 "synonyms": [
+                                    "the mall's coffee shop",
                                     "the coffee shop at the mall",
                                     "the coffee shop",
                                     "coffee shop at the mall",

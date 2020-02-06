@@ -71,6 +71,7 @@ namespace VirtualSuspectLambda
                 knowledge_base = KnowledgeBaseParser.parseFromFile("NewRobberyStory.xml");
                 virtual_suspect = new VirtualSuspectQuestionAnswer(knowledge_base);
                 lastInteraction = new Context();
+                lastInteraction.UpdateResult(new QueryResult(new QueryDto(QueryDto.QueryTypeEnum.YesOrNo)));
 
                 log.LogLine($"first entity in kb: " + knowledge_base.Entities[0].Value);
                 log.LogLine($"first action in kb: " + knowledge_base.Actions[0].Value);
@@ -845,7 +846,7 @@ namespace VirtualSuspectLambda
             }
 
             //martelado in case the person asks "Were you alone" which is a validation question, but acts like a contextual question
-            if (indirectAgent && query.QueryConditions.Count < 2)
+            if (indirectAgent && query.QueryConditions.Count <= 2)
             {
                 log.LogLine($"someone asked a question with an indirect agent pronoun (alone, anyone) and less than 2 conditions, so I'm gonna include the conditions from the context, k thx bye");
                 List<IConditionPredicate> prevConditions = lastInteraction.GetConditions(out bool success);
