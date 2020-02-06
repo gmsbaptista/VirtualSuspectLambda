@@ -161,7 +161,7 @@ namespace VirtualSuspectNaturalLanguage
                     }
                     else
                     {
-                        answer = "I don't know";
+                        answer = "I don't have that information";
                     }
                 }
             }
