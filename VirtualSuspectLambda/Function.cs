@@ -1083,13 +1083,16 @@ namespace VirtualSuspectLambda
                 }
                 innerResponse = new SsmlOutputSpeech();
                 (innerResponse as SsmlOutputSpeech).Ssml = SsmlDecorate(VoiceDecorate(voice, speechText));
+                string promptText = "I didn't seem to understand what you said, so I'll repeat my previous answer: " + speechText;
+                prompt = new SsmlOutputSpeech();
+                (prompt as SsmlOutputSpeech).Ssml = SsmlDecorate(VoiceDecorate(voice, promptText));
             }
             else
             {
                 innerResponse = new PlainTextOutputSpeech();
                 (innerResponse as PlainTextOutputSpeech).Text = speechText;
+                prompt = innerResponse;
             }
-            prompt = innerResponse;
         }
 
         /// <summary>
