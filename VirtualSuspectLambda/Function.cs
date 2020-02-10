@@ -121,7 +121,7 @@ namespace VirtualSuspectLambda
                         break;
                     case "AMAZON.FallbackIntent":
                         log.LogLine($"AMAZON.FallbackIntent: express confusion");
-
+                        //pregen answer
                         speechText = "I don't understand what you mean";
                         if (options["Detailed feedback"])
                         {
@@ -300,7 +300,7 @@ namespace VirtualSuspectLambda
                         break;
                     default:
                         log.LogLine($"Unknown intent: " + intentRequest.Intent.Name);
-
+                        //pregen answer
                         speechText = "What you said wasn't recognized by the Virtual Suspect model. Try saying something else.";
                         if (options["Detailed feedback"])
                         {
@@ -362,6 +362,7 @@ namespace VirtualSuspectLambda
                         else
                         {
                             log.LogLine($"unexpected number of focuses");
+                            //pregen answer
                             speechText = "I'm not sure what to answer";
                             if (options["Detailed feedback"])
                             {
@@ -372,6 +373,7 @@ namespace VirtualSuspectLambda
                     else if (queryResult.Query.QueryType == QueryDto.QueryTypeEnum.GetInformation && resultsCount > 1 && 
                         options["Answer filtering"])
                     {
+                        //pregen answer
                         speechText = "You'll have to be more specific";
                         if (options["Detailed feedback"])
                         {
@@ -385,6 +387,7 @@ namespace VirtualSuspectLambda
                 }
                 else
                 {
+                    //pregen answer
                     speechText = "I'm not sure what you expect me to say";
                     if (options["Detailed feedback"])
                     {
@@ -394,6 +397,7 @@ namespace VirtualSuspectLambda
             }
             else
             {
+                //pregen answer
                 speechText = "I don't quite understand what you said";
                 if (options["Detailed feedback"])
                 {
@@ -1017,6 +1021,7 @@ namespace VirtualSuspectLambda
         private string EmptyAnswerGeneration (KnowledgeBaseManager.DimentionsEnum dimension)
         {
             string answer;
+            //pregen answer
 
             switch (dimension)
             {
@@ -1065,6 +1070,7 @@ namespace VirtualSuspectLambda
         {
             if (string.IsNullOrEmpty(speechText))
             {
+                //pregen answer
                 speechText = "I have no answer";
                 if (options["Detailed feedback"])
                 {
@@ -1083,6 +1089,7 @@ namespace VirtualSuspectLambda
                 }
                 innerResponse = new SsmlOutputSpeech();
                 (innerResponse as SsmlOutputSpeech).Ssml = SsmlDecorate(VoiceDecorate(voice, speechText));
+                //pregen answer
                 string promptText = "I didn't seem to understand what you said, so I'll repeat my previous answer: " + speechText;
                 prompt = new SsmlOutputSpeech();
                 (prompt as SsmlOutputSpeech).Ssml = SsmlDecorate(VoiceDecorate(voice, promptText));
