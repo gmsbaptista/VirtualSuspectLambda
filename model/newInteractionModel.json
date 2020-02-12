@@ -409,6 +409,10 @@
                     "name": "GetAgentContextualIntent",
                     "slots": [],
                     "samples": [
+                        "With who",
+                        "To whom",
+                        "To who",
+                        "From who",
                         "Who did you meet",
                         "Who were you with",
                         "Who was there",
