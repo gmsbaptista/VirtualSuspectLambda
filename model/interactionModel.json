@@ -1245,6 +1245,8 @@
                             "name": {
                                 "value": "Prepare",
                                 "synonyms": [
+                                    "planned",
+                                    "plan",
                                     "prepared"
                                 ]
                             }
