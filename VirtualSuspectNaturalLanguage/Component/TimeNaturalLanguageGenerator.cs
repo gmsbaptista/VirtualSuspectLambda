@@ -111,20 +111,43 @@ namespace VirtualSuspectNaturalLanguage.Component {
             int hour = time.Hour;
             if (hour == 0)
             {
-                return (time.Hour + 12) + ":" + time.ToString("mm", CultureInfo.InvariantCulture) + " am";
+                return NumberToWord((time.Hour + 12)) + " " + NumberToWord(time.Minute) + " AM";
             }
             else if (0 < hour && hour < 12)
             {
-                return time.Hour + ":" + time.ToString("mm", CultureInfo.InvariantCulture) + " am";
+                return NumberToWord(time.Hour) + " " + NumberToWord(time.Minute) + " AM";
             }
             else if (hour == 12)
             {
-                return time.Hour + ":" + time.ToString("mm", CultureInfo.InvariantCulture) + " pm";
+                return NumberToWord(time.Hour) + " " + NumberToWord(time.Minute) + " PM";
             }
             else
             {
-                return (time.Hour - 12) + ":" + time.ToString("mm", CultureInfo.InvariantCulture) + " pm";
+                return NumberToWord((time.Hour - 12)) + " " + NumberToWord(time.Minute) + " PM";
             }
+        }
+
+        private static string NumberToWord (int number)
+        {
+            string answer = "";
+            string[] ones = new string[] { "", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+            string[] teens = new string[] { "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" };
+            string[] tens = new string[] { "", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
+
+            if (number < 10)
+            {
+                answer = ones[number];
+            }
+            else if (number < 20)
+            {
+                answer = teens[number - 10];
+            }
+            else
+            {
+                answer = tens[number / 10] + " " + ones[number % 10];
+            }
+
+            return answer;
         }
 
         private static string ConvertDateTimeToText(KeyValuePair<DateTime, DateTime> timeSpan) {
@@ -158,19 +181,25 @@ namespace VirtualSuspectNaturalLanguage.Component {
 
             switch (day) {
                 case 1:
-                    return "1st";
+                    return "first";
                 case 2:
-                    return "2nd";
+                    return "second";
                 case 3:
-                    return "3rd";
+                    return "third";
+                case 4:
+                    return "fourth";
+                case 5:
+                    return "fifth";
+                case 6:
+                    return "sixth";
                 case 21:
-                    return "21st";
+                    return "Twenty First";
                 case 22:
-                    return "22nd";
+                    return "Twenty Second";
                 case 23:
-                    return "23rd";
+                    return "Twenty Third";
                 case 31:
-                    return "31st";
+                    return "Thirty First";
                 default:
                     return day + "th";
             }
