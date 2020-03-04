@@ -1309,7 +1309,14 @@ namespace VirtualSuspectLambda
                     }
                     else if (this.result.Results.ElementAt(0).dimension == KnowledgeBaseManager.DimentionsEnum.Time)
                     {
-                        conditions.Add(new TimeBetweenConditionPredicate(values.ElementAt(0).Split('>')[0], values.ElementAt(0).Split('>')[1]));
+                        if (values.ElementAt(0).Split('>').Length > 1)
+                        {
+                            conditions.Add(new TimeBetweenConditionPredicate(values.ElementAt(0).Split('>')[0], values.ElementAt(0).Split('>')[1]));
+                        }
+                        else
+                        {
+                            conditions.Add(new TimeEqualConditionPredicate(values.ElementAt(0)));
+                        }
                     }
                     else
                     {
