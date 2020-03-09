@@ -333,7 +333,7 @@ namespace VirtualSuspectLambda
         private void QuestionAnswer(ref IOutputSpeech innerResponse, ref IOutputSpeech prompt, ILambdaLogger log, 
             IntentRequest intentRequest, QueryDto query)
         {
-            string speechText;
+            string speechText= "";
             if (AddQueryConditions(query, intentRequest, log))
             {
                 if ((query.QueryType == QueryDto.QueryTypeEnum.GetKnowledge && query.QueryConditions.Count > 0) || query.QueryConditions.Count > 1)
@@ -370,11 +370,23 @@ namespace VirtualSuspectLambda
                             }
                         }
                     }
-                    else if (queryResult.Query.QueryType == QueryDto.QueryTypeEnum.GetInformation && resultsCount > 1 && 
+                    else if (queryResult.Query.QueryType == QueryDto.QueryTypeEnum.GetInformation && resultsCount > 3 && 
                         options["Answer filtering"])
                     {
                         //pregen answer
-                        speechText = "You'll have to be more specific";
+                        if (queryResult.Results.ElementAt(0).dimension == KnowledgeBaseManager.DimentionsEnum.Location)
+                        {
+                            speechText += "Many places. ";
+                        }
+                        else if (queryResult.Results.ElementAt(0).dimension == KnowledgeBaseManager.DimentionsEnum.Time)
+                        {
+                            speechText += "Many times. ";
+                        }
+                        else if (queryResult.Results.ElementAt(0).dimension == KnowledgeBaseManager.DimentionsEnum.Action)
+                        {
+                            speechText += "Many things. ";
+                        }
+                        speechText += "You'll have to be more specific";
                         if (options["Detailed feedback"])
                         {
                             speechText += ". Too many answers";
