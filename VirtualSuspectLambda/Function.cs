@@ -122,7 +122,7 @@ namespace VirtualSuspectLambda
                     case "AMAZON.FallbackIntent":
                         log.LogLine($"AMAZON.FallbackIntent: express confusion");
                         //pregen answer
-                        speechText = "I don't understand what you mean";
+                        speechText = "I don't think that has anything to do with what we're talking about";
                         if (options["Detailed feedback"])
                         {
                             speechText += ". Fallback intent";
@@ -363,7 +363,7 @@ namespace VirtualSuspectLambda
                         {
                             log.LogLine($"unexpected number of focuses");
                             //pregen answer
-                            speechText = "I'm not sure what to answer";
+                            speechText = "Uhh... I'm not sure what to answer";
                             if (options["Detailed feedback"])
                             {
                                 speechText += ". No results and too many focuses";
@@ -400,7 +400,7 @@ namespace VirtualSuspectLambda
                 else
                 {
                     //pregen answer
-                    speechText = "I'm not sure what you expect me to say";
+                    speechText = "That is not a question I can understand, so I'm not sure what you want me to say";
                     if (options["Detailed feedback"])
                     {
                         speechText += ". No conditions in the query";
@@ -410,7 +410,7 @@ namespace VirtualSuspectLambda
             else
             {
                 //pregen answer
-                speechText = "I don't quite understand what you said";
+                speechText = "You said something that isn't in my knowledge base, so I don't know how to answer that";
                 if (options["Detailed feedback"])
                 {
                     speechText += ". Unknown slot values";
@@ -1063,7 +1063,7 @@ namespace VirtualSuspectLambda
                     answer = "Never";
                     break;
                 default:
-                    answer = "No idea";
+                    answer = "Uhh... No idea";
                     break;
             }
 
@@ -1083,7 +1083,7 @@ namespace VirtualSuspectLambda
             if (string.IsNullOrEmpty(speechText))
             {
                 //pregen answer
-                speechText = "I have no answer";
+                speechText = "Uhh... I have no idea how to answer that";
                 if (options["Detailed feedback"])
                 {
                     speechText += ". Empty answer";
@@ -1102,7 +1102,7 @@ namespace VirtualSuspectLambda
                 innerResponse = new SsmlOutputSpeech();
                 (innerResponse as SsmlOutputSpeech).Ssml = SsmlDecorate(VoiceDecorate(voice, speechText));
                 //pregen answer
-                string promptText = "I didn't seem to understand what you said, so I'll repeat my previous answer: " + speechText;
+                string promptText = "There was a problem processing your input, so I have to repeat my previous answer: " + speechText;
                 prompt = new SsmlOutputSpeech();
                 (prompt as SsmlOutputSpeech).Ssml = SsmlDecorate(VoiceDecorate(voice, promptText));
             }
