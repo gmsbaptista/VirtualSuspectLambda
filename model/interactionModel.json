@@ -2,6 +2,11 @@
     "interactionModel": {
         "languageModel": {
             "invocationName": "virtual suspect",
+            "modelConfiguration": {
+                "fallbackIntentSensitivity": {
+                    "level": "LOW"
+                }
+            },
             "intents": [
                 {
                     "name": "AMAZON.StopIntent",
@@ -1165,6 +1170,14 @@
                 {
                     "name": "action_slot_type",
                     "values": [
+                        {
+                            "name": {
+                                "value": "Keep",
+                                "synonyms": [
+                                    "kept"
+                                ]
+                            }
+                        },
                         {
                             "name": {
                                 "value": "Sell",
