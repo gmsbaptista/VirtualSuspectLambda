@@ -77,9 +77,9 @@ namespace VirtualSuspectLambda
                 log.LogLine($"first action in kb: " + knowledge_base.Actions[0].Value);
                 log.LogLine($"first event in kb: " + knowledge_base.Events[0].Action.Value);
 
-                string firstText = "Welcome to the Virtual Suspect demo. ";
-                string suspectInformation = "Your suspect's name is Peter. ";
-                string lastText = "You can ask him simple questions.";
+                string firstText = "Welcome to the Virtual Suspect prototype. ";
+                string suspectInformation = "Your suspect is Peter, he is accused of robbing a jewelry shop. ";
+                string lastText = "You can ask him questions to find out more about the case.";
                 string speechText = firstText + suspectInformation + lastText;
 
                 innerResponse = new PlainTextOutputSpeech();
