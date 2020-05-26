@@ -539,7 +539,7 @@ namespace VirtualSuspectLambda
                             string prevAction = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Action, out bool success);
                             if (success)
                             {
-                                query.AddCondition(new AgentEqualConditionPredicate(prevAction));
+                                query.AddCondition(new ActionEqualConditionPredicate(prevAction));
                             }
                             else
                             {
