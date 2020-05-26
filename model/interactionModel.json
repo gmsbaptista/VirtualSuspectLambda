@@ -1669,9 +1669,15 @@
                         {
                             "name": "theme",
                             "type": "theme_slot_type"
+                        },
+                        {
+                            "name": "subject",
+                            "type": "subject_slot_type"
                         }
                     ],
                     "samples": [
+                        "Can you tell me more about {subject}",
+                        "What {subject}",
                         "What {theme} did you steal",
                         "Can you tell me more about {theme}",
                         "Can you tell me more about {agent}",
