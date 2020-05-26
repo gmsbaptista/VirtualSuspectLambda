@@ -1,0 +1,20 @@
+{time_pronoun}
+{date_one}
+{time_one}
+the {time_one}
+{date_one} {preposition} {time_one}
+{date_one} {preposition} the {time_one}
+{time_one} {preposition} {date_one}
+the {time_one} {preposition} {date_one}
+{date_one} {preposition} {time_one} and {time_two}
+{date_one} {preposition} {time_one} {preposition} {time_two}
+{time_one} and {time_two} {preposition} {date_one}
+{time_one} {preposition} {time_two} {preposition} {date_one}
+{date_one} and {date_two}
+{date_one} {preposition} {date_two}
+{time_one} and {time_two}
+{time_one} {preposition} {time_two}
+{date_one} {preposition} {time_one} {preposition} {date_two} {preposition} {time_two}
+{date_one} {preposition} {time_one} and {date_two} {preposition} {time_two}
+{time_one} {preposition} {date_one} {preposition} {time_two} {preposition} {date_two}
+{time_one} {preposition} {date_one} and {time_two} {preposition} {date_two}
