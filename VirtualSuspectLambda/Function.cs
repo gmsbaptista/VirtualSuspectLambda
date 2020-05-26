@@ -73,6 +73,8 @@ namespace VirtualSuspectLambda
                 lastInteraction = new Context();
                 lastInteraction.UpdateResult(new QueryResult(new QueryDto(QueryDto.QueryTypeEnum.YesOrNo)));
 
+                ResetOptions();
+
                 log.LogLine($"first entity in kb: " + knowledge_base.Entities[0].Value);
                 log.LogLine($"first action in kb: " + knowledge_base.Actions[0].Value);
                 log.LogLine($"first event in kb: " + knowledge_base.Events[0].Action.Value);
@@ -431,6 +433,7 @@ namespace VirtualSuspectLambda
         {
             Dictionary<string, Slot> intent_slots = intent.Intent.Slots;
             bool indirectAgent = false;
+            lastInteraction.NoAccess();
 
             /*if (CheckContextualIntent(intent.Intent.Name))
             {
@@ -1058,7 +1061,8 @@ namespace VirtualSuspectLambda
             //}
 
             //martelado in case the person asks "Were you alone" which is a validation question, but acts like a contextual question
-            if (/*indirectAgent &&*/ query.QueryConditions.Count < 2 && query.QueryType != QueryDto.QueryTypeEnum.GetKnowledge)
+            if (query.QueryType == QueryDto.QueryTypeEnum.GetInformation && (query.QueryConditions.Count < 2 || 
+                (query.QueryConditions.Count <= 2 && lastInteraction.CheckAccess())))
             {
                 //log.LogLine($"someone asked a question with an indirect agent pronoun (alone, anyone) and less than 2 conditions, so I'm gonna include the conditions from the context, k thx bye");
                 log.LogLine($"trying out the new contextual functionality, adding previous conditions");
@@ -1089,6 +1093,7 @@ namespace VirtualSuspectLambda
                     log.LogLine($"value: " + value);
                 }
             }
+            lastInteraction.NoAccess();
             return true;
         }
 
@@ -1415,6 +1420,19 @@ namespace VirtualSuspectLambda
         }
 
         /// <summary>
+        ///  Resets the options
+        /// </summary>
+        /// <returns>void</returns>
+        private void ResetOptions()
+        {
+            options["Bish mode"] = false;
+            options["Slot filtering"] = true;
+            options["Answer filtering"] = true;
+            options["Empty answer generation"] = true;
+            options["Detailed feedback"] = false;
+        }
+
+        /// <summary>
         ///  Checks whether a word is a direct pronoun
         /// </summary>
         /// <param name="pronoun"></param>
@@ -1463,6 +1481,18 @@ namespace VirtualSuspectLambda
         {
             private QueryResult result;
 
+            private bool accessed = false;
+
+            public bool CheckAccess()
+            {
+                return accessed;
+            }
+
+            public void NoAccess()
+            {
+                accessed = false;
+            }
+
             public void UpdateResult (QueryResult res)
             {
                 this.result = res;
@@ -1499,6 +1529,7 @@ namespace VirtualSuspectLambda
                         }
                     }
                 }
+                accessed = true;
                 return entity;
             }
 
@@ -1564,6 +1595,7 @@ namespace VirtualSuspectLambda
                     success = false;
                 }
 
+                accessed = true;
                 return conditions;
             }
         }
