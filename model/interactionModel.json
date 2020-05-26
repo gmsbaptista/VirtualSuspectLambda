@@ -2619,6 +2619,14 @@
                     "values": [
                         {
                             "name": {
+                                "value": "happen",
+                                "synonyms": [
+                                    "happened"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
                                 "value": "use",
                                 "synonyms": [
                                     "using",
