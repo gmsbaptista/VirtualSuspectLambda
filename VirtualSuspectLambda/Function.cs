@@ -534,7 +534,28 @@ namespace VirtualSuspectLambda
                     {
                         string action = TrueSlotValue(intent_slots["action"]);
                         log.LogLine($"action slot: " + action);
-                        query.AddCondition(new ActionEqualConditionPredicate(action));
+                        if (CheckDirectPronoun(action))
+                        {
+                            string prevAction = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Action, out bool success);
+                            if (success)
+                            {
+                                query.AddCondition(new AgentEqualConditionPredicate(prevAction));
+                            }
+                            else
+                            {
+                                log.LogLine($"missing reference");
+                                return false;
+                            }
+
+                        }
+                        else if (CheckIndirectPronoun(action))
+                        {
+                            //do nothing for now
+                        }
+                        else
+                        {
+                            query.AddCondition(new ActionEqualConditionPredicate(action));
+                        }
                     }
                     else
                     {
