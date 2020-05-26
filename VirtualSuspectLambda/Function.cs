@@ -432,7 +432,7 @@ namespace VirtualSuspectLambda
             Dictionary<string, Slot> intent_slots = intent.Intent.Slots;
             bool indirectAgent = false;
 
-            if (CheckContextualIntent(intent.Intent.Name))
+            /*if (CheckContextualIntent(intent.Intent.Name))
             {
                 List<IConditionPredicate> prevConditions = lastInteraction.GetConditions(out bool success);
                 if (success)
@@ -449,7 +449,7 @@ namespace VirtualSuspectLambda
                 }
             }
             else
-            {
+            {*/
                 if (SlotExists(intent_slots, "subject"))
                 {
                     if (KnownSlot(intent_slots["subject"]))
@@ -1055,12 +1055,13 @@ namespace VirtualSuspectLambda
                         return false;
                     }
                 }
-            }
+            //}
 
             //martelado in case the person asks "Were you alone" which is a validation question, but acts like a contextual question
-            if (indirectAgent && query.QueryConditions.Count <= 2)
+            if (/*indirectAgent &&*/ query.QueryConditions.Count <= 2)
             {
-                log.LogLine($"someone asked a question with an indirect agent pronoun (alone, anyone) and less than 2 conditions, so I'm gonna include the conditions from the context, k thx bye");
+                //log.LogLine($"someone asked a question with an indirect agent pronoun (alone, anyone) and less than 2 conditions, so I'm gonna include the conditions from the context, k thx bye");
+                log.LogLine($"trying out the new contextual functionality, adding previous conditions");
                 List<IConditionPredicate> prevConditions = lastInteraction.GetConditions(out bool success);
                 if (success)
                 {
