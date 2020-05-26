@@ -410,10 +410,10 @@ namespace VirtualSuspectLambda
             else
             {
                 //pregen answer
-                speechText = "You said something that isn't in my knowledge base, so I don't know how to answer that";
+                speechText = "I don't really understand what you said. You either said a word that is not in my knowledge base, or something doesn't make sense";
                 if (options["Detailed feedback"])
                 {
-                    speechText += ". Unknown slot values";
+                    speechText += ". Query Conditions failed";
                 }
             }
             log.LogLine($"speech text: " + speechText);
