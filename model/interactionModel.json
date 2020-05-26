@@ -601,9 +601,10 @@
                         }
                     ],
                     "samples": [
+                        "Who {question_verb} {subject} {action}",
+                        "What {question_verb} {subject} {action}",
                         "What",
                         "What {question_verb} it",
-                        "Who {question_verb} {subject} {action}",
                         "Where {question_verb} {subject} {action} to",
                         "What {question_verb} {subject} {action} {preposition} {manner}",
                         "What {question_verb} {subject} {action} {filler_verb} {manner}",
