@@ -172,6 +172,10 @@
                         }
                     ],
                     "samples": [
+                        "When",
+                        "When {question_verb} {action} {filler_verb}",
+                        "When {question_verb} {action}",
+                        "When {question_verb} {subject} {filler_verb} {action}",
                         "When {question_verb} {subject} {action} from {location} to {theme}",
                         "When {question_verb} {subject} {action} to {theme}",
                         "When {question_verb} {subject} {action} from {location}",
@@ -191,16 +195,6 @@
                         "When {question_verb} {subject} {filler_verb} {agent} {preposition} {location}",
                         "When {question_verb} {subject} {filler_verb} {agent} {location}",
                         "When {question_verb} {subject} {action} {theme}"
-                    ]
-                },
-                {
-                    "name": "GetTimeContextualIntent",
-                    "slots": [],
-                    "samples": [
-                        "When did you do that",
-                        "When was that",
-                        "When did that happen",
-                        "When"
                     ]
                 },
                 {
@@ -260,6 +254,10 @@
                         }
                     ],
                     "samples": [
+                        "Where",
+                        "Where {question_verb} {action} {filler_verb}",
+                        "Where {question_verb} {action}",
+                        "Where {preposition}",
                         "Where {question_verb} {subject} {action} from",
                         "Where {question_verb} {subject} {filler_verb} {manner}",
                         "Where {question_verb} {subject} {filler_verb} {agent} {preposition} {time_pronoun}",
@@ -350,16 +348,6 @@
                     ]
                 },
                 {
-                    "name": "GetLocationContextualIntent",
-                    "slots": [],
-                    "samples": [
-                        "Where from",
-                        "Where was that",
-                        "Where did that happen",
-                        "Where"
-                    ]
-                },
-                {
                     "name": "GetAgentFocusIntent",
                     "slots": [
                         {
@@ -412,6 +400,12 @@
                         }
                     ],
                     "samples": [
+                        "Who",
+                        "Who {question_verb} {location}",
+                        "Who {question_verb} {subject} {preposition}",
+                        "Who {question_verb} {subject} {filler_verb}",
+                        "{preposition} whom",
+                        "{preposition} who",
                         "Who {question_verb} {subject} {preposition} {preposition} {location}",
                         "Who {question_verb} {subject} {preposition} {time_pronoun}",
                         "Who {question_verb} {subject} {preposition} {date_one}",
@@ -541,20 +535,6 @@
                     ]
                 },
                 {
-                    "name": "GetAgentContextualIntent",
-                    "slots": [],
-                    "samples": [
-                        "With who",
-                        "To whom",
-                        "To who",
-                        "From who",
-                        "Who did you meet",
-                        "Who were you with",
-                        "Who was there",
-                        "Who"
-                    ]
-                },
-                {
                     "name": "GetThemeFocusIntent",
                     "slots": [
                         {
@@ -619,6 +599,8 @@
                         }
                     ],
                     "samples": [
+                        "What",
+                        "What {question_verb} it",
                         "Who {question_verb} {subject} {action}",
                         "Where {question_verb} {subject} {action} to",
                         "What {question_verb} {subject} {action} {preposition} {manner}",
@@ -719,14 +701,6 @@
                     ]
                 },
                 {
-                    "name": "GetThemeContextualIntent",
-                    "slots": [],
-                    "samples": [
-                        "What was it",
-                        "What"
-                    ]
-                },
-                {
                     "name": "GetMannerFocusIntent",
                     "slots": [
                         {
@@ -759,20 +733,14 @@
                         }
                     ],
                     "samples": [
+                        "How",
+                        "How {question_verb} {action} {filler_verb}",
                         "How {question_verb} {subject} {filler_verb} {preposition} {theme}",
                         "How {question_verb} {subject} {filler_verb} {preposition} {location} {preposition} {theme}",
                         "How {question_verb} {subject} {action} {preposition} {theme}",
                         "How {question_verb} {subject} {action} {preposition} {location} {preposition} {theme}",
                         "What {question_verb} {subject} {filler_verb} {preposition} {action} {theme}",
                         "How {question_verb} {subject} {action} {theme}"
-                    ]
-                },
-                {
-                    "name": "GetMannerContextualIntent",
-                    "slots": [],
-                    "samples": [
-                        "How did that happen",
-                        "How"
                     ]
                 },
                 {
@@ -836,6 +804,9 @@
                         }
                     ],
                     "samples": [
+                        "Why",
+                        "Why {question_verb} {action}",
+                        "Why {question_verb} {action} {filler_verb}",
                         "Why {question_verb} {subject} {action} from {location} to {theme}",
                         "Why {question_verb} {subject} {action} to {theme}",
                         "Why {question_verb} {subject} {action} {theme} {preposition} {manner}",
@@ -927,15 +898,6 @@
                     ]
                 },
                 {
-                    "name": "GetReasonContextualIntent",
-                    "slots": [],
-                    "samples": [
-                        "Why did that happen",
-                        "Why was that",
-                        "Why"
-                    ]
-                },
-                {
                     "name": "GetActionFocusIntent",
                     "slots": [
                         {
@@ -1000,6 +962,8 @@
                         }
                     ],
                     "samples": [
+                        "What {question_verb} {subject} {filler_verb}",
+                        "What {filler_verb}",
                         "How {question_verb} {subject} {filler_verb} {manner}",
                         "What {question_verb} {subject} {filler_verb} {manner} {preposition}",
                         "What {question_verb} {subject} {filler_verb} {preposition} {manner}",
@@ -1264,15 +1228,6 @@
                         "What {question_verb} {subject} {filler_verb} {preposition} {agent}",
                         "What {question_verb} {subject} {filler_verb} {preposition} {theme}",
                         "What {question_verb} {subject} {filler_verb} {preposition} {location}"
-                    ]
-                },
-                {
-                    "name": "GetActionContextualIntent",
-                    "slots": [],
-                    "samples": [
-                        "What happened",
-                        "What were you doing",
-                        "What did you do"
                     ]
                 },
                 {
