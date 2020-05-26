@@ -1780,16 +1780,6 @@
                         },
                         {
                             "name": {
-                                "value": "Get",
-                                "synonyms": [
-                                    "gave",
-                                    "give",
-                                    "got"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
                                 "value": "Talk",
                                 "synonyms": [
                                     "chatted",
@@ -1870,6 +1860,10 @@
                             "name": {
                                 "value": "Buy",
                                 "synonyms": [
+                                    "gave",
+                                    "give",
+                                    "got",
+                                    "get",
                                     "obtained",
                                     "obtain",
                                     "purchased",

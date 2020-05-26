@@ -839,7 +839,7 @@
   </event>
   <event>
     <id>19</id>
-    <action>Get</action>
+    <action>Buy</action>
     <real>true</real>
     <incriminatory>50</incriminatory>
     <association relation="Time">
