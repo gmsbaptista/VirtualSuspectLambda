@@ -187,6 +187,9 @@
     <type>Parcel</type>
     <value>Delivery</value>
     <speech>a delivery</speech>
+    <association relation="Details">
+      <speech>The delivery that was supposed to bring the necklace</speech>
+    </association>
   </entity>
 
   <!--Agents-->
