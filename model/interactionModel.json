@@ -254,6 +254,7 @@
                         }
                     ],
                     "samples": [
+                        "Where {question_verb} {subject} {action} {theme} {preposition}",
                         "Where",
                         "Where {question_verb} {action} {filler_verb}",
                         "Where {question_verb} {action}",
