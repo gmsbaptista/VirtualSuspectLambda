@@ -91,6 +91,9 @@
                     "name": "GreetingIntent",
                     "slots": [],
                     "samples": [
+                        "Hi Peter",
+                        "Hello there",
+                        "Hello Peter",
                         "Top of the morning to you",
                         "Cheerio",
                         "Oi",
@@ -111,6 +114,7 @@
                     "name": "IntrospectionIntent",
                     "slots": [],
                     "samples": [
+                        "How are you Peter",
                         "How do you feel",
                         "How have you been",
                         "How is your day going",
@@ -1673,16 +1677,24 @@
                         {
                             "name": "subject",
                             "type": "subject_slot_type"
+                        },
+                        {
+                            "name": "question_verb",
+                            "type": "question_verb_slot_type"
                         }
                     ],
                     "samples": [
+                        "What can you tell me about {subject}",
+                        "What can you tell me about {agent}",
+                        "What can you tell me about {theme}",
+                        "Who {question_verb} {agent}",
+                        "Which {theme}",
                         "Can you tell me more about {subject}",
                         "What {subject}",
                         "What {theme} did you steal",
                         "Can you tell me more about {theme}",
                         "Can you tell me more about {agent}",
-                        "What {theme}",
-                        "Who is {agent}"
+                        "What {theme}"
                     ]
                 },
                 {
@@ -1695,11 +1707,19 @@
                         {
                             "name": "preposition",
                             "type": "preposition_slot_type"
+                        },
+                        {
+                            "name": "question_verb",
+                            "type": "question_verb_slot_type"
+                        },
+                        {
+                            "name": "filler_verb",
+                            "type": "filler_verb_slot_type"
                         }
                     ],
                     "samples": [
-                        "What's your relationship {preposition} {agent}",
-                        "How do you know {agent}"
+                        "How {question_verb} you {filler_verb} {agent}",
+                        "What's your relationship {preposition} {agent}"
                     ]
                 },
                 {
@@ -1708,10 +1728,15 @@
                         {
                             "name": "location",
                             "type": "location_slot_type"
+                        },
+                        {
+                            "name": "question_verb",
+                            "type": "question_verb_slot_type"
                         }
                     ],
                     "samples": [
-                        "Where is {location}",
+                        "Where {question_verb} {location} located",
+                        "Where {question_verb} {location}",
                         "Where's {location}"
                     ]
                 },
@@ -1721,14 +1746,19 @@
                         {
                             "name": "theme",
                             "type": "theme_slot_type"
+                        },
+                        {
+                            "name": "question_verb",
+                            "type": "question_verb_slot_type"
                         }
                     ],
                     "samples": [
-                        "How much did {theme} cost",
-                        "What was {theme} value",
-                        "What was the value of {theme}",
-                        "What was {theme} worth",
-                        "How much was {theme} worth",
+                        "What {question_verb} {theme} cost",
+                        "How much {question_verb} {theme} cost",
+                        "What {question_verb} {theme} value",
+                        "What {question_verb} the value of {theme}",
+                        "What {question_verb} {theme} worth",
+                        "How much {question_verb} {theme} worth",
                         "Was {theme} expensive",
                         "How much did you sell {theme} for"
                     ]
@@ -2552,6 +2582,8 @@
                             "name": {
                                 "value": "be",
                                 "synonyms": [
+                                    "are",
+                                    "is",
                                     "were",
                                     "was"
                                 ]
@@ -2561,6 +2593,7 @@
                             "name": {
                                 "value": "do",
                                 "synonyms": [
+                                    "does",
                                     "done",
                                     "did"
                                 ]
