@@ -1550,6 +1550,14 @@ namespace VirtualSuspectLambda
                     entity = this.result.Results.ElementAt(0).values.ElementAt(0).Value;
                     success = true;
                 }
+                else if (this.result.Results.Count == 1 &&
+                    this.result.Results.ElementAt(0).dimension == KnowledgeBaseManager.DimentionsEnum.Action &&
+                    dimension == KnowledgeBaseManager.DimentionsEnum.Theme &&
+                    this.result.Results.ElementAt(0).values.Count == 2)
+                {
+                    entity = this.result.Results.ElementAt(0).values.ElementAt(1).Value;
+                    success = true;
+                }
                 else
                 {
                     foreach (IConditionPredicate condition in this.result.Query.QueryConditions)
