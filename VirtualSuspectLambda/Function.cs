@@ -432,7 +432,7 @@ namespace VirtualSuspectLambda
         private bool AddQueryConditions(QueryDto query, IntentRequest intent, ILambdaLogger log)
         {
             Dictionary<string, Slot> intent_slots = intent.Intent.Slots;
-            bool indirectAgent = false;
+            //bool indirectAgent = false;
             lastInteraction.NoAccess();
 
             /*if (CheckContextualIntent(intent.Intent.Name))
@@ -487,6 +487,7 @@ namespace VirtualSuspectLambda
                             string prevAgent = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Agent, out bool success);
                             if (success)
                             {
+                                log.LogLine($"previous agent: " + prevAgent);
                                 List<string> agents = new List<string>() { prevAgent };
                                 query.AddCondition(new AgentEqualConditionPredicate(agents));
                             }
@@ -509,7 +510,7 @@ namespace VirtualSuspectLambda
                         }
                         else if (CheckIndirectPronoun(agent))
                         {
-                            indirectAgent = true;
+                            //indirectAgent = true;
                             if (agent == "alone")
                             {
                                 query.AddCondition(new AgentAloneConditionPredicate());
@@ -542,6 +543,7 @@ namespace VirtualSuspectLambda
                             string prevAction = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Action, out bool success);
                             if (success)
                             {
+                                log.LogLine($"previous action: " + prevAction);
                                 query.AddCondition(new ActionEqualConditionPredicate(prevAction));
                             }
                             else
@@ -577,6 +579,7 @@ namespace VirtualSuspectLambda
                             string prevLocation = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Location, out bool success);
                             if (success)
                             {
+                                log.LogLine($"previous location: " + prevLocation);
                                 query.AddCondition(new LocationEqualConditionPredicate(prevLocation));
                             }
                             else
@@ -636,6 +639,7 @@ namespace VirtualSuspectLambda
                             string prevManner = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Manner, out bool success);
                             if (success)
                             {
+                                log.LogLine($"previous manner: " + prevManner);
                                 List<string> manners = new List<string>() { prevManner };
                                 query.AddCondition(new MannerEqualConditionPredicate(manners));
                             }
@@ -682,6 +686,7 @@ namespace VirtualSuspectLambda
                             string prevTheme = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Theme, out bool success);
                             if (success)
                             {
+                                log.LogLine($"previous theme: " + prevTheme);
                                 List<string> themes = new List<string>() { prevTheme };
                                 query.AddCondition(new ThemeEqualConditionPredicate(themes));
                             }
@@ -694,16 +699,19 @@ namespace VirtualSuspectLambda
                                 {
                                     if (agentSuccess && prevAgent == "Delivery Guy")
                                     {
+                                        log.LogLine($"use " + prevAgent + "as theme");
                                         List<string> themes = new List<string>() { prevAgent };
                                         query.AddCondition(new ThemeEqualConditionPredicate(themes));
                                     }
                                     if (locationSuccess && (prevLocation == "Castle Town" || prevLocation == "Silvermoon City"))
                                     {
+                                        log.LogLine($"use " + prevLocation + "as theme");
                                         List<string> themes = new List<string>() { prevLocation };
                                         query.AddCondition(new ThemeEqualConditionPredicate(themes));
                                     }
                                     if (mannerSuccess && prevManner == "Gun")
                                     {
+                                        log.LogLine($"use " + prevManner + "as theme");
                                         List<string> themes = new List<string>() { prevManner };
                                         query.AddCondition(new ThemeEqualConditionPredicate(themes));
                                     }
@@ -991,6 +999,7 @@ namespace VirtualSuspectLambda
                                 string prevTime = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Time, out bool success);
                                 if (success)
                                 {
+                                    log.LogLine($"previous time: " + prevTime);
                                     if (time_pronoun == "that day")
                                     {
                                         string date;
