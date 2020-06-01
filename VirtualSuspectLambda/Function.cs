@@ -869,9 +869,11 @@ namespace VirtualSuspectLambda
                         log.LogLine($"time_one slot: " + time1);
                         string time2 = TrueSlotValue(intent_slots["time_two"]);
                         log.LogLine($"time_two slot: " + time2);
+                        bool prevAccess = lastInteraction.CheckAccess();
                         string prevTime = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Time, out bool success);
                         if (success)
                         {
+                            lastInteraction.RestoreAccess(prevAccess);
                             string date;
                             string[] split = prevTime.Split('>');
                             if (split.Length == 1)
@@ -912,9 +914,11 @@ namespace VirtualSuspectLambda
                             time1 = TrueSlotValue(intent_slots["time_two"]);
                         }
                         log.LogLine($"time_one slot: " + time1);
+                        bool prevAccess = lastInteraction.CheckAccess();
                         string prevTime = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Time, out bool success);
                         if (success)
                         {
+                            lastInteraction.RestoreAccess(prevAccess);
                             string date1;
                             string[] split = prevTime.Split('>');
                             if (split.Length == 1)
@@ -996,12 +1000,14 @@ namespace VirtualSuspectLambda
                             log.LogLine($"time_pronoun slot: " + time_pronoun);
                             if (CheckDirectPronoun(time_pronoun))
                             {
+                                bool prevAccess = lastInteraction.CheckAccess();
                                 string prevTime = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Time, out bool success);
                                 if (success)
                                 {
                                     log.LogLine($"previous time: " + prevTime);
                                     if (time_pronoun == "that day")
                                     {
+                                        lastInteraction.RestoreAccess(prevAccess);
                                         string date;
                                         string[] split = prevTime.Split('>');
                                         if (split.Length == 1)
@@ -1080,7 +1086,20 @@ namespace VirtualSuspectLambda
                 {
                     foreach (IConditionPredicate condition in prevConditions)
                     {
-                        query.AddCondition(condition);
+                        bool conditionExists = false;
+                        foreach (IConditionPredicate queryCondition in query.QueryConditions)
+                        {
+                            if (condition.GetSemanticRole() == queryCondition.GetSemanticRole() ||
+                                condition.GetSemanticRole() == query.QueryFocus.ElementAt(0).GetSemanticRole())
+                            {
+                                conditionExists = true;
+                                break;
+                            }
+                        }
+                        if (!conditionExists)
+                        {
+                            query.AddCondition(condition);
+                        }
                     }
                 }
                 else
@@ -1500,6 +1519,11 @@ namespace VirtualSuspectLambda
             public void NoAccess()
             {
                 accessed = false;
+            }
+
+            public void RestoreAccess(bool prevAccess)
+            {
+                accessed = prevAccess;
             }
 
             public void UpdateResult (QueryResult res)
