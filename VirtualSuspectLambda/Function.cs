@@ -788,6 +788,11 @@ namespace VirtualSuspectLambda
                         log.LogLine($"time_one slot: " + time1);
                         string time2 = TrueSlotValue(intent_slots["time_two"]);
                         log.LogLine($"time_two slot: " + time2);
+                        if (time2 == "00:00")
+                        {
+                            log.LogLine($"second time is midnight, changing 23:59:59 to preserve normal time flow");
+                            time2 = "23:59:59";
+                        }
                         query.AddCondition(new TimeBetweenConditionPredicate(CreateTimeStamp(date1, time1),
                             CreateTimeStamp(date1, time2)));
                     }
@@ -869,6 +874,11 @@ namespace VirtualSuspectLambda
                         log.LogLine($"time_one slot: " + time1);
                         string time2 = TrueSlotValue(intent_slots["time_two"]);
                         log.LogLine($"time_two slot: " + time2);
+                        if (time2 == "00:00")
+                        {
+                            log.LogLine($"second time is midnight, changing 23:59:59 to preserve normal time flow");
+                            time2 = "23:59:59";
+                        }
                         bool prevAccess = lastInteraction.CheckAccess();
                         string prevTime = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Time, out bool success);
                         if (success)
