@@ -338,7 +338,9 @@ namespace VirtualSuspectLambda
             string speechText = "";
             if (AddQueryConditions(query, intentRequest, log, out string failLog))
             {
-                if ((query.QueryType == QueryDto.QueryTypeEnum.GetKnowledge && query.QueryConditions.Count > 0) || query.QueryConditions.Count > 1)
+                if ((query.QueryType == QueryDto.QueryTypeEnum.GetKnowledge && query.QueryConditions.Count > 0) || 
+                    (query.QueryType == QueryDto.QueryTypeEnum.YesOrNo && query.QueryConditions.Count > 1) ||
+                    (query.QueryType == QueryDto.QueryTypeEnum.GetInformation && query.QueryConditions.Count >= 1))
                 {
                     QueryResult queryResult = virtual_suspect.Query(query);
                     lastInteraction.UpdateResult(queryResult);
@@ -1130,11 +1132,10 @@ namespace VirtualSuspectLambda
             }
             //}
 
-            //martelado in case the person asks "Were you alone" which is a validation question, but acts like a contextual question
-            if (query.QueryType == QueryDto.QueryTypeEnum.GetInformation && (query.QueryConditions.Count < 2 ||
+
+            if (query.QueryType == QueryDto.QueryTypeEnum.GetInformation && (query.QueryConditions.Count == 0 || (query.QueryConditions.Count == 1 && query.QueryConditions.ElementAt(0).GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Subject) ||
                 (query.QueryConditions.Count <= 2 && lastInteraction.CheckAccess())))
             {
-                //log.LogLine($"someone asked a question with an indirect agent pronoun (alone, anyone) and less than 2 conditions, so I'm gonna include the conditions from the context, k thx bye");
                 log.LogLine($"trying out the new contextual functionality, adding previous conditions");
                 List<IConditionPredicate> prevConditions = lastInteraction.GetConditions(out bool success, out string contextFailLog, out int contextFailCode);
                 if (success)
