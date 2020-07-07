@@ -338,7 +338,7 @@ namespace VirtualSuspectLambda
             string speechText = "";
             if (AddQueryConditions(query, intentRequest, log, out string failLog))
             {
-                if ((query.QueryType == QueryDto.QueryTypeEnum.GetKnowledge && query.QueryConditions.Count > 0) || 
+                if ((query.QueryType == QueryDto.QueryTypeEnum.GetKnowledge && query.QueryConditions.Count > 0) ||
                     (query.QueryType == QueryDto.QueryTypeEnum.YesOrNo && query.QueryConditions.Count > 1) ||
                     (query.QueryType == QueryDto.QueryTypeEnum.GetInformation && query.QueryConditions.Count >= 1))
                 {
@@ -435,41 +435,14 @@ namespace VirtualSuspectLambda
         {
             Dictionary<string, Slot> intent_slots = intent.Intent.Slots;
             failLog = "";
-            //bool indirectAgent = false;
+
             lastInteraction.NoAccess();
 
-            /*if (CheckContextualIntent(intent.Intent.Name))
-            {
-                List<IConditionPredicate> prevConditions = lastInteraction.GetConditions(out bool success);
-                if (success)
-                {
-                    foreach (IConditionPredicate condition in prevConditions)
-                    {
-                        query.AddCondition(condition);
-                    }
-                }
-                else
-                {
-                    log.LogLine($"something went wrong in a contextual question, exiting");
-                    return false;
-                }
-            }
-            else
-            {*/
             if (SlotExists(intent_slots, "subject"))
             {
                 if (KnownSlot(intent_slots["subject"]))
                 {
                     string subject = TrueSlotValue(intent_slots["subject"]);
-                    /*if (subject == "Peter Barker")
-                    {
-                        log.LogLine($"subject slot: Peter Barker");
-                        query.AddCondition(new SubjectEqualConditionPredicate(subject));
-                    }
-                    else
-                    {
-                        log.LogLine($"subject slot: unexpected subject - " + subject);
-                    }*/
                     log.LogLine($"subject slot: " + subject);
                     query.AddCondition(new SubjectEqualConditionPredicate(subject));
                 }
@@ -778,374 +751,259 @@ namespace VirtualSuspectLambda
                     return false;
                 }
             }
-            if (SlotExists(intent_slots, "date_one") || SlotExists(intent_slots, "date_two")
-                || SlotExists(intent_slots, "time_one") || SlotExists(intent_slots, "time_two")
-                || SlotExists(intent_slots, "time_pronoun")) //Time slots
+            if (CheckTimeConditions(intent_slots, out string timeFormat, out string true_date, out string true_time))
             {
-                log.LogLine($"time slots");
-                if (SlotExists(intent_slots, "date_one") && SlotExists(intent_slots, "date_two") &&
-                    SlotExists(intent_slots, "time_one") && SlotExists(intent_slots, "time_two")) //Two dates and two times
+                log.LogLine($"new time slots format");
+                string date, date1, date2, time1, time2, time_pronoun, prevTime;
+                bool prevAccess, success;
+                switch (timeFormat)
                 {
-                    log.LogLine($"time: two dates and two times");
-                    string date1 = TrueSlotValue(intent_slots["date_one"]);
-                    log.LogLine($"date_one slot: " + date1);
-                    string date2 = TrueSlotValue(intent_slots["date_two"]);
-                    log.LogLine($"date_two slot: " + date2);
-                    string time1 = TrueSlotValue(intent_slots["time_one"]);
-                    log.LogLine($"time_one slot: " + time1);
-                    string time2 = TrueSlotValue(intent_slots["time_two"]);
-                    log.LogLine($"time_two slot: " + time2);
-                    query.AddCondition(new TimeBetweenConditionPredicate(CreateTimeStamp(date1, time1),
-                        CreateTimeStamp(date2, time2)));
-                }
-                else if (SlotExists(intent_slots, "date_one") && SlotExists(intent_slots, "date_two") &&
-                    !SlotExists(intent_slots, "time_one") && !SlotExists(intent_slots, "time_two")) //Two dates and no times
-                {
-                    log.LogLine($"time: two dates and no times");
-                    string date1 = TrueSlotValue(intent_slots["date_one"]);
-                    log.LogLine($"date_one slot: " + date1);
-                    string date2 = TrueSlotValue(intent_slots["date_two"]);
-                    log.LogLine($"date_two slot: " + date2);
-                    query.AddCondition(new TimeBetweenConditionPredicate(CreateTimeStamp(date1, "00:00:00"),
-                        CreateTimeStamp(date2, "23:59:59")));
-                }
-                else if ((SlotExists(intent_slots, "date_one") || SlotExists(intent_slots, "date_two")) &&
-                    SlotExists(intent_slots, "time_one") && SlotExists(intent_slots, "time_two")) //One date and two times
-                {
-                    log.LogLine($"time: one date and two times");
-                    string date1;
-                    if (SlotExists(intent_slots, "date_one"))
-                    {
+                    case "2d2t":
+                        log.LogLine($"time: two dates and two times");
                         date1 = TrueSlotValue(intent_slots["date_one"]);
-                    }
-                    else
-                    {
-                        date1 = TrueSlotValue(intent_slots["date_two"]);
-                    }
-                    log.LogLine($"date_one slot: " + date1);
-                    string time1 = TrueSlotValue(intent_slots["time_one"]);
-                    log.LogLine($"time_one slot: " + time1);
-                    string time2 = TrueSlotValue(intent_slots["time_two"]);
-                    log.LogLine($"time_two slot: " + time2);
-                    if (time2 == "00:00")
-                    {
-                        log.LogLine($"second time is midnight, changing 23:59:59 to preserve normal time flow");
-                        time2 = "23:59:59";
-                    }
-                    query.AddCondition(new TimeBetweenConditionPredicate(CreateTimeStamp(date1, time1),
-                        CreateTimeStamp(date1, time2)));
-                }
-                else if ((SlotExists(intent_slots, "date_one") || SlotExists(intent_slots, "date_two")) &&
-                    (SlotExists(intent_slots, "time_one") || SlotExists(intent_slots, "time_two"))) //One date and one time
-                {
-                    log.LogLine($"time: one date and one time");
-                    string date1;
-                    if (SlotExists(intent_slots, "date_one"))
-                    {
-                        date1 = TrueSlotValue(intent_slots["date_one"]);
-                    }
-                    else
-                    {
-                        date1 = TrueSlotValue(intent_slots["date_two"]);
-                    }
-                    log.LogLine($"date_one slot: " + date1);
-                    string time1;
-                    if (SlotExists(intent_slots, "time_one"))
-                    {
+                        log.LogLine($"date_one slot: " + date1);
+                        date2 = TrueSlotValue(intent_slots["date_two"]);
+                        log.LogLine($"date_two slot: " + date2);
                         time1 = TrueSlotValue(intent_slots["time_one"]);
-                    }
-                    else
-                    {
-                        time1 = TrueSlotValue(intent_slots["time_two"]);
-                    }
-                    log.LogLine($"time_one slot: " + time1);
-                    if (time1 == "MO" || time1 == "NI" || time1 == "AF" || time1 == "EV")
-                    {
-                        //TODO: Check if madrugada makes sense here
-                        if (time1 == "MO")
-                        {
-                            query.AddCondition(new TimeBetweenConditionPredicate(CreateTimeStamp(date1, "06:00:00"),
-                                CreateTimeStamp(date1, "11:59:59")));
-                        }
-                        else if (time1 == "AF")
-                        {
-                            query.AddCondition(new TimeBetweenConditionPredicate(CreateTimeStamp(date1, "12:00:00"),
-                                CreateTimeStamp(date1, "16:59:59")));
-                        }
-                        else if (time1 == "EV")
-                        {
-                            query.AddCondition(new TimeBetweenConditionPredicate(CreateTimeStamp(date1, "17:00:00"),
-                                CreateTimeStamp(date1, "19:59:59")));
-                        }
-                        else if (time1 == "NI")
-                        {
-                            query.AddCondition(new TimeBetweenConditionPredicate(CreateTimeStamp(date1, "20:00:00"),
-                                CreateTimeStamp(date1, "23:59:59")));
-                        }
-                    }
-                    else
-                    {
-                        query.AddCondition(new TimeEqualConditionPredicate(CreateTimeStamp(date1, time1)));
-                    }
-                }
-                else if ((SlotExists(intent_slots, "date_one") || SlotExists(intent_slots, "date_two")) &&
-                    !SlotExists(intent_slots, "time_one") && !SlotExists(intent_slots, "time_two")) //One date and no time
-                {
-                    log.LogLine($"time: one date and no time");
-                    string date1;
-                    if (SlotExists(intent_slots, "date_one"))
-                    {
+                        log.LogLine($"time_one slot: " + time1);
+                        time2 = TrueSlotValue(intent_slots["time_two"]);
+                        log.LogLine($"time_two slot: " + time2);
+                        query.AddCondition(new TimeBetweenConditionPredicate(CreateTimeStamp(date1, time1), CreateTimeStamp(date2, time2)));
+                        break;
+                    case "2d0t":
+                        log.LogLine($"time: two dates and no times");
                         date1 = TrueSlotValue(intent_slots["date_one"]);
-                    }
-                    else
-                    {
-                        date1 = TrueSlotValue(intent_slots["date_two"]);
-                    }
-                    log.LogLine($"date_one slot: " + date1);
-                    query.AddCondition(new TimeBetweenConditionPredicate(CreateTimeStamp(date1, "00:00:00"),
-                        CreateTimeStamp(date1, "23:59:59")));
-                }
-                else if (!SlotExists(intent_slots, "date_one") && !SlotExists(intent_slots, "date_two") &&
-                    SlotExists(intent_slots, "time_one") && SlotExists(intent_slots, "time_two")) //No date and two times
-                {
-                    log.LogLine($"time: no date and two times");
-                    string time1 = TrueSlotValue(intent_slots["time_one"]);
-                    log.LogLine($"time_one slot: " + time1);
-                    string time2 = TrueSlotValue(intent_slots["time_two"]);
-                    log.LogLine($"time_two slot: " + time2);
-                    if (time2 == "00:00")
-                    {
-                        log.LogLine($"second time is midnight, changing 23:59:59 to preserve normal time flow");
-                        time2 = "23:59:59";
-                    }
-                    bool prevAccess = lastInteraction.CheckAccess();
-                    string prevTime = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Time, out bool success);
-                    if (success)
-                    {
-                        lastInteraction.RestoreAccess(prevAccess);
-                        string date;
-                        string[] split = prevTime.Split('>');
-                        if (split.Length == 1)
-                        {
-                            date = prevTime.Split('T')[0];
-                            log.LogLine($"previous date: " + date);
-                            query.AddCondition(new TimeBetweenConditionPredicate(date + "T" + CreateTimeStamp(time1), date + "T" + CreateTimeStamp(time2)));
-                        }
-                        else if (split[0].Split('T')[0] == split[1].Split('T')[0])
-                        {
-                            date = split[0].Split('T')[0];
-                            log.LogLine($"previous date: " + date);
-                            query.AddCondition(new TimeBetweenConditionPredicate(date + "T" + CreateTimeStamp(time1), date + "T" + CreateTimeStamp(time2)));
-                        }
-                        else
-                        {
-                            log.LogLine($"no single date to fill 'that day' pronoun, exiting");
-                            //pregen answer
-                            failLog = "I don't know which day you're referring to in this context";
-                            return false;
-                        }
-                    }
-                    else
-                    {
-                        log.LogLine($"missing reference");
-                        //pregen answer
-                        failLog = "I don't know what day you're referring to in this context";
-                        return false;
-                    }
-                }
-                else if (!SlotExists(intent_slots, "date_one") && !SlotExists(intent_slots, "date_two") &&
-                    (SlotExists(intent_slots, "time_one") || SlotExists(intent_slots, "time_two"))) //No date and one time
-                {
-                    log.LogLine($"time: no date and one time");
-                    string time1;
-                    if (SlotExists(intent_slots, "time_one"))
-                    {
+                        log.LogLine($"date_one slot: " + date1);
+                        date2 = TrueSlotValue(intent_slots["date_two"]);
+                        log.LogLine($"date_two slot: " + date2);
+                        query.AddCondition(new TimeBetweenConditionPredicate(CreateTimeStamp(date1, "00:00:00"), CreateTimeStamp(date2, "23:59:59")));
+                        break;
+                    case "1d2t":
+                        log.LogLine($"time: one date and two times");
+                        date1 = TrueSlotValue(intent_slots[true_date]);
+                        log.LogLine($"date_one slot: " + date1);
                         time1 = TrueSlotValue(intent_slots["time_one"]);
-                    }
-                    else
-                    {
-                        time1 = TrueSlotValue(intent_slots["time_two"]);
-                    }
-                    log.LogLine($"time_one slot: " + time1);
-                    bool prevAccess = lastInteraction.CheckAccess();
-                    string prevTime = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Time, out bool success);
-                    if (success)
-                    {
-                        lastInteraction.RestoreAccess(prevAccess);
-                        string date1;
-                        string[] split = prevTime.Split('>');
-                        if (split.Length == 1)
+                        log.LogLine($"time_one slot: " + time1);
+                        time2 = TrueSlotValue(intent_slots["time_two"]);
+                        log.LogLine($"time_two slot: " + time2);
+                        if (time2 == "00:00")
                         {
-                            date1 = prevTime.Split('T')[0];
-                            log.LogLine($"previous date: " + date1);
-                            if (time1 == "MO" || time1 == "NI" || time1 == "AF" || time1 == "EV")
+                            log.LogLine($"second time is midnight, changing 23:59:59 to preserve normal time flow");
+                            time2 = "23:59:59";
+                        }
+                        query.AddCondition(new TimeBetweenConditionPredicate(CreateTimeStamp(date1, time1),
+                            CreateTimeStamp(date1, time2)));
+                        break;
+                    case "1d1t":
+                        log.LogLine($"time: one date and one time");
+                        date1 = TrueSlotValue(intent_slots[true_date]);
+                        log.LogLine($"date_one slot: " + date1);
+                        time1 = TrueSlotValue(intent_slots[true_time]);
+                        log.LogLine($"time_one slot: " + time1);
+                        switch (time1)
+                        {
+                            //TODO: Check if madrugada makes sense here
+                            case "MO":
+                                query.AddCondition(new TimeBetweenConditionPredicate(CreateTimeStamp(date1, "06:00:00"), CreateTimeStamp(date1, "11:59:59")));
+                                break;
+                            case "AF":
+                                query.AddCondition(new TimeBetweenConditionPredicate(CreateTimeStamp(date1, "12:00:00"), CreateTimeStamp(date1, "16:59:59")));
+                                break;
+                            case "EV":
+                                query.AddCondition(new TimeBetweenConditionPredicate(CreateTimeStamp(date1, "17:00:00"), CreateTimeStamp(date1, "19:59:59")));
+                                break;
+                            case "NI":
+                                query.AddCondition(new TimeBetweenConditionPredicate(CreateTimeStamp(date1, "20:00:00"), CreateTimeStamp(date1, "23:59:59")));
+                                break;
+                            default:
+                                query.AddCondition(new TimeEqualConditionPredicate(CreateTimeStamp(date1, time1)));
+                                break;
+                        }
+                        break;
+                    case "1d0t":
+                        log.LogLine($"time: one date and no time");
+                        date1 = TrueSlotValue(intent_slots[true_date]);
+                        log.LogLine($"date_one slot: " + date1);
+                        query.AddCondition(new TimeBetweenConditionPredicate(CreateTimeStamp(date1, "00:00:00"), CreateTimeStamp(date1, "23:59:59")));
+                        break;
+                    case "0d2t":
+                        log.LogLine($"time: no date and two times");
+                        time1 = TrueSlotValue(intent_slots["time_one"]);
+                        log.LogLine($"time_one slot: " + time1);
+                        time2 = TrueSlotValue(intent_slots["time_two"]);
+                        log.LogLine($"time_two slot: " + time2);
+                        if (time2 == "00:00")
+                        {
+                            log.LogLine($"second time is midnight, changing 23:59:59 to preserve normal time flow");
+                            time2 = "23:59:59";
+                        }
+                        prevAccess = lastInteraction.CheckAccess();
+                        prevTime = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Time, out success);
+                        if (success)
+                        {
+                            lastInteraction.RestoreAccess(prevAccess);
+                            string[] split = prevTime.Split('>');
+                            if (split.Length == 1 || split[0].Split('T')[0] == split[1].Split('T')[0])
                             {
-                                //TODO: Check if madrugada makes sense here
-                                if (time1 == "MO")
-                                {
-                                    query.AddCondition(new TimeBetweenConditionPredicate(date1 + "T" + "06:00:00", date1 + "T" + "11:59:59"));
-                                }
-                                else if (time1 == "AF")
-                                {
-                                    query.AddCondition(new TimeBetweenConditionPredicate(date1 + "T" + "12:00:00", date1 + "T" + "16:59:59"));
-                                }
-                                else if (time1 == "EV")
-                                {
-                                    query.AddCondition(new TimeBetweenConditionPredicate(date1 + "T" + "17:00:00", date1 + "T" + "19:59:59"));
-                                }
-                                else if (time1 == "NI")
-                                {
-                                    query.AddCondition(new TimeBetweenConditionPredicate(date1 + "T" + "20:00:00", date1 + "T" + "23:59:59"));
-                                }
+                                if (split.Length == 1) { date = prevTime.Split('T')[0]; } else { date = split[0].Split('T')[0]; }
+                                log.LogLine($"previous date: " + date);
+                                query.AddCondition(new TimeBetweenConditionPredicate(date + "T" + CreateTimeStamp(time1), date + "T" + CreateTimeStamp(time2)));
                             }
                             else
                             {
-                                query.AddCondition(new TimeEqualConditionPredicate(date1 + "T" + CreateTimeStamp(time1)));
-                            }
-                        }
-                        else if (split[0].Split('T')[0] == split[1].Split('T')[0])
-                        {
-                            date1 = split[0].Split('T')[0];
-                            log.LogLine($"previous date: " + date1);
-                            if (time1 == "MO" || time1 == "NI" || time1 == "AF" || time1 == "EV")
-                            {
-                                //TODO: Check if madrugada makes sense here
-                                if (time1 == "MO")
-                                {
-                                    query.AddCondition(new TimeBetweenConditionPredicate(date1 + "T" + "06:00:00", date1 + "T" + "11:59:59"));
-                                }
-                                else if (time1 == "AF")
-                                {
-                                    query.AddCondition(new TimeBetweenConditionPredicate(date1 + "T" + "12:00:00", date1 + "T" + "16:59:59"));
-                                }
-                                else if (time1 == "EV")
-                                {
-                                    query.AddCondition(new TimeBetweenConditionPredicate(date1 + "T" + "17:00:00", date1 + "T" + "19:59:59"));
-                                }
-                                else if (time1 == "NI")
-                                {
-                                    query.AddCondition(new TimeBetweenConditionPredicate(date1 + "T" + "20:00:00", date1 + "T" + "23:59:59"));
-                                }
-                            }
-                            else
-                            {
-                                query.AddCondition(new TimeEqualConditionPredicate(date1 + "T" + CreateTimeStamp(time1)));
+                                log.LogLine($"no single date to fill 'that day' pronoun, exiting");
+                                //pregen answer
+                                failLog = "I don't know which day you're referring to in this context";
+                                return false;
                             }
                         }
                         else
                         {
-                            log.LogLine($"no single date to fill 'that day' pronoun, exiting");
+                            log.LogLine($"missing reference");
                             //pregen answer
-                            failLog = "I don't know which day you're referring to in this context";
+                            failLog = "I don't know what day you're referring to in this context";
                             return false;
                         }
-                    }
-                    else
-                    {
-                        log.LogLine($"missing reference");
-                        //pregen answer
-                        failLog = "I don't know what day you're referring to in this context";
-                        return false;
-                    }
-                }
-                else if (SlotExists(intent_slots, "time_pronoun"))
-                {
-                    log.LogLine($"time pronoun");
-                    if (KnownSlot(intent_slots["time_pronoun"]))
-                    {
-                        string time_pronoun = TrueSlotValue(intent_slots["time_pronoun"]);
-                        log.LogLine($"time_pronoun slot: " + time_pronoun);
-                        if (CheckDirectPronoun(time_pronoun))
+                        break;
+                    case "0d1t":
+                        log.LogLine($"time: no date and one time");
+                        time1 = TrueSlotValue(intent_slots[true_time]);
+                        log.LogLine($"time_one slot: " + time1);
+                        prevAccess = lastInteraction.CheckAccess();
+                        prevTime = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Time, out success);
+                        if (success)
                         {
-                            bool prevAccess = lastInteraction.CheckAccess();
-                            string prevTime = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Time, out bool success);
-                            if (success)
+                            lastInteraction.RestoreAccess(prevAccess);
+                            string[] split = prevTime.Split('>');
+                            if (split.Length == 1 || split[0].Split('T')[0] == split[1].Split('T')[0])
                             {
-                                log.LogLine($"previous time: " + prevTime);
-                                if (time_pronoun == "that day")
+                                if (split.Length == 1) { date1 = prevTime.Split('T')[0]; } else { date1 = split[0].Split('T')[0]; }
+                                log.LogLine($"previous date: " + date1);
+                                switch (time1)
                                 {
-                                    lastInteraction.RestoreAccess(prevAccess);
-                                    string date;
-                                    string[] split = prevTime.Split('>');
-                                    if (split.Length == 1)
+                                    case "MO":
+                                        query.AddCondition(new TimeBetweenConditionPredicate(date1 + "T" + "06:00:00", date1 + "T" + "11:59:59"));
+                                        break;
+                                    case "AF":
+                                        query.AddCondition(new TimeBetweenConditionPredicate(date1 + "T" + "12:00:00", date1 + "T" + "16:59:59"));
+                                        break;
+                                    case "EV":
+                                        query.AddCondition(new TimeBetweenConditionPredicate(date1 + "T" + "17:00:00", date1 + "T" + "19:59:59"));
+                                        break;
+                                    case "NI":
+                                        query.AddCondition(new TimeBetweenConditionPredicate(date1 + "T" + "20:00:00", date1 + "T" + "23:59:59"));
+                                        break;
+                                    default:
+                                        query.AddCondition(new TimeEqualConditionPredicate(date1 + "T" + CreateTimeStamp(time1)));
+                                        break;
+                                }
+                            }
+                            else
+                            {
+                                log.LogLine($"no single date to fill 'that day' pronoun, exiting");
+                                //pregen answer
+                                failLog = "I don't know which day you're referring to in this context";
+                                return false;
+                            }
+                        }
+                        else
+                        {
+                            log.LogLine($"missing reference");
+                            //pregen answer
+                            failLog = "I don't know what day you're referring to in this context";
+                            return false;
+                        }
+                        break;
+                    case "p":
+                        log.LogLine($"time pronoun");
+                        if (KnownSlot(intent_slots["time_pronoun"]))
+                        {
+                            time_pronoun = TrueSlotValue(intent_slots["time_pronoun"]);
+                            log.LogLine($"time_pronoun slot: " + time_pronoun);
+                            if (CheckDirectPronoun(time_pronoun))
+                            {
+                                prevAccess = lastInteraction.CheckAccess();
+                                prevTime = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Time, out success);
+                                lastInteraction.RestoreAccess(prevAccess);
+                                if (success)
+                                {
+                                    log.LogLine($"previous time: " + prevTime);
+                                    if (time_pronoun == "that day")
                                     {
-                                        date = prevTime.Split('T')[0];
-                                        query.AddCondition(new TimeBetweenConditionPredicate(date + "T" + "00:00:00", date + "T" + "23:59:59"));
+                                        string[] split = prevTime.Split('>');
+                                        if (split.Length == 1 || split[0].Split('T')[0] == split[1].Split('T')[0])
+                                        {
+                                            if (split.Length == 1) { date = prevTime.Split('T')[0]; } else { date = split[0].Split('T')[0]; }
+                                            query.AddCondition(new TimeBetweenConditionPredicate(date + "T" + "00:00:00", date + "T" + "23:59:59"));
+                                        }
+                                        else
+                                        {
+                                            log.LogLine($"no single date to fill 'that day' pronoun, exiting");
+                                            //pregen answer
+                                            failLog = "I don't know which day you're referring to in this context";
+                                            return false;
+                                        }
                                     }
-                                    else if (split[0].Split('T')[0] == split[1].Split('T')[0])
+                                    else if (time_pronoun == "that time" || time_pronoun == "then")
                                     {
-                                        date = split[0].Split('T')[0];
-                                        query.AddCondition(new TimeBetweenConditionPredicate(date + "T" + "00:00:00", date + "T" + "23:59:59"));
+                                        string[] split = prevTime.Split('>');
+                                        if (split.Length == 1)
+                                        {
+                                            query.AddCondition(new TimeEqualConditionPredicate(prevTime));
+                                        }
+                                        else
+                                        {
+                                            query.AddCondition(new TimeBetweenConditionPredicate(split[0], split[1]));
+                                        }
                                     }
                                     else
                                     {
-                                        log.LogLine($"no single date to fill 'that day' pronoun, exiting");
+                                        log.LogLine($"unknown time pronoun, exiting");
                                         //pregen answer
-                                        failLog = "I don't know which day you're referring to in this context";
+                                        failLog = "This is embarassing, but I don't know what mean by: " + time_pronoun;
                                         return false;
-                                    }
-                                }
-                                else if (time_pronoun == "that time" || time_pronoun == "then")
-                                {
-                                    string[] split = prevTime.Split('>');
-                                    if (split.Length == 1)
-                                    {
-                                        query.AddCondition(new TimeEqualConditionPredicate(prevTime));
-                                    }
-                                    else
-                                    {
-                                        query.AddCondition(new TimeBetweenConditionPredicate(split[0], split[1]));
                                     }
                                 }
                                 else
                                 {
-                                    log.LogLine($"unknown time pronoun, exiting");
+                                    log.LogLine($"missing reference");
                                     //pregen answer
-                                    failLog = "I don't know what mean by: " + time_pronoun;
+                                    failLog = "I don't know what you're referring to in this context when you say: " + time_pronoun;
                                     return false;
                                 }
+
+                            }
+                            else if (CheckIndirectPronoun(time_pronoun))
+                            {
+                                //do nothing for now
                             }
                             else
                             {
-                                log.LogLine($"missing reference");
+                                log.LogLine($"there is no time pronoun, exiting");
                                 //pregen answer
-                                failLog = "I don't know what you're referring to in this context when you say: " + time_pronoun;
+                                failLog = "I don't know what mean by: " + time_pronoun;
                                 return false;
                             }
-
-                        }
-                        else if (CheckIndirectPronoun(time_pronoun))
-                        {
-                            //do nothing for now
                         }
                         else
                         {
-                            log.LogLine($"there is no time pronoun, exiting");
+                            log.LogLine($"unknown time pronoun, exiting");
                             //pregen answer
-                            failLog = "I don't know what mean by: " + time_pronoun;
+                            failLog = "I don't know what mean by: " + intent_slots["time_pronoun"];
                             return false;
                         }
-                    }
-                    else
-                    {
-                        log.LogLine($"unknown time pronoun, exiting");
+                        break;
+                    default:
+                        log.LogLine($"WARNING: unexpected date condition!!");
                         //pregen answer
-                        failLog = "I don't know what mean by: " + intent_slots["time_pronoun"];
+                        failLog = "This is quite unusual, I don't know how to process that date and/or time";
                         return false;
-                    }
-                }
-                else
-                {
-                    log.LogLine($"WARNING: unexpected date condition!!");
-                    //pregen answer
-                    failLog = "This is quite unusual, I don't know how to process that date and/or time";
-                    return false;
                 }
             }
-            //}
 
-
-            if (query.QueryType == QueryDto.QueryTypeEnum.GetInformation && (query.QueryConditions.Count == 0 || (query.QueryConditions.Count == 1 && query.QueryConditions.ElementAt(0).GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Subject) ||
+            if (query.QueryType == QueryDto.QueryTypeEnum.GetInformation && 
+                (query.QueryConditions.Count == 0 || 
+                (query.QueryConditions.Count == 1 && query.QueryConditions.ElementAt(0).GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Subject) ||
                 (query.QueryConditions.Count <= 2 && lastInteraction.CheckAccess())))
             {
                 log.LogLine($"trying out the new contextual functionality, adding previous conditions");
@@ -1178,23 +1036,22 @@ namespace VirtualSuspectLambda
                     failLog = "I don't know what you're referring to in this context";
                     if (options["Detailed feedback"])
                     {
-                        if (contextFailCode == 1)
+                        switch (contextFailCode)
                         {
-                            failLog += ". I cannot make sense of my own answer";
-                        }
-                        else if (contextFailCode == 2)
-                        {
-                            failLog += ". There are multiple things you could be referring to";
-                        }
-                        else
-                        {
-                            failLog += ". Attention, this part of the code should not be reached and something is very wrong";
+                            case 1:
+                                failLog += ". I cannot make sense of my own answer";
+                                break;
+                            case 2:
+                                failLog += ". There are multiple things you could be referring to";
+                                break;
+                            default:
+                                failLog += ". Attention, this part of the code should not be reached and something is very wrong";
+                                break;
                         }
                     }
                     return false;
                 }
             }
-
 
             //Debug
             log.LogLine($"QueryDto type: " + query.QueryType);
@@ -1274,6 +1131,71 @@ namespace VirtualSuspectLambda
             else
             {
                 return slot.Value;
+            }
+        }
+
+        /// <summary>
+        ///  Handles all the different time conditions checks
+        /// </summary>
+        /// <param name="intentSlots"></param>
+        /// <param name="format"></param>
+        /// <param name="trueDate"></param>
+        /// <param name="trueTime"></param>
+        /// <returns>string</returns>
+        private bool CheckTimeConditions(Dictionary<string, Slot> intentSlots, out string format, out string trueDate, out string trueTime)
+        {
+            List<string> slotNames = new List<string>() { "date_one", "date_two", "time_one", "time_two", "time_pronoun" };
+            Dictionary<string, bool> slotExistence = new Dictionary<string, bool>()
+            {
+                {"date_one", false },
+                {"date_two", false },
+                {"time_one", false },
+                {"time_two", false },
+                {"time_pronoun", false }
+            };
+            format = "";
+            trueDate = "";
+            trueTime = "";
+            int dateN = 0;
+            int timeN = 0;
+
+            foreach (string slot_name in slotNames)
+            {
+                slotExistence[slot_name] = SlotExists(intentSlots, slot_name);
+            }
+
+            if (slotExistence["date_one"] && slotExistence["date_two"])
+            {
+                dateN = 2;
+            }
+            else if (slotExistence["date_one"] || slotExistence["date_two"])
+            {
+                dateN = 1;
+                if (slotExistence["date_one"]) { trueDate = "date_one"; } else { trueDate = "date_two"; }
+            }
+            if (slotExistence["time_one"] && slotExistence["time_two"])
+            {
+                timeN = 2;
+            }
+            else if (slotExistence["time_one"] || slotExistence["time_two"])
+            {
+                timeN = 1;
+                if (slotExistence["time_one"]) { trueTime = "time_one"; } else { trueTime = "time_two"; }
+            }
+
+            if (dateN != 0 || timeN != 0)
+            {
+                format = "" + dateN + "d" + timeN + "t";
+                return true;
+            }
+            else if (slotExistence["time_pronoun"])
+            {
+                format = "p";
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
