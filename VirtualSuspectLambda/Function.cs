@@ -554,6 +554,18 @@ namespace VirtualSuspectLambda
                         {
                             log.LogLine($"previous action: " + prevAction);
                             query.AddCondition(new ActionEqualConditionPredicate(prevAction));
+                            log.LogLine($"checking for corresponding theme...");
+                            string prevTheme = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Theme, out bool themeSuccess);
+                            if (themeSuccess)
+                            {
+                                log.LogLine($"this action also had a theme attached: " + prevTheme);
+                                List<string> prevThemes = new List<string>() { prevTheme };
+                                query.AddCondition(new ThemeEqualConditionPredicate(prevThemes));
+                            }
+                            else
+                            {
+                                log.LogLine($"this action didn't have a theme, continue");
+                            }
                         }
                         else
                         {
@@ -1543,7 +1555,7 @@ namespace VirtualSuspectLambda
         {
             List<string> directPronouns = new List<string>()
             {
-                "there", "him", "it", "that day", "that time", "then", "that place", "that", "its", "he"
+                "there", "him", "it", "that day", "that time", "then", "that place", "that", "its", "he", "do it"
             };
 
             return directPronouns.Contains(pronoun);
