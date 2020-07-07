@@ -176,6 +176,7 @@
                         }
                     ],
                     "samples": [
+                        "When {question_verb} {subject} {action}",
                         "When",
                         "When {question_verb} {action} {filler_verb}",
                         "When {question_verb} {action}",
@@ -258,6 +259,7 @@
                         }
                     ],
                     "samples": [
+                        "Where {question_verb} {subject} {action}",
                         "Where {question_verb} {subject} {action} {theme} {preposition}",
                         "Where",
                         "Where {question_verb} {action} {filler_verb}",
@@ -740,6 +742,7 @@
                         }
                     ],
                     "samples": [
+                        "How {question_verb} {subject} {action}",
                         "How",
                         "How {question_verb} {action} {filler_verb}",
                         "How {question_verb} {subject} {filler_verb} {preposition} {theme}",
@@ -811,6 +814,7 @@
                         }
                     ],
                     "samples": [
+                        "Why {question_verb} {subject} {action}",
                         "Why",
                         "Why {question_verb} {action}",
                         "Why {question_verb} {action} {filler_verb}",
@@ -1770,7 +1774,7 @@
                     "values": [
                         {
                             "name": {
-                                "value": "do it"
+                                "value": "it"
                             }
                         },
                         {
