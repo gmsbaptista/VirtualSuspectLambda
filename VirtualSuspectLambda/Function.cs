@@ -187,7 +187,6 @@ namespace VirtualSuspectLambda
                         BuildAnswer(ref innerResponse, ref prompt, speechText, true);
                         break;
                     case "GetTimeFocusIntent":
-                    case "GetTimeContextualIntent":
                         log.LogLine($"GetTimeFocusIntent: a GetInformation question with a GetTime focus");
 
                         query = new QueryDto(QueryDto.QueryTypeEnum.GetInformation);
@@ -197,7 +196,6 @@ namespace VirtualSuspectLambda
 
                         break;
                     case "GetLocationFocusIntent":
-                    case "GetLocationContextualIntent":
                         log.LogLine($"GetLocationFocusIntent: a GetInformation question with a GetLocation focus");
 
                         query = new QueryDto(QueryDto.QueryTypeEnum.GetInformation);
@@ -207,7 +205,6 @@ namespace VirtualSuspectLambda
 
                         break;
                     case "GetAgentFocusIntent":
-                    case "GetAgentContextualIntent":
                         log.LogLine($"GetAgentFocusIntent: a GetInformation question with a GetAgent focus");
 
                         query = new QueryDto(QueryDto.QueryTypeEnum.GetInformation);
@@ -217,7 +214,6 @@ namespace VirtualSuspectLambda
 
                         break;
                     case "GetThemeFocusIntent":
-                    case "GetThemeContextualIntent":
                         log.LogLine($"GetThemeFocusIntent: a GetInformation question with a GetTheme focus");
 
                         query = new QueryDto(QueryDto.QueryTypeEnum.GetInformation);
@@ -227,7 +223,6 @@ namespace VirtualSuspectLambda
 
                         break;
                     case "GetMannerFocusIntent":
-                    case "GetMannerContextualIntent":
                         log.LogLine($"GetMannerFocusIntent: a GetInformation question with a GetManner focus");
 
                         query = new QueryDto(QueryDto.QueryTypeEnum.GetInformation);
@@ -237,7 +232,6 @@ namespace VirtualSuspectLambda
 
                         break;
                     case "GetReasonFocusIntent":
-                    case "GetReasonContextualIntent":
                         log.LogLine($"GetReasonFocusIntent: a GetInformation question with a GetReason focus");
 
                         query = new QueryDto(QueryDto.QueryTypeEnum.GetInformation);
@@ -247,7 +241,6 @@ namespace VirtualSuspectLambda
 
                         break;
                     case "GetActionFocusIntent":
-                    case "GetActionContextualIntent":
                         log.LogLine($"GetActionFocusIntent: a GetInformation question with a GetAction focus");
 
                         query = new QueryDto(QueryDto.QueryTypeEnum.GetInformation);
@@ -1496,21 +1489,6 @@ namespace VirtualSuspectLambda
             };
 
             return indirectPronouns.Contains(pronoun);
-        }
-
-        /// <summary>
-        ///  Checks whether an intent is contextual
-        /// </summary>
-        /// <param name="intentName"></param>
-        /// <returns>bool</returns>
-        private bool CheckContextualIntent(string intentName)
-        {
-            List<string> contextualIntents = new List<string>()
-            {
-                "GetTimeContextualIntent", "GetLocationContextualIntent", "GetAgentContextualIntent", "GetThemeContextualIntent", "GetMannerContextualIntent", "GetReasonContextualIntent", "GetActionContextualIntent"
-            };
-
-            return contextualIntents.Contains(intentName);
         }
 
         private class Context
