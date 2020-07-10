@@ -19,24 +19,24 @@
     <id>3</id>
     <type>TimeSpan</type>
     <begin>03/03/2016T10:30:00</begin>
-    <end>03/03/2016T10:35:00</end>
+    <end>03/03/2016T10:40:00</end>
   </entity>
   <entity>
     <id>4</id>
     <type>TimeSpan</type>
-    <begin>03/03/2016T10:35:00</begin>
-    <end>03/03/2016T11:00:00</end>
+    <begin>03/03/2016T10:40:00</begin>
+    <end>03/03/2016T12:00:00</end>
   </entity>
   <entity>
     <id>5</id>
     <type>TimeSpan</type>
-    <begin>03/03/2016T11:00:00</begin>
-    <end>03/03/2016T12:00:00</end>
+    <begin>03/03/2016T12:00:00</begin>
+    <end>03/03/2016T13:00:00</end>
   </entity>
   <entity>
     <id>6</id>
     <type>TimeSpan</type>
-    <begin>03/03/2016T12:00:00</begin>
+    <begin>03/03/2016T13:00:00</begin>
     <end>03/03/2016T19:00:00</end>
   </entity>
   <entity>
@@ -101,41 +101,41 @@
     <id>17</id>
     <type>TimeSpan</type>
     <begin>05/03/2016T07:00:00</begin>
-    <end>05/03/2016T21:00:00</end>
+    <end>05/03/2016T20:00:00</end>
   </entity>
   <entity>
     <id>18</id>
     <type>TimeSpan</type>
-    <begin>05/03/2016T21:00:00</begin>
-    <end>05/03/2016T22:00:00</end>
+    <begin>05/03/2016T20:00:00</begin>
+    <end>05/03/2016T21:00:00</end>
   </entity>
   <entity>
     <id>19</id>
     <type>TimeInstant</type>
-    <value>05/03/2016T22:00:00</value>
+    <value>05/03/2016T21:00:00</value>
   </entity>
   <entity>
     <id>20</id>
     <type>TimeSpan</type>
-    <begin>05/03/2016T22:00:01</begin>
-    <end>05/03/2016T22:30:00</end>
+    <begin>05/03/2016T21:00:01</begin>
+    <end>05/03/2016T21:30:00</end>
   </entity>
   <entity>
     <id>21</id>
     <type>TimeSpan</type>
-    <begin>05/03/2016T22:30:00</begin>
-    <end>06/03/2016T06:30:00</end>
+    <begin>05/03/2016T21:30:00</begin>
+    <end>06/03/2016T06:00:00</end>
   </entity>
   <entity>
     <id>22</id>
     <type>TimeSpan</type>
-    <begin>06/03/2016T06:30:00</begin>
-    <end>06/03/2016T06:45:00</end>
+    <begin>06/03/2016T06:00:00</begin>
+    <end>06/03/2016T06:15:00</end>
   </entity>
   <entity>
     <id>23</id>
     <type>TimeSpan</type>
-    <begin>06/03/2016T06:45:00</begin>
+    <begin>06/03/2016T06:15:00</begin>
     <end>06/03/2016T07:30:00</end>
   </entity>
   <entity>
