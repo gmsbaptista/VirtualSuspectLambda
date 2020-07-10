@@ -44,10 +44,10 @@ namespace VirtualSuspectNaturalLanguage.Component {
 
                 answer += " " + GetPreposition(node) + " " + node.Speech;
 
-                if(mergedLocations.Count > 1 && inTrain)
+                /*if(mergedLocations.Count > 1 && inTrain)
                 {
                     answer += " " + NaturalLanguageGetFrequency(mergedLocations.ElementAt(i).Value);
-                }   
+                }*/
                 if (i == mergedLocations.Count - 2)
                 {
                     answer += " and";
