@@ -338,6 +338,7 @@ namespace VirtualSuspectLambda
                     QueryResult queryResult = virtual_suspect.Query(query);
                     lastInteraction.UpdateResult(queryResult);
                     log.LogLine($"query results(" + queryResult.Results.Count + "):");
+                    //log the results
                     foreach (QueryResult.Result result in queryResult.Results)
                     {
                         log.LogLine($"result dimension: " + result.dimension);
@@ -348,7 +349,7 @@ namespace VirtualSuspectLambda
                             log.LogLine($"value: " + storyNode.Value);
                         }
                     }
-                    int resultsCount = CountResults(queryResult);
+                    int resultsCount = CountResults(queryResult);   //improvised function to combine adjacent time slots and count them that way
                     if (queryResult.Query.QueryType == QueryDto.QueryTypeEnum.GetInformation && resultsCount == 0 &&
                         options["Empty answer generation"])
                     {
@@ -367,7 +368,7 @@ namespace VirtualSuspectLambda
                             }
                         }
                     }
-                    else if (queryResult.Query.QueryType == QueryDto.QueryTypeEnum.GetInformation && resultsCount > 3 &&
+                    else if (queryResult.Query.QueryType == QueryDto.QueryTypeEnum.GetInformation && resultsCount > 4 &&
                         options["Answer filtering"])
                     {
                         //pregen answer
