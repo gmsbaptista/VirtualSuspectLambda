@@ -961,7 +961,7 @@ namespace VirtualSuspectLambda
                                 {
                                     log.LogLine($"missing reference");
                                     //pregen answer
-                                    failLog = "I don't know what you're referring to in this context when you say: " + time_pronoun;
+                                    failLog = "I don't know what time you're referring to in this context when you say: " + time_pronoun;
                                     return false;
                                 }
 
@@ -974,7 +974,7 @@ namespace VirtualSuspectLambda
                             {
                                 log.LogLine($"there is no time pronoun, exiting");
                                 //pregen answer
-                                failLog = "I don't know what mean by: " + time_pronoun;
+                                failLog = "Uhh... I don't know what mean by: " + time_pronoun;
                                 return false;
                             }
                         }
@@ -1044,6 +1044,14 @@ namespace VirtualSuspectLambda
                     }
                     return false;
                 }
+            }
+
+
+            if (query.QueryFocus.ElementAt(0).GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Reason &&
+                !query.QueryConditions.Any(x => x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Action))
+            {
+                query.QueryFocus.Clear();
+                query.AddFocus(new GetActionFocusPredicate());
             }
 
             //Debug
