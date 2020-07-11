@@ -1048,7 +1048,8 @@ namespace VirtualSuspectLambda
             }
 
 
-            if (query.QueryFocus.ElementAt(0).GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Reason &&
+            if (query.QueryType == QueryDto.QueryTypeEnum.GetInformation &&
+                query.QueryFocus.ElementAt(0).GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Reason &&
                 !query.QueryConditions.Any(x => x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Action))
             {
                 query.QueryFocus.Clear();
