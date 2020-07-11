@@ -429,6 +429,7 @@ namespace VirtualSuspectLambda
         {
             Dictionary<string, Slot> intent_slots = intent.Intent.Slots;
             failLog = "";
+            bool specialVerb = false;
 
             lastInteraction.NoAccess();
 
@@ -994,11 +995,83 @@ namespace VirtualSuspectLambda
                         return false;
                 }
             }
+            
+            if (SlotExists(intent_slots, "filler_verb"))
+            {
+                if (KnownSlot(intent_slots["filler_verb"]))
+                {
+                    string verb = TrueSlotValue(intent_slots["filler_verb"]);
+                    log.LogLine($"filler verb slot: " + verb);
+                    switch (verb)
+                    {
+                        case "have":
+                            if (query.QueryConditions.Any(x => x.GetValues().Any(y => y == "Large Cup of Coffee")))
+                            {
+                                query.AddCondition(new ActionEqualConditionPredicate("Drink"));
+                            }
+                            break;
+                        case "give":
+                            if (query.QueryConditions.Any(x => x.GetValues().Any(y => y == "John Frey's Contact")))
+                            {
+                                query.AddCondition(new ActionEqualConditionPredicate("Get"));
+                            }
+                            break;
+                        case "get":
+                            if (query.QueryConditions.Any(x => x.GetValues().Any(y => y == "John Frey's Contact")))
+                            {
+                                query.AddCondition(new ActionEqualConditionPredicate("Get"));
+                            }
+                            else if (query.QueryConditions.Any(x => x.GetValues().Any(y => (y == "Gun"))))
+                            {
+                                specialVerb = true;
+                                if (query.QueryConditions.Any(x => x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Manner && x.GetValues().Any(y => y == "Gun")))
+                                {
+                                    query.QueryConditions.Remove(query.QueryConditions.Find(x => x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Manner && x.GetValues().Any(y => y == "Gun")));
+                                    query.AddCondition(new ThemeEqualConditionPredicate(new List<string>() { "Gun" }));
+                                }
+                                query.AddCondition(new ActionEqualConditionPredicate("Buy"));
+                            }
+                            else if (query.QueryConditions.Any(x => x.GetValues().Any(y => y == "Ticket to Silvermoon City" || y == "Ticket to Castle Town")))
+                            {
+                                query.AddCondition(new ActionEqualConditionPredicate("Buy"));
+                            }
+                            else if (query.QueryConditions.Any(x => x.GetValues().Any(y => y == "Stolen Necklace")))
+                            {
+                                query.AddCondition(new ActionEqualConditionPredicate("Steal"));
+                            }
+                            break;
+                        case "use":
+                            specialVerb = true;
+                            if (query.QueryConditions.Any(x => (x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Theme && x.GetValues().Any(y => y == "Gun"))))
+                            {
+                                query.QueryConditions.Remove(query.QueryConditions.Find(x => (x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Theme && x.GetValues().Any(y => y == "Gun"))));
+                                query.AddCondition(new MannerEqualConditionPredicate(new List<string>() { "Gun" }));
+                            }
+                            break;
+                        case "go":
+                            if (query.QueryConditions.Any(x => x.GetValues().Any(y => y == "Castle Town" || y == "Silvermoon City")))
+                            {
+                                query.AddCondition(new ActionEqualConditionPredicate("Travel"));
+                            }
+                            break;
+                        default:
+                            log.LogLine($"no specific logic for this verb");
+                            break;
+                    }
+                }
+                else
+                {
+                    log.LogLine($"unknown verb, exiting");
+                    //pregen answer
+                    failLog = "I don't know what you mean by: " + intent_slots["filler_verb"].Value;
+                    return false;
+                }
+            }
 
             if (query.QueryType == QueryDto.QueryTypeEnum.GetInformation && 
                 (query.QueryConditions.Count == 0 || 
                 (query.QueryConditions.Count == 1 && query.QueryConditions.ElementAt(0).GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Subject) ||
-                (query.QueryConditions.Count <= 2 && lastInteraction.CheckAccess())))
+                (query.QueryConditions.Count <= 2 && lastInteraction.CheckAccess() && !specialVerb)))
             {
                 log.LogLine($"trying out the new contextual functionality, adding previous conditions");
                 List<IConditionPredicate> prevConditions = lastInteraction.GetConditions(out bool success, out string contextFailLog, out int contextFailCode);
