@@ -180,9 +180,16 @@ namespace VirtualSuspectLambda
                         BuildAnswer(ref innerResponse, ref prompt, speechText, true);
                         break;
                     case "ThanksIntent":
-                        log.LogLine($"GreetingIntent: say hello");
+                        log.LogLine($"ThanksIntent: say thank you");
 
                         speechText = "You're welcome";
+
+                        BuildAnswer(ref innerResponse, ref prompt, speechText, true);
+                        break;
+                    case "NameIntent":
+                        log.LogLine($"NameIntent: say your name");
+
+                        speechText = "My name is Peter";
 
                         BuildAnswer(ref innerResponse, ref prompt, speechText, true);
                         break;

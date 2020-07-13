@@ -4,7 +4,7 @@
             "invocationName": "virtual suspect",
             "modelConfiguration": {
                 "fallbackIntentSensitivity": {
-                    "level": "LOW"
+                    "level": "HIGH"
                 }
             },
             "intents": [
@@ -1795,6 +1795,16 @@
                         "How much {question_verb} {theme} worth",
                         "Was {theme} expensive",
                         "How much did you sell {theme} for"
+                    ]
+                },
+                {
+                    "name": "NameIntent",
+                    "slots": [],
+                    "samples": [
+                        "What should I call you",
+                        "What do they call you",
+                        "What's your name",
+                        "What is your name"
                     ]
                 }
             ],
