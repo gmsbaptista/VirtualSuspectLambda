@@ -113,6 +113,10 @@ namespace VirtualSuspect {
                 {
                     foreach (string value in condition.GetValues())
                     {
+                        if (knowledgeBase.Actions.Any(y => y.Value == value))
+                        {
+                            break;
+                        }
                         relevantEntities.Add(knowledgeBase.Entities.Find(x => x.Value == value));
                     }
                 }

@@ -1839,9 +1839,18 @@
                         {
                             "name": "question_verb",
                             "type": "question_verb_slot_type"
+                        },
+                        {
+                            "name": "event",
+                            "type": "event_slot_type"
+                        },
+                        {
+                            "name": "preposition",
+                            "type": "preposition_slot_type"
                         }
                     ],
                     "samples": [
+                        "How much money {question_verb} you make {preposition} {event}",
                         "What {question_verb} {theme} cost",
                         "How much {question_verb} {theme} cost",
                         "What {question_verb} {theme} value",

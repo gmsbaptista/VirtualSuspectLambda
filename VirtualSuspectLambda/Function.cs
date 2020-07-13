@@ -301,7 +301,7 @@ namespace VirtualSuspectLambda
 
                         break;
                     case "GetValueKnowledgeIntent":
-                        log.LogLine($"GetParentKnowledgeIntent: get Value about an Entity");
+                        log.LogLine($"GetValueKnowledgeIntent: get Value about an Entity");
 
                         query = new QueryDto(QueryDto.QueryTypeEnum.GetKnowledge);
                         query.AddKnowledgeFocus(new GetValueKnowledgePredicate());
