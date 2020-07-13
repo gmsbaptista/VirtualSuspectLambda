@@ -126,6 +126,16 @@
                     ]
                 },
                 {
+                    "name": "NameIntent",
+                    "slots": [],
+                    "samples": [
+                        "What should I call you",
+                        "What do they call you",
+                        "What's your name",
+                        "What is your name"
+                    ]
+                },
+                {
                     "name": "ThanksIntent",
                     "slots": [],
                     "samples": [
@@ -1796,16 +1806,6 @@
                         "Was {theme} expensive",
                         "How much did you sell {theme} for"
                     ]
-                },
-                {
-                    "name": "NameIntent",
-                    "slots": [],
-                    "samples": [
-                        "What should I call you",
-                        "What do they call you",
-                        "What's your name",
-                        "What is your name"
-                    ]
                 }
             ],
             "types": [
@@ -2725,6 +2725,28 @@
                     ]
                 },
                 {
+                    "name": "action_verb_slot_type",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "happen",
+                                "synonyms": [
+                                    "happened"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "do",
+                                "synonyms": [
+                                    "doing",
+                                    "done"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "preposition_slot_type",
                     "values": [
                         {
@@ -2853,28 +2875,6 @@
                                 "synonyms": [
                                     "bitch mode",
                                     "rude mode"
-                                ]
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "action_verb_slot_type",
-                    "values": [
-                        {
-                            "name": {
-                                "value": "happen",
-                                "synonyms": [
-                                    "happened"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "do",
-                                "synonyms": [
-                                    "doing",
-                                    "done"
                                 ]
                             }
                         }
