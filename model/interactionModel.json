@@ -1868,6 +1868,22 @@
                     "values": [
                         {
                             "name": {
+                                "value": "Kill",
+                                "synonyms": [
+                                    "killed"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Shoot",
+                                "synonyms": [
+                                    "shot"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
                                 "value": "it"
                             }
                         },
