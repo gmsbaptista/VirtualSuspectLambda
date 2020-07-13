@@ -1083,6 +1083,35 @@ namespace VirtualSuspectLambda
                     return false;
                 }
             }
+            if (SlotExists(intent_slots, "event"))
+            {
+                if (KnownSlot(intent_slots["event"]))
+                {
+                    string storyEvent = TrueSlotValue(intent_slots["event"]);
+                    log.LogLine($"event slot: " + storyEvent);
+                    switch (storyEvent)
+                    {
+                        case "the robbery":
+                            query.AddCondition(new ActionEqualConditionPredicate("Rob"));
+                            query.AddCondition(new ThemeEqualConditionPredicate(new List<string>() { "Jewelry Shop" }));
+                            break;
+                        case "the sale":
+                            query.AddCondition(new ActionEqualConditionPredicate("Sell"));
+                            query.AddCondition(new ThemeEqualConditionPredicate(new List<string>() { "Stolen Necklace" }));
+                            break;
+                        default:
+                            log.LogLine($"no specific logic for this event");
+                            break;
+                    }
+                }
+                else
+                {
+                    log.LogLine($"unknown event, exiting");
+                    //pregen answer
+                    failLog = "I don't know what you mean by: " + intent_slots["event"].Value;
+                    return false;
+                }
+            }
 
             if (query.QueryType == QueryDto.QueryTypeEnum.GetInformation && 
                 (query.QueryConditions.Count == 0 || 

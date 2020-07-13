@@ -187,9 +187,14 @@
                         {
                             "name": "action_verb",
                             "type": "action_verb_slot_type"
+                        },
+                        {
+                            "name": "event",
+                            "type": "event_slot_type"
                         }
                     ],
                     "samples": [
+                        "When {question_verb} {event} {action_verb}",
                         "When {question_verb} {subject} {action}",
                         "When",
                         "When {question_verb} {action} {action_verb}",
@@ -274,9 +279,14 @@
                         {
                             "name": "action_verb",
                             "type": "action_verb_slot_type"
+                        },
+                        {
+                            "name": "event",
+                            "type": "event_slot_type"
                         }
                     ],
                     "samples": [
+                        "Where {question_verb} {event} {action_verb}",
                         "Where {question_verb} {subject} {filler_verb} {theme}",
                         "Where {question_verb} {subject} {action_verb} {action}",
                         "Where {question_verb} {subject} {action}",
@@ -846,9 +856,14 @@
                         {
                             "name": "action_verb",
                             "type": "action_verb_slot_type"
+                        },
+                        {
+                            "name": "event",
+                            "type": "event_slot_type"
                         }
                     ],
                     "samples": [
+                        "Why {question_verb} {event} {action_verb}",
                         "Why {question_verb} {subject} {action_verb} {action}",
                         "Why {question_verb} {subject} {action}",
                         "Why",
@@ -1347,9 +1362,18 @@
                         {
                             "name": "manner",
                             "type": "manner_slot_type"
+                        },
+                        {
+                            "name": "event",
+                            "type": "event_slot_type"
+                        },
+                        {
+                            "name": "action_verb",
+                            "type": "action_verb_slot_type"
                         }
                     ],
                     "samples": [
+                        "{question_verb} {event} {action_verb}",
                         "{question_verb} {subject} {action} {theme} {time_pronoun}",
                         "{question_verb} {subject} {action} {theme} {date_one}",
                         "{question_verb} {subject} {action} {theme} {time_one}",
@@ -2750,8 +2774,18 @@
                     "values": [
                         {
                             "name": {
+                                "value": "take place",
+                                "synonyms": [
+                                    "taking place",
+                                    "took place"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
                                 "value": "happen",
                                 "synonyms": [
+                                    "happening",
                                     "happened"
                                 ]
                             }
@@ -2762,6 +2796,28 @@
                                 "synonyms": [
                                     "doing",
                                     "done"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "event_slot_type",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "the sale",
+                                "synonyms": [
+                                    "the sale of the necklace"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "the robbery",
+                                "synonyms": [
+                                    "the robbery of the necklace",
+                                    "the robbery of the jewelry store"
                                 ]
                             }
                         }
