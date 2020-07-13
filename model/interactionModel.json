@@ -1785,6 +1785,27 @@
                     ]
                 },
                 {
+                    "name": "GetResidenceKnowledgeIntent",
+                    "slots": [
+                        {
+                            "name": "question_verb",
+                            "type": "question_verb_slot_type"
+                        },
+                        {
+                            "name": "subject",
+                            "type": "subject_slot_type"
+                        },
+                        {
+                            "name": "agent",
+                            "type": "agent_slot_type"
+                        }
+                    ],
+                    "samples": [
+                        "Where {question_verb} {agent} live",
+                        "Where {question_verb} {subject} live"
+                    ]
+                },
+                {
                     "name": "GetValueKnowledgeIntent",
                     "slots": [
                         {

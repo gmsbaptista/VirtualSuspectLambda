@@ -291,6 +291,15 @@ namespace VirtualSuspectLambda
                         QuestionAnswer(ref innerResponse, ref prompt, log, intentRequest, query);
 
                         break;
+                    case "GetResidenceKnowledgeIntent":
+                        log.LogLine($"GetResidenceKnowledgeIntent: get Residence about an Entity");
+
+                        query = new QueryDto(QueryDto.QueryTypeEnum.GetKnowledge);
+                        query.AddKnowledgeFocus(new GetResidenceKnowledgePredicate());
+
+                        QuestionAnswer(ref innerResponse, ref prompt, log, intentRequest, query);
+
+                        break;
                     case "GetValueKnowledgeIntent":
                         log.LogLine($"GetParentKnowledgeIntent: get Value about an Entity");
 

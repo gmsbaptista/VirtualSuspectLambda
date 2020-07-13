@@ -181,6 +181,9 @@
     <type>Person</type>
     <value>Peter Barker</value>
     <speech>me</speech>
+    <association relation="Residence">
+      <speech>I live in Castle Town</speech>
+    </association>
   </entity>
   <entity>
     <id>31</id>
@@ -204,6 +207,9 @@
     <association relation="Relationship">
       <speech>We were introduced through mutual friends</speech>
     </association>
+    <association relation="Residence">
+      <speech>He lives in Castle Town</speech>
+    </association>
   </entity>
   <entity>
     <id>33</id>
@@ -216,6 +222,9 @@
     <association relation="Relationship">
       <speech>He's my neighbour</speech>
     </association>
+    <association relation="Residence">
+      <speech>He lives in Castle Town</speech>
+    </association>
   </entity>
   <entity>
     <id>34</id>
@@ -227,6 +236,9 @@
     </association>
     <association relation="Relationship">
       <speech>Through mutual acquaintances</speech>
+    </association>
+    <association relation="Residence">
+      <speech>He lives in Silvermoon City</speech>
     </association>
   </entity>
 
