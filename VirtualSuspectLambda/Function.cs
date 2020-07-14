@@ -1065,9 +1065,40 @@ namespace VirtualSuspectLambda
                             }
                             break;
                         case "go":
-                            if (query.QueryConditions.Any(x => x.GetValues().Any(y => y == "Castle Town" || y == "Silvermoon City")))
+                            specialVerb = true;
+                            if (query.QueryConditions.Any(x => (x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Theme && x.GetValues().Any(y => y == "Jewelry Shop"))))
+                            {
+                                query.QueryConditions.Remove(query.QueryConditions.Find(x => (x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Theme && x.GetValues().Any(y => y == "Jewelry Shop"))));
+                                query.AddCondition(new LocationEqualConditionPredicate("Jewelry Shop"));
+                            }
+                            else if (query.QueryConditions.Any(x => x.GetValues().Any(y => y == "Castle Town" || y == "Silvermoon City")))
                             {
                                 query.AddCondition(new ActionEqualConditionPredicate("Travel"));
+                                specialVerb = true;
+                                if (query.QueryConditions.Any(x => (x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Location && x.GetValues().Any(y => y == "Silvermoon City" || y == "Castle Town"))))
+                                {
+                                    if (query.QueryConditions.Any(x => (x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Location && x.GetValues().Any(y => y == "Silvermoon City"))))
+                                    {
+                                        query.QueryConditions.Remove(query.QueryConditions.Find(x => (x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Location && x.GetValues().Any(y => y == "Silvermoon City"))));
+                                        query.AddCondition(new ThemeEqualConditionPredicate(new List<string>() { "Silvermoon City" }));
+                                    }
+                                    else
+                                    {
+                                        query.QueryConditions.Remove(query.QueryConditions.Find(x => (x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Location && x.GetValues().Any(y => y == "Castle Town"))));
+                                        query.AddCondition(new ThemeEqualConditionPredicate(new List<string>() { "Castle Town" }));
+                                    }
+                                }
+                            }
+                            else if (lastInteraction.checkTrain())
+                            {
+                                query.QueryFocus.Clear();
+                                query.AddFocus(new GetThemeFocusPredicate());
+                                string origin = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Location, out bool success);
+                                if (success)
+                                {
+                                    query.AddCondition(new LocationEqualConditionPredicate(origin));
+                                    query.AddCondition(new ActionEqualConditionPredicate("Travel"));
+                                }
                             }
                             break;
                         default:
@@ -1624,6 +1655,7 @@ namespace VirtualSuspectLambda
             private QueryResult result;
 
             private bool accessed = false;
+            private bool trainFlag = false;
 
             public bool CheckAccess()
             {
@@ -1640,9 +1672,15 @@ namespace VirtualSuspectLambda
                 accessed = prevAccess;
             }
 
+            public bool checkTrain()
+            {
+                return trainFlag;
+            }
+
             public void UpdateResult(QueryResult res)
             {
                 this.result = res;
+                this.trainFlag = res.Results.Any(x => x.values.Any(y => y.Value == "Train"));
             }
 
             public string GetEntity(KnowledgeBaseManager.DimentionsEnum dimension, out bool success)
