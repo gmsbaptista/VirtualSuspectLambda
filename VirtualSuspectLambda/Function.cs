@@ -1143,6 +1143,26 @@ namespace VirtualSuspectLambda
                     return false;
                 }
             }
+            if (SlotExists(intent_slots, "question_verb"))
+            {
+                if (!KnownSlot(intent_slots["question_verb"]))
+                {
+                    log.LogLine($"unknown question verb, exiting");
+                    //pregen answer
+                    failLog = "I don't know what you mean by: " + intent_slots["question_verb"].Value;
+                    return false;
+                }
+            }
+            if (SlotExists(intent_slots, "action_verb"))
+            {
+                if (!KnownSlot(intent_slots["action_verb"]))
+                {
+                    log.LogLine($"unknown action verb, exiting");
+                    //pregen answer
+                    failLog = "I don't know what you mean by: " + intent_slots["action_verb"].Value;
+                    return false;
+                }
+            }
 
             if (query.QueryType == QueryDto.QueryTypeEnum.GetInformation && 
                 (query.QueryConditions.Count == 0 || 
