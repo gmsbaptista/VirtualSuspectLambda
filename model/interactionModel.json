@@ -441,6 +441,7 @@
                         }
                     ],
                     "samples": [
+                        "Who {question_verb} {subject} {action} {preposition} {theme}",
                         "Who {question_verb} {subject} {action_verb} {action} {preposition}",
                         "Who {question_verb} {preposition} {subject}",
                         "Who {action} {theme} {preposition} {subject}",
