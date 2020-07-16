@@ -10,7 +10,12 @@
             "intents": [
                 {
                     "name": "AMAZON.StopIntent",
-                    "samples": []
+                    "samples": [
+                        "Bye Peter",
+                        "Bye",
+                        "Good bye",
+                        "Goodbye"
+                    ]
                 },
                 {
                     "name": "AMAZON.CancelIntent",
