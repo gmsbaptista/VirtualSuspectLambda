@@ -57,11 +57,11 @@ namespace VirtualSuspect {
             //Setup the strategy selector to handle the decision making process related with the selection of the approach to be used
             //Create the distribution for the strategies
             Dictionary<LieStrategy, float> distribution = new Dictionary<LieStrategy, float>();
-            distribution.Add(LieStrategy.None, 100);
+            distribution.Add(LieStrategy.None, 0);
             distribution.Add(LieStrategy.Hide, 0);
             distribution.Add(LieStrategy.AdjustEntity, 0);
             distribution.Add(LieStrategy.AdjustEvent, 0);
-            distribution.Add(LieStrategy.Improvise, 0);
+            distribution.Add(LieStrategy.Improvise, 100);
             preHandlers.Add(2, new StrategySelectorHandler(this, distribution));
 
             //Setup the handler to modify the KnowledgeBase in function of the strategy and the question
