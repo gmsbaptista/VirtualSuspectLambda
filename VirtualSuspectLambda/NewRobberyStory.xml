@@ -532,7 +532,7 @@
     <id>3</id>
     <action>Eavesdrop</action>
     <real>true</real>
-    <incriminatory>95</incriminatory>
+    <incriminatory>60</incriminatory>
     <association relation="Time">
       <entity id="3"/>
     </association>
@@ -550,7 +550,7 @@
     <id>4</id>
     <action>Research</action>
     <real>true</real>
-    <incriminatory>15</incriminatory>
+    <incriminatory>30</incriminatory>
     <association relation="Time">
       <entity id="4"/>
     </association>
@@ -571,7 +571,7 @@
     <id>5</id>
     <action>Buy</action>
     <real>true</real>
-    <incriminatory>95</incriminatory>
+    <incriminatory>90</incriminatory>
     <association relation="Time">
       <entity id="5"/>
     </association>
@@ -796,7 +796,7 @@
     <id>16</id>
     <action>Research</action>
     <real>true</real>
-    <incriminatory>10</incriminatory>
+    <incriminatory>30</incriminatory>
     <association relation="Time">
       <entity id="16"/>
     </association>
@@ -877,7 +877,7 @@
     <id>20</id>
     <action>Call</action>
     <real>true</real>
-    <incriminatory>50</incriminatory>
+    <incriminatory>60</incriminatory>
     <association relation="Time">
       <entity id="20"/>
     </association>
@@ -916,7 +916,7 @@
     <id>22</id>
     <action>Buy</action>
     <real>true</real>
-    <incriminatory>60</incriminatory>
+    <incriminatory>10</incriminatory>
     <association relation="Time">
       <entity id="22"/>
     </association>
@@ -934,7 +934,7 @@
     <id>23</id>
     <action>Wait</action>
     <real>true</real>
-    <incriminatory>60</incriminatory>
+    <incriminatory>10</incriminatory>
     <association relation="Time">
       <entity id="23"/>
     </association>
@@ -952,7 +952,7 @@
     <id>24</id>
     <action>Travel</action>
     <real>true</real>
-    <incriminatory>95</incriminatory>
+    <incriminatory>80</incriminatory>
     <association relation="Time">
       <entity id="24"/>
     </association>
@@ -1000,7 +1000,7 @@
     <id>26</id>
     <action>Buy</action>
     <real>true</real>
-    <incriminatory>60</incriminatory>
+    <incriminatory>10</incriminatory>
     <association relation="Time">
       <entity id="26"/>
     </association>
@@ -1018,7 +1018,7 @@
     <id>27</id>
     <action>Wait</action>
     <real>true</real>
-    <incriminatory>60</incriminatory>
+    <incriminatory>10</incriminatory>
     <association relation="Time">
       <entity id="27"/>
     </association>
@@ -1036,7 +1036,7 @@
     <id>28</id>
     <action>Travel</action>
     <real>true</real>
-    <incriminatory>50</incriminatory>
+    <incriminatory>30</incriminatory>
     <association relation="Time">
       <entity id="28"/>
     </association>
