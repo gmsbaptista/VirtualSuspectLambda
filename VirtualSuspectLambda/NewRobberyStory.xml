@@ -88,13 +88,14 @@
   </entity>
   <entity>
     <id>15</id>
-    <type>TimeInstant</type>
-    <value>05/03/2016T04:30:00</value>
+    <type>TimeSpan</type><!--Fake time to cover for the crime-->
+    <begin>04/03/2016T23:00:00</begin>
+    <end>05/03/2016T07:00:00</end>
   </entity>
   <entity>
     <id>16</id>
     <type>TimeSpan</type>
-    <begin>05/03/2016T04:30:01</begin>
+    <begin>05/03/2016T04:30:00</begin>
     <end>05/03/2016T07:00:00</end>
   </entity>
   <entity>
@@ -107,17 +108,18 @@
     <id>18</id>
     <type>TimeSpan</type>
     <begin>05/03/2016T20:00:00</begin>
-    <end>05/03/2016T21:00:00</end>
+    <end>05/03/2016T20:30:00</end>
   </entity>
   <entity>
     <id>19</id>
-    <type>TimeInstant</type>
-    <value>05/03/2016T21:00:00</value>
+    <type>TimeSpan</type>
+    <begin>05/03/2016T20:30:00</begin>
+    <end>05/03/2016T21:00:00</end>
   </entity>
   <entity>
     <id>20</id>
     <type>TimeSpan</type>
-    <begin>05/03/2016T21:00:01</begin>
+    <begin>05/03/2016T21:00:00</begin>
     <end>05/03/2016T21:30:00</end>
   </entity>
   <entity>
@@ -173,6 +175,13 @@
     <type>TimeSpan</type>
     <begin>06/03/2016T18:15:00</begin>
     <end>06/03/2016T23:59:59</end>
+  </entity>
+  
+  <entity>
+    <id>71</id>
+    <type>TimeSpan</type> <!--Fake time to cover for conversation-->
+    <begin>05/03/2016T20:00:00</begin>
+    <end>05/03/2016T21:00:00</end>
   </entity>
 
   <!--Subjects-->
@@ -416,6 +425,19 @@
     <value>Train to Castle Town</value>
     <speech>the train to Castle Town</speech>
   </entity>
+  
+  <entity>
+    <id>72</id>
+    <type>Topic</type>
+    <value>Watching a football game</value>
+    <speech>going to watch a football game together</speech>
+  </entity>
+  <entity>
+    <id>75</id>
+    <type>Seat</type>
+    <value>Bench</value>
+    <speech>the bench</speech>
+  </entity>
 
   <!--Reasons-->
   <entity>
@@ -477,6 +499,25 @@
     <type>Motive</type>
     <value>Return Home</value>
     <speech>return home</speech>
+  </entity>
+  
+  <entity>
+    <id>70</id>
+    <type>Motive</type>
+    <value>Find Watch to Buy</value>
+    <speech>find a watch to buy</speech>
+  </entity>
+  <entity>
+    <id>73</id>
+    <type>Motive</type>
+    <value>Spend Time Together</value>
+    <speech>spend more quality time together</speech>
+  </entity>
+  <entity>
+    <id>74</id>
+    <type>Motive</type>
+    <value>See the sights</value>
+    <speech>see the sights</speech>
   </entity>
 
   <!--Manners-->
@@ -550,7 +591,7 @@
     <id>4</id>
     <action>Research</action>
     <real>true</real>
-    <incriminatory>30</incriminatory>
+    <incriminatory>50</incriminatory>
     <association relation="Time">
       <entity id="4"/>
     </association>
@@ -730,7 +771,7 @@
     <id>13</id>
     <action>Prepare</action>
     <real>true</real>
-    <incriminatory>60</incriminatory>
+    <incriminatory>80</incriminatory>
     <association relation="Time">
       <entity id="13"/>
     </association>
@@ -774,7 +815,7 @@
     <real>true</real>
     <incriminatory>95</incriminatory>
     <association relation="Time">
-      <entity id="15"/>
+      <entity id="14"/>
     </association>
     <association relation="Location">
       <entity id="39"/>
@@ -796,7 +837,7 @@
     <id>16</id>
     <action>Research</action>
     <real>true</real>
-    <incriminatory>30</incriminatory>
+    <incriminatory>50</incriminatory>
     <association relation="Time">
       <entity id="16"/>
     </association>
@@ -832,7 +873,7 @@
     <id>18</id>
     <action>Talk</action>
     <real>true</real>
-    <incriminatory>50</incriminatory>
+    <incriminatory>60</incriminatory>
     <association relation="Time">
       <entity id="18"/>
     </association>
@@ -856,7 +897,7 @@
     <id>19</id>
     <action>Get</action>
     <real>true</real>
-    <incriminatory>50</incriminatory>
+    <incriminatory>60</incriminatory>
     <association relation="Time">
       <entity id="19"/>
     </association>
@@ -877,7 +918,7 @@
     <id>20</id>
     <action>Call</action>
     <real>true</real>
-    <incriminatory>60</incriminatory>
+    <incriminatory>70</incriminatory>
     <association relation="Time">
       <entity id="20"/>
     </association>
@@ -916,7 +957,7 @@
     <id>22</id>
     <action>Buy</action>
     <real>true</real>
-    <incriminatory>10</incriminatory>
+    <incriminatory>0</incriminatory>
     <association relation="Time">
       <entity id="22"/>
     </association>
@@ -934,7 +975,7 @@
     <id>23</id>
     <action>Wait</action>
     <real>true</real>
-    <incriminatory>10</incriminatory>
+    <incriminatory>0</incriminatory>
     <association relation="Time">
       <entity id="23"/>
     </association>
@@ -1000,7 +1041,7 @@
     <id>26</id>
     <action>Buy</action>
     <real>true</real>
-    <incriminatory>10</incriminatory>
+    <incriminatory>0</incriminatory>
     <association relation="Time">
       <entity id="26"/>
     </association>
@@ -1018,7 +1059,7 @@
     <id>27</id>
     <action>Wait</action>
     <real>true</real>
-    <incriminatory>10</incriminatory>
+    <incriminatory>0</incriminatory>
     <association relation="Time">
       <entity id="27"/>
     </association>
@@ -1036,7 +1077,7 @@
     <id>28</id>
     <action>Travel</action>
     <real>true</real>
-    <incriminatory>30</incriminatory>
+    <incriminatory>0</incriminatory>
     <association relation="Time">
       <entity id="28"/>
     </association>
@@ -1069,6 +1110,133 @@
     </association>
     <association relation="Subject">
       <entity id="30"/>
+    </association>
+  </event>
+  <!--Fake events-->
+  <event>
+    <id>30</id>
+    <action>Rest</action>
+    <real>false</real>
+    <incriminatory>0</incriminatory>
+    <association relation="Time">
+      <entity id="15"/>
+    </association>
+    <association relation="Location">
+      <entity id="35"/>
+    </association>
+    <association relation="Subject">
+      <entity id="30"/>
+    </association>
+  </event>
+  <event>
+    <id>31</id>
+    <action>Research</action>
+    <real>false</real>
+    <incriminatory>0</incriminatory>
+    <association relation="Time">
+      <entity id="4"/>
+    </association>
+    <association relation="Location">
+      <entity id="35"/>
+    </association>
+    <association relation="Subject">
+      <entity id="30"/>
+    </association>
+    <association relation="Theme">
+      <entity id="48"/>
+    </association>
+    <association relation="Reason">
+      <entity id="70"/>
+    </association>
+  </event>
+  <event>
+    <id>32</id>
+    <action>Watch</action>
+    <real>false</real>
+    <incriminatory>0</incriminatory>
+    <association relation="Time">
+      <entity id="6"/>
+    </association>
+    <association relation="Location">
+      <entity id="38"/>
+    </association>
+    <association relation="Subject">
+      <entity id="30"/>
+    </association>
+    <association relation="Theme">
+      <entity id="39"/>
+    </association>
+    <association relation="Reason">
+      <entity id="70"/>
+    </association>
+  </event>
+  <event>
+    <id>33</id>
+    <action>Talk</action>
+    <real>false</real>
+    <incriminatory>0</incriminatory>
+    <association relation="Time">
+      <entity id="71"/>
+    </association>
+    <association relation="Location">
+      <entity id="37"/>
+    </association>
+    <association relation="Subject">
+      <entity id="30"/>
+    </association>
+    <association relation="Agent">
+      <entity id="32"/>
+    </association>
+    <association relation="Theme">
+      <entity id="72"/>
+    </association>
+    <association relation="Reason">
+      <entity id="73"/>
+    </association>
+  </event>
+  <event>
+    <id>34</id>
+    <action>Travel</action>
+    <real>false</real>
+    <incriminatory>0</incriminatory>
+    <association relation="Time">
+      <entity id="24"/>
+    </association>
+    <association relation="Location">
+      <entity id="42"/>
+    </association>
+    <association relation="Subject">
+      <entity id="30"/>
+    </association>
+    <association relation="Theme">
+      <entity id="45"/>
+    </association>
+    <association relation="Manner">
+      <entity id="69"/>
+    </association>
+    <association relation="Reason">
+      <entity id="74"/>
+    </association>
+  </event>
+  <event>
+    <id>35</id>
+    <action>Sit</action>
+    <real>false</real>
+    <incriminatory>0</incriminatory>
+    <association relation="Time">
+      <entity id="25"/>
+    </association>
+    <association relation="Location">
+      <entity id="43"/>
+    </association>
+    <association relation="Subject">
+      <entity id="30"/>
+    </association>
+    <association relation="Theme">
+      <entity id="75"/>
+    </association>
+    <association relation="Reason">
+      <entity id="74"/>
     </association>
   </event>
 </story>

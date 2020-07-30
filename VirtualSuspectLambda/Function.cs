@@ -78,6 +78,7 @@ namespace VirtualSuspectLambda
                 log.LogLine($"first entity in kb: " + knowledge_base.Entities[0].Value);
                 log.LogLine($"first action in kb: " + knowledge_base.Actions[0].Value);
                 log.LogLine($"first event in kb: " + knowledge_base.Events[0].Action.Value);
+                log.LogLine($"check Sit event: " + knowledge_base.Events.Any(x => x.Action.Value == "Sit"));
 
                 string firstText = "Welcome to the Virtual Suspect prototype. ";
                 string suspectInformation = "Your suspect is Peter, he is accused of robbing a jewelry shop. ";

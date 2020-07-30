@@ -2,6 +2,17 @@
 <resources>
   <resource>
     <type>action</type>
+    <name>Sit</name>
+    <speech>sat</speech>
+    <timePreposition></timePreposition>
+    <locationPreposition></locationPreposition>
+    <themePreposition>on</themePreposition>
+    <agentPreposition></agentPreposition>
+    <reasonPreposition></reasonPreposition>
+    <mannerPreposition></mannerPreposition>
+  </resource>
+  <resource>
+    <type>action</type>
     <name>Arrive</name>
     <speech>arrived</speech>
     <timePreposition></timePreposition>
