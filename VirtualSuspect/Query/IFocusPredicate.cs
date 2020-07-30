@@ -4,7 +4,8 @@ using VirtualSuspect.KnowledgeBase;
 
 namespace VirtualSuspect.Query
 {
-    public interface IFocusPredicate{
+    public interface IFocusPredicate
+    {
 
         /// <summary>
         /// Creates the delegate to be used as predicate
@@ -18,6 +19,6 @@ namespace VirtualSuspect.Query
         /// <returns>Ex: Theme, Action, Agent, Manner, Reason, Time, Location</returns>
         KnowledgeBaseManager.DimentionsEnum GetSemanticRole();
 
-        
+
     }
 }

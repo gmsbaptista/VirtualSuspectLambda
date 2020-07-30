@@ -5,17 +5,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VirtualSuspectNaturalLanguage.Component {
-    public static class TimeNaturalLanguageGenerator {
+namespace VirtualSuspectNaturalLanguage.Component
+{
+    public static class TimeNaturalLanguageGenerator
+    {
 
-        public static string Generate(Dictionary<DateTime, List<KeyValuePair<DateTime, DateTime>>> dateTimeGroupedByDay) {
+        public static string Generate(Dictionary<DateTime, List<KeyValuePair<DateTime, DateTime>>> dateTimeGroupedByDay)
+        {
 
             string answer = "";
 
             answer += "It was";
 
             //Iterate each day
-            for (int i = 0; i < dateTimeGroupedByDay.Keys.Count; i++) {
+            for (int i = 0; i < dateTimeGroupedByDay.Keys.Count; i++)
+            {
 
                 DateTime currentDate = dateTimeGroupedByDay.Keys.ElementAt(i);
                 List<KeyValuePair<DateTime, DateTime>> currentTimeSpans = dateTimeGroupedByDay.Values.ElementAt(i);
@@ -26,7 +30,8 @@ namespace VirtualSuspectNaturalLanguage.Component {
                 bool inTimeSpans = false;
 
                 //Iterate each time span
-                for (int j = 0; j < currentTimeSpans.Count; j++) {
+                for (int j = 0; j < currentTimeSpans.Count; j++)
+                {
 
                     if (currentTimeSpans.ElementAt(j).Key == currentTimeSpans.ElementAt(j).Value)
                     {
@@ -53,21 +58,25 @@ namespace VirtualSuspectNaturalLanguage.Component {
 
                     }
 
-                    if (j != currentTimeSpans.Count - 1) {
+                    if (j != currentTimeSpans.Count - 1)
+                    {
                         answer += ",";
                     }
 
-                    if (j == currentTimeSpans.Count - 2) {
+                    if (j == currentTimeSpans.Count - 2)
+                    {
                         answer += " and";
                     }
 
                 }
 
-                if (i != dateTimeGroupedByDay.Keys.Count - 1) {
+                if (i != dateTimeGroupedByDay.Keys.Count - 1)
+                {
 
                     answer += ",";
 
-                    if (i == dateTimeGroupedByDay.Keys.Count - 2) {
+                    if (i == dateTimeGroupedByDay.Keys.Count - 2)
+                    {
                         answer += " and";
                     }
 
@@ -80,18 +89,22 @@ namespace VirtualSuspectNaturalLanguage.Component {
         }
 
         #region Utility Methods
-        private static string CombineValues(string term, List<string> values) {
+        private static string CombineValues(string term, List<string> values)
+        {
 
             string combinedValues = "";
 
-            for (int i = 0; i < values.Count(); i++) {
+            for (int i = 0; i < values.Count(); i++)
+            {
 
                 combinedValues += values[i];
 
-                if (i == values.Count() - 2) {
+                if (i == values.Count() - 2)
+                {
                     combinedValues += " " + term + " ";
                 }
-                else if (i < values.Count() - 1) {
+                else if (i < values.Count() - 1)
+                {
                     combinedValues += ", ";
                 }
             }
@@ -100,14 +113,16 @@ namespace VirtualSuspectNaturalLanguage.Component {
 
         }
 
-        private static string ConvertDateToText(DateTime date) {
+        private static string ConvertDateToText(DateTime date)
+        {
 
             //return "the " + ConvertDayToCardinal(date.Day) + " of " + date.ToString("MMMM", CultureInfo.InvariantCulture) + " " + date.Year;
             return date.ToString("MMMM", CultureInfo.InvariantCulture) + " " + ConvertDayToCardinal(date.Day);
 
         }
 
-        private static string ConvertTimeToText(DateTime time) {
+        private static string ConvertTimeToText(DateTime time)
+        {
             int hour = time.Hour;
             if (hour == 0)
             {
@@ -127,7 +142,7 @@ namespace VirtualSuspectNaturalLanguage.Component {
             }
         }
 
-        private static string NumberToWord (int number)
+        private static string NumberToWord(int number)
         {
             string answer = "";
             string[] ones = new string[] { "", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
@@ -150,13 +165,15 @@ namespace VirtualSuspectNaturalLanguage.Component {
             return answer;
         }
 
-        private static string ConvertDateTimeToText(KeyValuePair<DateTime, DateTime> timeSpan) {
+        private static string ConvertDateTimeToText(KeyValuePair<DateTime, DateTime> timeSpan)
+        {
 
             DateTime firstDate = timeSpan.Key;
             DateTime secondDate = timeSpan.Value;
 
             //Same day Answer once(Ex. 3rd of March 2016 between 14:00 and 15:00)
-            if (firstDate.Day == secondDate.Day && firstDate.Month == secondDate.Month && firstDate.Year == secondDate.Year) {
+            if (firstDate.Day == secondDate.Day && firstDate.Month == secondDate.Month && firstDate.Year == secondDate.Year)
+            {
 
                 //Convert to Text Date
                 String date = "the " + ConvertDayToCardinal(firstDate.Day) + " of " + firstDate.ToString("MMMM", CultureInfo.InvariantCulture) + " " + firstDate.Year;
@@ -170,16 +187,19 @@ namespace VirtualSuspectNaturalLanguage.Component {
                 return date + ", between " + firstHour + " and " + lastHour;
 
             }
-            else {//Different days
+            else
+            {//Different days
 
                 return "";
             }
 
         }
 
-        private static string ConvertDayToCardinal(int day) {
+        private static string ConvertDayToCardinal(int day)
+        {
             //hard coded value
-            switch (day) {
+            switch (day)
+            {
                 case 1:
                     return "first";
                 case 2:
@@ -204,7 +224,7 @@ namespace VirtualSuspectNaturalLanguage.Component {
                     return day + "th";
             }
         }
-        
-        #endregion   
+
+        #endregion
     }
 }

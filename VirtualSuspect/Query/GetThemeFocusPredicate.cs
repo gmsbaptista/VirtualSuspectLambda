@@ -7,17 +7,21 @@ using VirtualSuspect.KnowledgeBase;
 
 namespace VirtualSuspect.Query
 {
-    public class GetThemeFocusPredicate : IFocusPredicate{
+    public class GetThemeFocusPredicate : IFocusPredicate
+    {
 
-        public Func<EventNode, QueryResult.Result> CreateFunction() {
-            return delegate (EventNode node) {    
+        public Func<EventNode, QueryResult.Result> CreateFunction()
+        {
+            return delegate (EventNode node)
+            {
 
-                return new QueryResult.Result(node.Theme, node.Theme.Count , KnowledgeBaseManager.DimentionsEnum.Theme);
+                return new QueryResult.Result(node.Theme, node.Theme.Count, KnowledgeBaseManager.DimentionsEnum.Theme);
 
             };
         }
 
-        public KnowledgeBaseManager.DimentionsEnum GetSemanticRole() {
+        public KnowledgeBaseManager.DimentionsEnum GetSemanticRole()
+        {
             return KnowledgeBaseManager.DimentionsEnum.Theme;
         }
     }

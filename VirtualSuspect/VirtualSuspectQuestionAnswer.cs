@@ -9,21 +9,26 @@ using VirtualSuspect.KnowledgeBase;
 using VirtualSuspect.Handler;
 
 
-namespace VirtualSuspect {
+namespace VirtualSuspect
+{
 
-    public class VirtualSuspectQuestionAnswer : IQuestionAnswerSystem {
+    public class VirtualSuspectQuestionAnswer : IQuestionAnswerSystem
+    {
 
-        public enum LieStrategy { None, Hide, AdjustEntity, AdjustEvent, Improvise}
+        public enum LieStrategy { None, Hide, AdjustEntity, AdjustEvent, Improvise }
 
         private LieStrategy strategy;
 
-        public LieStrategy Strategy {
+        public LieStrategy Strategy
+        {
 
-            get {
+            get
+            {
                 return strategy;
             }
 
-            set {
+            set
+            {
                 strategy = value;
             }
 
@@ -31,10 +36,12 @@ namespace VirtualSuspect {
 
         private KnowledgeBaseManager knowledgeBase;
 
-        public KnowledgeBaseManager KnowledgeBase {
+        public KnowledgeBaseManager KnowledgeBase
+        {
 
-            get {
-                    return knowledgeBase;
+            get
+            {
+                return knowledgeBase;
             }
 
         }
@@ -43,7 +50,8 @@ namespace VirtualSuspect {
 
         private OrderedDictionary posHandlers;
 
-        public VirtualSuspectQuestionAnswer(KnowledgeBaseManager kb) {
+        public VirtualSuspectQuestionAnswer(KnowledgeBaseManager kb)
+        {
 
             knowledgeBase = kb;
 
@@ -76,10 +84,12 @@ namespace VirtualSuspect {
 
         }
 
-        public QueryResult Query(QueryDto query) {
+        public QueryResult Query(QueryDto query)
+        {
 
             //Run Pre Handler
-            foreach(IPreHandler handler in preHandlers.Values) {
+            foreach (IPreHandler handler in preHandlers.Values)
+            {
                 query = handler.Modify(query);
             }
 
@@ -87,21 +97,25 @@ namespace VirtualSuspect {
             QueryResult result = new QueryResult(query);
             bool backupToOriginal;
 
-            if (query.QueryType == QueryDto.QueryTypeEnum.YesOrNo) { //Test yes or no
+            if (query.QueryType == QueryDto.QueryTypeEnum.YesOrNo)
+            { //Test yes or no
 
                 result.AddBooleanResult(FilterEvents(query.QueryConditions, out backupToOriginal).Count != 0 && !backupToOriginal);
 
-            }else if (query.QueryType == QueryDto.QueryTypeEnum.GetInformation) { //Test get information
+            }
+            else if (query.QueryType == QueryDto.QueryTypeEnum.GetInformation)
+            { //Test get information
 
                 List<EventNode> queryEvents = FilterEvents(query.QueryConditions, out backupToOriginal);
 
                 //Select entities from the dimension
-                foreach (IFocusPredicate focus in query.QueryFocus) {
+                foreach (IFocusPredicate focus in query.QueryFocus)
+                {
 
                     result.AddResults(queryEvents.Select(focus.CreateFunction()));
 
                 }
-                
+
                 //Count Cardinality
                 result.CountResult();
 
@@ -127,36 +141,42 @@ namespace VirtualSuspect {
             }
 
             //Run Pos Handler
-            foreach (IPosHandler handler in posHandlers.Values) {
+            foreach (IPosHandler handler in posHandlers.Values)
+            {
                 result = handler.Modify(result);
             }
 
             return result;
 
         }
-    
-        internal List<EventNode> FilterEvents(List<IConditionPredicate> predicates, out bool backupOriginal) {
+
+        internal List<EventNode> FilterEvents(List<IConditionPredicate> predicates, out bool backupOriginal)
+        {
 
             backupOriginal = false;
 
             List<EventNode> queryEvents = knowledgeBase.Story;
 
             //Select entities from the dimension
-            foreach (IConditionPredicate predicate in predicates) {
+            foreach (IConditionPredicate predicate in predicates)
+            {
 
                 queryEvents = queryEvents.FindAll(predicate.CreatePredicate());
             }
 
-            if(queryEvents.Count == 0 ) {
+            if (queryEvents.Count == 0)
+            {
                 queryEvents = knowledgeBase.Events;
 
                 //Select entities from the dimension
-                foreach( IConditionPredicate predicate in predicates ) {
+                foreach (IConditionPredicate predicate in predicates)
+                {
 
                     queryEvents = queryEvents.FindAll(predicate.CreatePredicate());
                 }
 
-                if(queryEvents.Count != 0 ) {
+                if (queryEvents.Count != 0)
+                {
 
                     backupOriginal = true;
                 }

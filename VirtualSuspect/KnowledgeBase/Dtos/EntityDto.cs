@@ -1,5 +1,7 @@
-namespace VirtualSuspect.KnowledgeBase {
-    public class EntityDto{
+namespace VirtualSuspect.KnowledgeBase
+{
+    public class EntityDto
+    {
 
         private string value;
 
@@ -13,14 +15,16 @@ namespace VirtualSuspect.KnowledgeBase {
 
         private string speech;
 
-        public string Speech {
-            get {
+        public string Speech
+        {
+            get
+            {
                 return speech;
             }
         }
 
         private string type;
-         
+
         public string Type
         {
             get
@@ -29,7 +33,8 @@ namespace VirtualSuspect.KnowledgeBase {
             }
         }
 
-        public EntityDto(string _value, string _speech, string _type) {
+        public EntityDto(string _value, string _speech, string _type)
+        {
 
             speech = _speech;
             value = _value;

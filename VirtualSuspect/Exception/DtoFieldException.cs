@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace VirtualSuspect.Exception
 {
-    class DtoFieldException : System.Exception {
+    class DtoFieldException : System.Exception
+    {
 
-        public DtoFieldException(string message) : base(message) {
+        public DtoFieldException(string message) : base(message)
+        {
 
         }
 

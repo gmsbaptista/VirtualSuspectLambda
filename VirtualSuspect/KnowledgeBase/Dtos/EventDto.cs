@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 
-namespace VirtualSuspect.KnowledgeBase {
-    public class EventDto {
+namespace VirtualSuspect.KnowledgeBase
+{
+    public class EventDto
+    {
 
         private bool real;
 
@@ -15,8 +17,10 @@ namespace VirtualSuspect.KnowledgeBase {
 
         private int incriminatory;
 
-        public int Incriminatory {
-            get {
+        public int Incriminatory
+        {
+            get
+            {
                 return incriminatory;
             }
         }
@@ -101,8 +105,9 @@ namespace VirtualSuspect.KnowledgeBase {
             }
         }
 
-        public EventDto(int incriminatory, ActionNode action, EntityNode time, EntityNode location, EntityNode subject, bool real) {
-            
+        public EventDto(int incriminatory, ActionNode action, EntityNode time, EntityNode location, EntityNode subject, bool real)
+        {
+
             this.incriminatory = incriminatory;
             this.action = action;
             this.time = time;
@@ -117,49 +122,57 @@ namespace VirtualSuspect.KnowledgeBase {
 
         }
 
-        public void AddAgent(EntityNode agent) {
+        public void AddAgent(EntityNode agent)
+        {
 
             this.agent.Add(agent);
 
         }
 
-        public void AddAgent(params EntityNode[] agents) {
+        public void AddAgent(params EntityNode[] agents)
+        {
 
             this.agent.AddRange(agents);
 
         }
 
-        public void AddTheme(EntityNode theme) {
+        public void AddTheme(EntityNode theme)
+        {
 
             this.theme.Add(theme);
 
         }
 
-        public void AddTheme(params EntityNode[] themes) {
+        public void AddTheme(params EntityNode[] themes)
+        {
 
             this.theme.AddRange(themes);
 
         }
 
-        public void AddManner(EntityNode manner) {
+        public void AddManner(EntityNode manner)
+        {
 
             this.manner.Add(manner);
 
         }
 
-        public void AddManner(params EntityNode[] manners) {
+        public void AddManner(params EntityNode[] manners)
+        {
 
             this.manner.AddRange(manners);
 
         }
 
-        public void AddReason(EntityNode reason) {
+        public void AddReason(EntityNode reason)
+        {
 
             this.reason.Add(reason);
 
         }
 
-        public void AddReason(params EntityNode[] reasons) {
+        public void AddReason(params EntityNode[] reasons)
+        {
 
             this.reason.AddRange(reasons);
 

@@ -6,19 +6,23 @@ using System.Threading.Tasks;
 using VirtualSuspect.Exception;
 using VirtualSuspect.Query;
 
-namespace VirtualSuspect.KnowledgeBase {
+namespace VirtualSuspect.KnowledgeBase
+{
 
-    public class KnowledgeBaseManager : IKnowledgeBase{
+    public class KnowledgeBaseManager : IKnowledgeBase
+    {
 
         #region Enumerates
-    
+
         public enum DimentionsEnum { Action, Agent, Location, Manner, Reason, Subject, Theme, Time };
-        
-        public static DimentionsEnum convertToDimentions(string dimension) {
+
+        public static DimentionsEnum convertToDimentions(string dimension)
+        {
 
             dimension = dimension.ToLower();
 
-            switch (dimension) {
+            switch (dimension)
+            {
                 case "action":
                     return KnowledgeBaseManager.DimentionsEnum.Action;
                 case "agent":
@@ -40,9 +44,11 @@ namespace VirtualSuspect.KnowledgeBase {
             }
         }
 
-        public static String convertToString(DimentionsEnum dimension) {
+        public static String convertToString(DimentionsEnum dimension)
+        {
 
-            switch (dimension) {
+            switch (dimension)
+            {
                 case DimentionsEnum.Action:
                     return "action";
                 case DimentionsEnum.Agent:
@@ -68,13 +74,16 @@ namespace VirtualSuspect.KnowledgeBase {
 
         private Dictionary<string, string> properties;
 
-        public Dictionary<string, string> Properties {
+        public Dictionary<string, string> Properties
+        {
 
-            get {
+            get
+            {
                 return properties;
             }
 
-            set {
+            set
+            {
                 properties = value;
             }
         }
@@ -84,8 +93,10 @@ namespace VirtualSuspect.KnowledgeBase {
         /// </summary>
         private List<EntityNode> entities;
 
-        public List<EntityNode> Entities {
-            get {
+        public List<EntityNode> Entities
+        {
+            get
+            {
                 return entities;
             }
         }
@@ -121,8 +132,10 @@ namespace VirtualSuspect.KnowledgeBase {
         /// </summary>
         private List<EventNode> story;
 
-        public List<EventNode> Story {
-            get {
+        public List<EventNode> Story
+        {
+            get
+            {
                 return story;
             }
         }
@@ -133,19 +146,23 @@ namespace VirtualSuspect.KnowledgeBase {
         /// Returns the next available id for an node
         /// </summary>
         /// <returns>Available Id for node</returns>
-        internal uint getNextNodeId(String nodeType) {
+        internal uint getNextNodeId(String nodeType)
+        {
 
-            if (nodeType == "action") {
+            if (nodeType == "action")
+            {
 
                 return (uint)(actions.Count + 1);
 
             }
-            else if (nodeType == "entity") {
+            else if (nodeType == "entity")
+            {
 
                 return (uint)(entities.Count + 1);
 
             }
-            else if (nodeType == "event") {
+            else if (nodeType == "event")
+            {
 
                 return (uint)(events.Count + 1);
 
@@ -155,12 +172,13 @@ namespace VirtualSuspect.KnowledgeBase {
 
         }
 
-        public KnowledgeBaseManager() {
+        public KnowledgeBaseManager()
+        {
 
             entities = new List<EntityNode>();
 
             actions = new List<ActionNode>();
-            
+
             events = new List<EventNode>();
 
             story = new List<EventNode>();
@@ -173,10 +191,12 @@ namespace VirtualSuspect.KnowledgeBase {
 
         #region Event Management
 
-        public ActionNode CreateNewAction(ActionDto ac) {
-            
+        public ActionNode CreateNewAction(ActionDto ac)
+        {
+
             //test if the Dto is valid
-            if(ac.Action == null) {
+            if (ac.Action == null)
+            {
                 throw new DtoFieldException("ActionDto should have an Action field");
             }
 
@@ -192,7 +212,8 @@ namespace VirtualSuspect.KnowledgeBase {
             return newActionNode;
         }
 
-        public EntityNode CreateNewEntity(EntityDto en) {
+        public EntityNode CreateNewEntity(EntityDto en)
+        {
 
             //Test if the Dto is valid
             if (en.Value == null)
@@ -201,7 +222,7 @@ namespace VirtualSuspect.KnowledgeBase {
 
             //Get new id for the Entity Node
             uint newEntityId = getNextNodeId("entity");
-            
+
             //Create the node according to the type
             EntityNode newEntityNode = new EntityNode(newEntityId, en.Value, en.Speech, en.Type);
 
@@ -212,7 +233,8 @@ namespace VirtualSuspect.KnowledgeBase {
 
         }
 
-        public EventNode CreateNewEvent(EventDto ev) {
+        public EventNode CreateNewEvent(EventDto ev)
+        {
 
             //Test dto validity
             if (ev.Action == null) //Test if has action
@@ -246,11 +268,13 @@ namespace VirtualSuspect.KnowledgeBase {
 
         }
 
-        public ActionNode GetOrCreateAction(string actionName) {
+        public ActionNode GetOrCreateAction(string actionName)
+        {
 
             ActionNode nodeResult = actions.Find(action => action.Value == actionName);
 
-            if(nodeResult == null) { // If it does not exists
+            if (nodeResult == null)
+            { // If it does not exists
 
                 nodeResult = CreateNewAction(new ActionDto(actionName));
 
@@ -259,7 +283,8 @@ namespace VirtualSuspect.KnowledgeBase {
             return nodeResult;
         }
 
-        public void AddEventToStory(EventNode en) {
+        public void AddEventToStory(EventNode en)
+        {
 
             //Test if event exists
             if (!events.Exists(x => x == en))
@@ -270,7 +295,8 @@ namespace VirtualSuspect.KnowledgeBase {
 
         }
 
-        public void RemoveEventFromStory(EventNode en) {
+        public void RemoveEventFromStory(EventNode en)
+        {
 
             //Test if event exists
             if (!events.Exists(x => x == en))
@@ -281,7 +307,8 @@ namespace VirtualSuspect.KnowledgeBase {
 
         }
 
-        public void ReplaceEvent(EventNode oldEvent, EventNode newEvent) {
+        public void ReplaceEvent(EventNode oldEvent, EventNode newEvent)
+        {
 
             oldEvent.replacedByID = newEvent.ID;
 
@@ -293,8 +320,9 @@ namespace VirtualSuspect.KnowledgeBase {
 
         }
 
-        public void ReturnEventToOriginal(EventNode node) {
-            
+        public void ReturnEventToOriginal(EventNode node)
+        {
+
             uint nodeToRemoveID = node.replacedByID;
 
             EventNode nodeToRemove = events.Find(x => x.ID == nodeToRemoveID);
@@ -310,17 +338,20 @@ namespace VirtualSuspect.KnowledgeBase {
 
         #region Incriminatory Related Methods
 
-        internal void PropagateIncriminatoryValues() {
+        internal void PropagateIncriminatoryValues()
+        {
 
             Dictionary<EntityNode, List<EventNode>> entityToEvent = new Dictionary<EntityNode, List<EventNode>>();
 
-            foreach(EntityNode entity in entities) {
+            foreach (EntityNode entity in entities)
+            {
 
-                entityToEvent.Add(entity, new List<EventNode>());    
+                entityToEvent.Add(entity, new List<EventNode>());
 
             }
 
-            foreach(EventNode eventNode in events) {
+            foreach (EventNode eventNode in events)
+            {
 
                 //Time
                 entityToEvent[eventNode.Time].Add(eventNode);
@@ -332,34 +363,40 @@ namespace VirtualSuspect.KnowledgeBase {
                 entityToEvent[eventNode.Subject].Add(eventNode);
 
                 //Agent
-                foreach (EntityNode agent in eventNode.Agent) {
+                foreach (EntityNode agent in eventNode.Agent)
+                {
                     entityToEvent[agent].Add(eventNode);
                 }
 
                 //Manner
-                foreach (EntityNode manner in eventNode.Manner) {
+                foreach (EntityNode manner in eventNode.Manner)
+                {
                     entityToEvent[manner].Add(eventNode);
                 }
 
                 //Theme
-                foreach (EntityNode theme in eventNode.Theme) {
+                foreach (EntityNode theme in eventNode.Theme)
+                {
                     entityToEvent[theme].Add(eventNode);
                 }
 
                 //Reason
-                foreach (EntityNode reason in eventNode.Reason) {
+                foreach (EntityNode reason in eventNode.Reason)
+                {
                     entityToEvent[reason].Add(eventNode);
                 }
 
             }
 
-            foreach(KeyValuePair<EntityNode,List<EventNode>> pair in entityToEvent) {
+            foreach (KeyValuePair<EntityNode, List<EventNode>> pair in entityToEvent)
+            {
 
                 float incriminatory = 0;
 
                 int numIncriminaotryEvents = pair.Value.Count(x => x.Incriminatory != 0);
 
-                foreach(EventNode eventNode in pair.Value.FindAll(x => x.Incriminatory!=0)) {
+                foreach (EventNode eventNode in pair.Value.FindAll(x => x.Incriminatory != 0))
+                {
 
                     incriminatory += eventNode.Incriminatory / numIncriminaotryEvents;
                 }
@@ -367,41 +404,50 @@ namespace VirtualSuspect.KnowledgeBase {
                 pair.Key.Incriminatory = incriminatory;
 
             }
-            
+
         }
 
         #endregion
 
-        internal List<KnowledgeBaseManager.DimentionsEnum> GetSemanticRoles(EntityNode node) {
+        internal List<KnowledgeBaseManager.DimentionsEnum> GetSemanticRoles(EntityNode node)
+        {
 
             List<KnowledgeBaseManager.DimentionsEnum> semanticRoles = new List<KnowledgeBaseManager.DimentionsEnum>();
 
             //Get all the semantic roles that this entity has
-            foreach (EventNode eventNode in events) {
+            foreach (EventNode eventNode in events)
+            {
 
-                if (eventNode.ContainsEntity(node)) {
+                if (eventNode.ContainsEntity(node))
+                {
 
-                    if (eventNode.Agent.Contains(node)) {
+                    if (eventNode.Agent.Contains(node))
+                    {
                         semanticRoles.Add(KnowledgeBaseManager.DimentionsEnum.Agent);
                     }
 
-                    if (eventNode.Theme.Contains(node)) {
+                    if (eventNode.Theme.Contains(node))
+                    {
                         semanticRoles.Add(KnowledgeBaseManager.DimentionsEnum.Theme);
                     }
 
-                    if (eventNode.Manner.Contains(node)) {
+                    if (eventNode.Manner.Contains(node))
+                    {
                         semanticRoles.Add(KnowledgeBaseManager.DimentionsEnum.Manner);
                     }
 
-                    if (eventNode.Reason.Contains(node)) {
+                    if (eventNode.Reason.Contains(node))
+                    {
                         semanticRoles.Add(KnowledgeBaseManager.DimentionsEnum.Reason);
                     }
 
-                    if (eventNode.Time == node) {
+                    if (eventNode.Time == node)
+                    {
                         semanticRoles.Add(KnowledgeBaseManager.DimentionsEnum.Time);
                     }
 
-                    if (eventNode.Location == node) {
+                    if (eventNode.Location == node)
+                    {
                         semanticRoles.Add(KnowledgeBaseManager.DimentionsEnum.Location);
                     }
 
@@ -415,7 +461,8 @@ namespace VirtualSuspect.KnowledgeBase {
             return semanticRoles;
         }
 
-        internal float EvaluateEntitySimilarity(EntityNode node1, EntityNode node2) {
+        internal float EvaluateEntitySimilarity(EntityNode node1, EntityNode node2)
+        {
 
             float typeSimilarity = 1;
 
@@ -430,16 +477,19 @@ namespace VirtualSuspect.KnowledgeBase {
             List<KnowledgeBaseManager.DimentionsEnum> node2Dimensions = GetSemanticRoles(node2);
             int CommonDimensions = node1Dimensions.Intersect(node2Dimensions).Count();
             int NonCommonDimension = node1Dimensions.Except(node2Dimensions).Union(node2Dimensions.Except(node1Dimensions)).Count();
-            
+
             dimensionSimilarity = CommonDimensions / (CommonDimensions + NonCommonDimension);
 
             //Onde of the entities does not appear in any event yet
-            if(node1Dimensions.Count == 0 || node2Dimensions.Count == 0) {
+            if (node1Dimensions.Count == 0 || node2Dimensions.Count == 0)
+            {
                 return typeSimilarity;
-            } else { 
+            }
+            else
+            {
                 return typeSimilarity * 0.5f + dimensionSimilarity * 0.5f;
             }
-            
+
         }
 
         /// <summary>
@@ -448,11 +498,13 @@ namespace VirtualSuspect.KnowledgeBase {
         /// </summary>
         /// <param name="node"></param>
         /// <returns></returns>
-        internal Dictionary<EntityNode, float> ExtractSimilarEntities(EntityNode node, bool UseIncriminatory = false) {
+        internal Dictionary<EntityNode, float> ExtractSimilarEntities(EntityNode node, bool UseIncriminatory = false)
+        {
 
             Dictionary<EntityNode, float> result = new Dictionary<EntityNode, float>();
 
-            foreach(EntityNode testingNode in entities) {
+            foreach (EntityNode testingNode in entities)
+            {
 
                 if (testingNode == node)
                     continue;
@@ -460,9 +512,9 @@ namespace VirtualSuspect.KnowledgeBase {
                 float similarityFactor = EvaluateEntitySimilarity(node, testingNode);
 
                 if (UseIncriminatory)
-                    similarityFactor = similarityFactor  * ((100 - testingNode.Incriminatory) / 100);
- 
-                if(similarityFactor > 0)
+                    similarityFactor = similarityFactor * ((100 - testingNode.Incriminatory) / 100);
+
+                if (similarityFactor > 0)
                     result.Add(testingNode, similarityFactor);
 
             }
@@ -470,11 +522,13 @@ namespace VirtualSuspect.KnowledgeBase {
             return result;
         }
 
-        public IEnumerable<EntityNode> GetAllEntitiesByDimension(DimentionsEnum dimension) {
+        public IEnumerable<EntityNode> GetAllEntitiesByDimension(DimentionsEnum dimension)
+        {
 
             List<EntityNode> result = new List<EntityNode>();
 
-            foreach(EventNode node in events) {
+            foreach (EventNode node in events)
+            {
 
                 result.AddRange(node.FindEntitiesByType(dimension));
 

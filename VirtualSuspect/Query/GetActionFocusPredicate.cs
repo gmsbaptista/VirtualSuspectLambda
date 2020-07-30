@@ -11,7 +11,8 @@ namespace VirtualSuspect.Query
     {
         public Func<EventNode, QueryResult.Result> CreateFunction()
         {
-            return delegate (EventNode node) {
+            return delegate (EventNode node)
+            {
 
                 if (node.Theme.Count > 0)
                 {

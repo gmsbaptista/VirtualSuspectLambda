@@ -7,16 +7,20 @@ using VirtualSuspect.KnowledgeBase;
 
 namespace VirtualSuspect.Query
 {
-    public class GetMannerFocusPredicate : IFocusPredicate{
+    public class GetMannerFocusPredicate : IFocusPredicate
+    {
 
-        public Func<EventNode, QueryResult.Result> CreateFunction() {
-            return delegate (EventNode node) {    
+        public Func<EventNode, QueryResult.Result> CreateFunction()
+        {
+            return delegate (EventNode node)
+            {
 
-                return new QueryResult.Result(node.Manner, node.Manner.Count , KnowledgeBaseManager.DimentionsEnum.Manner);
+                return new QueryResult.Result(node.Manner, node.Manner.Count, KnowledgeBaseManager.DimentionsEnum.Manner);
 
             };
         }
-        public KnowledgeBaseManager.DimentionsEnum GetSemanticRole() {
+        public KnowledgeBaseManager.DimentionsEnum GetSemanticRole()
+        {
             return KnowledgeBaseManager.DimentionsEnum.Manner;
         }
     }

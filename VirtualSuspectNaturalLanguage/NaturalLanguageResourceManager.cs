@@ -6,17 +6,22 @@ using System.Threading.Tasks;
 using System.Xml;
 using VirtualSuspect.KnowledgeBase;
 
-namespace VirtualSuspectNaturalLanguage {
-    public class NaturalLanguageResourceManager {
+namespace VirtualSuspectNaturalLanguage
+{
+    public class NaturalLanguageResourceManager
+    {
 
         #region Singleton
 
         private static NaturalLanguageResourceManager instance;
 
-        public static NaturalLanguageResourceManager Instance {
+        public static NaturalLanguageResourceManager Instance
+        {
 
-            get {
-                if (instance == null) {
+            get
+            {
+                if (instance == null)
+                {
                     instance = new NaturalLanguageResourceManager();
                 }
                 return instance;
@@ -27,7 +32,8 @@ namespace VirtualSuspectNaturalLanguage {
 
         private List<Resource> resources;
 
-        private NaturalLanguageResourceManager() {
+        private NaturalLanguageResourceManager()
+        {
 
             XmlDocument actionResourcesDocument = new XmlDocument();
 
@@ -39,13 +45,16 @@ namespace VirtualSuspectNaturalLanguage {
 
         }
 
-        private void ParseResourceXml(XmlDocument resourceFile) {
+        private void ParseResourceXml(XmlDocument resourceFile)
+        {
 
-            foreach(XmlNode resourceNode in resourceFile.DocumentElement.SelectNodes("resource")) {
+            foreach (XmlNode resourceNode in resourceFile.DocumentElement.SelectNodes("resource"))
+            {
 
                 string resourceType = resourceNode.SelectSingleNode("type").InnerText;
 
-                switch(resourceType) {
+                switch (resourceType)
+                {
                     case "action":
 
                         ActionResource newResource = new ActionResource();
@@ -64,25 +73,28 @@ namespace VirtualSuspectNaturalLanguage {
                         continue;
                 }
             }
-            
+
         }
 
-        public T FindResource<T>(string identifier) {
+        public T FindResource<T>(string identifier)
+        {
 
             return resources.OfType<T>().Where(x => ((Resource)x).Identifier == identifier).FirstOrDefault();
 
         }
     }
 
-    interface Resource { 
-    
+    interface Resource
+    {
+
         string Identifier { get; }
-    
+
     }
 
-    public class ActionResource : Resource {
+    public class ActionResource : Resource
+    {
 
-        public string Identifier { get { return Action; }}
+        public string Identifier { get { return Action; } }
 
         public string Action { get; set; }
 
@@ -100,9 +112,11 @@ namespace VirtualSuspectNaturalLanguage {
 
         public string Speech { get; set; }
 
-        public string ExtractPreposition(KnowledgeBaseManager.DimentionsEnum dimension) {
+        public string ExtractPreposition(KnowledgeBaseManager.DimentionsEnum dimension)
+        {
 
-            switch (dimension) {
+            switch (dimension)
+            {
                 case KnowledgeBaseManager.DimentionsEnum.Time:
                     return TimePrep;
                 case KnowledgeBaseManager.DimentionsEnum.Location:

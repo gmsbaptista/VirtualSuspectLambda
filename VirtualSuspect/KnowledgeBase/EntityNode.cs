@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 
-namespace VirtualSuspect.KnowledgeBase {
-    public class EntityNode : IStoryNode{
+namespace VirtualSuspect.KnowledgeBase
+{
+    public class EntityNode : IStoryNode
+    {
 
         private uint id;
 
@@ -15,16 +17,19 @@ namespace VirtualSuspect.KnowledgeBase {
 
         private float incriminatory;
 
-        public float Incriminatory {
+        public float Incriminatory
+        {
 
-            get {
+            get
+            {
                 return incriminatory;
             }
 
-            set { 
+            set
+            {
                 incriminatory = value;
             }
-        
+
         }
 
         private string value;
@@ -39,8 +44,10 @@ namespace VirtualSuspect.KnowledgeBase {
 
         private string speech;
 
-        public string Speech {
-            get {
+        public string Speech
+        {
+            get
+            {
                 return speech;
             }
         }
@@ -71,7 +78,7 @@ namespace VirtualSuspect.KnowledgeBase {
 
         private Dictionary<string, string> associations;
 
-        public Dictionary<string,string> Associations
+        public Dictionary<string, string> Associations
         {
             get
             {
@@ -79,7 +86,8 @@ namespace VirtualSuspect.KnowledgeBase {
             }
         }
 
-        public EntityNode(uint _id, string _value, string _speech, string _type){
+        public EntityNode(uint _id, string _value, string _speech, string _type)
+        {
 
             id = _id;
             value = _value;
@@ -90,7 +98,7 @@ namespace VirtualSuspect.KnowledgeBase {
 
         }
 
-        public bool CheckParent (string value)
+        public bool CheckParent(string value)
         {
             if (parent == null)
             {
@@ -99,19 +107,22 @@ namespace VirtualSuspect.KnowledgeBase {
             return parent.Value == value || parent.CheckParent(value);
         }
 
-        public void AddAssociation (string relation, string speech)
+        public void AddAssociation(string relation, string speech)
         {
             associations.Add(relation, speech);
         }
-        
-        public float EvaluateKnowledge(KnowledgeBaseManager kb) {
+
+        public float EvaluateKnowledge(KnowledgeBaseManager kb)
+        {
 
             float total = 0;
             float known = 0;
 
-            foreach(EventNode node in kb.Story) {
+            foreach (EventNode node in kb.Story)
+            {
 
-                if(node.ContainsEntity(this)) {
+                if (node.ContainsEntity(this))
+                {
 
                     total++;
                     if (node.IsKnown(this))
@@ -124,6 +135,6 @@ namespace VirtualSuspect.KnowledgeBase {
             return known / total * 100;
 
         }
-    
+
     }
 }

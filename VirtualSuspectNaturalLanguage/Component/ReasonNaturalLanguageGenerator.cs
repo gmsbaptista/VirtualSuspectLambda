@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 using VirtualSuspect.KnowledgeBase;
 using VirtualSuspect.Query;
 
-namespace VirtualSuspectNaturalLanguage.Component {
-    public static class ReasonNaturalLanguageGenerator {
+namespace VirtualSuspectNaturalLanguage.Component
+{
+    public static class ReasonNaturalLanguageGenerator
+    {
 
-        public static string Generate(QueryResult result, Dictionary<KnowledgeBaseManager.DimentionsEnum, List<QueryResult.Result>> resultsByDimension) {
+        public static string Generate(QueryResult result, Dictionary<KnowledgeBaseManager.DimentionsEnum, List<QueryResult.Result>> resultsByDimension)
+        {
 
             string answer = " ";
 
@@ -18,8 +21,8 @@ namespace VirtualSuspectNaturalLanguage.Component {
 
             Dictionary<EntityNode, int> mergedLocations = MergeAndSumReasonsCardinality(resultsByDimension[KnowledgeBaseManager.DimentionsEnum.Reason]);
 
-            answer += CombineValues("and", mergedLocations.Select(x=>x.Key.Speech));
-                
+            answer += CombineValues("and", mergedLocations.Select(x => x.Key.Speech));
+
             return answer;
         }
 
@@ -43,20 +46,25 @@ namespace VirtualSuspectNaturalLanguage.Component {
             return combinedValues;
         }
 
-        private static Dictionary<EntityNode, int> MergeAndSumReasonsCardinality(List<QueryResult.Result> reasons) {
+        private static Dictionary<EntityNode, int> MergeAndSumReasonsCardinality(List<QueryResult.Result> reasons)
+        {
 
             Dictionary<EntityNode, int> reasonsWithCardinality = new Dictionary<EntityNode, int>();
 
-            foreach (QueryResult.Result reasonResult in reasons) {
+            foreach (QueryResult.Result reasonResult in reasons)
+            {
 
-                foreach (IStoryNode locationNode in reasonResult.values) {
+                foreach (IStoryNode locationNode in reasonResult.values)
+                {
 
-                    if (!reasonsWithCardinality.ContainsKey((EntityNode)locationNode)) {
+                    if (!reasonsWithCardinality.ContainsKey((EntityNode)locationNode))
+                    {
 
                         reasonsWithCardinality.Add((EntityNode)locationNode, reasonResult.cardinality);
 
                     }
-                    else {
+                    else
+                    {
 
                         reasonsWithCardinality[(EntityNode)locationNode] += reasonResult.cardinality;
                     }

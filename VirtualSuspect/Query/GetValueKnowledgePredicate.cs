@@ -12,7 +12,8 @@ namespace VirtualSuspect.Query
 
         public Func<EntityNode, string> CreateFunction()
         {
-            return delegate (EntityNode node) {
+            return delegate (EntityNode node)
+            {
 
                 if (node.Associations.TryGetValue("Value", out string value))
                 {

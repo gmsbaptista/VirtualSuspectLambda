@@ -1,6 +1,7 @@
 ﻿namespace VirtualSuspect.KnowledgeBase
 {
-    public class ActionNode : IStoryNode{
+    public class ActionNode : IStoryNode
+    {
 
         private uint id;
 
@@ -24,7 +25,8 @@
 
         }
 
-        public ActionNode(uint _id,  string _action) {
+        public ActionNode(uint _id, string _action)
+        {
 
             id = _id;
             value = _action;

@@ -12,7 +12,8 @@ namespace VirtualSuspect.Query
         public Predicate<EventNode> CreatePredicate()
         {
             return
-                delegate (EventNode node) {
+                delegate (EventNode node)
+                {
                     return node.Manner.Count > 0;
                 };
         }

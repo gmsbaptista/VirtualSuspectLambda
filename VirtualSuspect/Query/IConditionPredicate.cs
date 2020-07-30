@@ -2,10 +2,12 @@ using System;
 using System.Collections.Generic;
 using VirtualSuspect.KnowledgeBase;
 
-namespace VirtualSuspect.Query {
+namespace VirtualSuspect.Query
+{
 
-    public interface IConditionPredicate{
-        
+    public interface IConditionPredicate
+    {
+
         /// <summary>
         /// Creates the delegate to be used as predicate
         /// </summary>

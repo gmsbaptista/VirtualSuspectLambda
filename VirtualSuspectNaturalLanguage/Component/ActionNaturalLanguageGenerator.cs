@@ -18,7 +18,7 @@ namespace VirtualSuspectNaturalLanguage.Component
             answer += "I";
 
             Dictionary<ActionNode, int> mergedActions = MergeAndSumActionsCardinality(
-                resultsByDimension[KnowledgeBaseManager.DimentionsEnum.Action], 
+                resultsByDimension[KnowledgeBaseManager.DimentionsEnum.Action],
                 out Dictionary<ActionNode, List<EntityNode>> actionsWithThemes);
             NaturalLanguageResourceManager manager = NaturalLanguageResourceManager.Instance;
             for (int i = 0; i < mergedActions.Keys.Count; i++)

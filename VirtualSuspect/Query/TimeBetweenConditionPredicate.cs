@@ -10,31 +10,38 @@ using VirtualSuspect.KnowledgeBase;
 
 namespace VirtualSuspect.Query
 {
-    public class TimeBetweenConditionPredicate : IConditionPredicate{
+    public class TimeBetweenConditionPredicate : IConditionPredicate
+    {
 
         private DateTime beginTime;
 
         private DateTime endTime;
 
-        public TimeBetweenConditionPredicate(string begin, string end){
-        
+        public TimeBetweenConditionPredicate(string begin, string end)
+        {
+
             beginTime = DateTime.ParseExact(begin, "dd/MM/yyyyTHH:mm:ss", CultureInfo.InvariantCulture);
 
             endTime = DateTime.ParseExact(end, "dd/MM/yyyyTHH:mm:ss", CultureInfo.InvariantCulture);
 
         }
 
-        public Predicate<EventNode> CreatePredicate() {
-            return  
-                delegate (EventNode node) {
-                    
-                    if (node.Time.Type== "TimeInstant") { //Example: dd/MM/yyyyTHH:mm:ss
+        public Predicate<EventNode> CreatePredicate()
+        {
+            return
+                delegate (EventNode node)
+                {
+
+                    if (node.Time.Type == "TimeInstant")
+                    { //Example: dd/MM/yyyyTHH:mm:ss
 
                         DateTime value = DateTime.ParseExact(node.Time.Value, "dd/MM/yyyyTHH:mm:ss", CultureInfo.InvariantCulture);
 
                         return value >= beginTime && value <= endTime;
 
-                    }else if (node.Time.Type == "TimeSpan") {//Example: dd/MM/yyyyTHH:mm:ss>dd/MM/yyyyTHH:mm:ss
+                    }
+                    else if (node.Time.Type == "TimeSpan")
+                    {//Example: dd/MM/yyyyTHH:mm:ss>dd/MM/yyyyTHH:mm:ss
 
                         String b = node.Time.Value.Split('>')[0];
 
@@ -48,14 +55,16 @@ namespace VirtualSuspect.Query
                     return false;
                 };
         }
-        
-        public KnowledgeBaseManager.DimentionsEnum GetSemanticRole() {
+
+        public KnowledgeBaseManager.DimentionsEnum GetSemanticRole()
+        {
 
             return KnowledgeBaseManager.DimentionsEnum.Time;
 
         }
 
-        public List<string> GetValues() {
+        public List<string> GetValues()
+        {
 
             List<string> entities = new List<string>();
 

@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 using VirtualSuspect.KnowledgeBase;
 using VirtualSuspect.Query;
 
-namespace VirtualSuspectNaturalLanguage.Component {
-    public static class ThemeNaturalLanguageGenerator {
+namespace VirtualSuspectNaturalLanguage.Component
+{
+    public static class ThemeNaturalLanguageGenerator
+    {
 
-        public static string Generate(QueryResult result, Dictionary<KnowledgeBaseManager.DimentionsEnum, List<QueryResult.Result>> resultsByDimension) {
+        public static string Generate(QueryResult result, Dictionary<KnowledgeBaseManager.DimentionsEnum, List<QueryResult.Result>> resultsByDimension)
+        {
 
             string answer = "";
 
@@ -38,25 +41,29 @@ namespace VirtualSuspectNaturalLanguage.Component {
 
             Dictionary<EntityNode, int> mergedThemes = MergeAndSumThemesCardinality(resultsByDimension[KnowledgeBaseManager.DimentionsEnum.Theme]);
 
-            answer += CombineValues("and", mergedThemes.Select(x=>x.Key.Speech));
-                
+            answer += CombineValues("and", mergedThemes.Select(x => x.Key.Speech));
+
             return answer;
         }
 
         #region Utility Methods
 
-        private static string CombineValues(string term, IEnumerable<string> values) {
+        private static string CombineValues(string term, IEnumerable<string> values)
+        {
 
             string combinedValues = "";
 
-            for (int i = 0; i < values.Count(); i++) {
+            for (int i = 0; i < values.Count(); i++)
+            {
 
                 combinedValues += " " + values.ElementAt(i);
 
-                if (i == values.Count() - 2) {
+                if (i == values.Count() - 2)
+                {
                     combinedValues += " " + term;
                 }
-                else if (i < values.Count() - 1) {
+                else if (i < values.Count() - 1)
+                {
                     combinedValues += ",";
                 }
             }
@@ -65,20 +72,25 @@ namespace VirtualSuspectNaturalLanguage.Component {
 
         }
 
-        private static Dictionary<EntityNode, int> MergeAndSumThemesCardinality(List<QueryResult.Result> themes) {
+        private static Dictionary<EntityNode, int> MergeAndSumThemesCardinality(List<QueryResult.Result> themes)
+        {
 
             Dictionary<EntityNode, int> themesWithCardinality = new Dictionary<EntityNode, int>();
 
-            foreach (QueryResult.Result themeResult in themes) {
+            foreach (QueryResult.Result themeResult in themes)
+            {
 
-                foreach (IStoryNode themeNode in themeResult.values) {
+                foreach (IStoryNode themeNode in themeResult.values)
+                {
 
-                    if (!themesWithCardinality.ContainsKey((EntityNode)themeNode)) {
+                    if (!themesWithCardinality.ContainsKey((EntityNode)themeNode))
+                    {
 
                         themesWithCardinality.Add((EntityNode)themeNode, themeResult.cardinality);
 
                     }
-                    else {
+                    else
+                    {
 
                         themesWithCardinality[(EntityNode)themeNode] += themeResult.cardinality;
                     }

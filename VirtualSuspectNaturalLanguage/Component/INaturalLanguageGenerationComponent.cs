@@ -1,9 +1,11 @@
-namespace VirtualSuspectNaturalLanguage.Component {
+namespace VirtualSuspectNaturalLanguage.Component
+{
 
-    interface INaturalLanguageGenerationComponent {
+    interface INaturalLanguageGenerationComponent
+    {
 
         string GenerateNaturalLanguage();
-    
+
     }
 
 }

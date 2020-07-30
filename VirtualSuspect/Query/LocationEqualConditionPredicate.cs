@@ -7,30 +7,36 @@ using VirtualSuspect.KnowledgeBase;
 
 namespace VirtualSuspect.Query
 {
-    public class LocationEqualConditionPredicate : IConditionPredicate{
+    public class LocationEqualConditionPredicate : IConditionPredicate
+    {
 
         private string location;
 
-        public LocationEqualConditionPredicate(string location){
+        public LocationEqualConditionPredicate(string location)
+        {
 
             this.location = location;
 
         }
 
-        public Predicate<EventNode> CreatePredicate() {
-            return  
-                delegate (EventNode node) {
+        public Predicate<EventNode> CreatePredicate()
+        {
+            return
+                delegate (EventNode node)
+                {
                     return node.Location.Value == location || node.Location.CheckParent(location);
                 };
         }
 
-        public KnowledgeBaseManager.DimentionsEnum GetSemanticRole() {
+        public KnowledgeBaseManager.DimentionsEnum GetSemanticRole()
+        {
 
             return KnowledgeBaseManager.DimentionsEnum.Location;
 
         }
 
-        public List<string> GetValues() {
+        public List<string> GetValues()
+        {
 
             List<string> result = new List<string>();
 

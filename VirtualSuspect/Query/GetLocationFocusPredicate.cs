@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 using VirtualSuspect.KnowledgeBase;
 namespace VirtualSuspect.Query
 {
-    public class GetLocationFocusPredicate : IFocusPredicate{
+    public class GetLocationFocusPredicate : IFocusPredicate
+    {
 
-        public Func<EventNode, QueryResult.Result> CreateFunction() {
-            return delegate (EventNode node) {    
+        public Func<EventNode, QueryResult.Result> CreateFunction()
+        {
+            return delegate (EventNode node)
+            {
                 //hard coded value
                 if (node.Action.Value == "Travel")
                 {
@@ -24,7 +27,8 @@ namespace VirtualSuspect.Query
             };
         }
 
-        public KnowledgeBaseManager.DimentionsEnum GetSemanticRole() {
+        public KnowledgeBaseManager.DimentionsEnum GetSemanticRole()
+        {
             return KnowledgeBaseManager.DimentionsEnum.Location;
         }
     }

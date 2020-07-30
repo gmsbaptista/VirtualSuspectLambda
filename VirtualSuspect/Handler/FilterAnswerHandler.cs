@@ -5,22 +5,27 @@ using System.Text;
 using System.Threading.Tasks;
 using VirtualSuspect.Query;
 
-namespace VirtualSuspect.Handler {
-    class FilterAnswerHandler  : IPosHandler{
+namespace VirtualSuspect.Handler
+{
+    class FilterAnswerHandler : IPosHandler
+    {
 
         private VirtualSuspectQuestionAnswer virtualSuspect;
 
-        public FilterAnswerHandler(VirtualSuspectQuestionAnswer virtualSuspect) {
+        public FilterAnswerHandler(VirtualSuspectQuestionAnswer virtualSuspect)
+        {
 
             this.virtualSuspect = virtualSuspect;
 
         }
 
-        public QueryResult Modify(QueryResult result) {
+        public QueryResult Modify(QueryResult result)
+        {
 
             //If the Lie Strategy is to Hide the real Answer then its content
             //should be hiden and replaced by an negative answer
-            if (virtualSuspect.Strategy == VirtualSuspectQuestionAnswer.LieStrategy.Hide) {
+            if (virtualSuspect.Strategy == VirtualSuspectQuestionAnswer.LieStrategy.Hide)
+            {
 
                 QueryResult newResult = new QueryResult(result.Query);
 

@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 using VirtualSuspect.KnowledgeBase;
 using VirtualSuspect.Query;
 
-namespace VirtualSuspect {
+namespace VirtualSuspect
+{
 
-    public interface IQuestionAnswerSystem {
+    public interface IQuestionAnswerSystem
+    {
 
         KnowledgeBaseManager KnowledgeBase { get; }
 

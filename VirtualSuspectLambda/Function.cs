@@ -1015,7 +1015,7 @@ namespace VirtualSuspectLambda
                         return false;
                 }
             }
-            
+
             if (SlotExists(intent_slots, "filler_verb"))
             {
                 if (KnownSlot(intent_slots["filler_verb"]))
@@ -1175,8 +1175,8 @@ namespace VirtualSuspectLambda
                 }
             }
 
-            if (query.QueryType == QueryDto.QueryTypeEnum.GetInformation && 
-                (query.QueryConditions.Count == 0 || 
+            if (query.QueryType == QueryDto.QueryTypeEnum.GetInformation &&
+                (query.QueryConditions.Count == 0 ||
                 (query.QueryConditions.Count == 1 && query.QueryConditions.ElementAt(0).GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Subject) ||
                 (query.QueryConditions.Count <= 2 && lastInteraction.CheckAccess() && !specialVerb)))
             {

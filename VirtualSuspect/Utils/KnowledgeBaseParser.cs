@@ -8,9 +8,11 @@ using VirtualSuspect.KnowledgeBase;
 
 namespace VirtualSuspect.Utils
 {
-    public static class KnowledgeBaseParser{
+    public static class KnowledgeBaseParser
+    {
 
-        public static KnowledgeBaseManager parseFromFile(string filePath) {
+        public static KnowledgeBaseManager parseFromFile(string filePath)
+        {
 
             XmlDocument xmlFile = new XmlDocument();
 
@@ -20,7 +22,8 @@ namespace VirtualSuspect.Utils
 
         }
 
-        public static KnowledgeBaseManager parseFromXml(XmlNode xmlRoot) {
+        public static KnowledgeBaseManager parseFromXml(XmlNode xmlRoot)
+        {
 
             KnowledgeBaseManager kb = new KnowledgeBaseManager();
 
@@ -29,24 +32,27 @@ namespace VirtualSuspect.Utils
             //Extract all entities
             XmlNodeList entityNodesList = xmlRoot.SelectNodes("entity");
 
-            foreach (XmlNode entityNode in entityNodesList) {
+            foreach (XmlNode entityNode in entityNodesList)
+            {
 
                 uint id = UInt32.Parse(entityNode.SelectSingleNode("id").InnerText);
 
                 string type = entityNode.SelectSingleNode("type").InnerText;
 
-                if (type == "TimeSpan") {//Example: dd/MM/yyyyTHH:mm:ss>dd/MM/yyyyTHH:mm:ss
+                if (type == "TimeSpan")
+                {//Example: dd/MM/yyyyTHH:mm:ss>dd/MM/yyyyTHH:mm:ss
 
                     string beginTime = entityNode.SelectSingleNode("begin").InnerText;
 
                     string endTime = entityNode.SelectSingleNode("end").InnerText;
 
-                    EntityDto newEntityDto = new EntityDto(beginTime + ">" + endTime, "","TimeSpan");
+                    EntityDto newEntityDto = new EntityDto(beginTime + ">" + endTime, "", "TimeSpan");
 
                     entities.Add(id, kb.CreateNewEntity(newEntityDto)); //Source of Polymorphism problems
 
                 }
-                else if (type == "TimeInstant") {//Example: dd/MM/yyyyTHH:mm:ss
+                else if (type == "TimeInstant")
+                {//Example: dd/MM/yyyyTHH:mm:ss
 
                     string time = entityNode.SelectSingleNode("value").InnerText;
 
@@ -55,7 +61,8 @@ namespace VirtualSuspect.Utils
                     entities.Add(id, kb.CreateNewEntity(newEntityDto)); //Source of Polymorphism problems
 
                 }
-                else {
+                else
+                {
 
                     string value = entityNode.SelectSingleNode("value").InnerText;
 
@@ -89,10 +96,11 @@ namespace VirtualSuspect.Utils
                 }
             }
 
-                //Extract all actions from each episode
-                XmlNodeList eventsNodesList = xmlRoot.SelectNodes("event");
+            //Extract all actions from each episode
+            XmlNodeList eventsNodesList = xmlRoot.SelectNodes("event");
 
-            foreach (XmlNode eventXmlNode in eventsNodesList) {
+            foreach (XmlNode eventXmlNode in eventsNodesList)
+            {
 
                 //Get Action if it does not exist yet
                 ActionNode newActionNode = kb.GetOrCreateAction(eventXmlNode.SelectSingleNode("action").InnerText);
@@ -121,19 +129,27 @@ namespace VirtualSuspect.Utils
                 //Make associations
                 XmlNodeList associationNodesList = eventXmlNode.SelectNodes("association");
 
-                foreach (XmlNode associationNode in associationNodesList) {
+                foreach (XmlNode associationNode in associationNodesList)
+                {
 
                     string associationRelation = associationNode.Attributes["relation"].Value;
 
                     uint enID = UInt32.Parse(associationNode.SelectSingleNode("entity").Attributes["id"].Value);
 
-                    if(associationRelation == "Agent") {
+                    if (associationRelation == "Agent")
+                    {
                         eventDto.AddAgent(entities[enID]);
-                    }else if (associationRelation == "Theme") {
+                    }
+                    else if (associationRelation == "Theme")
+                    {
                         eventDto.AddTheme(entities[enID]);
-                    }else if (associationRelation == "Manner") {
+                    }
+                    else if (associationRelation == "Manner")
+                    {
                         eventDto.AddManner(entities[enID]);
-                    }else if (associationRelation == "Reason") {
+                    }
+                    else if (associationRelation == "Reason")
+                    {
                         eventDto.AddReason(entities[enID]);
                     }
 
@@ -141,7 +157,8 @@ namespace VirtualSuspect.Utils
 
                 EventNode newEventNode = kb.CreateNewEvent(eventDto);
 
-                if(eventXmlNode.SelectSingleNode("real").InnerText == "true") {
+                if (eventXmlNode.SelectSingleNode("real").InnerText == "true")
+                {
                     kb.AddEventToStory(newEventNode);
                 }
 
@@ -152,13 +169,15 @@ namespace VirtualSuspect.Utils
 
             XmlNode propertyNode;
 
-            if((propertyNode = xmlRoot.SelectSingleNode("/story/properties/name")) != null) {
+            if ((propertyNode = xmlRoot.SelectSingleNode("/story/properties/name")) != null)
+            {
 
                 properties.Add("Name", propertyNode.InnerText);
 
             }
 
-            if ((propertyNode = xmlRoot.SelectSingleNode("/story/properties/gender")) != null) {
+            if ((propertyNode = xmlRoot.SelectSingleNode("/story/properties/gender")) != null)
+            {
 
                 properties.Add("Gender", propertyNode.InnerText);
 

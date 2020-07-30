@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace VirtualSuspect.KnowledgeBase {
-    public class EventNode {
+namespace VirtualSuspect.KnowledgeBase
+{
+    public class EventNode
+    {
 
         private uint id;
 
@@ -27,17 +29,20 @@ namespace VirtualSuspect.KnowledgeBase {
 
         private bool originalStory;
 
-        public bool OriginalStory {
-            get {
+        public bool OriginalStory
+        {
+            get
+            {
                 return originalStory;
             }
         }
-        
+
         private int incriminatory;
 
         public int Incriminatory
         {
-            get {
+            get
+            {
                 return incriminatory;
             }
         }
@@ -46,11 +51,13 @@ namespace VirtualSuspect.KnowledgeBase {
 
         public ActionNode Action
         {
-            get{
+            get
+            {
                 return action;
             }
 
-            set {
+            set
+            {
                 action = value;
             }
         }
@@ -59,11 +66,13 @@ namespace VirtualSuspect.KnowledgeBase {
 
         public EntityNode Time
         {
-            get{
+            get
+            {
                 return time;
             }
 
-            set {
+            set
+            {
                 time = value;
             }
         }
@@ -77,7 +86,8 @@ namespace VirtualSuspect.KnowledgeBase {
                 return location;
             }
 
-            set {
+            set
+            {
                 location = value;
             }
         }
@@ -137,20 +147,23 @@ namespace VirtualSuspect.KnowledgeBase {
             }
         }
 
-        public float Know {
+        public float Know
+        {
 
-            get {
+            get
+            {
 
                 int totalNumEntities = ToMTable.Count;
-                int numKnownEntities = ToMTable.Count( x=> x.Value == true);
+                int numKnownEntities = ToMTable.Count(x => x.Value == true);
 
-                return 100.0f * numKnownEntities / totalNumEntities ;
+                return 100.0f * numKnownEntities / totalNumEntities;
             }
         }
 
         internal Dictionary<EntityNode, bool> ToMTable;
 
-        internal EventNode(uint id, int incriminatory, bool originalStory, ActionNode action) {
+        internal EventNode(uint id, int incriminatory, bool originalStory, ActionNode action)
+        {
 
             this.id = id;
             this.incriminatory = incriminatory;
@@ -166,7 +179,8 @@ namespace VirtualSuspect.KnowledgeBase {
 
         }
 
-        public EventNode(uint id, int incriminatory, bool originalStory, ActionNode action, EntityNode time, EntityNode location, EntityNode subject) {
+        public EventNode(uint id, int incriminatory, bool originalStory, ActionNode action, EntityNode time, EntityNode location, EntityNode subject)
+        {
 
             this.id = id;
             this.incriminatory = incriminatory;
@@ -189,103 +203,123 @@ namespace VirtualSuspect.KnowledgeBase {
 
         }
 
-        public void AddAgent(EntityNode agent) {
+        public void AddAgent(EntityNode agent)
+        {
 
             this.agent.Add(agent);
-            if( CanAddToToM(agent) )
+            if (CanAddToToM(agent))
                 ToMTable.Add(agent, false);
 
         }
 
-        public void AddAgent(params EntityNode[] agents) {
+        public void AddAgent(params EntityNode[] agents)
+        {
 
             this.agent.AddRange(agents);
-            foreach(EntityNode agent in agents) {
-                if(CanAddToToM(agent))
+            foreach (EntityNode agent in agents)
+            {
+                if (CanAddToToM(agent))
                     ToMTable.Add(agent, false);
             }
         }
 
-        public void AddAgent(List<EntityNode> agents) {
+        public void AddAgent(List<EntityNode> agents)
+        {
 
             this.agent.AddRange(agents);
-            foreach (EntityNode agent in agents) {
-                if( CanAddToToM(agent) )
+            foreach (EntityNode agent in agents)
+            {
+                if (CanAddToToM(agent))
                     ToMTable.Add(agent, false);
             }
         }
 
-        public void AddTheme(EntityNode theme) {
+        public void AddTheme(EntityNode theme)
+        {
 
             this.theme.Add(theme);
-            if( CanAddToToM(theme) )
+            if (CanAddToToM(theme))
                 ToMTable.Add(theme, false);
         }
 
-        public void AddTheme(params EntityNode[] themes) {
+        public void AddTheme(params EntityNode[] themes)
+        {
 
             this.theme.AddRange(themes);
-            foreach (EntityNode theme in themes) {
-                if( CanAddToToM(theme) )
+            foreach (EntityNode theme in themes)
+            {
+                if (CanAddToToM(theme))
                     ToMTable.Add(theme, false);
             }
         }
 
-        public void AddTheme(List<EntityNode> themes) {
+        public void AddTheme(List<EntityNode> themes)
+        {
 
             this.theme.AddRange(themes);
-            foreach (EntityNode theme in themes) {
-                if( CanAddToToM(theme) )
+            foreach (EntityNode theme in themes)
+            {
+                if (CanAddToToM(theme))
                     ToMTable.Add(theme, false);
             }
         }
 
-        public void AddManner(EntityNode manner) {
+        public void AddManner(EntityNode manner)
+        {
 
             this.manner.Add(manner);
-            if( CanAddToToM(manner) )
+            if (CanAddToToM(manner))
                 ToMTable.Add(manner, false);
         }
 
-        public void AddManner(params EntityNode[] manners) {
+        public void AddManner(params EntityNode[] manners)
+        {
 
             this.manner.AddRange(manners);
-            foreach (EntityNode manner in manners) {
-                if( CanAddToToM(manner) )
+            foreach (EntityNode manner in manners)
+            {
+                if (CanAddToToM(manner))
                     ToMTable.Add(manner, false);
             }
         }
 
-        public void AddManner(List<EntityNode> manners) {
+        public void AddManner(List<EntityNode> manners)
+        {
 
             this.manner.AddRange(manners);
-            foreach (EntityNode manner in manners) {
-                if( CanAddToToM(manner) )
+            foreach (EntityNode manner in manners)
+            {
+                if (CanAddToToM(manner))
                     ToMTable.Add(manner, false);
             }
         }
 
-        public void AddReason(EntityNode reason) {
+        public void AddReason(EntityNode reason)
+        {
 
             this.reason.Add(reason);
-            if( CanAddToToM(reason) )
+            if (CanAddToToM(reason))
                 ToMTable.Add(reason, false);
         }
 
-        public void AddReason(params EntityNode[] reasons) {
+        public void AddReason(params EntityNode[] reasons)
+        {
 
             this.reason.AddRange(reasons);
-            foreach (EntityNode reason in reasons) {
-                if( CanAddToToM(reason) )
+            foreach (EntityNode reason in reasons)
+            {
+                if (CanAddToToM(reason))
                     ToMTable.Add(reason, false);
             }
         }
 
-        public void AddReason(List<EntityNode> reasons) {
+        public void AddReason(List<EntityNode> reasons)
+        {
 
             this.reason.AddRange(reasons);
-            foreach (EntityNode reason in reasons) {
-                if( CanAddToToM(reason) )
+            foreach (EntityNode reason in reasons)
+            {
+                if (CanAddToToM(reason))
                     ToMTable.Add(reason, false);
             }
         }
@@ -297,9 +331,11 @@ namespace VirtualSuspect.KnowledgeBase {
         /// <param name="value"></param>
         /// <returns>returns the entity if there is a match or null otherwise</returns>
         /// 
-        public EntityNode FindEntity(KnowledgeBaseManager.DimentionsEnum type, string value) {
+        public EntityNode FindEntity(KnowledgeBaseManager.DimentionsEnum type, string value)
+        {
 
-            switch(type) {
+            switch (type)
+            {
                 case KnowledgeBaseManager.DimentionsEnum.Time:
                     if (Time.Value == value)
                         return time;
@@ -327,17 +363,19 @@ namespace VirtualSuspect.KnowledgeBase {
 
             return null;
         }
-        
-        public List<EntityNode> FindEntitiesByType(KnowledgeBaseManager.DimentionsEnum type) {
+
+        public List<EntityNode> FindEntitiesByType(KnowledgeBaseManager.DimentionsEnum type)
+        {
 
             List<EntityNode> nodes = new List<EntityNode>();
 
-            switch (type) {
+            switch (type)
+            {
                 case KnowledgeBaseManager.DimentionsEnum.Time:
                     nodes.Add(Time);
                     break;
                 case KnowledgeBaseManager.DimentionsEnum.Location:
-                    nodes.Add(Location); 
+                    nodes.Add(Location);
                     break;
                 case KnowledgeBaseManager.DimentionsEnum.Subject:
                     nodes.Add(Subject);
@@ -364,17 +402,20 @@ namespace VirtualSuspect.KnowledgeBase {
         /// Marks an entitiy Node as known by the user
         /// </summary>
         /// <param name="node"></param>
-        public void TagAsKnown(EntityNode node) {
+        public void TagAsKnown(EntityNode node)
+        {
 
             ToMTable[node] = true;
         }
 
-        public bool IsKnown(EntityNode node) {
+        public bool IsKnown(EntityNode node)
+        {
 
             return ToMTable[node];
         }
 
-        public bool ContainsEntity(EntityNode node) {
+        public bool ContainsEntity(EntityNode node)
+        {
 
             return Time == node ||
                     Location == node ||
@@ -386,7 +427,8 @@ namespace VirtualSuspect.KnowledgeBase {
 
         }
 
-        private bool CanAddToToM(EntityNode node) {
+        private bool CanAddToToM(EntityNode node)
+        {
 
             return ToMTable.Keys.Count(x => x == node) == 0;
 

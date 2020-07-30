@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 using VirtualSuspect.KnowledgeBase;
 using VirtualSuspect.Query;
 
-namespace VirtualSuspectNaturalLanguage.Component {
-    public static class MannerNaturalLanguageGenerator {
+namespace VirtualSuspectNaturalLanguage.Component
+{
+    public static class MannerNaturalLanguageGenerator
+    {
 
-        public static string Generate(QueryResult result, Dictionary<KnowledgeBaseManager.DimentionsEnum, List<QueryResult.Result>> resultsByDimension) {
+        public static string Generate(QueryResult result, Dictionary<KnowledgeBaseManager.DimentionsEnum, List<QueryResult.Result>> resultsByDimension)
+        {
 
             string answer = "";
 
@@ -32,8 +35,8 @@ namespace VirtualSuspectNaturalLanguage.Component {
 
             Dictionary<EntityNode, int> mergedManners = MergeAndSumMannersCardinality(resultsByDimension[KnowledgeBaseManager.DimentionsEnum.Manner]);
 
-            answer += CombineValues("and", mergedManners.Select(x=>x.Key.Speech));
-                
+            answer += CombineValues("and", mergedManners.Select(x => x.Key.Speech));
+
             return answer;
         }
 
@@ -57,20 +60,25 @@ namespace VirtualSuspectNaturalLanguage.Component {
             return combinedValues;
         }
 
-        private static Dictionary<EntityNode, int> MergeAndSumMannersCardinality(List<QueryResult.Result> manners) {
+        private static Dictionary<EntityNode, int> MergeAndSumMannersCardinality(List<QueryResult.Result> manners)
+        {
 
             Dictionary<EntityNode, int> mannersWithCardinality = new Dictionary<EntityNode, int>();
 
-            foreach (QueryResult.Result mannerResult in manners) {
+            foreach (QueryResult.Result mannerResult in manners)
+            {
 
-                foreach (IStoryNode mannerNode in mannerResult.values) {
+                foreach (IStoryNode mannerNode in mannerResult.values)
+                {
 
-                    if (!mannersWithCardinality.ContainsKey((EntityNode)mannerNode)) {
+                    if (!mannersWithCardinality.ContainsKey((EntityNode)mannerNode))
+                    {
 
                         mannersWithCardinality.Add((EntityNode)mannerNode, mannerResult.cardinality);
 
                     }
-                    else {
+                    else
+                    {
 
                         mannersWithCardinality[(EntityNode)mannerNode] += mannerResult.cardinality;
                     }

@@ -6,23 +6,26 @@ using System.Threading.Tasks;
 
 namespace VirtualSuspect.Query
 {
-    public class QueryDto{
+    public class QueryDto
+    {
 
         #region enumerates
 
         public enum QueryTypeEnum { YesOrNo, GetInformation, GetKnowledge };
 
-        public enum OperatorEnum { Equal, Between};
+        public enum OperatorEnum { Equal, Between };
         #endregion
 
         /// <summary>
         /// Type of query
         /// </summary>
         private QueryTypeEnum queryType;
-        
-        public QueryTypeEnum QueryType {
 
-            get {
+        public QueryTypeEnum QueryType
+        {
+
+            get
+            {
                 return queryType;
             }
 
@@ -33,9 +36,11 @@ namespace VirtualSuspect.Query
         /// </summary>
         private List<IConditionPredicate> queryConditions;
 
-        public List<IConditionPredicate> QueryConditions {
+        public List<IConditionPredicate> QueryConditions
+        {
 
-            get {
+            get
+            {
                 return queryConditions;
             }
 
@@ -46,7 +51,8 @@ namespace VirtualSuspect.Query
         /// </summary>
         private List<IFocusPredicate> queryFocus;
 
-        public List<IFocusPredicate> QueryFocus{
+        public List<IFocusPredicate> QueryFocus
+        {
 
             get
             {
@@ -70,7 +76,8 @@ namespace VirtualSuspect.Query
 
         }
 
-        public QueryDto(QueryTypeEnum type) {
+        public QueryDto(QueryTypeEnum type)
+        {
 
             this.queryType = type;
 
@@ -81,13 +88,15 @@ namespace VirtualSuspect.Query
             knowledgeFocus = new List<IKnowledgePredicate>();
         }
 
-        public void AddCondition(IConditionPredicate cond) {
+        public void AddCondition(IConditionPredicate cond)
+        {
 
             queryConditions.Add(cond);
-        
+
         }
 
-        public void AddFocus(IFocusPredicate focus) {
+        public void AddFocus(IFocusPredicate focus)
+        {
 
             queryFocus.Add(focus);
         }

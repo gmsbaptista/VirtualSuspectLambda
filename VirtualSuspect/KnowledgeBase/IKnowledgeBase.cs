@@ -5,8 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using VirtualSuspect.Query;
 
-namespace VirtualSuspect.KnowledgeBase {
-    interface IKnowledgeBase{
+namespace VirtualSuspect.KnowledgeBase
+{
+    interface IKnowledgeBase
+    {
 
         /// <summary>
         /// Accessor for the virtual agent's properties

@@ -5,9 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using VirtualSuspect.Query;
 
-namespace VirtualSuspect.Handler {
+namespace VirtualSuspect.Handler
+{
 
-    interface IPreHandler {
+    interface IPreHandler
+    {
 
         QueryDto Modify(QueryDto query);
 

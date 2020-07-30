@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 using VirtualSuspect.KnowledgeBase;
 using VirtualSuspect.Query;
 
-namespace VirtualSuspectNaturalLanguage.Component {
+namespace VirtualSuspectNaturalLanguage.Component
+{
 
-    public static class LocationNaturalLanguageGenerator {
+    public static class LocationNaturalLanguageGenerator
+    {
 
-        public static string Generate(QueryResult result, Dictionary<KnowledgeBaseManager.DimentionsEnum, List<QueryResult.Result>> resultsByDimension) {
+        public static string Generate(QueryResult result, Dictionary<KnowledgeBaseManager.DimentionsEnum, List<QueryResult.Result>> resultsByDimension)
+        {
 
             string answer = "";
 
@@ -37,8 +40,9 @@ namespace VirtualSuspectNaturalLanguage.Component {
 
             //Group by Type
             //Dictionary<string, List<EntityNode>> locationGroupByType = GroupLocationByType(mergedLocations);
-            
-            for (int i = 0; i < mergedLocations.Count; i++){
+
+            for (int i = 0; i < mergedLocations.Count; i++)
+            {
 
                 //TODO: test some types to use "the"
                 EntityNode node = mergedLocations.ElementAt(i).Key;
@@ -64,23 +68,29 @@ namespace VirtualSuspectNaturalLanguage.Component {
 
         #region Utility Methods
 
-        private static string NaturalLanguageGetFrequency(int number) {
+        private static string NaturalLanguageGetFrequency(int number)
+        {
 
             string frequencyWord = "";
 
-            if (number == 0) {
+            if (number == 0)
+            {
                 frequencyWord = "never";
             }
-            else if (number == 1) {
+            else if (number == 1)
+            {
                 frequencyWord = "once";
             }
-            else if (number == 2) {
+            else if (number == 2)
+            {
                 frequencyWord = "twice";
             }
-            else if (number >= 3 && number <= 6) {
+            else if (number >= 3 && number <= 6)
+            {
                 frequencyWord = number + " times";
             }
-            else {
+            else
+            {
                 Random rng = new Random();
                 int randomNumber = rng.Next(2);
                 if (randomNumber == 0)
@@ -92,18 +102,22 @@ namespace VirtualSuspectNaturalLanguage.Component {
             return frequencyWord;
         }
 
-        private static int GetNumberAgents(QueryDto query) {
+        private static int GetNumberAgents(QueryDto query)
+        {
 
             return query.QueryConditions.Count(x => x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Agent);
         }
 
-        private static Dictionary<EntityNode, int> MergeAndSumLocationsCardinality(List<QueryResult.Result> locations, bool inTrain) {
+        private static Dictionary<EntityNode, int> MergeAndSumLocationsCardinality(List<QueryResult.Result> locations, bool inTrain)
+        {
 
             Dictionary<EntityNode, int> locationsWithCardinality = new Dictionary<EntityNode, int>();
 
-            foreach (QueryResult.Result locationResult in locations) {
+            foreach (QueryResult.Result locationResult in locations)
+            {
 
-                foreach (IStoryNode locationNode in locationResult.values) {
+                foreach (IStoryNode locationNode in locationResult.values)
+                {
 
                     //hard coded value
                     if (inTrain && locationResult.values.Count > 1 && locationNode.Value != "Train")
@@ -115,12 +129,14 @@ namespace VirtualSuspectNaturalLanguage.Component {
                         continue;
                     }
 
-                    if (!locationsWithCardinality.ContainsKey((EntityNode)locationNode)) {
+                    if (!locationsWithCardinality.ContainsKey((EntityNode)locationNode))
+                    {
 
                         locationsWithCardinality.Add((EntityNode)locationNode, locationResult.cardinality);
 
                     }
-                    else {
+                    else
+                    {
 
                         locationsWithCardinality[(EntityNode)locationNode] += locationResult.cardinality;
                     }
