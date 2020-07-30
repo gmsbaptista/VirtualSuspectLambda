@@ -188,7 +188,7 @@ namespace VirtualSuspectLambda
                         break;
                     case "NameIntent":
                         log.LogLine($"NameIntent: say your name");
-
+                        //hard coded value
                         speechText = "My name is Peter";
 
                         BuildAnswer(ref innerResponse, ref prompt, speechText, true);
@@ -340,7 +340,6 @@ namespace VirtualSuspectLambda
         /// <param name="log"></param>
         /// <param name="intentRequest"></param>
         /// <param name="query"></param>
-        /// <returns>string</returns>
         private void QuestionAnswer(ref IOutputSpeech innerResponse, ref IOutputSpeech prompt, ILambdaLogger log,
             IntentRequest intentRequest, QueryDto query)
         {
@@ -483,6 +482,7 @@ namespace VirtualSuspectLambda
                         else
                         {
                             string prevTheme = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Theme, out bool themeSuccess);
+                            //hard coded value
                             if (themeSuccess && prevTheme == "Delivery Guy")
                             {
                                 log.LogLine($"use Delivery Guy as agent");
@@ -594,6 +594,7 @@ namespace VirtualSuspectLambda
                         else
                         {
                             string prevTheme = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Theme, out bool themeSuccess);
+                            //hard coded value
                             if (themeSuccess && (prevTheme == "Castle Town" || prevTheme == "Silvermoon City"))
                             {
                                 log.LogLine($"use " + prevTheme + " as location");
@@ -661,6 +662,7 @@ namespace VirtualSuspectLambda
                         else
                         {
                             string prevTheme = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Theme, out bool themeSuccess);
+                            //hard coded value
                             if (themeSuccess && prevTheme == "Gun")
                             {
                                 log.LogLine($"use Gun as manner");
@@ -714,6 +716,7 @@ namespace VirtualSuspectLambda
                             string prevAgent = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Agent, out bool agentSuccess);
                             string prevLocation = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Location, out bool locationSuccess);
                             string prevManner = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Manner, out bool mannerSuccess);
+                            //hard coded value
                             if (agentSuccess || locationSuccess || mannerSuccess)
                             {
                                 if (agentSuccess && prevAgent == "Delivery Guy")
@@ -1021,18 +1024,21 @@ namespace VirtualSuspectLambda
                     switch (verb)
                     {
                         case "have":
+                            //hard coded value
                             if (query.QueryConditions.Any(x => x.GetValues().Any(y => y == "Large Cup of Coffee")))
                             {
                                 query.AddCondition(new ActionEqualConditionPredicate("Drink"));
                             }
                             break;
                         case "give":
+                            //hard coded value
                             if (query.QueryConditions.Any(x => x.GetValues().Any(y => y == "John Frey's Contact")))
                             {
                                 query.AddCondition(new ActionEqualConditionPredicate("Get"));
                             }
                             break;
                         case "get":
+                            //hard coded value
                             if (query.QueryConditions.Any(x => x.GetValues().Any(y => y == "John Frey's Contact")))
                             {
                                 query.AddCondition(new ActionEqualConditionPredicate("Get"));
@@ -1057,6 +1063,7 @@ namespace VirtualSuspectLambda
                             }
                             break;
                         case "use":
+                            //hard coded value
                             specialVerb = true;
                             if (query.QueryConditions.Any(x => (x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Theme && x.GetValues().Any(y => y == "Gun"))))
                             {
@@ -1065,6 +1072,7 @@ namespace VirtualSuspectLambda
                             }
                             break;
                         case "go":
+                            //hard coded value
                             specialVerb = true;
                             if (query.QueryConditions.Any(x => (x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Theme && x.GetValues().Any(y => y == "Jewelry Shop"))))
                             {
@@ -1123,10 +1131,12 @@ namespace VirtualSuspectLambda
                     switch (storyEvent)
                     {
                         case "the robbery":
+                            //hard coded value
                             query.AddCondition(new ActionEqualConditionPredicate("Rob"));
                             query.AddCondition(new ThemeEqualConditionPredicate(new List<string>() { "Jewelry Shop" }));
                             break;
                         case "the sale":
+                            //hard coded value
                             query.AddCondition(new ActionEqualConditionPredicate("Sell"));
                             query.AddCondition(new ThemeEqualConditionPredicate(new List<string>() { "Stolen Necklace" }));
                             break;
@@ -1389,7 +1399,7 @@ namespace VirtualSuspectLambda
             {
                 time += ":00:00";
             }
-
+            //hard coded value
             return date_elements[2] + "/" + date_elements[1] + "/" + "2016" + "T" + time;
         }
 
@@ -1651,7 +1661,7 @@ namespace VirtualSuspectLambda
             {
                 "there", "him", "it", "that day", "that time", "then", "that place", "that", "its", "he"
             };
-
+            //hard coded value
             return directPronouns.Contains(pronoun);
         }
 
@@ -1666,7 +1676,7 @@ namespace VirtualSuspectLambda
             {
                 "something", "someone", "anything", "anyone", "alone"
             };
-
+            //hard coded value
             return indirectPronouns.Contains(pronoun);
         }
 
@@ -1700,6 +1710,7 @@ namespace VirtualSuspectLambda
             public void UpdateResult(QueryResult res)
             {
                 this.result = res;
+                //hard coded value
                 this.trainFlag = res.Results.Any(x => x.values.Any(y => y.Value == "Train"));
             }
 
@@ -1714,6 +1725,7 @@ namespace VirtualSuspectLambda
                     entity = this.result.Results.ElementAt(0).values.ElementAt(0).Value;
                     success = true;
                 }
+                //hard coded value
                 else if (this.result.Results.Count == 1 &&
                     this.result.Results.ElementAt(0).dimension == KnowledgeBaseManager.DimentionsEnum.Manner &&
                     dimension == KnowledgeBaseManager.DimentionsEnum.Theme &&

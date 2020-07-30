@@ -178,7 +178,7 @@ namespace VirtualSuspectNaturalLanguage.Component {
         }
 
         private static string ConvertDayToCardinal(int day) {
-
+            //hard coded value
             switch (day) {
                 case 1:
                     return "first";

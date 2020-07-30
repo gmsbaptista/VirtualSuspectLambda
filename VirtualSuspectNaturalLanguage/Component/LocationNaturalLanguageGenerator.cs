@@ -17,6 +17,7 @@ namespace VirtualSuspectNaturalLanguage.Component {
             bool hasAction = result.Query.QueryConditions.Count(x => x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Action) > 0;
             bool inTrain = true;
 
+            //hard coded value
             if (hasAction && result.Query.QueryConditions.Find(x => x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Action).GetValues().ElementAt(0) == "Travel")
             {
                 answer += "I travelled from";
@@ -42,7 +43,7 @@ namespace VirtualSuspectNaturalLanguage.Component {
                 //TODO: test some types to use "the"
                 EntityNode node = mergedLocations.ElementAt(i).Key;
 
-                answer += " " + GetPreposition(node) + " " + node.Speech;
+                answer += " " + GetPreposition(node, inTrain) + " " + node.Speech;
 
                 /*if(mergedLocations.Count > 1 && inTrain)
                 {
@@ -104,6 +105,7 @@ namespace VirtualSuspectNaturalLanguage.Component {
 
                 foreach (IStoryNode locationNode in locationResult.values) {
 
+                    //hard coded value
                     if (inTrain && locationResult.values.Count > 1 && locationNode.Value != "Train")
                     {
                         continue;
@@ -128,17 +130,25 @@ namespace VirtualSuspectNaturalLanguage.Component {
             return locationsWithCardinality;
         }
 
-        public static string GetPreposition(EntityNode entity)
+        public static string GetPreposition(EntityNode entity, bool inTrain)
         {
             string preposition = "";
 
+            //hard coded value
             if (entity.Type == "Street" || entity.Type == "Train")
             {
                 preposition = "in";
             }
             else if (entity.Type == "City")
             {
-                preposition = "";
+                if (!inTrain)
+                {
+                    preposition = "";
+                }
+                else
+                {
+                    preposition = "in";
+                }
             }
             else
             {

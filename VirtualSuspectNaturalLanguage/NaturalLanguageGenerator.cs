@@ -140,10 +140,12 @@ namespace VirtualSuspectNaturalLanguage
                     {
                         answer = "It's in " + result.KnowledgeResults.ElementAt(0);
                     }
+                    //hard coded value
                     else if (result.Query.QueryConditions.ElementAt(0).GetValues().ElementAt(0) == "Castle Town")
                     {
                         answer = "It's west of Silvermoon City";
                     }
+                    //hard coded value
                     else if (result.Query.QueryConditions.ElementAt(0).GetValues().ElementAt(0) == "Silvermoon City")
                     {
                         answer = "It's east of Castle Town";

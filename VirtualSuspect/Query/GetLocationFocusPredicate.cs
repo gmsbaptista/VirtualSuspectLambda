@@ -10,7 +10,7 @@ namespace VirtualSuspect.Query
 
         public Func<EventNode, QueryResult.Result> CreateFunction() {
             return delegate (EventNode node) {    
-
+                //hard coded value
                 if (node.Action.Value == "Travel")
                 {
                     List<IStoryNode> values = new List<IStoryNode>() { node.Location };
