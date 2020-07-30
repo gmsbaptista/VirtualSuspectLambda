@@ -90,10 +90,7 @@
     <Compile Include="Handler\ReceiverTheoryOfMindHandler.cs" />
     <Compile Include="Handler\SenderTheoryOfMindHandler.cs" />
     <Compile Include="Handler\StrategySelectorHandler.cs" />
-    <Compile Include="Utils\AnswerGenerator.cs" />
     <Compile Include="Utils\KnowledgeBaseParser.cs" />
-    <Compile Include="Exception\MessageFieldException.cs" />
-    <Compile Include="Utils\QuestionParser.cs" />
     <Compile Include="VirtualSuspectQuestionAnswer.cs" />
   </ItemGroup>
   <ItemGroup />
