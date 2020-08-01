@@ -152,15 +152,12 @@ namespace VirtualSuspect
 
         internal List<EventNode> FilterEvents(List<IConditionPredicate> predicates, out bool backupOriginal)
         {
-
             backupOriginal = false;
-
             List<EventNode> queryEvents = knowledgeBase.Story;
 
             //Select entities from the dimension
             foreach (IConditionPredicate predicate in predicates)
             {
-
                 queryEvents = queryEvents.FindAll(predicate.CreatePredicate());
             }
 
@@ -171,17 +168,14 @@ namespace VirtualSuspect
                 //Select entities from the dimension
                 foreach (IConditionPredicate predicate in predicates)
                 {
-
                     queryEvents = queryEvents.FindAll(predicate.CreatePredicate());
                 }
 
                 if (queryEvents.Count != 0)
                 {
-
                     backupOriginal = true;
                 }
             }
-
             return queryEvents;
         }
 
