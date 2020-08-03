@@ -35,15 +35,12 @@ namespace VirtualSuspect.Handler
                     break;
 
                 case VirtualSuspectQuestionAnswer.LieStrategy.Improvise:
-
                     bool backupToOriginal;
-
                     //Get a list of incriminatory and active events
                     IEnumerable<EventNode> nodes = virtualSuspect.FilterEvents(query.QueryConditions, out backupToOriginal).Where(x => x.Incriminatory > 0);
 
                     foreach (EventNode eventNode in nodes)
                     {
-
                         Dictionary<KnowledgeBaseManager.DimentionsEnum, List<EntityNode>> NonAddedEntities;
 
                         EventNode duplicateNode = DuplicateEvent(eventNode, virtualSuspect.KnowledgeBase.getNextNodeId("event"), out NonAddedEntities, true);
@@ -66,118 +63,87 @@ namespace VirtualSuspect.Handler
                         //Add a random Location if needed
                         if (NonAddedEntities[KnowledgeBaseManager.DimentionsEnum.Location].Count > 0)
                         {
-
                             Dictionary<EntityNode, float> SimilarLocationEntities = virtualSuspect.KnowledgeBase.ExtractSimilarEntities(eventNode.Location, true);
-
                             //Iterate all the similar location and retrieve the best one
                             foreach (EntityNode similarLocation in SimilarLocationEntities.OrderByDescending(x => x.Value).Select(x => x.Key))
                             {
-
                                 //TODO: Perform Test to check if location is possible(Setting to the first available)
                                 //TODO: Improve Space-Time Coherence
-
                                 duplicateNode.Location = similarLocation;
                                 duplicateNode.ToMTable.Add(duplicateNode.Location, false);
                                 break;
-
                             }
                         }
                         /*
                         //Get Virtual Agent EntityNode
                         EntityNode SelfAgentNode = virtualSuspect.KnowledgeBase.Entities.Find(x => x.Value == virtualSuspect.KnowledgeBase.Properties["Name"]);
                         bool ContainsSelfAgentNode = eventNode.Agent.Contains(SelfAgentNode);
-
                         //Add Self Agent if needed
                         if(ContainsSelfAgentNode && NonAddedEntities[KnowledgeBaseManager.DimentionsEnum.Agent].Count > 0){
-                            
                             duplicateNode.AddAgent(SelfAgentNode);
-
                             NonAddedEntities[KnowledgeBaseManager.DimentionsEnum.Agent].Remove(SelfAgentNode);
-
                         }
                         */
                         //Fill the rest of agents
                         foreach (EntityNode OldAgentNode in NonAddedEntities[KnowledgeBaseManager.DimentionsEnum.Agent])
                         {
-
                             Dictionary<EntityNode, float> SimilarAgentsEntities = virtualSuspect.KnowledgeBase.ExtractSimilarEntities(OldAgentNode, true);
-
                             foreach (EntityNode similarAgent in SimilarAgentsEntities.OrderByDescending(x => x.Value).Select(x => x.Key))
                             {
-
                                 //If Agent Already Exists
                                 if (!duplicateNode.Agent.Contains(similarAgent))
                                 {
                                     duplicateNode.AddAgent(similarAgent);
                                     break;
                                 }
-
                             }
-
                         }
 
                         //Fill the rest of theme
                         foreach (EntityNode OldThemeNode in NonAddedEntities[KnowledgeBaseManager.DimentionsEnum.Theme])
                         {
-
                             Dictionary<EntityNode, float> SimilarThemesEntities = virtualSuspect.KnowledgeBase.ExtractSimilarEntities(OldThemeNode, true);
-
                             foreach (EntityNode similarTheme in SimilarThemesEntities.OrderByDescending(x => x.Value).Select(x => x.Key))
                             {
-
                                 if (!duplicateNode.Theme.Contains(similarTheme))
                                 {
                                     duplicateNode.AddTheme(similarTheme);
                                     break;
                                 }
-
                             }
-
                         }
                         //Fill the rest of reasons
                         foreach (EntityNode OldReasonNode in NonAddedEntities[KnowledgeBaseManager.DimentionsEnum.Reason])
                         {
-
                             Dictionary<EntityNode, float> SimilarReasonsEntities = virtualSuspect.KnowledgeBase.ExtractSimilarEntities(OldReasonNode, true);
-
                             foreach (EntityNode similarReason in SimilarReasonsEntities.OrderByDescending(x => x.Value).Select(x => x.Key))
                             {
-
                                 if (!duplicateNode.Reason.Contains(similarReason))
                                 {
                                     duplicateNode.AddReason(similarReason);
                                     break;
                                 }
-
                             }
-
                         }
 
                         //Fill the rest of manners
                         foreach (EntityNode OldMannerNode in NonAddedEntities[KnowledgeBaseManager.DimentionsEnum.Manner])
                         {
-
                             Dictionary<EntityNode, float> SimilarMannersEntities = virtualSuspect.KnowledgeBase.ExtractSimilarEntities(OldMannerNode, true);
-
                             foreach (EntityNode similarManner in SimilarMannersEntities.OrderByDescending(x => x.Value).Select(x => x.Key))
                             {
-
                                 if (!duplicateNode.Manner.Contains(similarManner))
                                 {
                                     duplicateNode.AddManner(similarManner);
                                     break;
                                 }
-
                             }
-
                         }
 
                         //Add event to the events list
                         virtualSuspect.KnowledgeBase.Events.Add(duplicateNode);
-
                         virtualSuspect.KnowledgeBase.ReplaceEvent(eventNode, duplicateNode);
                     }
-
                     break;
             }
 
