@@ -596,7 +596,7 @@ namespace VirtualSuspectLambda
                         {
                             string prevTheme = lastInteraction.GetEntity(KnowledgeBaseManager.DimentionsEnum.Theme, out bool themeSuccess);
                             //hard coded value
-                            if (themeSuccess && (prevTheme == "Castle Town" || prevTheme == "Silvermoon City"))
+                            if (themeSuccess && (prevTheme == "Rose Town" || prevTheme == "Pacific City"))
                             {
                                 log.LogLine($"use " + prevTheme + " as location");
                                 query.AddCondition(new LocationEqualConditionPredicate(prevTheme));
@@ -726,7 +726,7 @@ namespace VirtualSuspectLambda
                                     List<string> themes = new List<string>() { prevAgent };
                                     query.AddCondition(new ThemeEqualConditionPredicate(themes));
                                 }
-                                if (locationSuccess && (prevLocation == "Castle Town" || prevLocation == "Silvermoon City"))
+                                if (locationSuccess && (prevLocation == "Rose Town" || prevLocation == "Pacific City"))
                                 {
                                     log.LogLine($"use " + prevLocation + "as theme");
                                     List<string> themes = new List<string>() { prevLocation };
@@ -1033,14 +1033,14 @@ namespace VirtualSuspectLambda
                             break;
                         case "give":
                             //hard coded value
-                            if (query.QueryConditions.Any(x => x.GetValues().Any(y => y == "John Frey's Contact")))
+                            if (query.QueryConditions.Any(x => x.GetValues().Any(y => y == "David Turner's Contact")))
                             {
                                 query.AddCondition(new ActionEqualConditionPredicate("Get"));
                             }
                             break;
                         case "get":
                             //hard coded value
-                            if (query.QueryConditions.Any(x => x.GetValues().Any(y => y == "John Frey's Contact")))
+                            if (query.QueryConditions.Any(x => x.GetValues().Any(y => y == "David Turner's Contact")))
                             {
                                 query.AddCondition(new ActionEqualConditionPredicate("Get"));
                             }
@@ -1054,11 +1054,11 @@ namespace VirtualSuspectLambda
                                 }
                                 query.AddCondition(new ActionEqualConditionPredicate("Buy"));
                             }
-                            else if (query.QueryConditions.Any(x => x.GetValues().Any(y => y == "Ticket to Silvermoon City" || y == "Ticket to Castle Town")))
+                            else if (query.QueryConditions.Any(x => x.GetValues().Any(y => y == "Ticket to Pacific City" || y == "Ticket to Rose Town")))
                             {
                                 query.AddCondition(new ActionEqualConditionPredicate("Buy"));
                             }
-                            else if (query.QueryConditions.Any(x => x.GetValues().Any(y => y == "Stolen Necklace")))
+                            else if (query.QueryConditions.Any(x => x.GetValues().Any(y => y == "Stolen Painting")))
                             {
                                 query.AddCondition(new ActionEqualConditionPredicate("Steal"));
                             }
@@ -1075,26 +1075,26 @@ namespace VirtualSuspectLambda
                         case "go":
                             //hard coded value
                             specialVerb = true;
-                            if (query.QueryConditions.Any(x => (x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Theme && x.GetValues().Any(y => y == "Jewelry Shop"))))
+                            if (query.QueryConditions.Any(x => (x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Theme && x.GetValues().Any(y => y == "Gallery"))))
                             {
-                                query.QueryConditions.Remove(query.QueryConditions.Find(x => (x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Theme && x.GetValues().Any(y => y == "Jewelry Shop"))));
-                                query.AddCondition(new LocationEqualConditionPredicate("Jewelry Shop"));
+                                query.QueryConditions.Remove(query.QueryConditions.Find(x => (x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Theme && x.GetValues().Any(y => y == "Gallery"))));
+                                query.AddCondition(new LocationEqualConditionPredicate("Gallery"));
                             }
-                            else if (query.QueryConditions.Any(x => x.GetValues().Any(y => y == "Castle Town" || y == "Silvermoon City")))
+                            else if (query.QueryConditions.Any(x => x.GetValues().Any(y => y == "Rose Town" || y == "Pacific City")))
                             {
                                 query.AddCondition(new ActionEqualConditionPredicate("Travel"));
                                 specialVerb = true;
-                                if (query.QueryConditions.Any(x => (x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Location && x.GetValues().Any(y => y == "Silvermoon City" || y == "Castle Town"))))
+                                if (query.QueryConditions.Any(x => (x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Location && x.GetValues().Any(y => y == "Pacific City" || y == "Rose Town"))))
                                 {
-                                    if (query.QueryConditions.Any(x => (x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Location && x.GetValues().Any(y => y == "Silvermoon City"))))
+                                    if (query.QueryConditions.Any(x => (x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Location && x.GetValues().Any(y => y == "Pacific City"))))
                                     {
-                                        query.QueryConditions.Remove(query.QueryConditions.Find(x => (x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Location && x.GetValues().Any(y => y == "Silvermoon City"))));
-                                        query.AddCondition(new ThemeEqualConditionPredicate(new List<string>() { "Silvermoon City" }));
+                                        query.QueryConditions.Remove(query.QueryConditions.Find(x => (x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Location && x.GetValues().Any(y => y == "Pacific City"))));
+                                        query.AddCondition(new ThemeEqualConditionPredicate(new List<string>() { "Pacific City" }));
                                     }
                                     else
                                     {
-                                        query.QueryConditions.Remove(query.QueryConditions.Find(x => (x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Location && x.GetValues().Any(y => y == "Castle Town"))));
-                                        query.AddCondition(new ThemeEqualConditionPredicate(new List<string>() { "Castle Town" }));
+                                        query.QueryConditions.Remove(query.QueryConditions.Find(x => (x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Location && x.GetValues().Any(y => y == "Rose Town"))));
+                                        query.AddCondition(new ThemeEqualConditionPredicate(new List<string>() { "Rose Town" }));
                                     }
                                 }
                             }
@@ -1134,12 +1134,12 @@ namespace VirtualSuspectLambda
                         case "the robbery":
                             //hard coded value
                             query.AddCondition(new ActionEqualConditionPredicate("Rob"));
-                            query.AddCondition(new ThemeEqualConditionPredicate(new List<string>() { "Jewelry Shop" }));
+                            query.AddCondition(new ThemeEqualConditionPredicate(new List<string>() { "Gallery" }));
                             break;
                         case "the sale":
                             //hard coded value
                             query.AddCondition(new ActionEqualConditionPredicate("Sell"));
-                            query.AddCondition(new ThemeEqualConditionPredicate(new List<string>() { "Stolen Necklace" }));
+                            query.AddCondition(new ThemeEqualConditionPredicate(new List<string>() { "Stolen Painting" }));
                             break;
                         default:
                             log.LogLine($"no specific logic for this event");
@@ -1401,7 +1401,7 @@ namespace VirtualSuspectLambda
                 time += ":00:00";
             }
             //hard coded value
-            return date_elements[2] + "/" + date_elements[1] + "/" + "2016" + "T" + time;
+            return date_elements[2] + "/" + date_elements[1] + "/" + "2020" + "T" + time;
         }
 
         /// <summary>
@@ -1660,7 +1660,7 @@ namespace VirtualSuspectLambda
         {
             List<string> directPronouns = new List<string>()
             {
-                "there", "him", "it", "that day", "that time", "then", "that place", "that", "its", "he"
+                "there", "him", "it", "that day", "that time", "then", "that place", "that", "its", "he", "they", "them"
             };
             //hard coded value
             return directPronouns.Contains(pronoun);

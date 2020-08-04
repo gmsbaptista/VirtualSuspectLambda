@@ -1874,10 +1874,12 @@
                     "values": [
                         {
                             "name": {
-                                "value": "Sit",
-                                "synonyms": [
-                                    "sat"
-                                ]
+                                "value": "it"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "that"
                             }
                         },
                         {
@@ -1898,19 +1900,17 @@
                         },
                         {
                             "name": {
-                                "value": "it"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "that"
-                            }
-                        },
-                        {
-                            "name": {
                                 "value": "Keep",
                                 "synonyms": [
                                     "kept"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Sit",
+                                "synonyms": [
+                                    "sat"
                                 ]
                             }
                         },
@@ -2000,6 +2000,18 @@
                         },
                         {
                             "name": {
+                                "value": "Intimidate",
+                                "synonyms": [
+                                    "bullied",
+                                    "bully",
+                                    "scared",
+                                    "scare",
+                                    "intimidated"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
                                 "value": "Follow",
                                 "synonyms": [
                                     "stalked",
@@ -2082,13 +2094,33 @@
                     ]
                 },
                 {
-                    "name": "agent_slot_type",
+                    "name": "subject_slot_type",
                     "values": [
                         {
                             "name": {
-                                "value": "he"
+                                "value": "Delivery",
+                                "synonyms": [
+                                    "the painting",
+                                    "the delivery",
+                                    "it",
+                                    "parcel"
+                                ]
                             }
                         },
+                        {
+                            "name": {
+                                "value": "Peter Turner",
+                                "synonyms": [
+                                    "you",
+                                    "Peter"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "agent_slot_type",
+                    "values": [
                         {
                             "name": {
                                 "value": "alone"
@@ -2106,34 +2138,58 @@
                         },
                         {
                             "name": {
+                                "value": "them"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "they"
+                            }
+                        },
+                        {
+                            "name": {
                                 "value": "him"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "he"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "David Turner",
+                                "synonyms": [
+                                    "buyer",
+                                    "a buyer",
+                                    "the buyer",
+                                    "the collector",
+                                    "John",
+                                    "John Frey",
+                                    "David"
+                                ]
                             }
                         },
                         {
                             "name": {
                                 "value": "Delivery Guy",
                                 "synonyms": [
+                                    "your neighbour",
                                     "delivery boy",
-                                    "the delivery guy",
-                                    "delivery guy",
                                     "the delivery boy",
-                                    "neighbour"
+                                    "delivery guy",
+                                    "the delivery guy"
                                 ]
                             }
                         },
                         {
                             "name": {
-                                "value": "Jaime Reyes",
+                                "value": "James Miller",
                                 "synonyms": [
-                                    "Jaime"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "John Frey",
-                                "synonyms": [
-                                    "John"
+                                    "your friend",
+                                    "Jaime",
+                                    "Jaime Reyes",
+                                    "James"
                                 ]
                             }
                         }
@@ -2154,96 +2210,53 @@
                         },
                         {
                             "name": {
-                                "value": "Silvermoon City Train Station",
+                                "value": "Pacific City",
                                 "synonyms": [
-                                    "silvermoon station",
-                                    "silver moon station",
-                                    "the silver moon station",
-                                    "the silver moon city station",
-                                    "the silver moon train station",
-                                    "the silver moon city train station",
-                                    "silver moon train station",
-                                    "silver moon city station",
-                                    "silver moon city train station",
-                                    "the silvermoon city station",
-                                    "the silvermoon train station",
-                                    "the silvermoon city train station"
+                                    "pacific town",
+                                    "pacific"
                                 ]
                             }
                         },
                         {
                             "name": {
-                                "value": "Silvermoon City Park",
+                                "value": "Pacific City Train Station",
+                                "synonyms": [
+                                    "pacific station",
+                                    "pacific city station",
+                                    "the pacific city station",
+                                    "the pacific train station",
+                                    "the pacific city train station"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Pacific City Park",
                                 "synonyms": [
                                     "the city park",
-                                    "the silver moon city park",
-                                    "the silvermoon city park",
+                                    "the pacific city park",
                                     "the park",
                                     "city park",
-                                    "silver moon park",
-                                    "silver moon city park",
-                                    "silvermoon park"
+                                    "pacific park"
                                 ]
                             }
                         },
                         {
                             "name": {
-                                "value": "Castle Town Mall",
+                                "value": "Rose Town",
                                 "synonyms": [
-                                    "the castle town mall",
-                                    "the mall"
+                                    "rose city",
+                                    "rose town city"
                                 ]
                             }
                         },
                         {
                             "name": {
-                                "value": "Castle Town",
+                                "value": "Rose Town Train Station",
                                 "synonyms": [
-                                    "castletown city",
-                                    "castletown",
-                                    "castle town",
-                                    "castle town city"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Hog's Head Pub",
-                                "synonyms": [
-                                    "the hog's head pub",
-                                    "hog's head",
-                                    "the hog's head",
-                                    "the pub"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Silvermoon City",
-                                "synonyms": [
-                                    "silver moon city",
-                                    "silvermoon",
-                                    "silver moon"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Castle Town Train Station",
-                                "synonyms": [
-                                    "castle town station",
-                                    "the castle town station",
-                                    "the castle town train station"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Jewelry Shop",
-                                "synonyms": [
-                                    "the jewelry shop",
-                                    "the jewelry store",
-                                    "jewelry store"
+                                    "rose town station",
+                                    "the rose town station",
+                                    "the rose town train station"
                                 ]
                             }
                         },
@@ -2251,11 +2264,56 @@
                             "name": {
                                 "value": "Alley behind the Mall",
                                 "synonyms": [
-                                    "alley near the mall",
-                                    "the alley behind the mall",
-                                    "the alley near the mall",
                                     "the alley",
-                                    "alley"
+                                    "alley",
+                                    "the alley near the mall",
+                                    "alley near the mall",
+                                    "the alley behind the mall"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Gallery",
+                                "synonyms": [
+                                    "the art shop",
+                                    "the art store",
+                                    "the art gallery",
+                                    "the art gallery",
+                                    "the gallery"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Rose Town Mall",
+                                "synonyms": [
+                                    "the mall",
+                                    "the town mall",
+                                    "the rose town mall"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Hog's Head Pub",
+                                "synonyms": [
+                                    "hog's head",
+                                    "the hog's head",
+                                    "the pub",
+                                    "the hog's head pub"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Mall's Coffee Shop",
+                                "synonyms": [
+                                    "the coffee shop at the mall",
+                                    "coffee shop at the mall",
+                                    "the coffee shop",
+                                    "coffee shop",
+                                    "the mall's coffee shop"
                                 ]
                             }
                         },
@@ -2264,19 +2322,390 @@
                                 "value": "Peter's House",
                                 "synonyms": [
                                     "home",
+                                    "your place",
+                                    "your home",
                                     "your house"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "theme_slot_type",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "that"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "that place"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "there"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "him"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "its"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "it"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "anything"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "something"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Bench",
+                                "synonyms": [
+                                    "over by the bench",
+                                    "by the bench",
+                                    "the bench"
                                 ]
                             }
                         },
                         {
                             "name": {
-                                "value": "Mall's Coffee Shop",
+                                "value": "Watching a football game",
                                 "synonyms": [
-                                    "the mall's coffee shop",
-                                    "the coffee shop at the mall",
-                                    "the coffee shop",
-                                    "coffee shop at the mall",
-                                    "coffee shop"
+                                    "about going to watch football",
+                                    "about watching football",
+                                    "about going to watch a football game together",
+                                    "about going to watch football",
+                                    "about going to watch a football game",
+                                    "about watching a football game"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Rose Town",
+                                "synonyms": [
+                                    "rose city",
+                                    "rose town city"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Train to Rose Town",
+                                "synonyms": [
+                                    "a train to rose town",
+                                    "the train to rose town"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Ticket to Rose Town",
+                                "synonyms": [
+                                    "the train ticket to rose town",
+                                    "a train ticket to rose town",
+                                    "train ticket to rose town",
+                                    "the ticket to rose town",
+                                    "a ticket to rose town",
+                                    "tickets to rose town"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Pacific City",
+                                "synonyms": [
+                                    "pacific town",
+                                    "pacific"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Train to Pacific City",
+                                "synonyms": [
+                                    "train to pacific",
+                                    "the train to pacific",
+                                    "a train to pacific city",
+                                    "the train to pacific city"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Ticket to Pacific City",
+                                "synonyms": [
+                                    "the train ticket to pacific city",
+                                    "a train ticket to pacific city",
+                                    "train ticket to pacific city",
+                                    "the ticket to pacific city",
+                                    "a ticket to pacific city",
+                                    "tickets to pacific city"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "David Turner's Contact",
+                                "synonyms": [
+                                    "the phone number",
+                                    "the contact",
+                                    "david's phone number",
+                                    "david turner's phone number",
+                                    "the contact",
+                                    "david's contact"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Selling the painting",
+                                "synonyms": [
+                                    "about the sale of the painting",
+                                    "about the sale",
+                                    "about the painting",
+                                    "about selling the painting"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Stolen Painting",
+                                "synonyms": [
+                                    "the painting that you stole from the gallery",
+                                    "the painting you stole",
+                                    "what you stole",
+                                    "a stolen painting",
+                                    "the stolen painting",
+                                    "painting",
+                                    "a painting",
+                                    "the painting"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Robbery",
+                                "synonyms": [
+                                    "the fellony",
+                                    "the crime",
+                                    "the assault",
+                                    "the robbery"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Delivery Guy",
+                                "synonyms": [
+                                    "your neighbour",
+                                    "delivery boy",
+                                    "the delivery boy",
+                                    "delivery guy",
+                                    "the delivery guy"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Gallery",
+                                "synonyms": [
+                                    "the art shop",
+                                    "the art store",
+                                    "the art gallery",
+                                    "the art gallery",
+                                    "the gallery"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Gun",
+                                "synonyms": [
+                                    "the revolver",
+                                    "the weapon",
+                                    "a weapon",
+                                    "weapon",
+                                    "the gun",
+                                    "a gun"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Gallery Inventory",
+                                "synonyms": [
+                                    "the inventory",
+                                    "inventory",
+                                    "the gallery's inventory"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Gallery Owner's Conversation",
+                                "synonyms": [
+                                    "the conversation about the painting delivery",
+                                    "the conversation about the delivery",
+                                    "the conversation about the painting",
+                                    "the conversation",
+                                    "conversation",
+                                    "the gallery owner's conversation about the delivery",
+                                    "the gallery owner's conversation about the painting",
+                                    "the gallery owner's conversation about the painting delivery",
+                                    "the gallery's owner's conversation"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Large Cup of Coffee",
+                                "synonyms": [
+                                    "the coffee",
+                                    "a coffee",
+                                    "coffee",
+                                    "the cup of coffee",
+                                    "a cup of coffee",
+                                    "cup of coffee",
+                                    "a large cup of coffee"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "reason_slot_type",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "See the sights",
+                                "synonyms": [
+                                    "sightsee"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Spend Time Together",
+                                "synonyms": [
+                                    "spend quality time together",
+                                    "spend more time together",
+                                    "spend more quality time together"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Look at Paintings",
+                                "synonyms": [
+                                    "look for paintings",
+                                    "look for beautiful paintings",
+                                    "look at beautiful paintings",
+                                    "look at paintings",
+                                    "look at a painting",
+                                    "look at beautiful paintings"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Return Home",
+                                "synonyms": [
+                                    "be done with this shit",
+                                    "go back home",
+                                    "go home"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Get Money",
+                                "synonyms": [
+                                    "get the money",
+                                    "get paid"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Find Buyer",
+                                "synonyms": [
+                                    "find a buyer"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Discover Value",
+                                "synonyms": [
+                                    "discover the value",
+                                    "discover its value",
+                                    "discover the painting's value"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Sell painting",
+                                "synonyms": [
+                                    "sell the painting"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Steal painting",
+                                "synonyms": [
+                                    "steal the painting"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Confirm Delivery",
+                                "synonyms": [
+                                    "find out if the painting was delivered",
+                                    "confirm if the painting was delivered"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Check Delivery",
+                                "synonyms": [
+                                    "check if the delivery had arrived"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Interrogate Delivery Guy",
+                                "synonyms": [
+                                    "interrogate the delivery guy"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Gather Information",
+                                "synonyms": [
+                                    "gather information about the painting"
                                 ]
                             }
                         }
@@ -2287,17 +2716,17 @@
                     "values": [
                         {
                             "name": {
-                                "value": "it"
-                            }
-                        },
-                        {
-                            "name": {
                                 "value": "something"
                             }
                         },
                         {
                             "name": {
                                 "value": "anything"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "it"
                             }
                         },
                         {
@@ -2324,402 +2753,12 @@
                             "name": {
                                 "value": "Gun",
                                 "synonyms": [
-                                    "a gun",
-                                    "the gun",
                                     "the revolver",
-                                    "gun"
-                                ]
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "reason_slot_type",
-                    "values": [
-                        {
-                            "name": {
-                                "value": "See the sights"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Spend Time Together",
-                                "synonyms": [
-                                    "spend quality time together",
-                                    "spend more time together",
-                                    "spend more quality time together"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Find Watch to Buy",
-                                "synonyms": [
-                                    "look for a watch",
-                                    "find a watch",
-                                    "find a watch to buy"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Return Home",
-                                "synonyms": [
-                                    "be done with this shit"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Get Money",
-                                "synonyms": [
-                                    "get the money"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Find Buyer",
-                                "synonyms": [
-                                    "find a buyer"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Discover Value",
-                                "synonyms": [
-                                    "discover its value",
-                                    "discover the necklace's value"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Sell Necklace",
-                                "synonyms": [
-                                    "sell the necklace"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Steal Necklace",
-                                "synonyms": [
-                                    "steal the necklace"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Confirm Delivery",
-                                "synonyms": [
-                                    "find out if the necklace was delivered",
-                                    "confirm if the necklace was delivered"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Check Delivery",
-                                "synonyms": [
-                                    "check if the delivery had arrived"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Rob Jewelry Shop",
-                                "synonyms": [
-                                    "rob the jewelry shop"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Gather Information",
-                                "synonyms": [
-                                    "gather information about the necklace"
-                                ]
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "subject_slot_type",
-                    "values": [
-                        {
-                            "name": {
-                                "value": "Delivery",
-                                "synonyms": [
-                                    "the delivery",
-                                    "it",
-                                    "parcel"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Peter Barker",
-                                "synonyms": [
-                                    "you",
-                                    "Peter"
-                                ]
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "theme_slot_type",
-                    "values": [
-                        {
-                            "name": {
-                                "value": "Bench",
-                                "synonyms": [
-                                    "the bench"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Watching a football game",
-                                "synonyms": [
-                                    "about going to watch football",
-                                    "about watching football",
-                                    "about going to watch a football game together",
-                                    "about going to watch football",
-                                    "about going to watch a football game",
-                                    "about watching a football game"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "its"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "that"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "that place"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "there"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "him"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "it"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "anything"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "something"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Delivery Guy",
-                                "synonyms": [
-                                    "delivery boy",
-                                    "the delivery guy",
-                                    "delivery guy",
-                                    "the delivery boy",
-                                    "neighbour"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Castle Town",
-                                "synonyms": [
-                                    "castletown city",
-                                    "castletown",
-                                    "castle town",
-                                    "castle town city"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Train to Castle Town",
-                                "synonyms": [
-                                    "the train to castle town",
-                                    "train to castle town city"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Ticket to Castle Town",
-                                "synonyms": [
-                                    "the train ticket to castle town",
-                                    "the ticket to castle town",
-                                    "train ticket to castle town"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Silvermoon City",
-                                "synonyms": [
-                                    "silver moon city",
-                                    "silvermoon",
-                                    "silver moon"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Train to Silvermoon City",
-                                "synonyms": [
-                                    "the train to silver moon",
-                                    "the train to silvermoon",
-                                    "the train to silver moon city",
-                                    "the train to silvermoon city"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Selling the Necklace",
-                                "synonyms": [
-                                    "about the necklace",
-                                    "about selling the necklace"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Jewelry Shop",
-                                "synonyms": [
-                                    "the store",
-                                    "the shop",
-                                    "the jewelry shop",
-                                    "the jewelry store",
-                                    "jewelry store"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Ticket to Silvermoon City",
-                                "synonyms": [
-                                    "the train ticket to silvermoon city",
-                                    "train ticket to silver moon city",
-                                    "train ticket to silvermoon city",
-                                    "the ticket to silver moon city",
-                                    "the ticket to silvermoon city",
-                                    "ticket to silver moon city",
-                                    "tickets to silver moon city"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "John Frey's Contact",
-                                "synonyms": [
-                                    "the phone number",
-                                    "the contact",
-                                    "john's phone number",
-                                    "john frey's phone number",
-                                    "the contact",
-                                    "john's contact"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Stolen Necklace",
-                                "synonyms": [
-                                    "the necklace that you stole from the jewelry store",
-                                    "the necklace you stole",
-                                    "what you stole",
-                                    "the necklace",
-                                    "the stolen necklace",
-                                    "necklace"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Robbery",
-                                "synonyms": [
-                                    "the fellony",
-                                    "the crime",
-                                    "the assault",
-                                    "the robbery"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Gun",
-                                "synonyms": [
-                                    "a gun",
+                                    "the weapon",
+                                    "a weapon",
+                                    "weapon",
                                     "the gun",
-                                    "the revolver",
-                                    "gun"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Jewelry Shop Inventory",
-                                "synonyms": [
-                                    "the jewelry shop's inventory",
-                                    "the jewelry store's inventory",
-                                    "the inventory",
-                                    "inventory",
-                                    "jewelry store inventory"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Jewelry Shop Owner's Conversation",
-                                "synonyms": [
-                                    "the conversation about the necklace delivery",
-                                    "the conversation about the delivery",
-                                    "the conversation about the necklace",
-                                    "the jewelry shop owner's conversation about the delivery",
-                                    "the jewelry shop owner's conversation about the necklace",
-                                    "the jewelry shop owner's conversation about the necklace delivery",
-                                    "the jewelry shop's owner's conversation",
-                                    "the jewelry store's owner's conversation",
-                                    "the conversation",
-                                    "jewelry store owner's conversation",
-                                    "conversation"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Large Cup of Coffee",
-                                "synonyms": [
-                                    "a coffee",
-                                    "the cup of coffee",
-                                    "a cup of coffee",
-                                    "a large cup of coffee",
-                                    "the coffee",
-                                    "coffee",
-                                    "cup of coffee"
+                                    "a gun"
                                 ]
                             }
                         }
@@ -2741,6 +2780,28 @@
                         {
                             "name": {
                                 "value": "that day"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "event_slot_type",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "the sale",
+                                "synonyms": [
+                                    "the sale of the painting"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "the robbery",
+                                "synonyms": [
+                                    "the robbery of the painting",
+                                    "the robbery of the gallery"
+                                ]
                             }
                         }
                     ]
@@ -2775,6 +2836,38 @@
                                 "synonyms": [
                                     "had",
                                     "has"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "action_verb_slot_type",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "take place",
+                                "synonyms": [
+                                    "taking place",
+                                    "took place"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "happen",
+                                "synonyms": [
+                                    "happening",
+                                    "happened"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "do",
+                                "synonyms": [
+                                    "doing",
+                                    "done"
                                 ]
                             }
                         }
@@ -2856,60 +2949,6 @@
                                 "value": "meet",
                                 "synonyms": [
                                     "met"
-                                ]
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "action_verb_slot_type",
-                    "values": [
-                        {
-                            "name": {
-                                "value": "take place",
-                                "synonyms": [
-                                    "taking place",
-                                    "took place"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "happen",
-                                "synonyms": [
-                                    "happening",
-                                    "happened"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "do",
-                                "synonyms": [
-                                    "doing",
-                                    "done"
-                                ]
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "event_slot_type",
-                    "values": [
-                        {
-                            "name": {
-                                "value": "the sale",
-                                "synonyms": [
-                                    "the sale of the necklace"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "the robbery",
-                                "synonyms": [
-                                    "the robbery of the necklace",
-                                    "the robbery of the jewelry store"
                                 ]
                             }
                         }

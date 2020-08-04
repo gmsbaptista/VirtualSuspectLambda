@@ -154,14 +154,14 @@ namespace VirtualSuspectNaturalLanguage
                         answer = "It's in " + result.KnowledgeResults.ElementAt(0);
                     }
                     //hard coded value
-                    else if (result.Query.QueryConditions.ElementAt(0).GetValues().ElementAt(0) == "Castle Town")
+                    else if (result.Query.QueryConditions.ElementAt(0).GetValues().ElementAt(0) == "Rose Town")
                     {
-                        answer = "It's west of Silvermoon City";
+                        answer = "It's west of Pacific City";
                     }
                     //hard coded value
-                    else if (result.Query.QueryConditions.ElementAt(0).GetValues().ElementAt(0) == "Silvermoon City")
+                    else if (result.Query.QueryConditions.ElementAt(0).GetValues().ElementAt(0) == "Pacific City")
                     {
-                        answer = "It's east of Castle Town";
+                        answer = "It's east of Rose Town";
                     }
                     else
                     {
