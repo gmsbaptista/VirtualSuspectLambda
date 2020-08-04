@@ -250,7 +250,7 @@
       <speech>He's an art collector</speech>
     </association>
     <association relation="Relationship">
-      <speech>Through mutual acquaintances</speech>
+      <speech>We have a friend in common</speech>
     </association>
     <association relation="Residence">
       <speech>He lives in Pacific City</speech>
@@ -379,6 +379,9 @@
     <type>Weapon</type>
     <value>Gun</value><!--also a Manner-->
     <speech>a gun</speech>
+    <association relation="Details">
+      <speech>Just a normal pistol</speech>
+    </association>
   </entity>
   <entity>
     <id>52</id>
@@ -392,7 +395,7 @@
     <value>Stolen Painting</value>
     <speech>the painting</speech>
     <association relation="Details">
-      <speech>It was an abstract painting by an anonymous artist</speech>
+      <speech>It was a famous painting by an anonymous artist</speech>
     </association>
     <association relation="Value">
       <speech>It was worth three thousand euros</speech>
