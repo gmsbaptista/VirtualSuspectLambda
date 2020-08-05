@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace VirtualSuspect.Exception
 {
+    [Serializable]
     class DtoFieldException : System.Exception
     {
 
