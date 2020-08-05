@@ -2109,7 +2109,7 @@
                         },
                         {
                             "name": {
-                                "value": "Peter Turner",
+                                "value": "Peter Sanders",
                                 "synonyms": [
                                     "you",
                                     "Peter"
@@ -2876,6 +2876,14 @@
                 {
                     "name": "filler_verb_slot_type",
                     "values": [
+                        {
+                            "name": {
+                                "value": "deliver",
+                                "synonyms": [
+                                    "delivered"
+                                ]
+                            }
+                        },
                         {
                             "name": {
                                 "value": "come across"
