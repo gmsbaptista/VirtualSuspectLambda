@@ -194,7 +194,7 @@
   <entity>
     <id>32</id>
     <type>Person</type>
-    <value>Peter Turner</value>
+    <value>Peter Sanders</value>
     <speech>me</speech>
     <association relation="Residence">
       <speech>I live in Rose Town</speech>
@@ -264,7 +264,7 @@
     <value>Peter's House</value>
     <speech>my house</speech><!--at-->
     <association relation="Parent">
-      <entity id="42"/>
+      <entity id="44"/>
     </association>
   </entity>
   <entity>
@@ -273,7 +273,7 @@
     <value>Mall's Coffee Shop</value>
     <speech>the mall's coffee shop</speech><!--at-->
     <association relation="Parent">
-      <entity id="38"/>
+      <entity id="40"/>
     </association>
   </entity>
   <entity>
@@ -282,7 +282,7 @@
     <value>Hog's Head Pub</value>
     <speech>the Hog's Head Pub</speech><!--at-->
     <association relation="Parent">
-      <entity id="42"/>
+      <entity id="44"/>
     </association>
   </entity>
   <entity>
@@ -291,7 +291,7 @@
     <value>Rose Town Mall</value>
     <speech>the Rose Town Mall</speech><!--at-->
     <association relation="Parent">
-      <entity id="42"/>
+      <entity id="44"/>
     </association>
   </entity>
   <entity>
@@ -303,7 +303,7 @@
       <speech>It's an art gallery located at the mall</speech>
     </association>
     <association relation="Parent">
-      <entity id="38"/>
+      <entity id="40"/>
     </association>
   </entity>
   <entity>
@@ -312,7 +312,7 @@
     <value>Alley behind the Mall</value>
     <speech>the alley behind the Mall</speech><!--in-->
     <association relation="Parent">
-      <entity id="42"/>
+      <entity id="44"/>
     </association>
   </entity>
   <entity>
@@ -321,7 +321,7 @@
     <value>Rose Town Train Station</value>
     <speech>the Rose Town train station</speech><!--at-->
     <association relation="Parent">
-      <entity id="42"/>
+      <entity id="44"/>
     </association>
   </entity>
   <entity>
@@ -336,7 +336,7 @@
     <value>Pacific City Park</value>
     <speech>Pacific City Park</speech><!--at-->
     <association relation="Parent">
-      <entity id="45"/>
+      <entity id="47"/>
     </association>
   </entity>
   <entity>
@@ -345,7 +345,7 @@
     <value>Pacific City Train Station</value>
     <speech>the Pacific City train station</speech><!--at-->
     <association relation="Parent">
-      <entity id="45"/>
+      <entity id="47"/>
     </association>
   </entity>
   <entity>
@@ -714,6 +714,12 @@
     </association>
     <association relation="Location">
       <entity id="41"/>
+    </association>
+    <association relation="Agent">
+      <entity id="35"/>
+    </association>
+    <association relation="Theme">
+      <entity id="53"/>
     </association>
   </event>
   <event>
