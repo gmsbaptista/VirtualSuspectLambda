@@ -18,8 +18,9 @@ namespace VirtualSuspectNaturalLanguage.Component
             string answer = "";
 
             bool hasAction = result.Query.QueryConditions.Count(x => x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Action) > 0;
+            bool hasSubject = result.Query.QueryConditions.Any(x => x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Subject && x.GetValues().Contains("Peter Sanders"));
 
-            if (hasAction)
+            if (hasAction && hasSubject)
             {
                 answer += "I";
                 //Add verb from action resource
