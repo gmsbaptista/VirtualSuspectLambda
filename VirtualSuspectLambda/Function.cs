@@ -351,8 +351,11 @@ namespace VirtualSuspectLambda
                     (query.QueryType == QueryDto.QueryTypeEnum.YesOrNo && query.QueryConditions.Count > 1) ||
                     (query.QueryType == QueryDto.QueryTypeEnum.GetInformation && query.QueryConditions.Count >= 1))
                 {
+                    log.LogLine($"querying the virtual suspect");
                     QueryResult queryResult = virtual_suspect.Query(query);
+                    log.LogLine($"updating context with result");
                     lastInteraction.UpdateResult(queryResult);
+                    log.LogLine($"logging results");
                     log.LogLine($"query results(" + queryResult.Results.Count + "):");
                     //log the results
                     foreach (QueryResult.Result result in queryResult.Results)
@@ -446,9 +449,9 @@ namespace VirtualSuspectLambda
             Dictionary<string, Slot> intent_slots = intent.Intent.Slots;
             failLog = "";
             bool specialVerb = false;
-
+            log.LogLine($"beginning of add query conditions");
             lastInteraction.NoAccess();
-
+            log.LogLine($"accessed context");
             if (SlotExists(intent_slots, "subject"))
             {
                 if (KnownSlot(intent_slots["subject"]))
@@ -1110,6 +1113,15 @@ namespace VirtualSuspectLambda
                                 }
                             }
                             break;
+                        case "deliver":
+                            //hard coded value
+                            if (query.QueryConditions.Any(x => x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Subject && x.GetValues().Contains("Delivery")
+                            || x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Agent && x.GetValues().Contains("Delivery Guy")
+                            || x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Theme && x.GetValues().Contains("Stolen Painting")))
+                            {
+                                query.AddCondition(new ActionEqualConditionPredicate("Arrive"));
+                            }
+                            break;
                         default:
                             log.LogLine($"no specific logic for this verb");
                             break;
@@ -1175,6 +1187,7 @@ namespace VirtualSuspectLambda
                 }
             }
 
+            log.LogLine($"survived all the slots");
             if (query.QueryType == QueryDto.QueryTypeEnum.GetInformation &&
                 (query.QueryConditions.Count == 0 ||
                 (query.QueryConditions.Count == 1 && query.QueryConditions.ElementAt(0).GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Subject) ||
@@ -1227,7 +1240,7 @@ namespace VirtualSuspectLambda
                 }
             }
 
-
+            log.LogLine($"checking get reason without action");
             if (query.QueryType == QueryDto.QueryTypeEnum.GetInformation &&
                 query.QueryFocus.ElementAt(0).GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Reason &&
                 !query.QueryConditions.Any(x => x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Action))
@@ -1235,7 +1248,7 @@ namespace VirtualSuspectLambda
                 query.QueryFocus.Clear();
                 query.AddFocus(new GetActionFocusPredicate());
             }
-
+            log.LogLine($"logging query");
             //Debug
             log.LogLine($"QueryDto type: " + query.QueryType);
             log.LogLine($"QueryDto conditions:");
@@ -1247,7 +1260,9 @@ namespace VirtualSuspectLambda
                     log.LogLine($"value: " + value);
                 }
             }
+            log.LogLine($"accessing context");
             lastInteraction.NoAccess();
+            log.LogLine("returning");
             return true;
         }
 
