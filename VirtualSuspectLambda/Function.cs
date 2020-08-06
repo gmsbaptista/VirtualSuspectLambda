@@ -81,7 +81,7 @@ namespace VirtualSuspectLambda
                 log.LogLine($"check Sit event: " + knowledge_base.Events.Any(x => x.Action.Value == "Sit"));
 
                 string firstText = "Welcome to the Virtual Suspect prototype. ";
-                string suspectInformation = "Your suspect is Peter, he is accused of robbing a jewelry shop. ";
+                string suspectInformation = "Your suspect is Peter, he is accused of stealing a painting from a gallery. ";
                 string lastText = "You can ask him questions to find out more about the case.";
                 string speechText = firstText + suspectInformation + lastText;
 
