@@ -34,7 +34,6 @@ namespace VirtualSuspectLambda
         //private bool bitchMode = false;
         private Dictionary<string, bool> options = new Dictionary<string, bool>()
         {
-            {"Bish mode", false },
             {"Slot filtering", true },
             {"Answer filtering", true },
             {"Empty answer generation", true },
@@ -1546,14 +1545,6 @@ namespace VirtualSuspectLambda
             }
             if (inCharacter)
             {
-                if (options["Bish mode"])
-                {
-                    if (speechText == "Yes")
-                    {
-                        speechText = "Yaaaaas";
-                    }
-                    speechText += " bish";
-                }
                 innerResponse = new SsmlOutputSpeech();
                 (innerResponse as SsmlOutputSpeech).Ssml = SsmlDecorate(VoiceDecorate(voice, speechText));
                 //pregen answer
@@ -1659,7 +1650,6 @@ namespace VirtualSuspectLambda
         /// <returns>void</returns>
         private void ResetOptions()
         {
-            options["Bish mode"] = false;
             options["Slot filtering"] = true;
             options["Answer filtering"] = true;
             options["Empty answer generation"] = true;
