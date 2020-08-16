@@ -1121,6 +1121,25 @@ namespace VirtualSuspectLambda
                                 query.AddCondition(new ActionEqualConditionPredicate("Arrive"));
                             }
                             break;
+                        case "take":
+                            //hard coded value
+                            if (query.QueryConditions.Any(x => x.GetValues().Any(y => y == "Stolen Painting")))
+                            {
+                                query.AddCondition(new ActionEqualConditionPredicate("Steal"));
+                            }
+                            else if (query.QueryConditions.Any(x => x.GetValues().Any(y => y == "Train to Pacific City")))
+                            {
+                                query.QueryConditions.Remove(query.QueryConditions.Find(x => x.GetValues().Any(y => y == "Train to Pacific City")));
+                                query.AddCondition(new ActionEqualConditionPredicate("Travel"));
+                                query.AddCondition(new ThemeEqualConditionPredicate(new List<string>() { "Pacific City" }));
+                            }
+                            else if (query.QueryConditions.Any(x => x.GetValues().Any(y => y == "Train to Rose Town")))
+                            {
+                                query.QueryConditions.Remove(query.QueryConditions.Find(x => x.GetValues().Any(y => y == "Train to Rose Town")));
+                                query.AddCondition(new ActionEqualConditionPredicate("Travel"));
+                                query.AddCondition(new ThemeEqualConditionPredicate(new List<string>() { "Rose Town" }));
+                            }
+                            break;
                         default:
                             log.LogLine($"no specific logic for this verb");
                             break;

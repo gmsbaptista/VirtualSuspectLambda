@@ -1867,6 +1867,7 @@
                         }
                     ],
                     "samples": [
+                        "Which {subject}",
                         "What can you tell me about {subject}",
                         "What can you tell me about {agent}",
                         "What can you tell me about {theme}",
@@ -2073,8 +2074,6 @@
                             "name": {
                                 "value": "Steal",
                                 "synonyms": [
-                                    "took",
-                                    "take",
                                     "stole"
                                 ]
                             }
@@ -2385,6 +2384,11 @@
                             "name": {
                                 "value": "Gallery",
                                 "synonyms": [
+                                    "the rose town malls gallery",
+                                    "the rose town mall's gallery",
+                                    "the rose town mall gallery",
+                                    "the gallery at the mall",
+                                    "the gallery at the rose town mall",
                                     "the art shop",
                                     "the art store",
                                     "the art gallery",
@@ -2407,6 +2411,7 @@
                             "name": {
                                 "value": "Hog's Head Pub",
                                 "synonyms": [
+                                    "the hogs head pub",
                                     "hog's head",
                                     "the hog's head",
                                     "the pub",
@@ -2418,6 +2423,9 @@
                             "name": {
                                 "value": "Mall's Coffee Shop",
                                 "synonyms": [
+                                    "the rose town malls coffee shop",
+                                    "the rose town mall's coffee shop",
+                                    "the malls coffee shop",
                                     "the coffee shop at the mall",
                                     "coffee shop at the mall",
                                     "the coffee shop",
@@ -2480,6 +2488,21 @@
                         {
                             "name": {
                                 "value": "something"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Mall's Coffee Shop",
+                                "synonyms": [
+                                    "the rose town malls coffee shop",
+                                    "the rose town mall's coffee shop",
+                                    "the malls coffee shop",
+                                    "the coffee shop at the mall",
+                                    "coffee shop at the mall",
+                                    "the coffee shop",
+                                    "coffee shop",
+                                    "the mall's coffee shop"
+                                ]
                             }
                         },
                         {
@@ -2637,6 +2660,11 @@
                             "name": {
                                 "value": "Gallery",
                                 "synonyms": [
+                                    "the rose town malls gallery",
+                                    "the rose town mall's gallery",
+                                    "the rose town mall gallery",
+                                    "the gallery at the mall",
+                                    "the gallery at the rose town mall",
                                     "the art shop",
                                     "the art store",
                                     "the art gallery",
@@ -2987,6 +3015,22 @@
                 {
                     "name": "filler_verb_slot_type",
                     "values": [
+                        {
+                            "name": {
+                                "value": "own",
+                                "synonyms": [
+                                    "owned"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "take",
+                                "synonyms": [
+                                    "took"
+                                ]
+                            }
+                        },
                         {
                             "name": {
                                 "value": "deliver",
