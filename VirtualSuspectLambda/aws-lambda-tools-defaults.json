@@ -17,5 +17,6 @@
     "function-name"        : "virtualSuspectLambda",
     "function-role"        : "arn:aws:iam::506398985101:role/lambda_exec_virtualSuspectLambda",
     "tracing-mode"         : "PassThrough",
-    "environment-variables" : ""
+    "environment-variables" : "",
+    "function-description"  : ""
 }
