@@ -1290,7 +1290,7 @@
                         "What {question_verb} {subject} {action_verb} {preposition} {date_one} {preposition_b} {date_two} {preposition_c} {location} {preposition_d} {theme}",
                         "What {question_verb} {subject} {action_verb} {preposition} {time_one} and {time_two} {preposition_b} {location} {preposition_c} {theme}",
                         "What {question_verb} {subject} {action_verb} {preposition} {time_one} {preposition_b} {time_two} {preposition_c} {location} {preposition_d} {theme}",
-                        "What {question_verb} {subject} {action_verb} {preposition} {date_one} {preposition_b} {time_one} {preposition_c} {date_two} {preposition_d} {time_two} {preposition_d} {location} {preposition_e} {theme}",
+                        "What {question_verb} {subject} {action_verb} {preposition} {date_one} {preposition_b} {time_one} {preposition_c} {date_two} {preposition_d} {time_two} {preposition_e} {location} {preposition_f} {theme}",
                         "What {question_verb} {subject} {action_verb} {preposition} {date_one} {preposition_b} {time_one} and {date_two} {preposition_c} {time_two} {preposition_d} {location} {preposition_e} {theme}",
                         "What {question_verb} {subject} {action_verb} {preposition} {time_one} {preposition_b} {date_one} {preposition_c} {time_two} {preposition_d} {date_two} {preposition_e} {location} {preposition_f} {theme}",
                         "What {question_verb} {subject} {action_verb} {preposition} {time_one} {preposition_b} {date_one} and {time_two} {preposition_c} {date_two} {preposition_d} {location} {preposition_e} {theme}",
@@ -1941,6 +1941,8 @@
                         }
                     ],
                     "samples": [
+                        "Where {question_verb} {agent} from",
+                        "Where {question_verb} {subject} from",
                         "Where {question_verb} {agent} live",
                         "Where {question_verb} {subject} live"
                     ]
@@ -2110,6 +2112,8 @@
                             "name": {
                                 "value": "Intimidate",
                                 "synonyms": [
+                                    "threatened",
+                                    "threaten",
                                     "bullied",
                                     "bully",
                                     "scared",
