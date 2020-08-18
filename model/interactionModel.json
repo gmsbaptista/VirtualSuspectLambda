@@ -1123,6 +1123,7 @@
                         }
                     ],
                     "samples": [
+                        "Doing what",
                         "What {question_verb} {subject} {action_verb}",
                         "What {action_verb}",
                         "How {question_verb} {subject} {filler_verb} {manner}",
@@ -2064,6 +2065,8 @@
                             "name": {
                                 "value": "Talk",
                                 "synonyms": [
+                                    "spoke",
+                                    "speak",
                                     "chatted",
                                     "chat",
                                     "conversed",
