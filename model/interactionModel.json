@@ -1999,6 +1999,7 @@
                             "name": {
                                 "value": "Kill",
                                 "synonyms": [
+                                    "killing",
                                     "killed"
                                 ]
                             }
@@ -2007,6 +2008,7 @@
                             "name": {
                                 "value": "Shoot",
                                 "synonyms": [
+                                    "shooting",
                                     "shot"
                                 ]
                             }
@@ -2015,6 +2017,7 @@
                             "name": {
                                 "value": "Keep",
                                 "synonyms": [
+                                    "keeping",
                                     "kept"
                                 ]
                             }
@@ -2023,6 +2026,7 @@
                             "name": {
                                 "value": "Sit",
                                 "synonyms": [
+                                    "sitting",
                                     "sat"
                                 ]
                             }
@@ -2031,6 +2035,7 @@
                             "name": {
                                 "value": "Sell",
                                 "synonyms": [
+                                    "selling",
                                     "sold"
                                 ]
                             }
@@ -2039,6 +2044,7 @@
                             "name": {
                                 "value": "Travel",
                                 "synonyms": [
+                                    "travelling",
                                     "travelled"
                                 ]
                             }
@@ -2047,6 +2053,7 @@
                             "name": {
                                 "value": "Wait",
                                 "synonyms": [
+                                    "waiting",
                                     "waited"
                                 ]
                             }
@@ -2055,6 +2062,8 @@
                             "name": {
                                 "value": "Call",
                                 "synonyms": [
+                                    "phoning",
+                                    "calling",
                                     "phoned",
                                     "phone",
                                     "called"
@@ -2065,6 +2074,10 @@
                             "name": {
                                 "value": "Talk",
                                 "synonyms": [
+                                    "speaking",
+                                    "chatting",
+                                    "conversing",
+                                    "talking",
                                     "spoke",
                                     "speak",
                                     "chatted",
@@ -2079,6 +2092,7 @@
                             "name": {
                                 "value": "Steal",
                                 "synonyms": [
+                                    "stealing",
                                     "stole"
                                 ]
                             }
@@ -2087,6 +2101,7 @@
                             "name": {
                                 "value": "Rob",
                                 "synonyms": [
+                                    "robbing",
                                     "robbed"
                                 ]
                             }
@@ -2095,6 +2110,8 @@
                             "name": {
                                 "value": "Prepare",
                                 "synonyms": [
+                                    "planning",
+                                    "preparing",
                                     "planned",
                                     "plan",
                                     "prepared"
@@ -2105,6 +2122,8 @@
                             "name": {
                                 "value": "Interrogate",
                                 "synonyms": [
+                                    "questioning",
+                                    "interrogating",
                                     "questioned",
                                     "question",
                                     "interrogated"
@@ -2115,6 +2134,10 @@
                             "name": {
                                 "value": "Intimidate",
                                 "synonyms": [
+                                    "threatening",
+                                    "bullying",
+                                    "scaring",
+                                    "intimidating",
                                     "threatened",
                                     "threaten",
                                     "bullied",
@@ -2129,6 +2152,8 @@
                             "name": {
                                 "value": "Follow",
                                 "synonyms": [
+                                    "stalking",
+                                    "following",
                                     "stalked",
                                     "stalk",
                                     "followed"
@@ -2139,6 +2164,7 @@
                             "name": {
                                 "value": "Arrive",
                                 "synonyms": [
+                                    "arriving",
                                     "arrived"
                                 ]
                             }
@@ -2147,6 +2173,8 @@
                             "name": {
                                 "value": "Watch",
                                 "synonyms": [
+                                    "observing",
+                                    "watching",
                                     "observed",
                                     "observe",
                                     "watched"
@@ -2157,6 +2185,8 @@
                             "name": {
                                 "value": "Buy",
                                 "synonyms": [
+                                    "purchasing",
+                                    "buying",
                                     "purchased",
                                     "purchase",
                                     "bought"
@@ -3024,8 +3054,27 @@
                     "values": [
                         {
                             "name": {
+                                "value": "catch",
+                                "synonyms": [
+                                    "catching",
+                                    "caught"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "carry",
+                                "synonyms": [
+                                    "carrying",
+                                    "carried"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
                                 "value": "own",
                                 "synonyms": [
+                                    "owning",
                                     "owned"
                                 ]
                             }
@@ -3034,6 +3083,7 @@
                             "name": {
                                 "value": "take",
                                 "synonyms": [
+                                    "taking",
                                     "took"
                                 ]
                             }
@@ -3042,13 +3092,18 @@
                             "name": {
                                 "value": "deliver",
                                 "synonyms": [
+                                    "delivering",
                                     "delivered"
                                 ]
                             }
                         },
                         {
                             "name": {
-                                "value": "come across"
+                                "value": "come across",
+                                "synonyms": [
+                                    "coming across",
+                                    "came across"
+                                ]
                             }
                         },
                         {
@@ -3064,6 +3119,7 @@
                             "name": {
                                 "value": "give",
                                 "synonyms": [
+                                    "giving",
                                     "gave"
                                 ]
                             }
@@ -3072,6 +3128,8 @@
                             "name": {
                                 "value": "get",
                                 "synonyms": [
+                                    "obtaining",
+                                    "getting",
                                     "obtained",
                                     "obtain",
                                     "got"
@@ -3118,6 +3176,7 @@
                             "name": {
                                 "value": "meet",
                                 "synonyms": [
+                                    "meeting",
                                     "met"
                                 ]
                             }
@@ -3187,6 +3246,11 @@
                 {
                     "name": "reason_prefix_slot_type",
                     "values": [
+                        {
+                            "name": {
+                                "value": "to"
+                            }
+                        },
                         {
                             "name": {
                                 "value": "so you can"
