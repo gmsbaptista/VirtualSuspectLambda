@@ -1140,6 +1140,30 @@ namespace VirtualSuspectLambda
                                 query.AddCondition(new ThemeEqualConditionPredicate(new List<string>() { "Rose Town" }));
                             }
                             break;
+                        case "catch":
+                            //hard coded value
+                            if (query.QueryConditions.Any(x => x.GetValues().Any(y => y == "Train to Pacific City")))
+                            {
+                                query.QueryConditions.Remove(query.QueryConditions.Find(x => x.GetValues().Any(y => y == "Train to Pacific City")));
+                                query.AddCondition(new ActionEqualConditionPredicate("Travel"));
+                                query.AddCondition(new ThemeEqualConditionPredicate(new List<string>() { "Pacific City" }));
+                            }
+                            else if (query.QueryConditions.Any(x => x.GetValues().Any(y => y == "Train to Rose Town")))
+                            {
+                                query.QueryConditions.Remove(query.QueryConditions.Find(x => x.GetValues().Any(y => y == "Train to Rose Town")));
+                                query.AddCondition(new ActionEqualConditionPredicate("Travel"));
+                                query.AddCondition(new ThemeEqualConditionPredicate(new List<string>() { "Rose Town" }));
+                            }
+                            break;
+                        case "carry":
+                            //hard coded value
+                            specialVerb = true;
+                            if (query.QueryConditions.Any(x => (x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Theme && x.GetValues().Any(y => y == "Gun"))))
+                            {
+                                query.QueryConditions.Remove(query.QueryConditions.Find(x => (x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Theme && x.GetValues().Any(y => y == "Gun"))));
+                                query.AddCondition(new MannerEqualConditionPredicate(new List<string>() { "Gun" }));
+                            }
+                            break;
                         default:
                             log.LogLine($"no specific logic for this verb");
                             break;
@@ -1255,6 +1279,16 @@ namespace VirtualSuspectLambda
                         }
                     }
                     return false;
+                }
+            }
+
+            log.LogLine($"checking for empty conditions in knowledge question");
+            if (query.QueryType == QueryDto.QueryTypeEnum.GetKnowledge)
+            {
+                List<IConditionPredicate> emptyConditions = query.QueryConditions.FindAll(x => x.GetValues().Count() == 0);
+                foreach (IConditionPredicate condition in emptyConditions)
+                {
+                    query.QueryConditions.Remove(condition);
                 }
             }
 
