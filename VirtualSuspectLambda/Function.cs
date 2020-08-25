@@ -449,8 +449,18 @@ namespace VirtualSuspectLambda
             failLog = "";
             bool specialVerb = false;
             log.LogLine($"beginning of add query conditions");
-            lastInteraction.NoAccess();
-            log.LogLine($"accessed context");
+            if (lastInteraction != null)
+            {
+                lastInteraction.NoAccess();
+                log.LogLine($"accessed context");
+            }
+            else
+            {
+                lastInteraction = new Context();
+                lastInteraction.UpdateResult(new QueryResult(new QueryDto(QueryDto.QueryTypeEnum.YesOrNo)));
+                lastInteraction.NoAccess();
+                log.LogLine($"reset null context");
+            }
             if (SlotExists(intent_slots, "subject"))
             {
                 if (KnownSlot(intent_slots["subject"]))
@@ -773,6 +783,23 @@ namespace VirtualSuspectLambda
                 log.LogLine($"new time slots format");
                 string date, date1, date2, time1, time2, time_pronoun, prevTime;
                 bool prevAccess, success;
+                if (SlotExists(intent_slots, "date_one") || SlotExists(intent_slots, "date_two"))
+                {
+                    if (SlotExists(intent_slots, "date_one") && TrueSlotValue(intent_slots["date_one"]).Split("-").Count() == 2)
+                    {
+                        log.LogLine($"no day only month, exiting");
+                        //pregen answer
+                        failLog = "I don't know what date you're referring to in this context";
+                        return false;
+                    }
+                    if (SlotExists(intent_slots, "date_two") && TrueSlotValue(intent_slots["date_two"]).Split("-").Count() == 2)
+                    {
+                        log.LogLine($"no day only month, exiting");
+                        //pregen answer
+                        failLog = "I don't know what date you're referring to in this context";
+                        return false;
+                    }
+                }
                 switch (timeFormat)
                 {
                     case "2d2t":
@@ -1230,6 +1257,7 @@ namespace VirtualSuspectLambda
             }
 
             log.LogLine($"survived all the slots");
+            log.LogLine($"checking contextual conditions..");
             if (query.QueryType == QueryDto.QueryTypeEnum.GetInformation &&
                 (query.QueryConditions.Count == 0 ||
                 (query.QueryConditions.Count == 1 && query.QueryConditions.ElementAt(0).GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Subject) ||
@@ -1290,6 +1318,17 @@ namespace VirtualSuspectLambda
                 {
                     query.QueryConditions.Remove(condition);
                 }
+            }
+            log.LogLine($"checking for subject/entity equivalency");
+            if (query.QueryType == QueryDto.QueryTypeEnum.YesOrNo && query.QueryConditions.Count() == 2 &&
+                query.QueryConditions.Any(x => x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Subject) &&
+                !SlotExists(intent_slots, "filler_verb") &&
+                !query.QueryConditions.Any(x => x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Action))
+            {
+                log.LogLine($"subject/entity equivalency");
+                //pregen answer
+                failLog = "I do not know what you mean by that";
+                return false;
             }
 
             log.LogLine($"checking get reason without action");
