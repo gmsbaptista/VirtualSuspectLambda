@@ -67,6 +67,10 @@ namespace VirtualSuspect.Handler
                             //Iterate all the similar location and retrieve the best one
                             foreach (EntityNode similarLocation in SimilarLocationEntities.OrderByDescending(x => x.Value).Select(x => x.Key))
                             {
+                                if (duplicateNode.ToMTable.ContainsKey(similarLocation))
+                                {
+                                    continue;
+                                }
                                 //TODO: Perform Test to check if location is possible(Setting to the first available)
                                 //TODO: Improve Space-Time Coherence
                                 duplicateNode.Location = similarLocation;
