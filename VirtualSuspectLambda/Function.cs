@@ -1319,9 +1319,11 @@ namespace VirtualSuspectLambda
                     query.QueryConditions.Remove(condition);
                 }
             }
+
             log.LogLine($"checking for subject/entity equivalency");
             if (query.QueryType == QueryDto.QueryTypeEnum.YesOrNo && query.QueryConditions.Count() == 2 &&
-                query.QueryConditions.Any(x => x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Subject) &&
+                query.QueryConditions.Any(x => x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Subject && x.GetValues().Contains("Peter Sanders")) &&
+                query.QueryConditions.Any(x => x.GetSemanticRole() != KnowledgeBaseManager.DimentionsEnum.Subject && x.GetValues().Count() > 0) &&
                 !SlotExists(intent_slots, "filler_verb") &&
                 !query.QueryConditions.Any(x => x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Action))
             {
