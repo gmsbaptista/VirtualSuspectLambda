@@ -10,7 +10,7 @@ In terms of code, this work is composed of 4 essential parts:
  
      An essential part of every Alexa Skill, the Interaction Model parses the users' questions in a way that the Virtual Suspect's query system can process.
 	 
- - The [Skill Service](/VirtualSuspectLamda)
+ - The [Skill Service](/VirtualSuspectLambda)
  
      A Lambda function that takes the information from the Interaction Model and transforms it into Virtual Suspect queries, as well as all the error verifications and a lot of the internal logic.
 	 
