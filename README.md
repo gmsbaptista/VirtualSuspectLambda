@@ -6,19 +6,19 @@ If you're curious, you can read the Extended Abstract [here](/docs/Resumo_Alarga
 
 In terms of code, this work is composed of 4 essential parts:
 
- - The [Interaction Model](../model)
+ - The [Interaction Model](/model)
  
      An essential part of every Alexa Skill, the Interaction Model parses the users' questions in a way that the Virtual Suspect's query system can process.
 	 
- - The [Skill Service](../VirtualSuspectLamda)
+ - The [Skill Service](/VirtualSuspectLamda)
  
      A Lambda function that takes the information from the Interaction Model and transforms it into Virtual Suspect queries, as well as all the error verifications and a lot of the internal logic.
 	 
- - The [Virtual Suspect Response Model](../VirtualSuspect)
+ - The [Virtual Suspect Response Model](/VirtualSuspect)
  
      One of the two components inherited from the original Virtual Suspect prototype, this module contains all the Virtual Suspect logic, the Knowledge Base, the Query Engine, the lying components, and everything that makes it tick.	
 	
- - The [Natural Language Generator](../VirtualSuspectNaturalLanguage)
+ - The [Natural Language Generator](/VirtualSuspectNaturalLanguage)
  
      The other component inherited from the original prototype, this module transforms the responses from the Virtual Suspect into actual sentences.
 	 
