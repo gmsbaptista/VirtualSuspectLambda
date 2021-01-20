@@ -2,7 +2,7 @@
 
 This is the repository for all the code that was used during the development of my Master's Thesis ("The Virtual Suspect Meets Alexa: Designing a Brand New Natural Language Interaction").
 The focus of this work was to design a Natural Language Interaction with the Virtual Suspect, using an Alexa Skill to achieve that goal.
-If you're curious, you can read the Extended Abstract [here](../docs/Resumo_Alargado_Goncalo_Baptista.pdf), or the full Dissertation [here](../docs/Dissertacao_Goncalo_Baptista.pdf).
+If you're curious, you can read the Extended Abstract [here](../tree/master/docs/Resumo_Alargado_Goncalo_Baptista.pdf), or the full Dissertation [here](../tree/master/docs/Dissertacao_Goncalo_Baptista.pdf).
 
 In terms of code, this work is composed of 4 essential parts:
 
