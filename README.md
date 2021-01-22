@@ -28,6 +28,13 @@ You can add this Skill to your Alexa by searching for "Virtual Suspect Demo" in 
 
 Before you start interacting with the Virtual Suspect, I recommend that you read [this document](https://docs.google.com/document/d/1fLmwlODrWwCj-fKYrzdj9xXMwXVt9U2qY7ZSw8JDmxM/edit?usp=sharing), containing all the information and context required to interrogate the Suspect.
 
+You can find the Skill at these links:
+ - US: https://www.amazon.com/dp/B08FZMVS7H
+ - UK: https://www.amazon.co.uk/dp/B08FZMVS7H
+ - CA: https://www.amazon.ca/dp/B08FZMVS7H
+ - AU: https://www.amazon.com.au/dp/B08FZMVS7H
+ - IN: https://www.amazon.in/dp/B08FZMVS7H
+
 ### Limitations
 
 Disclaimer: this is just a prototype developed as part of a dissertation and not a fully-fledged voice game. It has some limitations and shortcomings that may sometimes lead to an imperfect experience. Despite this, we were still able to obtain good User Experience results, and it's still possible to have decent conversations with the Suspect.
